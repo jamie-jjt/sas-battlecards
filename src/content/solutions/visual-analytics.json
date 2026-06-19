@@ -1,0 +1,30 @@
+{
+  "slug": "visual-analytics",
+  "name": "SAS Visual Analytics",
+  "lastUpdated": "2025-06-15",
+  "description": "Self-service business intelligence and advanced visual exploration platform that combines interactive dashboards, natural language queries, automated insights, and predictive analytics in one governed environment.",
+  "elevatorPitch": "Self-service BI and advanced exploration — dashboards, reports, and predictive analytics in one governed platform.",
+  "capabilities": [
+    "Interactive dashboards with drill-down and cross-filtering",
+    "Natural Language Query (NLQ) — ask questions in plain English",
+    "Mobile-optimized access with offline capability",
+    "Automated report distribution and scheduling",
+    "Advanced data exploration with statistical analysis",
+    "Embedded analytics for customer-facing applications",
+    "Governed self-service with role-based access control",
+    "Integration with SAS Viya analytics for predictive visualizations"
+  ],
+  "targetBuyer": "Chief Data Officer, Head of Business Intelligence, CFO, Head of Strategy",
+  "industries": ["banking", "insurance", "telco", "government", "retail", "healthcare"],
+  "phUseCases": [
+    "BSP regulatory reporting dashboards",
+    "Executive risk dashboards for bank boards",
+    "Insurance claims analytics visualization",
+    "Government budget and spending transparency",
+    "Retail sales and inventory analytics"
+  ],
+  "deploymentOptions": ["SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["Data warehouses", "Cloud data lakes", "SAP", "Oracle ERP", "Microsoft 365", "Salesforce"],
+  "competitorAlternatives": ["powerbi"],
+  "mcpProductKey": "visual-analytics"
+}

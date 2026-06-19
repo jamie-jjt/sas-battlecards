@@ -1,0 +1,97 @@
+{
+  "industry": "government",
+  "displayName": "Government",
+  "phPriority": "high",
+  "keySasPlay": "Fraud Prevention + Tax Analytics",
+  "primaryRegulation": "COA / BIR Revenue Regulations",
+  "questions": [
+    {
+      "id": "government-001",
+      "question": "What are the largest sources of leakage in your programs — overpayments, ghost beneficiaries, duplicate claims, or procurement fraud?",
+      "intent": "Quantifies the fraud opportunity. Most PH government agencies have multiple leakage vectors.",
+      "followUp": "How much do you estimate is lost annually to these issues?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L1", "L2"],
+      "persona": ["cfo-coo", "ciso-cro"],
+      "industry": ["government"],
+      "tags": ["leakage", "fraud", "overpayments", "ghost-beneficiaries"]
+    },
+    {
+      "id": "government-002",
+      "question": "What COA findings have you received related to data integrity, financial reporting, or internal controls?",
+      "intent": "COA audit findings create urgency. SAS helps address repeat findings with automated controls.",
+      "followUp": "Are there any findings that keep recurring year over year?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2"],
+      "persona": ["cfo-coo", "ciso-cro"],
+      "industry": ["government"],
+      "tags": ["coa", "audit", "findings", "compliance", "controls"]
+    },
+    {
+      "id": "government-003",
+      "question": "Do you have pre-payment fraud controls — can you catch suspicious transactions before disbursement rather than after?",
+      "intent": "Pre-payment detection saves money. Most agencies only do post-payment audit. SAS enables real-time pre-payment scoring.",
+      "followUp": "What's the typical recovery rate when fraud is detected post-payment?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L2", "L3"],
+      "persona": ["cfo-coo", "head-fraud-compliance"],
+      "industry": ["government"],
+      "tags": ["pre-payment", "post-payment", "fraud-controls", "disbursement"]
+    },
+    {
+      "id": "government-004",
+      "question": "What are your data sovereignty requirements — must all data and processing remain within Philippine data centers?",
+      "intent": "Critical for government deals. SAS on-prem / private cloud deployment is a differentiator vs. cloud-only competitors.",
+      "followUp": "Do you have existing on-premises infrastructure or a government cloud provider?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3", "L4"],
+      "persona": ["cto-cdo", "ciso-cro"],
+      "industry": ["government"],
+      "tags": ["data-sovereignty", "on-premises", "security", "deployment"]
+    },
+    {
+      "id": "government-005",
+      "question": "How do you share data across agencies today — is there an interoperability framework or is it manual MOU-based?",
+      "intent": "Cross-agency analytics (e.g., tax + customs + social welfare) is where SAS shines for fraud detection.",
+      "followUp": "Have you explored matching beneficiary databases across DSWD, PhilHealth, and SSS?",
+      "mapsTo": "SAS Data Management",
+      "maturity": ["L2", "L3"],
+      "persona": ["cto-cdo", "cfo-coo"],
+      "industry": ["government"],
+      "tags": ["interoperability", "cross-agency", "data-sharing", "integration"]
+    },
+    {
+      "id": "government-006",
+      "question": "How do you identify non-compliance in tax filings — is BIR using analytics for audit selection or is it manual?",
+      "intent": "Tax gap analytics is a major SAS use case globally. PH BIR is underinvested in analytics.",
+      "followUp": "What's your current audit coverage rate and hit rate?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["cfo-coo", "head-data-science"],
+      "industry": ["government"],
+      "tags": ["tax", "compliance", "audit", "bir", "revenue"]
+    },
+    {
+      "id": "government-007",
+      "question": "How do citizens interact with your services today — is there a digital channel with analytics behind it?",
+      "intent": "Citizen experience modernization is a PH government priority. Opens analytics-driven service delivery conversation.",
+      "followUp": "How do you measure citizen satisfaction or service delivery efficiency?",
+      "mapsTo": "SAS Customer Intelligence",
+      "maturity": ["L2", "L3"],
+      "persona": ["business-unit-leader", "cto-cdo"],
+      "industry": ["government"],
+      "tags": ["citizen-experience", "digital", "service-delivery", "satisfaction"]
+    },
+    {
+      "id": "government-008",
+      "question": "How many disparate systems feed your reporting today — and how long does it take to produce consolidated analytics?",
+      "intent": "Data integration is a universal government pain. SAS Data Management unifies siloed systems.",
+      "followUp": "How much of that is manual Excel consolidation?",
+      "mapsTo": "SAS Data Management",
+      "maturity": ["L1", "L2"],
+      "persona": ["cto-cdo", "cfo-coo"],
+      "industry": ["government"],
+      "tags": ["data-integration", "silos", "consolidation", "reporting"]
+    }
+  ]
+}

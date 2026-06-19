@@ -1,0 +1,75 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const partners = [
+  { slug: 'databricks', name: 'Databricks', icon: '🧱', story: 'Data engineering + SAS governed analytics', status: 'active' },
+  { slug: 'aws', name: 'AWS', icon: '☁️', story: 'Cloud infrastructure + SAS Viya on EKS', status: 'active' },
+  { slug: 'microsoft', name: 'Microsoft', icon: '🪟', story: 'Azure integration + Fabric + SAS Viya on AKS', status: 'active' },
+  { slug: 'snowflake', name: 'Snowflake', icon: '❄️', story: 'Data warehouse + SAS in-database processing', status: 'planned' },
+  { slug: 'google', name: 'Google Cloud', icon: '🔍', story: 'GKE deployment + BigQuery integration', status: 'planned' },
+];
+---
+
+<BaseLayout title="Better Together">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <Breadcrumb items={[{ label: 'Better Together' }]} />
+
+    <div class="space-y-2">
+      <h1 class="text-2xl font-bold text-text-primary">Better Together</h1>
+      <p class="text-text-secondary max-w-2xl">
+        Partner integration architectures — when to position SAS alongside these platforms vs. when to compete head-to-head.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {partners.map((partner) => (
+        <a
+          href={partner.status === 'active' ? `${base}/better-together/${partner.slug}/` : undefined}
+          class:list={[
+            "group rounded-lg border bg-bg-surface p-5 transition-all",
+            partner.status === 'active' ? 'border-border-default hover:border-sas-blue/50 hover:bg-bg-elevated cursor-pointer' : 'border-border-muted opacity-60 cursor-not-allowed',
+          ]}
+        >
+          <div class="flex items-start justify-between mb-3">
+            <span class="text-3xl">{partner.icon}</span>
+            {partner.status === 'planned' && (
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full border border-border-default text-text-muted">Coming soon</span>
+            )}
+          </div>
+          <h3 class="font-semibold text-text-primary group-hover:text-sas-blue transition-colors mb-1">
+            {partner.name}
+          </h3>
+          <p class="text-sm text-text-muted">{partner.story}</p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Key Principle -->
+    <section class="rounded-lg border border-sas-blue/30 bg-sas-blue/5 p-6">
+      <h2 class="text-lg font-semibold text-text-primary mb-3">🤝 Partner vs. Compete Decision Framework</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-sm font-semibold text-success mb-2">Partner When:</h3>
+          <ul class="space-y-1 text-sm text-text-secondary">
+            <li>• Customer has existing investment in the platform (>$500K)</li>
+            <li>• Platform handles data engineering, SAS handles analytics/governance</li>
+            <li>• Budget is additive (both can win)</li>
+            <li>• Regulatory gap exists that only SAS fills</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-danger mb-2">Compete When:</h3>
+          <ul class="space-y-1 text-sm text-text-secondary">
+            <li>• Customer evaluating platform for the first time</li>
+            <li>• Primary use case is analytics/ML (not data engineering)</li>
+            <li>• Budget is either/or (displacement)</li>
+            <li>• Competitor positioning as 'enough' for governance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

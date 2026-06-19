@@ -1,0 +1,127 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import SolutionCard from '@components/cards/SolutionCard.astro';
+import FilterChips from '@components/ui/FilterChips.astro';
+
+const entries = await getCollection('solutions');
+const solutions = entries.map((e) => e.data).sort((a, b) => a.name.localeCompare(b.name));
+
+// Unique industries for filter
+const allIndustries = [...new Set(solutions.flatMap((s) => s.industries))];
+const industryLabels: Record<string, string> = {
+  banking: 'Banking',
+  insurance: 'Insurance',
+  telco: 'Telco',
+  government: 'Government',
+  retail: 'Retail',
+  healthcare: 'Healthcare',
+};
+const industryOptions = allIndustries.map((ind) => ({
+  value: ind,
+  label: industryLabels[ind] ?? ind,
+}));
+---
+
+<BaseLayout title="Solutions" description="SAS solutions for the Philippine market">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+    <Breadcrumb items={[{ label: "Solutions" }]} />
+
+    <!-- Page header -->
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold text-text-primary sm:text-3xl">
+        Solutions
+      </h1>
+      <p class="mt-1 text-text-secondary">
+        {solutions.length} SAS solutions mapped to Philippine use cases
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="mb-8 space-y-3 rounded-lg border border-border-default bg-bg-surface p-4">
+      <FilterChips
+        id="filter-industry"
+        label="Industry"
+        options={industryOptions}
+        filterKey="industry"
+      />
+    </div>
+
+    <!-- Solution cards grid -->
+    <div id="solution-grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {solutions.map((sol) => (
+        <SolutionCard
+          slug={sol.slug}
+          name={sol.name}
+          elevatorPitch={sol.elevatorPitch}
+          industries={sol.industries}
+          targetBuyer={sol.targetBuyer}
+        />
+      ))}
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="hidden py-16 text-center">
+      <p class="text-text-muted text-lg">No solutions match the selected filters.</p>
+      <button
+        type="button"
+        id="clear-filters"
+        class="mt-3 text-sm text-sas-blue hover:text-sas-blue-hover transition-colors"
+      >
+        Clear all filters
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const state: Record<string, string[]> = {
+    industry: ['all'],
+  };
+
+  function applyFilters() {
+    const grid = document.getElementById('solution-grid');
+    const emptyState = document.getElementById('empty-state');
+    if (!grid || !emptyState) return;
+
+    const cards = grid.querySelectorAll<HTMLElement>('a[data-industries]');
+    let anyVisible = false;
+
+    cards.forEach((card) => {
+      const cardIndustries = (card.dataset.industries || '').split(',');
+      const industryMatch = state.industry.includes('all') || cardIndustries.some((ind) => state.industry.includes(ind));
+
+      card.style.display = industryMatch ? '' : 'none';
+      if (industryMatch) anyVisible = true;
+    });
+
+    emptyState.classList.toggle('hidden', anyVisible);
+    grid.classList.toggle('hidden', !anyVisible);
+  }
+
+  window.addEventListener('filter-change', ((e: CustomEvent) => {
+    const { key, values } = e.detail;
+    state[key] = values;
+    applyFilters();
+  }) as EventListener);
+
+  document.getElementById('clear-filters')?.addEventListener('click', () => {
+    state.industry = ['all'];
+
+    document.querySelectorAll('.filter-chips').forEach((group) => {
+      const chips = group.querySelectorAll<HTMLButtonElement>('.chip');
+      chips.forEach((chip) => {
+        if (chip.dataset.value === 'all') {
+          chip.classList.add('chip--active');
+          chip.setAttribute('aria-pressed', 'true');
+        } else {
+          chip.classList.remove('chip--active');
+          chip.setAttribute('aria-pressed', 'false');
+        }
+      });
+    });
+
+    applyFilters();
+  });
+</script>

@@ -1,0 +1,163 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import RegulationCard from '@components/cards/RegulationCard.astro';
+import FilterChips from '@components/ui/FilterChips.astro';
+
+const entries = await getCollection('regulations');
+const regulations = entries.map((e) => e.data).sort((a, b) => {
+  // Sort: soonest deadline first, then no-deadline alphabetically
+  if (a.complianceDeadline && b.complianceDeadline) {
+    return new Date(a.complianceDeadline).getTime() - new Date(b.complianceDeadline).getTime();
+  }
+  if (a.complianceDeadline && !b.complianceDeadline) return -1;
+  if (!a.complianceDeadline && b.complianceDeadline) return 1;
+  return a.name.localeCompare(b.name);
+});
+
+// Unique issuing bodies for filter
+const issuingBodyMap: Record<string, string> = {
+  'Bangko Sentral ng Pilipinas (BSP)': 'BSP',
+  'Congress of the Philippines': 'Congress',
+  'Anti-Money Laundering Council (AMLC) / Congress of the Philippines': 'AMLC',
+  'National Privacy Commission (NPC)': 'NPC',
+  'Insurance Commission (IC)': 'IC',
+};
+
+const uniqueBodies = [...new Set(regulations.map((r) => r.issuingBody))];
+const bodyOptions = uniqueBodies.map((body) => ({
+  value: (issuingBodyMap[body] ?? body).toLowerCase(),
+  label: issuingBodyMap[body] ?? body,
+}));
+
+// Unique industries
+const allIndustries = [...new Set(regulations.flatMap((r) => r.industries))];
+const industryLabels: Record<string, string> = {
+  banking: 'Banking',
+  insurance: 'Insurance',
+  telco: 'Telco',
+  government: 'Government',
+  retail: 'Retail',
+  healthcare: 'Healthcare',
+};
+const industryOptions = allIndustries.map((ind) => ({
+  value: ind,
+  label: industryLabels[ind] ?? ind,
+}));
+---
+
+<BaseLayout title="Regulations" description="Philippine regulatory landscape and SAS compliance mapping">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+    <Breadcrumb items={[{ label: "Regulations" }]} />
+
+    <!-- Page header -->
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold text-text-primary sm:text-3xl">
+        Regulations
+      </h1>
+      <p class="mt-1 text-text-secondary">
+        {regulations.length} Philippine regulations mapped to SAS capabilities
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="mb-8 space-y-3 rounded-lg border border-border-default bg-bg-surface p-4">
+      <FilterChips
+        id="filter-body"
+        label="Issuing Body"
+        options={bodyOptions}
+        filterKey="body"
+      />
+      <FilterChips
+        id="filter-industry"
+        label="Industry"
+        options={industryOptions}
+        filterKey="industry"
+      />
+    </div>
+
+    <!-- Regulation cards grid -->
+    <div id="regulation-grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {regulations.map((reg) => (
+        <RegulationCard
+          slug={reg.slug}
+          name={reg.name}
+          issuingBody={reg.issuingBody}
+          complianceDeadline={reg.complianceDeadline}
+          summary={reg.summary}
+          industries={reg.industries}
+        />
+      ))}
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="hidden py-16 text-center">
+      <p class="text-text-muted text-lg">No regulations match the selected filters.</p>
+      <button
+        type="button"
+        id="clear-filters"
+        class="mt-3 text-sm text-sas-blue hover:text-sas-blue-hover transition-colors"
+      >
+        Clear all filters
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const state: Record<string, string[]> = {
+    body: ['all'],
+    industry: ['all'],
+  };
+
+  function applyFilters() {
+    const grid = document.getElementById('regulation-grid');
+    const emptyState = document.getElementById('empty-state');
+    if (!grid || !emptyState) return;
+
+    const cards = grid.querySelectorAll<HTMLElement>('a[data-issuing-body]');
+    let anyVisible = false;
+
+    cards.forEach((card) => {
+      const cardBody = card.dataset.issuingBody || '';
+      const cardIndustries = (card.dataset.industries || '').split(',');
+
+      const bodyMatch = state.body.includes('all') || state.body.includes(cardBody);
+      const industryMatch = state.industry.includes('all') || cardIndustries.some((ind) => state.industry.includes(ind));
+
+      const visible = bodyMatch && industryMatch;
+      card.style.display = visible ? '' : 'none';
+      if (visible) anyVisible = true;
+    });
+
+    emptyState.classList.toggle('hidden', anyVisible);
+    grid.classList.toggle('hidden', !anyVisible);
+  }
+
+  window.addEventListener('filter-change', ((e: CustomEvent) => {
+    const { key, values } = e.detail;
+    state[key] = values;
+    applyFilters();
+  }) as EventListener);
+
+  document.getElementById('clear-filters')?.addEventListener('click', () => {
+    state.body = ['all'];
+    state.industry = ['all'];
+
+    document.querySelectorAll('.filter-chips').forEach((group) => {
+      const chips = group.querySelectorAll<HTMLButtonElement>('.chip');
+      chips.forEach((chip) => {
+        if (chip.dataset.value === 'all') {
+          chip.classList.add('chip--active');
+          chip.setAttribute('aria-pressed', 'true');
+        } else {
+          chip.classList.remove('chip--active');
+          chip.setAttribute('aria-pressed', 'false');
+        }
+      });
+    });
+
+    applyFilters();
+  });
+</script>

@@ -1,0 +1,51 @@
+{
+  "theme": "cost",
+  "displayName": "Cost & Pricing Objections",
+  "items": [
+    {
+      "id": "cost-001",
+      "objection": "SAS is too expensive",
+      "underlyingConcern": "Budget pressure. Haven't done TCO comparison. Comparing license cost only — not factoring in build costs for alternatives.",
+      "response": {
+        "acknowledge": "I understand budget is a factor — it should be. Every technology investment needs to demonstrate value.",
+        "reframe": "But let's compare total cost of ownership, not just license. What would it cost to build governance, monitoring, and industry solutions from scratch on an open-source or cloud-native stack?",
+        "evidence": "Our customers find the delivered cost is 30-40% lower than assembling open-source + cloud + custom engineering. Factor in: hiring ML engineers (₱150-250K/month in PH and scarce), building model governance from scratch (6-12 months), and ongoing maintenance.",
+        "close": "Can we do a quick TCO comparison for your specific use case? I can show you a side-by-side that accounts for all costs — not just license."
+      },
+      "proofPoints": ["Gartner TCO analysis favors integrated platforms for regulated workloads", "PH market: senior ML engineers cost ₱150-250K/month and are scarce", "Building fraud management from scratch: $2-5M vs. SAS deployment in weeks"],
+      "whatNotToSay": "Don't say 'you get what you pay for' — it's dismissive. Don't compare to consumer pricing. Don't discount immediately — reframe value first.",
+      "relatedCompetitors": ["databricks", "opensource", "aws", "google"],
+      "persona": ["cfo-coo", "cto-cdo"]
+    },
+    {
+      "id": "cost-002",
+      "objection": "We can't justify the investment to the board",
+      "underlyingConcern": "Need ROI story for executive approval. May not know how to quantify analytics value. Looking for safe justification.",
+      "response": {
+        "acknowledge": "Board justification is critical — you need a clear business case with measurable outcomes.",
+        "reframe": "Let's build the business case together. What's the cost of the problem you're solving? For fraud — what are your current losses? For compliance — what's the penalty for non-compliance?",
+        "evidence": "BSP Circular 1213 non-compliance risk: potential sanctions, operational restrictions, reputational damage. One fraud loss incident can exceed the entire SAS investment. Our customers typically see 10-15x ROI within 24 months.",
+        "close": "Would it help if I provided a board-ready ROI template with PH-specific benchmarks? I can customize it for your use case."
+      },
+      "proofPoints": ["Average fraud detection improvement: 40-60% reduction in false positives", "Compliance deadline creates urgency (BSP June 2026)", "SAS provides board-ready business case templates"],
+      "whatNotToSay": "Don't pressure them on timeline — boards operate on their own cadence. Don't say 'just trust us on ROI' — provide the evidence.",
+      "relatedCompetitors": ["databricks", "microsoft"],
+      "persona": ["cfo-coo", "ciso-cro"]
+    },
+    {
+      "id": "cost-003",
+      "objection": "Cloud-native options are cheaper on a per-unit basis",
+      "underlyingConcern": "Comparing consumption pricing (per DBU, per query) to SAS annual license. Not accounting for scale costs, engineering costs, and hidden expenses.",
+      "response": {
+        "acknowledge": "Per-unit costs do look attractive at small scale — that's by design.",
+        "reframe": "But what happens when you scale? Consumption costs are unpredictable. And the per-unit price doesn't include: building the solution, governing the models, maintaining the system, or responding to regulatory requirements.",
+        "evidence": "We've seen customers whose Databricks/AWS costs tripled in year 2 as workloads scaled. Auto-scaling without cost controls means surprise bills. Meanwhile, SAS pricing is predictable — you know your annual cost from day one.",
+        "close": "Let me show you a 3-year cost projection comparing consumption-based scaling vs. SAS predictable licensing for your expected workload."
+      },
+      "proofPoints": ["Consumption costs spike 2-3x as workloads grow", "Auto-scaling without limits creates budget surprises", "SAS annual licensing provides cost predictability for budget planning"],
+      "whatNotToSay": "Don't say cloud pricing is a 'trap' — it sounds conspiratorial. Focus on facts and predictability.",
+      "relatedCompetitors": ["databricks", "aws", "google", "snowflake"],
+      "persona": ["cfo-coo", "cto-cdo"]
+    }
+  ]
+}

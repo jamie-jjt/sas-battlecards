@@ -1,0 +1,143 @@
+{
+  "slug": "google",
+  "name": "Google Cloud (Vertex AI)",
+  "category": "cloud-data",
+  "threatLevel": "medium",
+  "priority": "P2",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on regulated industry depth, production governance, and business-user tooling beyond developer AI",
+  "overview": {
+    "whatTheyDo": "Google Cloud Platform offers Vertex AI (ML platform), BigQuery (data warehouse), Looker (BI), and Gemini (GenAI). Strong in AI/ML research heritage from Google Brain and DeepMind.",
+    "sweetSpot": "AI-forward organizations wanting cutting-edge ML capabilities. Companies already using BigQuery for analytics. Digital-native companies comfortable with Google Cloud ecosystem.",
+    "typicalBuyer": "CTO, VP Data/AI, Head of Data Engineering, Chief AI Officer",
+    "phPresence": "Growing PH presence with Google Cloud Philippines team. Less enterprise penetration than Azure/AWS in traditional industries but strong in digital-native companies and telcos.",
+    "recentMomentum": "Gemini model family, Vertex AI Agent Builder, BigQuery ML, Looker modernization. Strongest AI research brand leveraging DeepMind integration.",
+    "pricingModel": "Consumption-based. BigQuery (per-query pricing or flat rate), Vertex AI (compute + prediction endpoints). Committed use discounts available."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Regulated Industry Solutions",
+      "explanation": "SAS provides purpose-built fraud, AML, risk, and compliance solutions with regulatory expertise encoded. Google Cloud offers generic AI/ML building blocks — customers must build regulated industry solutions from scratch.",
+      "proofPoint": "SAS serves 9 of top 10 global banks for risk and compliance. Google Cloud has zero pre-built BSP-compliant fraud management solutions."
+    },
+    {
+      "headline": "Production Model Governance",
+      "explanation": "SAS Model Manager provides formal governance workflows with approval chains, regulatory documentation, and audit trails. Vertex AI Model Registry tracks models but lacks formal regulated governance.",
+      "proofPoint": "BSP examiners look for documented model lifecycle with formal approval — SAS provides this natively; Vertex AI does not."
+    },
+    {
+      "headline": "Business User Self-Service at Scale",
+      "explanation": "SAS enables non-technical users to build, validate, and deploy analytics through visual interfaces. Vertex AI is fundamentally developer/data scientist tooling. BigQuery ML adds SQL-based ML but limited for complex modeling.",
+      "proofPoint": "60% of SAS users are business analysts. Vertex AI usage is 95%+ technical personas."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "AI/ML Research & Innovation",
+      "whyItMatters": "Google has the strongest AI research brand (DeepMind, Gemini, TPUs). Attracts organizations wanting cutting-edge AI capabilities and access to latest models.",
+      "howToNeutralize": "Research innovation ≠ production readiness for regulated industries. Ask: 'Which of these innovations has a BSP compliance framework?' SAS brings proven production deployment to regulated contexts."
+    },
+    {
+      "area": "BigQuery + ML Integration",
+      "whyItMatters": "BigQuery ML allows data analysts to build ML models using SQL directly in the data warehouse. Low friction for existing BigQuery users.",
+      "howToNeutralize": "BigQuery ML is limited to simple models and lacks governance. For anything beyond basic classification/regression, customers need a proper ML platform. SAS integrates with BigQuery as a data source."
+    },
+    {
+      "area": "GenAI (Gemini)",
+      "whyItMatters": "Gemini models are competitive with GPT-4. Vertex AI Agent Builder makes GenAI accessible. Strong vision/multimodal capabilities.",
+      "howToNeutralize": "SAS governs GenAI outputs — bias detection, output monitoring, model cards. Position: use Gemini for GenAI experimentation, govern with SAS for production regulated use."
+    }
+  ],
+  "features": [
+    { "capability": "Model Governance & Regulatory Compliance", "sas": "full", "competitor": "partial", "notes": "Vertex Model Registry lacks formal regulated governance workflows" },
+    { "capability": "Pre-Built Fraud Detection", "sas": "full", "competitor": "none", "notes": "No GCP-native enterprise fraud management" },
+    { "capability": "AML/CFT Solutions", "sas": "full", "competitor": "none", "notes": "No GCP-native AML solution" },
+    { "capability": "Business User Self-Service", "sas": "full", "competitor": "partial", "notes": "BigQuery ML is SQL-only; Vertex AI is developer-focused" },
+    { "capability": "AI Research / Cutting-Edge Models", "sas": "partial", "competitor": "full", "notes": "Google leads in AI research (DeepMind, Gemini)" },
+    { "capability": "Data Warehouse (BigQuery)", "sas": "partial", "competitor": "full", "notes": "BigQuery is best-in-class serverless warehouse" },
+    { "capability": "GenAI Platform", "sas": "partial", "competitor": "full", "notes": "Gemini + Vertex AI Agent Builder is comprehensive" },
+    { "capability": "Real-Time Decisioning", "sas": "full", "competitor": "partial", "notes": "SAS sub-10ms scoring vs. custom Vertex endpoints" },
+    { "capability": "Time Series / Forecasting", "sas": "full", "competitor": "partial", "notes": "SAS dedicated forecasting vs. Vertex AI basic time series" },
+    { "capability": "Multi-Cloud / On-Prem", "sas": "full", "competitor": "partial", "notes": "SAS runs anywhere; GCP primarily cloud (Anthos for hybrid)" },
+    { "capability": "Statistical Computing (Classical)", "sas": "full", "competitor": "partial", "notes": "SAS has validated statistical procedures for regulated use" },
+    { "capability": "AutoML", "sas": "full", "competitor": "full", "notes": "Both strong; SAS adds governance to AutoML output" }
+  ],
+  "landmines": [
+    {
+      "question": "Can you show me a pre-built fraud management system on GCP that meets BSP Circular 1213 requirements?",
+      "expectedAnswer": "Nothing pre-built — would need to be custom-developed on Vertex AI",
+      "whatToSayNext": "SAS Fraud Management is purpose-built for BSP 1213 compliance with pre-trained detection models for Philippine payment fraud patterns."
+    },
+    {
+      "question": "How would your business analysts — not data scientists — build and validate detection models?",
+      "expectedAnswer": "Vertex AI requires Python/coding; BigQuery ML is limited to SQL-based models",
+      "whatToSayNext": "SAS enables business users to build, validate, and monitor models visually. That's critical for scaling analytics beyond your data science team."
+    },
+    {
+      "question": "What's your model governance workflow for regulated industries — approval chains, documentation, audit trails?",
+      "expectedAnswer": "Basic model registry without formal governance workflows",
+      "whatToSayNext": "SAS Model Manager provides the formal governance workflow that BSP and IC examiners expect — approval chains, automated documentation, and full audit trails."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Google has the best AI — they invented transformers",
+      "whyTheySayIt": "Google's AI research brand is powerful. Executives associate Google with AI leadership.",
+      "response": "Google's AI research is world-class — that's not in dispute. The question for regulated industries is: can you put that AI into production with governance, compliance, and audit trails? SAS takes AI — from any source including Google's — and makes it production-ready for regulators.",
+      "proofPoints": ["Research AI ≠ production-governed AI in regulated industries", "BSP doesn't care who invented the algorithm — they care about governance"],
+      "whatNotToSay": "Don't argue Google's AI isn't good — it clearly is. Focus on the production/governance gap."
+    },
+    {
+      "objection": "BigQuery ML lets our analysts do ML without SAS",
+      "whyTheySayIt": "BigQuery ML's SQL interface feels accessible. Seems like they don't need another platform.",
+      "response": "BigQuery ML is great for simple models on data already in BigQuery. For enterprise needs — complex model ensembles, network analytics, champion/challenger testing, regulatory governance, real-time scoring — you need a purpose-built ML platform. That's what SAS provides, and it connects to BigQuery as a data source.",
+      "proofPoints": ["BigQuery ML supports ~15 model types; SAS supports 200+", "No governance or monitoring in BigQuery ML"],
+      "whatNotToSay": "Don't dismiss BigQuery ML — it has value for simple use cases. Position SAS for the complex, regulated workloads."
+    }
+  ],
+  "phContext": {
+    "localPresence": "Growing Philippines presence. Google Cloud PH team expanding. Strong in digital-native companies and telcos. Less penetration in traditional banking/insurance vs. Azure/AWS.",
+    "knownCustomers": ["Some PH telcos using BigQuery", "Digital-native companies on GCP", "Limited banking/insurance adoption"],
+    "localPricing": "Consumption-based. Competitive with AWS. Can offer significant discounts for commitment. BigQuery pay-per-query model attractive for variable workloads.",
+    "regulatoryGaps": [
+      "No pre-built BSP/IC/AMLC compliance solutions",
+      "No enterprise fraud management offering",
+      "Model governance doesn't meet PH regulatory examination standards",
+      "Limited on-premises option for data sovereignty requirements"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer uses BigQuery as primary data warehouse — SAS connects natively",
+      "GenAI use cases where Gemini provides the model and SAS provides governance",
+      "Google Cloud team is supportive and not positioning Vertex AI as SAS replacement",
+      "Use case is analytics layer on top of BigQuery data"
+    ],
+    "competeWhen": [
+      "Google Cloud positioning Vertex AI as complete ML platform",
+      "Customer evaluating GCP for first time for analytics/ML",
+      "Budget is either/or with GCP committed spend",
+      "Primary use case is regulated analytics (fraud, AML, risk)"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "Different positioning in analyst reports",
+      "detail": "Google Cloud leads in AI/ML innovation; SAS leads in governed analytics for regulated industries. Complementary not competitive in Gartner evaluations.",
+      "source": "Gartner 2024"
+    },
+    {
+      "type": "benchmark",
+      "title": "Build cost for fraud on GCP",
+      "detail": "Building enterprise fraud management from Vertex AI components: 12-18 months, $3-5M in engineering. SAS Fraud Management deploys in 8-12 weeks with pre-built models."
+    },
+    {
+      "type": "customer-win",
+      "title": "SAS + BigQuery integration",
+      "detail": "SAS Viya connects natively to BigQuery — customers use BigQuery for storage/querying and SAS for advanced analytics and governance."
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "bsp-1112", "amla", "dpa"],
+  "relatedSolutions": ["fraud-management", "model-manager", "visual-analytics", "intelligent-decisioning"]
+}

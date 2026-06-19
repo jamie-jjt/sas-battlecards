@@ -1,0 +1,30 @@
+{
+  "slug": "intelligent-decisioning",
+  "name": "SAS Intelligent Decisioning",
+  "lastUpdated": "2025-06-15",
+  "description": "Real-time decisioning platform that combines business rules with machine learning models to automate complex decisions across fraud scoring, next-best-action, pricing, and customer engagement.",
+  "elevatorPitch": "Combine business rules with ML models for real-time automated decisions — fraud scoring, next-best-action, pricing.",
+  "capabilities": [
+    "Visual business rules engine with drag-and-drop authoring",
+    "ML model integration (any framework — Python, SAS, PMML, ONNX)",
+    "Real-time REST API decisioning with <50ms latency",
+    "A/B testing and champion/challenger for decision strategies",
+    "Complete decision audit trails for regulatory compliance",
+    "Event-driven architecture with streaming data support",
+    "Simulation and what-if analysis before deployment",
+    "Batch and real-time execution modes"
+  ],
+  "targetBuyer": "Head of Digital, Chief Risk Officer, Head of Marketing Analytics, Head of Operations",
+  "industries": ["banking", "insurance", "telco", "retail"],
+  "phUseCases": [
+    "AFASA real-time freeze/unfreeze decisioning",
+    "Next-best-offer for telco customer retention (Globe, Smart)",
+    "Automated underwriting for insurance (Sun Life, Manulife)",
+    "Credit limit decisioning for digital banks (Maya, Tonik)",
+    "Dynamic pricing for retail and e-commerce"
+  ],
+  "deploymentOptions": ["SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["Core banking systems", "CRM platforms", "Mobile apps", "Marketing automation", "Policy admin systems"],
+  "competitorAlternatives": ["fico", "nice-actimize"],
+  "mcpProductKey": "intelligent-decisioning"
+}

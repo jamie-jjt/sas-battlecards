@@ -1,0 +1,30 @@
+{
+  "slug": "model-manager",
+  "name": "SAS Model Manager",
+  "lastUpdated": "2025-06-15",
+  "description": "Enterprise model lifecycle governance platform that manages models from development through production to retirement, providing regulatory audit trails, automated documentation, and continuous performance monitoring.",
+  "elevatorPitch": "Complete model lifecycle governance — from development to production to retirement, with regulatory audit trails.",
+  "capabilities": [
+    "Centralized model registry with risk tiering and metadata",
+    "Champion/challenger model testing and comparison",
+    "Automated model drift detection with alerting",
+    "Auto-generated model documentation and model cards",
+    "Configurable approval workflows with audit trail",
+    "Bias and fairness detection across protected classes",
+    "Multi-language support (Python, R, SAS, Java)",
+    "Integration with CI/CD pipelines for MLOps"
+  ],
+  "targetBuyer": "Head of Model Risk, Chief Data Officer, Head of Data Science",
+  "industries": ["banking", "insurance", "telco", "government"],
+  "phUseCases": [
+    "BSP Circular 1112 model risk management compliance",
+    "Model inventory for BSP examination readiness",
+    "Automated model documentation for regulatory submission",
+    "Credit scoring model governance for universal banks",
+    "Insurance actuarial model lifecycle management"
+  ],
+  "deploymentOptions": ["SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["Git repositories", "Jupyter notebooks", "Python/R environments", "Model serving endpoints", "BSP examination reporting"],
+  "competitorAlternatives": ["databricks", "opensource"],
+  "mcpProductKey": "model-manager"
+}

@@ -1,0 +1,144 @@
+{
+  "slug": "snowflake",
+  "name": "Snowflake",
+  "category": "data-prep",
+  "threatLevel": "medium",
+  "priority": "P2",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on advanced analytics, industry solutions, and production ML governance beyond data warehousing",
+  "overview": {
+    "whatTheyDo": "Cloud data platform specializing in data warehousing, data sharing, and data engineering. Expanding into ML with Snowpark (Python/Java/Scala in Snowflake), Cortex AI (LLMs), and Snowflake ML (model development). Marketplace for data sharing.",
+    "sweetSpot": "Organizations needing scalable cloud data warehouse with separation of compute and storage. Data sharing across organizations. SQL-centric analytics teams wanting to add ML without leaving Snowflake.",
+    "typicalBuyer": "CDO, VP Data Engineering, Head of Data Platform, VP Analytics",
+    "phPresence": "Limited direct PH presence but growing through ASEAN expansion from Singapore. Some PH enterprises evaluating for cloud data warehouse. Available through cloud marketplaces.",
+    "recentMomentum": "Snowpark (compute in Snowflake), Cortex AI (GenAI/LLM), Snowflake ML, Arctic (open-source LLM), Native App Framework. Pivoting from pure data warehouse to 'Data Cloud' platform.",
+    "pricingModel": "Consumption-based (credits per second of compute). Storage separate from compute. Transparent pricing but costs can spike with heavy ML workloads. Pre-purchased credits for discounts."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Advanced Analytics & ML Beyond SQL",
+      "explanation": "SAS provides 200+ algorithms, visual model building, champion/challenger, and production ML governance. Snowflake ML is emerging but limited — Snowpark requires Python coding, and Cortex AI is focused on GenAI/LLM, not traditional ML production workflows.",
+      "proofPoint": "SAS has 50 years of validated statistical and ML algorithms. Snowflake ML launched in 2023 — still maturing for enterprise production use."
+    },
+    {
+      "headline": "Industry Solutions (Fraud, AML, Risk)",
+      "explanation": "SAS delivers production-ready regulated solutions with compliance built in. Snowflake is a data platform — it stores and processes data but doesn't provide industry-specific analytics solutions.",
+      "proofPoint": "SAS Fraud Management detects fraud in real-time with network analytics. Snowflake can store the transaction data but can't detect fraud patterns independently."
+    },
+    {
+      "headline": "Model Governance for Regulators",
+      "explanation": "SAS Model Manager provides formal model lifecycle with BSP-grade audit trails. Snowflake's model registry is basic — designed for tracking, not regulated governance.",
+      "proofPoint": "BSP Circular 1112 requires formal model governance. SAS meets this natively; Snowflake would need external tools to achieve equivalent governance."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Cloud Data Warehouse Dominance",
+      "whyItMatters": "Snowflake is best-in-class for cloud data warehousing — scalability, concurrency, and ease of use. Hard to displace once organizations centralize data there.",
+      "howToNeutralize": "Don't compete on data warehousing. Position SAS as the analytics and governance layer that sits ON TOP of Snowflake data. SAS connects natively to Snowflake."
+    },
+    {
+      "area": "Data Sharing & Marketplace",
+      "whyItMatters": "Snowflake's data sharing capabilities are unique — share live data across organizations without copying. Marketplace for third-party data sources.",
+      "howToNeutralize": "Acknowledge this is genuinely differentiated. Position SAS as what you DO with the shared data — analytics, governance, decisioning. Data sharing is infrastructure; analytics is the value."
+    },
+    {
+      "area": "SQL-Centric Analytics Teams",
+      "whyItMatters": "Many analytics teams are SQL-first. Snowflake lets them stay in SQL while adding some ML capabilities via Snowpark ML and ML Functions.",
+      "howToNeutralize": "SQL is great for reporting and simple analytics. For production ML, real-time decisioning, and regulatory compliance, you need purpose-built tools. SAS serves both SQL users (via Viya Data Studio) and advanced analytics needs."
+    }
+  ],
+  "features": [
+    { "capability": "Cloud Data Warehouse", "sas": "none", "competitor": "full", "notes": "Snowflake is purpose-built; SAS is not a data warehouse" },
+    { "capability": "Model Governance & Compliance", "sas": "full", "competitor": "partial", "notes": "Snowflake model registry is basic; SAS has regulated governance" },
+    { "capability": "Pre-Built Industry Solutions", "sas": "full", "competitor": "none", "notes": "Snowflake is a data platform, not a solutions platform" },
+    { "capability": "Real-Time Decisioning", "sas": "full", "competitor": "none", "notes": "Snowflake is batch/near-real-time; not sub-second decisioning" },
+    { "capability": "Advanced ML (200+ algorithms)", "sas": "full", "competitor": "partial", "notes": "Snowpark ML is growing but limited algorithm library" },
+    { "capability": "Business User Visual Analytics", "sas": "full", "competitor": "partial", "notes": "Snowsight is basic BI; not comparable to SAS VA" },
+    { "capability": "Data Sharing Across Organizations", "sas": "none", "competitor": "full", "notes": "Unique Snowflake capability — live data sharing without copying" },
+    { "capability": "Scalable SQL Analytics", "sas": "partial", "competitor": "full", "notes": "Snowflake excels at concurrent SQL workloads" },
+    { "capability": "GenAI / LLM (Cortex AI)", "sas": "partial", "competitor": "full", "notes": "Cortex AI brings LLMs into Snowflake natively" },
+    { "capability": "Time Series / Forecasting", "sas": "full", "competitor": "partial", "notes": "SAS has dedicated enterprise forecasting; Snowflake has basic ML functions" },
+    { "capability": "Multi-Cloud Deployment", "sas": "full", "competitor": "full", "notes": "Both run on AWS/Azure/GCP" },
+    { "capability": "On-Premises Deployment", "sas": "full", "competitor": "none", "notes": "Snowflake is cloud-only; SAS supports on-prem" }
+  ],
+  "landmines": [
+    {
+      "question": "How would you build real-time fraud scoring with sub-10ms latency on Snowflake?",
+      "expectedAnswer": "Snowflake is near-real-time at best — not designed for sub-second decisioning",
+      "whatToSayNext": "SAS Intelligent Decisioning scores in <10ms combining rules + ML + network analytics. That's what BSP Circular 1213 requires for real-time fraud monitoring."
+    },
+    {
+      "question": "If BSP asks to see your model governance workflow — approval chains, documentation, audit trail — can Snowflake provide that?",
+      "expectedAnswer": "Basic model registry — no formal governance workflows",
+      "whatToSayNext": "SAS Model Manager provides the formal governance that regulators expect. It connects to Snowflake for data but provides the governance layer on top."
+    },
+    {
+      "question": "What pre-built fraud detection models does Snowflake offer out of the box?",
+      "expectedAnswer": "None — Snowflake is a data platform, not a solutions platform",
+      "whatToSayNext": "SAS Fraud Management has pre-built detection models including Philippine payment fraud patterns. Snowflake stores the data; SAS detects the fraud."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Snowflake can do ML now with Snowpark",
+      "whyTheySayIt": "Snowpark ML and ML Functions are new. Customers assume Snowflake handles everything.",
+      "response": "Snowpark ML is promising for simple models on data already in Snowflake. For enterprise needs — 200+ algorithms, network analytics, champion/challenger, regulatory governance, real-time scoring — you need a purpose-built platform. SAS connects to Snowflake for data and adds the analytics and governance layer that Snowpark can't provide.",
+      "proofPoints": ["Snowpark ML launched 2023 — still maturing", "No BSP/IC regulatory compliance in Snowpark ML", "Real-time scoring not possible in Snowflake architecture"],
+      "whatNotToSay": "Don't dismiss Snowpark entirely — acknowledge it works for simple ML. Focus on the enterprise/regulated gap."
+    },
+    {
+      "objection": "We already store all our data in Snowflake — why add another platform?",
+      "whyTheySayIt": "Data consolidation feels efficient. Adding platforms adds complexity.",
+      "response": "Snowflake is excellent for data storage and SQL analytics. SAS doesn't replace Snowflake — it connects TO Snowflake. Think of it like this: Snowflake is your data foundation, SAS is your analytics and governance engine. You wouldn't use Snowflake for real-time fraud scoring or regulatory model management, just as you wouldn't use SAS as a data warehouse.",
+      "proofPoints": ["SAS has native Snowflake connector — reads data directly", "Complementary positioning: data platform + analytics platform"],
+      "whatNotToSay": "Don't position as either/or. SAS + Snowflake is a common enterprise architecture."
+    }
+  ],
+  "phContext": {
+    "localPresence": "Limited direct PH presence. ASEAN team based in Singapore. Growing interest from PH enterprises evaluating cloud data warehouse modernization. Available on AWS/Azure marketplaces.",
+    "knownCustomers": ["Some PH digital companies evaluating", "Growing interest from banks doing data warehouse modernization", "No known large-scale regulated deployments in PH"],
+    "localPricing": "Consumption-based credits. Competitive with BigQuery/Synapse. Can be attractive for variable workloads. Credits purchased in advance for discounts.",
+    "regulatoryGaps": [
+      "No pre-built fraud/AML/risk solutions",
+      "Cloud-only — no on-premises option for data sovereignty",
+      "Model governance doesn't meet BSP examination standards",
+      "No real-time decisioning capability (<10ms)",
+      "Limited industry-specific compliance features"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer has Snowflake as data warehouse — SAS connects for analytics",
+      "Data team uses Snowflake for data engineering, SAS for production ML and governance",
+      "Snowflake sales team is not positioning ML as SAS replacement",
+      "Customer needs both data platform and analytics platform"
+    ],
+    "competeWhen": [
+      "Snowflake positioning Snowpark ML as complete ML platform",
+      "Customer evaluating Snowflake for analytics (not just data warehousing)",
+      "Budget is either/or",
+      "Primary need is advanced analytics/real-time decisioning (not data warehousing)"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "Complementary market positioning",
+      "detail": "Gartner positions Snowflake as Cloud Database Management Systems leader; SAS as Advanced Analytics and AI leader. Different categories — complementary architecture.",
+      "source": "Gartner 2024"
+    },
+    {
+      "type": "customer-win",
+      "title": "SAS + Snowflake enterprise architecture",
+      "detail": "Multiple global enterprises use Snowflake as data warehouse + SAS for analytics and governance — standard enterprise pattern."
+    },
+    {
+      "type": "benchmark",
+      "title": "Real-time scoring architecture",
+      "detail": "Snowflake's architecture is not designed for sub-second scoring. SAS Intelligent Decisioning provides <10ms latency for real-time fraud detection."
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "bsp-1112", "dpa"],
+  "relatedSolutions": ["fraud-management", "model-manager", "visual-analytics", "intelligent-decisioning"]
+}

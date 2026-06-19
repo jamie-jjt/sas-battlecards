@@ -1,0 +1,51 @@
+{
+  "theme": "open-source",
+  "displayName": "Open Source & Python Objections",
+  "items": [
+    {
+      "id": "oss-001",
+      "objection": "Why not just use Python / scikit-learn / TensorFlow?",
+      "underlyingConcern": "Open source feels 'free'. Team already knows Python. Don't understand the gap between a Jupyter notebook and production ML in a regulated environment.",
+      "response": {
+        "acknowledge": "Python is excellent — your team should absolutely use Python for experimentation and model development.",
+        "reframe": "The question isn't Python vs. SAS. The question is: what happens after the notebook? How do you move that model to production with governance, monitoring, explainability, and regulatory compliance?",
+        "evidence": "The gap between a working Jupyter notebook and a production-governed ML system is 6-12 months of engineering: model registry, approval workflows, A/B testing, monitoring, drift detection, regulatory documentation. SAS provides all of that — and your team can still write Python inside it.",
+        "close": "Would it be useful to see how a Python model gets promoted through SAS governance to production? It's the best of both worlds."
+      },
+      "proofPoints": ["87% of ML models never make it to production (Gartner)", "Average time from notebook to production: 6-12 months without MLOps platform", "SAS runs Python models with full governance — same as SAS-native models"],
+      "whatNotToSay": "Don't say 'Python isn't enterprise-grade' — it absolutely is. The gap is in production operations and governance, not in the language itself.",
+      "relatedCompetitors": ["opensource", "databricks"],
+      "persona": ["head-data-science", "cto-cdo"]
+    },
+    {
+      "id": "oss-002",
+      "objection": "Open source is free — there's no license cost",
+      "underlyingConcern": "Budget pressure. Not differentiating between free (license) and free (total cost). Haven't considered the engineering cost of building enterprise ML infrastructure.",
+      "response": {
+        "acknowledge": "You're right — there's no license cost for Python libraries. That's genuinely an advantage for experimentation.",
+        "reframe": "But 'free' has hidden costs. Who maintains the packages? Who handles security vulnerabilities? Who builds the governance, monitoring, and deployment infrastructure? Who provides support at 2am when production breaks?",
+        "evidence": "Organizations typically spend $2-5M over 3 years building enterprise ML infrastructure from open-source components: MLflow, Kubeflow, Airflow, custom monitoring, custom governance. That's before ongoing maintenance. SAS provides this integrated — with vendor support and regulatory validation.",
+        "close": "Let me show you a build-vs-buy comparison. The 'free' license often costs more than the commercial platform when you factor in everything needed for production."
+      },
+      "proofPoints": ["Building MLOps from scratch: $2-5M over 3 years in engineering costs", "Average open-source ML platform requires 3-5 FTE engineers to maintain", "Security vulnerability patching in open-source packages: significant ongoing effort"],
+      "whatNotToSay": "Don't dismiss open source — respect it. Position the gap as production operations, not technology quality.",
+      "relatedCompetitors": ["opensource"],
+      "persona": ["cfo-coo", "cto-cdo", "head-data-science"]
+    },
+    {
+      "id": "oss-003",
+      "objection": "Our university/bootcamp trained everyone on Python — nobody knows SAS",
+      "underlyingConcern": "Hiring difficulty. Fear of skill lock-in. Perception that SAS skills are obsolete and hard to find.",
+      "response": {
+        "acknowledge": "You're right that more graduates learn Python first. That's the educational landscape.",
+        "reframe": "Two things: First, SAS Viya supports Python natively — your Python-trained team works in SAS without learning a new language. Second, the learning curve for SAS-specific features (Visual Analytics, Model Studio) is days, not months — they're visual, no-code tools.",
+        "evidence": "SAS academic program reaches 2,000+ universities globally. In the Philippines, UP, Ateneo, DLSU all have SAS coursework. And the fastest-growing SAS user base is people who write Python but use SAS for governance and deployment.",
+        "close": "What if your Python team kept using Python but gained production governance for free? That's what SAS Viya enables — no retraining required."
+      },
+      "proofPoints": ["SAS Viya runs Python natively — zero retraining for Python users", "Visual tools (VA, Model Studio) have 2-3 day learning curve", "SAS academic program active in 2,000+ universities including PH"],
+      "whatNotToSay": "Don't argue that SAS is 'better' than Python — that's a false dichotomy. Position SAS as the production layer for Python models.",
+      "relatedCompetitors": ["opensource", "databricks"],
+      "persona": ["head-data-science", "cto-cdo"]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "dpa",
+  "name": "Data Privacy Act (RA 10173)",
+  "citation": "Republic Act No. 10173",
+  "issuingBody": "National Privacy Commission (NPC)",
+  "effectiveDate": "2012-08-15",
+  "complianceDeadline": null,
+  "summary": "Governs processing of personal data. Requires 72-hour breach notification, data protection officers, privacy impact assessments, and consent management.",
+  "lastUpdated": "2025-06-15",
+  "requirements": [
+    "72-hour breach notification to NPC and affected data subjects",
+    "Appointment of Data Protection Officer (DPO)",
+    "Privacy Impact Assessments (PIA) for new systems and processes",
+    "Data subject rights: access, correction, erasure, portability",
+    "Consent management with clear purpose limitation",
+    "Data sharing agreements with proper legal basis documentation"
+  ],
+  "penalties": "Criminal penalties of 1-6 years imprisonment and fines of ₱500K-₱5M per violation. NPC can issue compliance orders, temporary bans on data processing, and recommend prosecution.",
+  "affectedEntities": ["Universal banks", "Commercial banks", "Insurance companies", "Telecommunications companies", "Government agencies", "Healthcare providers", "Retailers", "E-commerce platforms", "BPO companies"],
+  "sasCapabilityMapping": [
+    { "requirement": "72-hour breach notification", "sasProduct": "SAS Data Management", "specificFeature": "Data lineage tracking for rapid breach impact assessment" },
+    { "requirement": "Privacy Impact Assessments", "sasProduct": "SAS Data Management", "specificFeature": "Data cataloging and classification for PIA automation" },
+    { "requirement": "Data subject rights", "sasProduct": "SAS Data Management", "specificFeature": "Data discovery and subject access request workflows" },
+    { "requirement": "Consent management", "sasProduct": "SAS Intelligent Decisioning", "specificFeature": "Consent-aware decisioning with purpose limitation enforcement" }
+  ],
+  "competitivePositioning": "SAS Data Management provides the data governance foundation (lineage, cataloging, quality, masking) that underpins DPA compliance. While competitors focus on analytics, SAS provides end-to-end data lifecycle governance required by the NPC.",
+  "talkingPoints": [
+    "NPC enforcement is increasing — 2024 saw record compliance orders",
+    "72-hour breach notification requires knowing exactly what data was affected — SAS data lineage enables this",
+    "Privacy Impact Assessments need data cataloging — SAS automates discovery and classification",
+    "Data masking/anonymization built into SAS Data Management for development and testing environments",
+    "SAS supports consent-aware analytics — process only data with proper legal basis"
+  ],
+  "officialSourceUrl": "https://www.privacy.gov.ph",
+  "relatedBattleCards": [],
+  "relatedSolutions": ["data-management"],
+  "industries": ["banking", "insurance", "telco", "government", "retail", "healthcare"]
+}

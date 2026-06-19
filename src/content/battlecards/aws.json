@@ -1,0 +1,146 @@
+{
+  "slug": "aws",
+  "name": "AWS (SageMaker)",
+  "category": "cloud-data",
+  "threatLevel": "medium",
+  "priority": "P2",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on governed analytics, industry solutions, and business-user accessibility beyond developer tooling",
+  "overview": {
+    "whatTheyDo": "Amazon Web Services provides SageMaker (ML platform), Bedrock (GenAI), QuickSight (BI), and 200+ cloud services. ML offering is developer-focused with notebook-driven workflows, AutoML, and model hosting.",
+    "sweetSpot": "Cloud-native organizations already on AWS wanting ML capabilities without leaving their ecosystem. Developer-heavy teams comfortable with Python/notebooks. Startups and digital-native companies.",
+    "typicalBuyer": "CTO, VP Engineering, Head of Data Platform, Cloud Architect",
+    "phPresence": "Strong PH presence through AWS Philippines team, local partners (Trend Micro, Cloud Kinetics, etc.), and AWS Marketplace. Many PH enterprises already on AWS for infrastructure.",
+    "recentMomentum": "SageMaker Canvas (no-code ML), Bedrock (GenAI), SageMaker Unified Studio. AWS investing heavily in making ML accessible to broader audience.",
+    "pricingModel": "Consumption-based. SageMaker costs are compute + storage + inference endpoints. Can be bundled into existing AWS committed spend (EDP). Appears low entry but scales unpredictably."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Production ML Governance for Regulated Industries",
+      "explanation": "SAS Model Manager provides formal model lifecycle management with approval workflows, regulatory documentation, and champion/challenger testing designed for BSP/IC examination. SageMaker Model Registry tracks models but lacks formal governance chains for regulated industries.",
+      "proofPoint": "No Philippine bank has passed BSP examination using SageMaker alone for model governance. SAS has been the standard for BSP model documentation."
+    },
+    {
+      "headline": "Pre-Built Industry Solutions",
+      "explanation": "SAS delivers production-ready fraud detection, AML, risk management, and clinical analytics with domain expertise built in. AWS provides generic ML building blocks — customers must build industry solutions from scratch or find third-party ISVs.",
+      "proofPoint": "SAS Fraud Management has pre-built detection models for Philippine payment fraud patterns. On AWS, you'd need to build this from raw SageMaker components."
+    },
+    {
+      "headline": "Business User Analytics (Not Just Developers)",
+      "explanation": "SAS Visual Analytics and Model Studio enable non-programmers to build and consume analytics. SageMaker is fundamentally a developer tool — Canvas is improving but limited compared to SAS's mature visual interfaces.",
+      "proofPoint": "60% of SAS Viya users are non-programmers. SageMaker usage is >90% developer/data scientist personas."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Ecosystem & Infrastructure Lock-in",
+      "whyItMatters": "If customer is already paying millions for AWS infrastructure, adding SageMaker is frictionless — no new vendor, no new procurement, can use existing committed spend.",
+      "howToNeutralize": "SAS runs ON AWS (EKS). Not asking customer to leave AWS — asking them to add the governance and industry layer that SageMaker lacks. SAS on AWS Marketplace simplifies procurement."
+    },
+    {
+      "area": "GenAI & LLM Services (Bedrock)",
+      "whyItMatters": "Bedrock provides access to Claude, Llama, Titan models with enterprise guardrails. Easy to prototype GenAI use cases within existing AWS environment.",
+      "howToNeutralize": "SAS adds governance FOR GenAI — model cards for LLMs, output quality monitoring, bias detection. Position: use Bedrock for GenAI experiments, govern with SAS for production."
+    },
+    {
+      "area": "Cost (bundled into existing AWS spend)",
+      "whyItMatters": "SageMaker cost can be absorbed into existing Enterprise Discount Program. SAS requires separate budget line.",
+      "howToNeutralize": "Compare TCO: SageMaker compute + hiring ML engineers to build fraud/AML from scratch + governance consulting vs. SAS purpose-built solution. The build cost often exceeds SAS license."
+    }
+  ],
+  "features": [
+    { "capability": "Model Governance & Regulatory Compliance", "sas": "full", "competitor": "partial", "notes": "SageMaker Model Registry lacks BSP-grade governance workflows" },
+    { "capability": "Business User Self-Service", "sas": "full", "competitor": "partial", "notes": "Canvas is improving but narrow vs. SAS VA + Model Studio" },
+    { "capability": "Pre-Built Fraud Detection", "sas": "full", "competitor": "none", "notes": "AWS Fraud Detector exists but is basic rules-based, not enterprise-grade" },
+    { "capability": "AML/CFT Solutions", "sas": "full", "competitor": "none", "notes": "No AWS-native AML solution" },
+    { "capability": "Real-Time Decisioning (Rules + ML)", "sas": "full", "competitor": "partial", "notes": "SAS Intelligent Decisioning vs. custom Lambda/SageMaker setup" },
+    { "capability": "Cloud Infrastructure", "sas": "partial", "competitor": "full", "notes": "AWS owns the infra layer — SAS runs on top" },
+    { "capability": "GenAI / LLM Platform", "sas": "partial", "competitor": "full", "notes": "Bedrock is comprehensive; SAS adds governance for GenAI" },
+    { "capability": "AutoML", "sas": "full", "competitor": "full", "notes": "Both strong — SAS adds governance to AutoML output" },
+    { "capability": "Python/R Notebook Experience", "sas": "partial", "competitor": "full", "notes": "SageMaker Studio is purpose-built for notebooks" },
+    { "capability": "Time Series / Forecasting", "sas": "full", "competitor": "partial", "notes": "SAS dedicated forecasting vs. SageMaker DeepAR" },
+    { "capability": "Model Monitoring & Drift", "sas": "full", "competitor": "partial", "notes": "SAS Model Manager vs. SageMaker Model Monitor — SAS has regulatory context" },
+    { "capability": "Multi-Cloud / On-Prem", "sas": "full", "competitor": "none", "notes": "SAS runs anywhere; SageMaker is AWS-only" }
+  ],
+  "landmines": [
+    {
+      "question": "If you needed to move to Azure or GCP in 3 years, what would that migration look like for your ML workloads?",
+      "expectedAnswer": "SageMaker is AWS-only — significant rework required for multi-cloud",
+      "whatToSayNext": "SAS runs identically on AWS, Azure, GCP, or on-prem. Zero code changes. Your analytics aren't locked to one cloud provider."
+    },
+    {
+      "question": "Can your compliance team produce BSP-format model documentation from SageMaker?",
+      "expectedAnswer": "No native BSP documentation format — would need custom development",
+      "whatToSayNext": "SAS Model Manager auto-generates documentation in the format BSP examiners expect. Critical for Circular 1112 compliance."
+    },
+    {
+      "question": "How would your business analysts — not data scientists — build and validate a fraud detection model?",
+      "expectedAnswer": "SageMaker requires coding — Canvas is limited for complex models",
+      "whatToSayNext": "SAS enables business users to build, validate, and monitor models visually. That's how you scale analytics beyond the data science team."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "We're already on AWS — SageMaker is included",
+      "whyTheySayIt": "Path of least resistance. No new vendor, no new budget request. SageMaker feels 'free' within AWS spend.",
+      "response": "SAS runs ON AWS — we're not asking you to leave. The question is: what does SageMaker give you for regulated analytics? Show me the model governance workflow, the BSP-format documentation, the pre-built fraud detection. Those aren't included — you'd build them from scratch at significant cost.",
+      "proofPoints": ["SAS available on AWS Marketplace for simplified procurement", "Building fraud/AML from SageMaker components costs $2-5M in engineering"],
+      "whatNotToSay": "Don't say 'SageMaker can't do ML' — it absolutely can. Focus on the regulated industry gap."
+    },
+    {
+      "objection": "AWS has better GenAI with Bedrock",
+      "whyTheySayIt": "GenAI hype cycle. Executives want AI capabilities and AWS Bedrock is accessible.",
+      "response": "Bedrock is excellent for GenAI experimentation and prototyping. For production GenAI in regulated industries, you need governance: model cards, output monitoring, bias detection, audit trails. SAS provides the governance layer FOR GenAI — including governing Bedrock outputs.",
+      "proofPoints": ["BSP will eventually regulate AI/GenAI use in banking", "SAS responsible AI framework governs any model including LLMs"],
+      "whatNotToSay": "Don't dismiss GenAI as a fad — it's real. Position SAS as the governance layer for responsible GenAI."
+    }
+  ],
+  "phContext": {
+    "localPresence": "Strong Philippines presence. AWS PH team, local partners, Philippines availability zone (planned). Many PH enterprises already running production workloads on AWS.",
+    "knownCustomers": ["Multiple PH banks on AWS infrastructure", "GCash/Maya running on AWS", "Several PH enterprises using SageMaker for basic ML"],
+    "localPricing": "Consumption-based. Can be bundled into existing EDP. Appears affordable but ML workloads at scale (GPU instances, real-time endpoints) get expensive quickly.",
+    "regulatoryGaps": [
+      "No native BSP model governance workflows",
+      "AWS Fraud Detector is basic — not enterprise fraud management",
+      "No AML/CFT-specific solution",
+      "Model documentation doesn't meet BSP examination format",
+      "Single-cloud lock-in conflicts with some PH enterprise multi-cloud strategies"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer is AWS-standardized and SAS runs on EKS",
+      "AWS team is supportive and sees SAS as complementary",
+      "Need is for industry solutions (fraud, AML, risk) that AWS lacks",
+      "Budget is additive to AWS infrastructure spend"
+    ],
+    "competeWhen": [
+      "AWS positioning SageMaker as complete ML platform replacement",
+      "Budget is locked into AWS EDP with no room for additional vendors",
+      "Customer's primary need is basic ML (not regulated industry solutions)",
+      "AWS sales team actively blocking SAS engagement"
+    ],
+    "partnerLink": "/sas-battlecards/better-together/aws/"
+  },
+  "proofPoints": [
+    {
+      "type": "customer-win",
+      "title": "SAS + AWS in banking",
+      "detail": "Multiple global banks run SAS Viya on AWS for fraud and risk — leveraging AWS infrastructure with SAS governance and industry solutions.",
+      "source": "SAS corporate"
+    },
+    {
+      "type": "analyst",
+      "title": "AWS Marketplace partnership",
+      "detail": "SAS available on AWS Marketplace demonstrates strategic partnership — not competition. Joint go-to-market in regulated industries.",
+      "source": "AWS Partner Network"
+    },
+    {
+      "type": "benchmark",
+      "title": "Build vs. buy for fraud on AWS",
+      "detail": "Building enterprise fraud management from SageMaker components: 12-18 months, $2-5M in engineering. SAS Fraud Management deploys in 8-12 weeks."
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "bsp-1112", "amla", "dpa"],
+  "relatedSolutions": ["fraud-management", "model-manager", "intelligent-decisioning", "visual-analytics"]
+}

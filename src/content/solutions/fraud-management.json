@@ -1,0 +1,30 @@
+{
+  "slug": "fraud-management",
+  "name": "SAS Fraud Management",
+  "lastUpdated": "2025-06-15",
+  "description": "Enterprise fraud detection platform that combines real-time transaction scoring, adaptive machine learning, network analytics, and alert management to detect and prevent financial fraud across all channels.",
+  "elevatorPitch": "Real-time fraud detection that learns and adapts — protecting billions of transactions daily with <10ms scoring.",
+  "capabilities": [
+    "Real-time transaction scoring (<10ms latency)",
+    "Adaptive machine learning models that evolve with fraud patterns",
+    "Network/graph analytics for organized fraud ring detection",
+    "Multi-channel coverage (cards, digital payments, mobile, ATM)",
+    "Alert management and case investigation workflows",
+    "Consortium data integration (shared intelligence)",
+    "Behavioral analytics and anomaly detection",
+    "False positive reduction (30-50% improvement typical)"
+  ],
+  "targetBuyer": "Chief Risk Officer, Head of Fraud Operations, CISO, Head of Compliance",
+  "industries": ["banking", "insurance", "telco", "government"],
+  "phUseCases": [
+    "BSP Circular 1213 FMS compliance",
+    "AFASA behavioral monitoring requirements",
+    "InstaPay/PESONet real-time fraud scoring",
+    "GCash/Maya e-wallet fraud prevention",
+    "Credit card transaction fraud (BDO, BPI, Metrobank)"
+  ],
+  "deploymentOptions": ["SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["Core banking systems", "Payment switches", "Card processors", "Mobile banking apps", "BSP reporting APIs"],
+  "competitorAlternatives": ["fico", "nice-actimize"],
+  "mcpProductKey": "fraud-management"
+}

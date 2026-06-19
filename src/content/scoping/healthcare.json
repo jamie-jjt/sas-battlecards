@@ -1,0 +1,86 @@
+{
+  "industry": "healthcare",
+  "displayName": "Healthcare & Life Sciences",
+  "phPriority": "medium",
+  "keySasPlay": "Clinical Trials + Drug Safety",
+  "primaryRegulation": "FDA Philippines / ICH GCP",
+  "questions": [
+    {
+      "id": "healthcare-001",
+      "question": "How long does your CDISC dataset preparation take from raw data to submission-ready — days, weeks, or months?",
+      "intent": "CDISC prep time is a major pain. SAS Life Science Analytics automates SDTM/ADaM generation.",
+      "followUp": "How many person-hours go into a single submission dataset?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2"],
+      "persona": ["head-data-science", "cto-cdo"],
+      "industry": ["healthcare"],
+      "tags": ["cdisc", "sdtm", "adam", "submission", "clinical-data"]
+    },
+    {
+      "id": "healthcare-002",
+      "question": "What are the biggest bottlenecks in your regulatory submission process — data preparation, statistical analysis, or review cycles?",
+      "intent": "Identifies where SAS can accelerate the pipeline. Often it's all three.",
+      "followUp": "How many submissions do you file annually and what's the average cycle time?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["cto-cdo", "cfo-coo"],
+      "industry": ["healthcare"],
+      "tags": ["submission", "bottleneck", "regulatory", "fda"]
+    },
+    {
+      "id": "healthcare-003",
+      "question": "Are you using real-world evidence to supplement clinical trial data — EHR mining, claims data, or registry linkage?",
+      "intent": "RWE is a growing requirement from regulators. SAS handles unstructured health data at scale.",
+      "followUp": "What data sources do you have access to for RWE studies?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L3", "L4"],
+      "persona": ["head-data-science", "cto-cdo"],
+      "industry": ["healthcare"],
+      "tags": ["rwe", "real-world-evidence", "ehr", "claims", "registry"]
+    },
+    {
+      "id": "healthcare-004",
+      "question": "How do you handle pharmacovigilance signal detection — automated statistical monitoring or manual periodic review?",
+      "intent": "Drug safety monitoring at scale requires analytics. SAS automates signal detection and disproportionality analysis.",
+      "followUp": "How many adverse event reports do you process and what's your detection latency?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L2", "L3"],
+      "persona": ["head-data-science", "ciso-cro"],
+      "industry": ["healthcare"],
+      "tags": ["pharmacovigilance", "drug-safety", "signal-detection", "adverse-events"]
+    },
+    {
+      "id": "healthcare-005",
+      "question": "How are you optimizing clinical trial design — adaptive trials, Bayesian methods, or traditional fixed protocols?",
+      "intent": "Adaptive trial design reduces time and cost. SAS has best-in-class statistical procedures for this.",
+      "followUp": "What's your average trial duration and patient enrollment rate?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L3", "L4"],
+      "persona": ["head-data-science", "cto-cdo"],
+      "industry": ["healthcare"],
+      "tags": ["clinical-trials", "adaptive", "bayesian", "optimization"]
+    },
+    {
+      "id": "healthcare-006",
+      "question": "How do you ensure reproducibility in your statistical analyses — is there a validated computing environment with audit trails?",
+      "intent": "Reproducibility is a regulatory requirement. SAS provides validated, auditable statistical computing.",
+      "followUp": "Have regulators ever questioned the reproducibility of your submitted analyses?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L2", "L3"],
+      "persona": ["head-data-science", "ciso-cro"],
+      "industry": ["healthcare"],
+      "tags": ["reproducibility", "validation", "audit-trail", "compliance"]
+    },
+    {
+      "id": "healthcare-007",
+      "question": "Are you still running on SAS 9.4 for clinical workloads — have you evaluated the migration path to Viya?",
+      "intent": "Many life sciences companies are on SAS 9.4. Migration to Viya is an upsell opportunity.",
+      "followUp": "What's blocking the migration — validation requirements, existing macros, or resource constraints?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["cto-cdo", "head-data-science"],
+      "industry": ["healthcare"],
+      "tags": ["migration", "sas-94", "viya", "modernization"]
+    }
+  ]
+}

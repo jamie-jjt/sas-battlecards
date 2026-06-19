@@ -7,18 +7,52 @@ const { currentPath } = Astro.props;
 ---
 
 <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 h-16 bg-bg-surface border-t border-border-default" aria-label="Mobile navigation">
-  <div class="h-full grid grid-cols-4 items-center">
+  <div class="h-full grid grid-cols-5 items-center">
     <a href="/sas-battlecards/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath === '/sas-battlecards/' ? 'text-sas-blue' : 'text-text-muted']}>
       <span>🏠</span><span>Home</span>
+    </a>
+    <a href="/sas-battlecards/wizard/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath.includes('/wizard') ? 'text-sas-blue' : 'text-text-muted']}>
+      <span>🧙</span><span>Wizard</span>
     </a>
     <a href="/sas-battlecards/battlecards/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath.includes('/battlecards') ? 'text-sas-blue' : 'text-text-muted']}>
       <span>⚔️</span><span>Cards</span>
     </a>
-    <a href="/sas-battlecards/regulations/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath.includes('/regulations') ? 'text-sas-blue' : 'text-text-muted']}>
-      <span>📋</span><span>Regs</span>
+    <a href="/sas-battlecards/scoping/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath.includes('/scoping') ? 'text-sas-blue' : 'text-text-muted']}>
+      <span>🎯</span><span>Scoping</span>
     </a>
-    <a href="/sas-battlecards/solutions/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath.includes('/solutions') ? 'text-sas-blue' : 'text-text-muted']}>
-      <span>🧩</span><span>Solutions</span>
-    </a>
+    <div class="relative flex flex-col items-center gap-0.5 text-xs text-text-muted">
+      <button type="button" class="flex flex-col items-center gap-0.5 cursor-pointer mobile-more-btn" aria-expanded="false" aria-haspopup="true">
+        <span>📋</span><span>More</span>
+      </button>
+      <div class="mobile-more-menu hidden absolute bottom-full mb-2 right-0 w-40 rounded-lg border border-border-default bg-bg-surface shadow-lg z-50">
+        <a href="/sas-battlecards/regulations/" class="block px-4 py-2.5 text-xs text-text-secondary hover:text-text-primary hover:bg-bg-elevated">📋 Regulations</a>
+        <a href="/sas-battlecards/solutions/" class="block px-4 py-2.5 text-xs text-text-secondary hover:text-text-primary hover:bg-bg-elevated">🧩 Solutions</a>
+        <a href="/sas-battlecards/objections/" class="block px-4 py-2.5 text-xs text-text-secondary hover:text-text-primary hover:bg-bg-elevated">💬 Objections</a>
+        <a href="/sas-battlecards/better-together/" class="block px-4 py-2.5 text-xs text-text-secondary hover:text-text-primary hover:bg-bg-elevated">🤝 Better Together</a>
+      </div>
+    </div>
   </div>
 </nav>
+
+<script>
+  const moreBtn = document.querySelector('.mobile-more-btn');
+  const moreMenu = document.querySelector('.mobile-more-menu');
+  if (moreBtn && moreMenu) {
+    moreBtn.addEventListener('click', () => {
+      const isOpen = !moreMenu.classList.contains('hidden');
+      if (isOpen) {
+        moreMenu.classList.add('hidden');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        moreMenu.classList.remove('hidden');
+        moreBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!moreBtn.contains(e.target as Node) && !moreMenu.contains(e.target as Node)) {
+        moreMenu.classList.add('hidden');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>

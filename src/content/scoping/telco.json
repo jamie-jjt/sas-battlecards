@@ -1,0 +1,97 @@
+{
+  "industry": "telco",
+  "displayName": "Telecommunications",
+  "phPriority": "high",
+  "keySasPlay": "Churn Prevention + Revenue Assurance",
+  "primaryRegulation": "NTC / AMLC (for e-wallets)",
+  "questions": [
+    {
+      "id": "telco-001",
+      "question": "What's your current churn rate and estimated cost per lost subscriber — do you have predictive models or is it reactive?",
+      "intent": "Churn is telco's top pain point. Quantifies the business case for SAS Customer Intelligence.",
+      "followUp": "How far in advance can you identify at-risk subscribers today?",
+      "mapsTo": "SAS Customer Intelligence",
+      "maturity": ["L1", "L2"],
+      "persona": ["business-unit-leader", "cto-cdo"],
+      "industry": ["telco"],
+      "tags": ["churn", "prediction", "retention", "customer-value"]
+    },
+    {
+      "id": "telco-002",
+      "question": "How are you handling AML compliance for GCash/Maya mobile wallet transactions — is there real-time monitoring or batch?",
+      "intent": "E-wallet AML is a hot regulatory area in PH. AMLC scrutiny is increasing on telco-fintechs.",
+      "followUp": "What's your SAR filing volume and turnaround time?",
+      "mapsTo": "SAS Anti-Money Laundering",
+      "maturity": ["L2", "L3"],
+      "persona": ["head-fraud-compliance", "ciso-cro"],
+      "industry": ["telco"],
+      "tags": ["aml", "e-wallet", "gcash", "maya", "compliance"]
+    },
+    {
+      "id": "telco-003",
+      "question": "Do you segment your high-value customers differently — what analytics drive your retention offers for premium subscribers?",
+      "intent": "Top 10% of subscribers generate 60%+ revenue. Targeted retention = SAS use case.",
+      "followUp": "How do you measure the ROI of retention campaigns today?",
+      "mapsTo": "SAS Customer Intelligence",
+      "maturity": ["L2", "L3"],
+      "persona": ["business-unit-leader", "head-data-science"],
+      "industry": ["telco"],
+      "tags": ["segmentation", "high-value", "retention", "analytics"]
+    },
+    {
+      "id": "telco-004",
+      "question": "How are you using CDR data for analytics — network optimization, fraud detection, or customer behavior insights?",
+      "intent": "CDR is a massive untapped data asset. SAS can process CDR at scale for multiple use cases.",
+      "followUp": "What volume of CDRs are you processing daily and how quickly?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science"],
+      "industry": ["telco"],
+      "tags": ["cdr", "data-analytics", "network", "behavior"]
+    },
+    {
+      "id": "telco-005",
+      "question": "What's your revenue assurance process — how do you detect billing anomalies, interconnect fraud, or margin leakage?",
+      "intent": "Revenue assurance is often manual in PH telcos. SAS automates anomaly detection at scale.",
+      "followUp": "What percentage of revenue do you estimate is lost to leakage annually?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["cfo-coo", "ciso-cro"],
+      "industry": ["telco"],
+      "tags": ["revenue-assurance", "billing", "fraud", "leakage"]
+    },
+    {
+      "id": "telco-006",
+      "question": "How personalized are your offers today — real-time contextual offers or batch campaign blasts?",
+      "intent": "Real-time next-best-offer at the moment of interaction is a SAS differentiator.",
+      "followUp": "What's your offer acceptance rate and how do you measure it?",
+      "mapsTo": "SAS Intelligent Decisioning",
+      "maturity": ["L2", "L3", "L4"],
+      "persona": ["business-unit-leader", "head-data-science"],
+      "industry": ["telco"],
+      "tags": ["personalization", "real-time", "offers", "marketing"]
+    },
+    {
+      "id": "telco-007",
+      "question": "How do you plan network capacity and investment — is it based on predictive demand modeling or reactive to congestion?",
+      "intent": "Network CAPEX optimization through forecasting is a strong SAS value story.",
+      "followUp": "How accurate are your current demand forecasts for network planning?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L3", "L4"],
+      "persona": ["cto-cdo", "cfo-coo"],
+      "industry": ["telco"],
+      "tags": ["network-planning", "forecasting", "capex", "capacity"]
+    },
+    {
+      "id": "telco-008",
+      "question": "How are you detecting SIM-swap fraud and account takeover — real-time behavioral analytics or post-incident investigation?",
+      "intent": "SIM-swap is a growing PH problem. SAS real-time scoring can flag suspicious SIM changes instantly.",
+      "followUp": "How many SIM-swap fraud cases do you handle monthly?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L2", "L3"],
+      "persona": ["head-fraud-compliance", "ciso-cro"],
+      "industry": ["telco"],
+      "tags": ["sim-swap", "account-takeover", "fraud", "real-time"]
+    }
+  ]
+}

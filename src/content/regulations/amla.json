@@ -1,0 +1,41 @@
+{
+  "slug": "amla",
+  "name": "Anti-Money Laundering Act (RA 9160, as amended)",
+  "citation": "Republic Act No. 9160, as amended by RA 9194, RA 10167, RA 10365, RA 10927, RA 11521",
+  "issuingBody": "Anti-Money Laundering Council (AMLC) / Congress of the Philippines",
+  "effectiveDate": "2001-09-29",
+  "complianceDeadline": null,
+  "summary": "Requires covered institutions to file STRs and CTRs, implement KYC, and maintain transaction monitoring systems. Philippines exited FATF grey list in early 2025.",
+  "lastUpdated": "2025-06-15",
+  "requirements": [
+    "Suspicious Transaction Report (STR) filing to AMLC",
+    "Covered Transaction Report (CTR) filing for transactions ≥₱500,000",
+    "Know Your Customer (KYC) and Customer Due Diligence (CDD)",
+    "Enhanced Due Diligence (EDD) for high-risk customers and PEPs",
+    "Transaction monitoring system capable of detecting ML/TF patterns",
+    "Record retention for minimum 5 years after account closure",
+    "PEP screening against domestic and international watchlists"
+  ],
+  "penalties": "Criminal penalties of 7-14 years imprisonment and fines of ₱3M-₱50M for non-compliance. AMLC can impose administrative sanctions and freeze orders.",
+  "affectedEntities": ["Universal banks", "Commercial banks", "Thrift banks", "Rural banks", "Digital banks", "E-money issuers", "Insurance companies", "Securities dealers", "Casinos", "Real estate developers", "Jewelry dealers"],
+  "sasCapabilityMapping": [
+    { "requirement": "STR/CTR automated filing", "sasProduct": "SAS Anti-Money Laundering", "specificFeature": "Automated regulatory report generation with AMLC format compliance" },
+    { "requirement": "Transaction monitoring", "sasProduct": "SAS Anti-Money Laundering", "specificFeature": "Scenario-based and ML-driven transaction monitoring with tunable thresholds" },
+    { "requirement": "KYC/CDD/EDD", "sasProduct": "SAS Anti-Money Laundering", "specificFeature": "Risk-based customer scoring with automated EDD triggers" },
+    { "requirement": "PEP screening", "sasProduct": "SAS Anti-Money Laundering", "specificFeature": "Real-time watchlist screening with fuzzy matching and alias resolution" },
+    { "requirement": "Network analytics for ML/TF detection", "sasProduct": "SAS Anti-Money Laundering", "specificFeature": "Graph analytics for layering, structuring, and shell company detection" }
+  ],
+  "competitivePositioning": "SAS AML is deployed at the largest banks globally and is recognized by Chartis as a category leader. Post-FATF grey list, Philippine institutions need to demonstrate sustained compliance — SAS provides the audit trail and reporting automation that regulators expect.",
+  "talkingPoints": [
+    "Philippines exited FATF grey list in 2025 — sustained compliance is now the focus",
+    "AMLC is increasing examination frequency and depth post-grey-list",
+    "SAS AML handles both rule-based scenarios AND ML-driven anomaly detection",
+    "Network analytics is critical for detecting sophisticated layering schemes",
+    "SAS supports AMLC's specific reporting formats and filing requirements",
+    "Chartis RiskTech100 recognized SAS as #1 in AML solutions"
+  ],
+  "officialSourceUrl": "https://www.amlc.gov.ph",
+  "relatedBattleCards": ["nice-actimize"],
+  "relatedSolutions": ["anti-money-laundering"],
+  "industries": ["banking", "insurance", "telco"]
+}

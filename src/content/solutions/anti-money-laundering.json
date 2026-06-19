@@ -1,0 +1,30 @@
+{
+  "slug": "anti-money-laundering",
+  "name": "SAS Anti-Money Laundering",
+  "lastUpdated": "2025-06-15",
+  "description": "End-to-end AML compliance platform providing transaction monitoring, watchlist screening, alert investigation, case management, network analytics, and automated regulatory reporting for AMLC, BSP, and international requirements.",
+  "elevatorPitch": "End-to-end AML compliance — transaction monitoring, alert management, case investigation, and regulatory reporting.",
+  "capabilities": [
+    "Scenario-based and ML-driven transaction monitoring",
+    "Real-time watchlist and sanctions screening with fuzzy matching",
+    "Automated SAR/STR/CTR generation and filing",
+    "Network/graph analytics for layering and shell company detection",
+    "Case management with investigation workflows",
+    "Regulatory reporting (AMLC, BSP, FATF formats)",
+    "Customer risk scoring with dynamic EDD triggers",
+    "Alert prioritization with ML-based false positive reduction"
+  ],
+  "targetBuyer": "Chief Compliance Officer, MLRO, Head of Financial Crime, Head of AML Operations",
+  "industries": ["banking", "insurance", "telco"],
+  "phUseCases": [
+    "AMLA compliance and AMLC reporting",
+    "Post-FATF grey list sustained compliance monitoring",
+    "AFASA mule account detection and reporting",
+    "Casino and POGO transaction monitoring",
+    "Cross-border remittance monitoring (OFW flows)"
+  ],
+  "deploymentOptions": ["SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["Core banking systems", "Payment networks", "AMLC filing portal", "SWIFT messaging", "Watchlist providers (Dow Jones, Refinitiv)"],
+  "competitorAlternatives": ["nice-actimize"],
+  "mcpProductKey": "anti-money-laundering"
+}

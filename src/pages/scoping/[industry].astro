@@ -1,0 +1,208 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import CopyButton from '@components/ui/CopyButton.astro';
+import Badge from '@components/ui/Badge.astro';
+
+const base = import.meta.env.BASE_URL;
+
+export async function getStaticPaths() {
+  const scopingEntries = await getCollection('scoping');
+  return scopingEntries.map((entry) => {
+    // The slug is the file name (e.g., "banking", "insurance")
+    const slug = entry.id.replace(/\.json$/, '');
+    return {
+      params: { industry: slug },
+      props: { data: entry.data },
+    };
+  });
+}
+
+const { industry } = Astro.params;
+const { data } = Astro.props;
+
+// Industry cues - hardcoded lookup
+const industryCues: Record<string, { buyingTriggers: string[]; decisionMakers: string[]; commonObjections: string[] }> = {
+  banking: {
+    buyingTriggers: ['BSP Circular 1213 deadline (June 2026)', 'Rising digital fraud losses', 'Regulatory exam findings', 'Core banking modernization'],
+    decisionMakers: ['CISO / CRO', 'Head of Fraud', 'CDO / CTO', 'Compliance Officer'],
+    commonObjections: ['Already have rules-based system', 'Budget allocated to core banking', 'Databricks/Azure can do this'],
+  },
+  insurance: {
+    buyingTriggers: ['IFRS 17 compliance deadline', 'Rising claims fraud losses', 'IC RBC2 model requirements', 'Digital transformation mandate'],
+    decisionMakers: ['Chief Actuary', 'CRO', 'Head of Claims', 'CTO'],
+    commonObjections: ['Actuarial team uses R/Python', 'Already invested in Guidewire', 'Budget pressure from combined ratio'],
+  },
+  telco: {
+    buyingTriggers: ['Churn exceeding industry benchmarks', 'AMLC scrutiny on e-wallets', 'Revenue leakage audit findings', '5G network investment planning'],
+    decisionMakers: ['CMO / VP Marketing', 'VP Revenue Assurance', 'Head of Digital Products', 'CTO'],
+    commonObjections: ['Already have Hadoop/Spark for CDR', 'Marketing cloud handles personalization', 'Building in-house with Python'],
+  },
+  government: {
+    buyingTriggers: ['COA audit findings', 'Executive mandate to reduce leakage', 'Digital transformation initiative', 'Tax gap estimates from DOF'],
+    decisionMakers: ['Undersecretary / Assistant Secretary', 'CIO / MIS Director', 'Internal Audit Head', 'Budget Officer'],
+    commonObjections: ['Procurement process too slow', 'Data sovereignty concerns', 'No analytics team in-house', 'Budget constraints'],
+  },
+  retail: {
+    buyingTriggers: ['E-commerce growth pressure', 'Inventory write-offs exceeding targets', 'Customer loyalty program underperformance', 'Supply chain disruptions'],
+    decisionMakers: ['VP Marketing', 'Head of Supply Chain', 'CDO', 'VP E-commerce'],
+    commonObjections: ['Salesforce/Adobe handles marketing', 'SAP has forecasting', 'Building with Google Cloud AI'],
+  },
+  healthcare: {
+    buyingTriggers: ['Upcoming regulatory submission deadline', 'FDA inspection preparation', 'SAS 9.4 end-of-support planning', 'RWE mandate from headquarters'],
+    decisionMakers: ['Head of Biostatistics', 'VP Clinical Operations', 'Director of Regulatory Affairs', 'CIO'],
+    commonObjections: ['Already using SAS 9.4 — why change?', 'R is gaining traction with biostatisticians', 'Veeva handles our clinical data'],
+  },
+  universal: {
+    buyingTriggers: ['Regulatory pressure', 'Competitive threat', 'Cost reduction mandate', 'Digital transformation initiative'],
+    decisionMakers: ['CTO / CDO', 'CFO / COO', 'Head of Data Science', 'Business Unit Leader'],
+    commonObjections: ['Too expensive', 'We already have tools', 'Open source is free', 'Cloud provider does this'],
+  },
+};
+
+const cues = industryCues[industry as string] || industryCues['universal'];
+
+const maturityLabels: Record<string, { label: string; color: string }> = {
+  L1: { label: 'L1 — Ad Hoc', color: 'bg-danger/10 text-danger' },
+  L2: { label: 'L2 — Developing', color: 'bg-warning/10 text-warning' },
+  L3: { label: 'L3 — Defined', color: 'bg-sas-blue/10 text-sas-blue' },
+  L4: { label: 'L4 — Optimized', color: 'bg-success/10 text-success' },
+};
+---
+
+<BaseLayout title={data.displayName + ' — Scoping Questions'}>
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <Breadcrumb items={[
+      { label: 'Scoping', href: `${base}/scoping/` },
+      { label: data.displayName },
+    ]} />
+
+    <!-- Header -->
+    <div class="space-y-4">
+      <div class="flex flex-wrap items-center gap-3">
+        <h1 class="text-2xl font-bold text-text-primary">{data.displayName}</h1>
+        <span class={`text-xs font-medium px-2 py-0.5 rounded-full border ${data.phPriority === 'high' ? 'bg-danger/10 text-danger border-danger/30' : 'bg-warning/10 text-warning border-warning/30'}`}>
+          {data.phPriority} priority
+        </span>
+      </div>
+      <div class="flex flex-wrap gap-4 text-sm text-text-secondary">
+        <span><strong>Key Play:</strong> {data.keySasPlay}</span>
+        <span><strong>Regulation:</strong> {data.primaryRegulation}</span>
+        <span><strong>Questions:</strong> {data.questions.length}</span>
+      </div>
+    </div>
+
+    <!-- Industry Cues -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="rounded-lg border border-border-default bg-bg-surface p-4">
+        <h3 class="text-sm font-semibold text-text-primary mb-2">🎯 Buying Triggers</h3>
+        <ul class="space-y-1">
+          {cues.buyingTriggers.map((trigger) => (
+            <li class="text-xs text-text-secondary flex items-start gap-1.5">
+              <span class="text-sas-blue shrink-0">•</span>
+              <span>{trigger}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-lg border border-border-default bg-bg-surface p-4">
+        <h3 class="text-sm font-semibold text-text-primary mb-2">👥 Decision Makers</h3>
+        <ul class="space-y-1">
+          {cues.decisionMakers.map((dm) => (
+            <li class="text-xs text-text-secondary flex items-start gap-1.5">
+              <span class="text-sas-teal shrink-0">•</span>
+              <span>{dm}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-lg border border-border-default bg-bg-surface p-4">
+        <h3 class="text-sm font-semibold text-text-primary mb-2">🚧 Common Objections</h3>
+        <ul class="space-y-1">
+          {cues.commonObjections.map((obj) => (
+            <li class="text-xs text-text-secondary flex items-start gap-1.5">
+              <span class="text-warning shrink-0">•</span>
+              <span>{obj}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Maturity Filter -->
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="text-sm font-medium text-text-secondary">Filter:</span>
+      <button data-filter="all" class="maturity-filter text-xs px-3 py-1 rounded-full border border-sas-blue bg-sas-blue/10 text-sas-blue font-medium cursor-pointer">All</button>
+      <button data-filter="L1" class="maturity-filter text-xs px-3 py-1 rounded-full border border-border-default text-text-muted hover:border-danger hover:text-danger cursor-pointer transition-colors">L1</button>
+      <button data-filter="L2" class="maturity-filter text-xs px-3 py-1 rounded-full border border-border-default text-text-muted hover:border-warning hover:text-warning cursor-pointer transition-colors">L2</button>
+      <button data-filter="L3" class="maturity-filter text-xs px-3 py-1 rounded-full border border-border-default text-text-muted hover:border-sas-blue hover:text-sas-blue cursor-pointer transition-colors">L3</button>
+      <button data-filter="L4" class="maturity-filter text-xs px-3 py-1 rounded-full border border-border-default text-text-muted hover:border-success hover:text-success cursor-pointer transition-colors">L4</button>
+    </div>
+
+    <!-- Questions List -->
+    <div class="space-y-4" id="questions-list">
+      {data.questions.map((q, idx) => (
+        <article class="question-card rounded-lg border border-border-default bg-bg-surface p-5 space-y-3" data-maturity={q.maturity.join(',')}>
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-xs font-mono text-text-muted">#{idx + 1}</span>
+                <span class="text-xs font-medium px-2 py-0.5 rounded bg-sas-blue/10 text-sas-blue border border-sas-blue/20">
+                  → {q.mapsTo}
+                </span>
+              </div>
+              <p class="text-base font-medium text-text-primary leading-relaxed">{q.question}</p>
+            </div>
+            <CopyButton text={q.question} label="Copy" />
+          </div>
+
+          <p class="text-sm text-text-secondary"><strong class="text-text-primary">Intent:</strong> {q.intent}</p>
+          <p class="text-sm text-text-secondary"><strong class="text-text-primary">Follow-up:</strong> {q.followUp}</p>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            {q.maturity.map((m) => (
+              <span class={`text-xs px-2 py-0.5 rounded ${maturityLabels[m].color}`}>
+                {maturityLabels[m].label}
+              </span>
+            ))}
+            {q.tags.slice(0, 4).map((tag) => (
+              <span class="text-xs px-2 py-0.5 rounded bg-bg-elevated text-text-muted border border-border-default">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll('.maturity-filter');
+  const cards = document.querySelectorAll('.question-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = (btn as HTMLElement).dataset.filter;
+
+      // Update active state
+      buttons.forEach(b => {
+        b.classList.remove('border-sas-blue', 'bg-sas-blue/10', 'text-sas-blue', 'font-medium');
+        b.classList.add('border-border-default', 'text-text-muted');
+      });
+      btn.classList.remove('border-border-default', 'text-text-muted');
+      btn.classList.add('border-sas-blue', 'bg-sas-blue/10', 'text-sas-blue', 'font-medium');
+
+      // Filter cards
+      cards.forEach(card => {
+        const maturity = (card as HTMLElement).dataset.maturity || '';
+        if (filter === 'all' || maturity.includes(filter!)) {
+          (card as HTMLElement).style.display = '';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

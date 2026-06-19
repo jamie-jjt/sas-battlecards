@@ -1,0 +1,38 @@
+{
+  "slug": "ic-rbc2",
+  "name": "IC Risk-Based Capital Framework (RBC2)",
+  "citation": "Insurance Commission Circular Letter 2016-68",
+  "issuingBody": "Insurance Commission (IC)",
+  "effectiveDate": "2016-01-01",
+  "complianceDeadline": null,
+  "summary": "Requires insurers to maintain capital adequacy based on risk exposure. Drives analytics investment for risk quantification, actuarial modeling, and stress testing.",
+  "lastUpdated": "2025-06-15",
+  "requirements": [
+    "Risk quantification across credit, market, insurance, and operational risk",
+    "Capital adequacy calculation with minimum RBC ratio of 100%",
+    "Stress testing under multiple adverse scenarios",
+    "Actuarial model governance with independent review",
+    "Quarterly RBC reporting to Insurance Commission",
+    "Internal Capital Adequacy Assessment Process (ICAAP)"
+  ],
+  "penalties": "IC intervention escalation: enhanced monitoring, capital restoration plan, restriction on new business, conservatorship, and ultimately license revocation for persistent non-compliance.",
+  "affectedEntities": ["Life insurance companies", "Non-life insurance companies", "Reinsurance companies", "HMOs", "Pre-need companies"],
+  "sasCapabilityMapping": [
+    { "requirement": "Risk quantification", "sasProduct": "SAS Risk Management", "specificFeature": "Integrated credit, market, and insurance risk quantification models" },
+    { "requirement": "Capital adequacy calculation", "sasProduct": "SAS Risk Management", "specificFeature": "Automated RBC ratio calculation with IC-compliant reporting" },
+    { "requirement": "Stress testing", "sasProduct": "SAS Risk Management", "specificFeature": "Multi-scenario stress testing with reverse stress test capabilities" },
+    { "requirement": "Actuarial model governance", "sasProduct": "SAS Model Manager", "specificFeature": "Model lifecycle management with validation workflows for actuarial models" }
+  ],
+  "competitivePositioning": "SAS Risk Management is the only platform that combines risk quantification, stress testing, and model governance in one integrated solution. Competitors require stitching together spreadsheets, point solutions, and manual processes.",
+  "talkingPoints": [
+    "Philippine insurers are moving from manual spreadsheet-based RBC to automated analytics",
+    "IC is increasing scrutiny on stress testing adequacy — manual approaches will not pass examination",
+    "SAS provides pre-built actuarial and risk models that accelerate RBC2 compliance",
+    "Model governance (SAS Model Manager) satisfies IC requirements for actuarial model review",
+    "Integrated platform reduces operational risk vs. spreadsheet-based calculations"
+  ],
+  "officialSourceUrl": "https://www.insurance.gov.ph",
+  "relatedBattleCards": [],
+  "relatedSolutions": ["risk-management", "model-manager"],
+  "industries": ["insurance"]
+}

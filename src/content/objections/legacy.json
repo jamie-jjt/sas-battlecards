@@ -1,0 +1,51 @@
+{
+  "theme": "legacy",
+  "displayName": "Legacy & Modernization Objections",
+  "items": [
+    {
+      "id": "legacy-001",
+      "objection": "SAS is old / legacy technology",
+      "underlyingConcern": "Perception from SAS 9.4 era. Haven't seen Viya. Young data scientists associate SAS with university coursework, not modern production systems.",
+      "response": {
+        "acknowledge": "I understand the perception — SAS 9.4 was a different era. If that's your reference point, I get the concern.",
+        "reframe": "SAS Viya is a completely different platform. It runs on Kubernetes, supports Python and R natively, has modern REST APIs, deploys on any cloud, and has CI/CD integration. The 50 years isn't baggage — it's 50 years of statistical algorithms and production hardening that newer platforms haven't had time to build.",
+        "evidence": "Viya runs on the same Kubernetes infrastructure as Databricks or any cloud-native platform. It's deployed on AKS, EKS, and GKE globally. The difference: SAS adds 50 years of validated algorithms, industry expertise, and regulatory compliance on top of modern infrastructure.",
+        "close": "Can I show you a quick demo of Viya? I think you'll be surprised by how modern it looks and feels. We can even show Python running natively in SAS Studio."
+      },
+      "proofPoints": ["SAS Viya cloud-native since 2020 — runs on Kubernetes", "Supports Python, R, and SAS languages natively", "REST APIs, CI/CD pipelines, Git integration — modern DevOps"],
+      "whatNotToSay": "Don't get defensive. Don't say 'SAS has always been modern' — acknowledge that SAS 9.4 was aging and pivot to Viya immediately.",
+      "relatedCompetitors": ["databricks", "opensource", "aws", "google"],
+      "persona": ["cto-cdo", "head-data-science"]
+    },
+    {
+      "id": "legacy-002",
+      "objection": "Our data scientists don't want to use SAS — they prefer Python",
+      "underlyingConcern": "Team morale. Fear of losing talent. Data scientists trained on Python/Jupyter. SAS perceived as limiting their career growth.",
+      "response": {
+        "acknowledge": "Your data scientists' preferences matter — you don't want to impose tools that frustrate your team.",
+        "reframe": "Good news: SAS Viya supports Python natively. Your team can write Python, use their favorite libraries, and still get SAS's governance, deployment, and monitoring capabilities. It's not Python OR SAS — it's Python WITH SAS governance.",
+        "evidence": "SAS Viya runs Python and R models in production with the same governance as SAS-native models. Model Manager governs sklearn models just as well as SAS models. Your team keeps their language — gains production infrastructure.",
+        "close": "Would it help to show your data science team how Python integrates with Viya? Often their objection dissolves when they see they can use their preferred language."
+      },
+      "proofPoints": ["Python runs natively in SAS Viya — no workarounds", "Model Manager governs Python, R, and SAS models equally", "SAS Studio supports Jupyter-style notebooks"],
+      "whatNotToSay": "Don't say 'Python isn't enterprise-ready' — that's condescending and inaccurate. Python is fine; SAS adds governance on top.",
+      "relatedCompetitors": ["opensource", "databricks"],
+      "persona": ["head-data-science", "cto-cdo"]
+    },
+    {
+      "id": "legacy-003",
+      "objection": "We're moving to the cloud — SAS is on-premises only",
+      "underlyingConcern": "Mistaken belief that SAS only runs on-prem. Based on SAS 9.4 experience. Cloud migration strategy doesn't include SAS.",
+      "response": {
+        "acknowledge": "Cloud migration makes sense — modern infrastructure, scalability, reduced hardware management.",
+        "reframe": "SAS Viya IS a cloud platform. It runs on Azure (AKS), AWS (EKS), and Google Cloud (GKE) natively. Many of our customers deploy SAS Viya on the same cloud infrastructure they're migrating everything else to.",
+        "evidence": "SAS is available on both AWS Marketplace and Azure Marketplace. It deploys in hours on managed Kubernetes. Multiple PH enterprises already run SAS Viya on Azure. And if you need hybrid — SAS runs identically on-prem and in cloud.",
+        "close": "Which cloud are you standardizing on? I can show you exactly how SAS Viya deploys there — it's likely simpler than you think."
+      },
+      "proofPoints": ["SAS Viya on AWS Marketplace and Azure Marketplace", "Runs on managed Kubernetes (AKS, EKS, GKE)", "Same code, same experience — cloud, on-prem, or hybrid"],
+      "whatNotToSay": "Don't argue that on-prem is better — validate their cloud strategy and show SAS fits within it.",
+      "relatedCompetitors": ["aws", "microsoft", "google"],
+      "persona": ["cto-cdo", "cfo-coo"]
+    }
+  ]
+}

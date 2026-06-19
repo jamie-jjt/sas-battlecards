@@ -1,0 +1,210 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import CollapsibleSection from '@components/battlecard/CollapsibleSection.astro';
+import CopyButton from '@components/ui/CopyButton.astro';
+import type { Solution } from '@lib/types';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('solutions');
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { solution: entry.data as unknown as Solution },
+  }));
+}
+
+interface Props {
+  solution: Solution;
+}
+
+const { solution } = Astro.props;
+
+// Get related battle cards for competitor alternatives
+const battlecardEntries = await getCollection('battlecards');
+const competitorCards = battlecardEntries
+  .filter((e) => solution.competitorAlternatives.includes(e.data.slug))
+  .map((e) => e.data);
+
+// Get related regulations (any regulation that references this solution)
+const regulationEntries = await getCollection('regulations');
+const relatedRegulations = regulationEntries
+  .filter((e) => e.data.relatedSolutions.includes(solution.slug))
+  .map((e) => e.data);
+
+const industryLabels: Record<string, string> = {
+  banking: 'Banking',
+  insurance: 'Insurance',
+  telco: 'Telco',
+  government: 'Government',
+  retail: 'Retail',
+  healthcare: 'Healthcare',
+};
+
+const industryColors: Record<string, string> = {
+  banking: 'bg-sas-blue/15 text-sas-blue border-sas-blue/30',
+  insurance: 'bg-cat-grc/15 text-cat-grc border-cat-grc/30',
+  telco: 'bg-cat-ml/15 text-cat-ml border-cat-ml/30',
+  government: 'bg-cat-bi/15 text-cat-bi border-cat-bi/30',
+  retail: 'bg-cat-cloud/15 text-cat-cloud border-cat-cloud/30',
+  healthcare: 'bg-success/15 text-success border-success/30',
+};
+---
+
+<BaseLayout title={solution.name} description={solution.elevatorPitch}>
+  <div class="mx-auto max-w-4xl px-4 py-6 sm:py-8">
+    <Breadcrumb items={[
+      { label: "Solutions", href: "/sas-battlecards/solutions/" },
+      { label: solution.name }
+    ]} />
+
+    <!-- Header -->
+    <header class="mb-8">
+      <h1 class="text-2xl font-bold text-text-primary sm:text-3xl mb-3">
+        {solution.name}
+      </h1>
+
+      <!-- Elevator Pitch - prominent with copy button -->
+      <div class="bg-sas-blue/5 border border-sas-blue/20 rounded-lg p-5 mb-4">
+        <div class="flex items-start gap-3">
+          <p class="text-base text-text-primary font-medium leading-relaxed flex-1">
+            "{solution.elevatorPitch}"
+          </p>
+          <div class="shrink-0">
+            <CopyButton text={solution.elevatorPitch} label="Copy pitch" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Meta row -->
+      <div class="flex flex-wrap items-center gap-3">
+        {solution.industries.map((ind) => (
+          <span class:list={["inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border", industryColors[ind] ?? 'bg-bg-elevated text-text-muted border-border-default']}>
+            {industryLabels[ind] ?? ind}
+          </span>
+        ))}
+        <span class="text-xs text-text-muted">
+          Updated {new Date(solution.lastUpdated).toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' })}
+        </span>
+      </div>
+    </header>
+
+    <div class="space-y-6">
+      <!-- Description -->
+      <section id="description">
+        <CollapsibleSection title="Description" icon="📖" defaultOpen={true}>
+          <p class="text-sm text-text-secondary leading-relaxed">{solution.description}</p>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Capabilities -->
+      <section id="capabilities">
+        <CollapsibleSection title="Capabilities" icon="⚡" defaultOpen={true}>
+          <ul class="space-y-2">
+            {solution.capabilities.map((cap) => (
+              <li class="flex items-start gap-3 text-sm text-text-secondary">
+                <span class="text-sas-blue shrink-0 mt-0.5">▸</span>
+                <span>{cap}</span>
+              </li>
+            ))}
+          </ul>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Target Buyer -->
+      <section id="target-buyer">
+        <CollapsibleSection title="Target Buyer" icon="👤" defaultOpen={true}>
+          <p class="text-sm text-text-secondary">{solution.targetBuyer}</p>
+        </CollapsibleSection>
+      </section>
+
+      <!-- PH Use Cases -->
+      <section id="ph-use-cases">
+        <CollapsibleSection title="Philippine Use Cases" icon="🇵🇭" defaultOpen={true}>
+          <div class="space-y-2">
+            {solution.phUseCases.map((useCase) => (
+              <div class="flex items-start gap-3 group/uc">
+                <span class="shrink-0 w-5 h-5 rounded-full bg-success/15 text-success text-xs flex items-center justify-center">✓</span>
+                <p class="text-sm text-text-secondary flex-1">{useCase}</p>
+                <div class="opacity-0 group-hover/uc:opacity-100 transition-opacity shrink-0">
+                  <CopyButton text={useCase} label="Copy" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Deployment Options -->
+      <section id="deployment">
+        <CollapsibleSection title="Deployment Options" icon="☁️">
+          <div class="flex flex-wrap gap-2">
+            {solution.deploymentOptions.map((opt) => (
+              <span class="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium bg-bg-elevated text-text-secondary border border-border-default">
+                {opt}
+              </span>
+            ))}
+          </div>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Integration Points -->
+      <section id="integrations">
+        <CollapsibleSection title="Integration Points" icon="🔗">
+          <div class="flex flex-wrap gap-2">
+            {solution.integrationPoints.map((point) => (
+              <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-bg-elevated text-text-muted border border-border-default">
+                {point}
+              </span>
+            ))}
+          </div>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Competitor Alternatives (links to battle cards) -->
+      {competitorCards.length > 0 && (
+        <section id="competitors">
+          <CollapsibleSection title="Competitor Alternatives" icon="⚔️">
+            <p class="text-xs text-text-muted mb-3">Competitors positioning against this solution — see battle cards for details.</p>
+            <div class="grid gap-3 sm:grid-cols-2">
+              {competitorCards.map((card) => (
+                <a
+                  href={`/sas-battlecards/battlecards/${card.slug}/`}
+                  class="flex items-center gap-3 p-3 rounded-lg border border-border-default bg-bg-elevated hover:border-border-emphasis transition-colors"
+                >
+                  <span class="text-lg">⚔️</span>
+                  <div>
+                    <p class="text-sm font-medium text-text-primary">{card.name}</p>
+                    <p class="text-xs text-text-muted">{card.tagline}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </CollapsibleSection>
+        </section>
+      )}
+
+      <!-- Related Regulations -->
+      {relatedRegulations.length > 0 && (
+        <section id="related-regulations">
+          <CollapsibleSection title="Related Regulations" icon="📋">
+            <div class="grid gap-3 sm:grid-cols-2">
+              {relatedRegulations.map((reg) => (
+                <a
+                  href={`/sas-battlecards/regulations/${reg.slug}/`}
+                  class="flex items-center gap-3 p-3 rounded-lg border border-border-default bg-bg-elevated hover:border-border-emphasis transition-colors"
+                >
+                  <span class="text-lg">📋</span>
+                  <div>
+                    <p class="text-sm font-medium text-text-primary">{reg.name}</p>
+                    <p class="text-xs text-text-muted line-clamp-1">{reg.summary}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </CollapsibleSection>
+        </section>
+      )}
+    </div>
+  </div>
+</BaseLayout>

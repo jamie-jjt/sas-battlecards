@@ -1,0 +1,97 @@
+{
+  "industry": "insurance",
+  "displayName": "Insurance",
+  "phPriority": "high",
+  "keySasPlay": "Claims Fraud + IFRS 17",
+  "primaryRegulation": "IC RBC2 / IFRS 17",
+  "questions": [
+    {
+      "id": "insurance-001",
+      "question": "What does your claims fraud detection process look like today — manual review, rules-based, or analytics-driven?",
+      "intent": "Baseline maturity check. Most PH insurers still rely on manual adjuster review with basic red-flag rules.",
+      "followUp": "What percentage of claims go through SIU investigation?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L1", "L2"],
+      "persona": ["ciso-cro", "head-fraud-compliance"],
+      "industry": ["insurance"],
+      "tags": ["claims-fraud", "detection", "maturity", "baseline"]
+    },
+    {
+      "id": "insurance-002",
+      "question": "How are you governing your pricing and underwriting models — is there a centralized model inventory with version control?",
+      "intent": "Insurance Commission increasingly scrutinizing model use in pricing. Opens model governance conversation.",
+      "followUp": "How do you document model assumptions for IC examination?",
+      "mapsTo": "SAS Model Manager",
+      "maturity": ["L2", "L3"],
+      "persona": ["head-data-science", "ciso-cro"],
+      "industry": ["insurance"],
+      "tags": ["model-governance", "pricing", "underwriting", "ic-compliance"]
+    },
+    {
+      "id": "insurance-003",
+      "question": "Where are you in your IFRS 17 implementation — are your actuarial calculations still spreadsheet-based or have you automated?",
+      "intent": "IFRS 17 is a massive PH insurance pain point. Automation = SAS opportunity.",
+      "followUp": "How long does your quarterly close process take for insurance contracts?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["cfo-coo", "ciso-cro"],
+      "industry": ["insurance"],
+      "tags": ["ifrs-17", "actuarial", "automation", "compliance"]
+    },
+    {
+      "id": "insurance-004",
+      "question": "Have you seen PhilHealth-related fraud patterns in your claims — inflated hospital bills, ghost patients, or provider collusion?",
+      "intent": "PhilHealth fraud is endemic. SAS network analytics can detect provider rings.",
+      "followUp": "How do you currently validate provider billing against PhilHealth case rates?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["head-fraud-compliance", "cfo-coo"],
+      "industry": ["insurance"],
+      "tags": ["philhealth", "provider-fraud", "network-analytics", "claims"]
+    },
+    {
+      "id": "insurance-005",
+      "question": "How automated is your underwriting process — can you score a standard policy application in real-time?",
+      "intent": "Straight-through processing is a competitive differentiator. SAS decisioning enables this.",
+      "followUp": "What's the average turnaround time for a policy application today?",
+      "mapsTo": "SAS Intelligent Decisioning",
+      "maturity": ["L2", "L3", "L4"],
+      "persona": ["cto-cdo", "business-unit-leader"],
+      "industry": ["insurance"],
+      "tags": ["underwriting", "automation", "real-time", "stp"]
+    },
+    {
+      "id": "insurance-006",
+      "question": "Are you leveraging telematics or IoT data for motor insurance pricing — or is it still traditional rating factors?",
+      "intent": "Usage-based insurance is emerging in PH. SAS can ingest and score IoT data streams.",
+      "followUp": "What data sources feed your motor pricing models today?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L3", "L4"],
+      "persona": ["head-data-science", "business-unit-leader"],
+      "industry": ["insurance"],
+      "tags": ["telematics", "iot", "motor", "pricing", "innovation"]
+    },
+    {
+      "id": "insurance-007",
+      "question": "How do you identify cross-sell and up-sell opportunities across your policyholder base — is it analytics-driven or campaign-based?",
+      "intent": "Customer lifetime value and next-best-offer are SAS sweet spots.",
+      "followUp": "What's your current policy-per-customer ratio?",
+      "mapsTo": "SAS Customer Intelligence",
+      "maturity": ["L2", "L3"],
+      "persona": ["business-unit-leader", "cto-cdo"],
+      "industry": ["insurance"],
+      "tags": ["cross-sell", "customer-intelligence", "marketing", "retention"]
+    },
+    {
+      "id": "insurance-008",
+      "question": "How do you track model performance in production — do you have automated drift detection or is it periodic manual review?",
+      "intent": "Model degradation in insurance is costly. Claims fraud models need continuous monitoring.",
+      "followUp": "What happens when a model underperforms — how quickly can you retrain and redeploy?",
+      "mapsTo": "SAS Model Manager",
+      "maturity": ["L3", "L4"],
+      "persona": ["head-data-science", "ciso-cro"],
+      "industry": ["insurance"],
+      "tags": ["model-monitoring", "drift", "performance", "mlops"]
+    }
+  ]
+}

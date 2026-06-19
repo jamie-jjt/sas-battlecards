@@ -1,0 +1,30 @@
+{
+  "slug": "risk-management",
+  "name": "SAS Risk Management",
+  "lastUpdated": "2025-06-15",
+  "description": "Integrated credit, market, and operational risk analytics platform with regulatory reporting capabilities for Basel III/IV, IFRS 9, and local regulatory frameworks including BSP and Insurance Commission requirements.",
+  "elevatorPitch": "Integrated credit, market, and operational risk analytics with regulatory reporting for Basel III/IV and IFRS 9.",
+  "capabilities": [
+    "Credit scoring and rating model development",
+    "Stress testing under multiple macroeconomic scenarios",
+    "IFRS 9 Expected Credit Loss (ECL) calculation",
+    "Market risk VaR and sensitivity analysis",
+    "Operational risk quantification and scenario analysis",
+    "Regulatory capital calculation (Basel III/IV, RBC2)",
+    "Portfolio risk aggregation and concentration analysis",
+    "What-if simulation for strategic planning"
+  ],
+  "targetBuyer": "Chief Risk Officer, Head of Credit Risk, Head of Market Risk, Chief Actuary",
+  "industries": ["banking", "insurance"],
+  "phUseCases": [
+    "BSP capital adequacy reporting (CAR)",
+    "IFRS 9 adoption and ECL calculation for Philippine banks",
+    "Insurance Commission RBC2 compliance",
+    "Stress testing for BSP Financial Stability reports",
+    "Credit scoring for Philippine consumer lending"
+  ],
+  "deploymentOptions": ["SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["Core banking systems", "General ledger", "Market data feeds", "BSP reporting portal", "IC reporting portal"],
+  "competitorAlternatives": [],
+  "mcpProductKey": "risk-management"
+}

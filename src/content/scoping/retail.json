@@ -1,0 +1,86 @@
+{
+  "industry": "retail",
+  "displayName": "Retail & CPG",
+  "phPriority": "medium",
+  "keySasPlay": "Forecasting + Customer Intelligence",
+  "primaryRegulation": "DPA / Consumer Act",
+  "questions": [
+    {
+      "id": "retail-001",
+      "question": "How are you operationalizing personalization today — is it real-time recommendations or batch segmentation for campaigns?",
+      "intent": "Personalization maturity varies widely. SAS Customer Intelligence enables real-time decisioning.",
+      "followUp": "What's your conversion rate difference between personalized vs. generic offers?",
+      "mapsTo": "SAS Customer Intelligence",
+      "maturity": ["L2", "L3"],
+      "persona": ["business-unit-leader", "head-data-science"],
+      "industry": ["retail"],
+      "tags": ["personalization", "real-time", "recommendations", "conversion"]
+    },
+    {
+      "id": "retail-002",
+      "question": "How accurate is your demand forecasting at the SKU level — and how does that translate to stockouts or overstock costs?",
+      "intent": "SKU-level forecasting is where SAS Forecasting excels vs. simpler tools.",
+      "followUp": "How many SKUs are you forecasting across how many locations?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["cfo-coo", "cto-cdo"],
+      "industry": ["retail"],
+      "tags": ["forecasting", "demand", "sku", "inventory", "accuracy"]
+    },
+    {
+      "id": "retail-003",
+      "question": "Do you have dynamic pricing capabilities — can you adjust prices based on demand, competition, and inventory in real-time?",
+      "intent": "Price optimization is a high-ROI SAS use case. Most PH retailers still use static pricing.",
+      "followUp": "How often do you adjust prices today and what triggers a change?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L3", "L4"],
+      "persona": ["business-unit-leader", "cfo-coo"],
+      "industry": ["retail"],
+      "tags": ["pricing", "optimization", "dynamic", "competition"]
+    },
+    {
+      "id": "retail-004",
+      "question": "How do you measure marketing campaign effectiveness — can you attribute revenue to specific channels and touchpoints?",
+      "intent": "Marketing mix modeling and attribution are SAS strengths. Opens analytics conversation.",
+      "followUp": "What's your current marketing ROI measurement approach?",
+      "mapsTo": "SAS Customer Intelligence",
+      "maturity": ["L2", "L3"],
+      "persona": ["business-unit-leader", "head-data-science"],
+      "industry": ["retail"],
+      "tags": ["attribution", "marketing", "roi", "channels"]
+    },
+    {
+      "id": "retail-005",
+      "question": "Can you predict which customers are likely to churn or reduce spending — and do you act on those predictions proactively?",
+      "intent": "Customer churn in retail loyalty programs is actionable with SAS predictive models.",
+      "followUp": "What's your loyalty program active rate vs. enrolled rate?",
+      "mapsTo": "SAS Customer Intelligence",
+      "maturity": ["L2", "L3"],
+      "persona": ["business-unit-leader", "head-data-science"],
+      "industry": ["retail"],
+      "tags": ["churn", "loyalty", "prediction", "retention"]
+    },
+    {
+      "id": "retail-006",
+      "question": "How do you handle supply chain disruption forecasting — can you model alternative scenarios when suppliers fail or logistics break?",
+      "intent": "Supply chain resilience became critical post-COVID. SAS scenario modeling is a differentiator.",
+      "followUp": "How did you handle the last major supply disruption?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L3", "L4"],
+      "persona": ["cfo-coo", "cto-cdo"],
+      "industry": ["retail"],
+      "tags": ["supply-chain", "disruption", "scenario", "resilience"]
+    },
+    {
+      "id": "retail-007",
+      "question": "How granular is your customer segmentation — behavioral micro-segments or broad demographic groups?",
+      "intent": "Advanced segmentation enables targeted offers. SAS handles complex multi-dimensional segmentation.",
+      "followUp": "How many segments do you operationalize and how often do you refresh them?",
+      "mapsTo": "SAS Customer Intelligence",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["head-data-science", "business-unit-leader"],
+      "industry": ["retail"],
+      "tags": ["segmentation", "behavioral", "micro-segments", "targeting"]
+    }
+  ]
+}

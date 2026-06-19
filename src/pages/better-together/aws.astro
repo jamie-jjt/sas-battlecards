@@ -1,0 +1,107 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import CollapsibleSection from '@components/battlecard/CollapsibleSection.astro';
+import CopyButton from '@components/ui/CopyButton.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const positioningStatement = "AWS provides the cloud infrastructure foundation — compute, storage, networking, and managed services. SAS Viya runs natively on Amazon EKS, leveraging AWS infrastructure while adding purpose-built analytics, AI governance, and industry-specific solutions that AWS's native ML services (SageMaker) don't provide. For PH customers, this means on-demand scalability with SAS's proven regulatory compliance.";
+---
+
+<BaseLayout title="Better Together — AWS">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-6">
+    <Breadcrumb items={[
+      { label: 'Better Together', href: `${base}/better-together/` },
+      { label: 'AWS' },
+    ]} />
+
+    <div class="flex items-center gap-3">
+      <span class="text-3xl">☁️</span>
+      <h1 class="text-2xl font-bold text-text-primary">SAS + AWS</h1>
+    </div>
+
+    <CollapsibleSection title="Integration Story" icon="📖" defaultOpen={true}>
+      <p class="text-sm text-text-secondary leading-relaxed">
+        SAS Viya deploys natively on Amazon EKS (Elastic Kubernetes Service), consuming AWS infrastructure services — S3 for object storage, RDS for metadata, CloudWatch for monitoring. The SAS/AWS partnership is mature with a dedicated joint engineering team ensuring first-class integration. SAS is available on AWS Marketplace for simplified procurement.
+      </p>
+      <p class="text-sm text-text-secondary leading-relaxed mt-3">
+        For Philippine enterprises, AWS provides the scalable infrastructure while SAS adds the governed analytics layer, industry solutions (fraud, AML, risk), and business-user interfaces that SageMaker doesn't offer. Data stays in the AWS Singapore or upcoming Manila region for sovereignty requirements.
+      </p>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="Architecture" icon="🏗️" defaultOpen={true}>
+      <pre class="text-xs font-mono text-text-secondary bg-bg-base rounded-lg p-4 overflow-x-auto border border-border-default">
+┌─────────────────────────────────────────────────────────┐
+│                    AWS CLOUD (ap-southeast-1)            │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  ┌──────────────┐    ┌──────────────────────────────┐  │
+│  │ S3 Data Lake │◄──►│     SAS VIYA on EKS          │  │
+│  └──────────────┘    │                              │  │
+│                      │  ┌─────────┐ ┌───────────┐   │  │
+│  ┌──────────────┐    │  │Model    │ │Visual     │   │  │
+│  │ RDS/Aurora   │◄──►│  │Studio   │ │Analytics  │   │  │
+│  └──────────────┘    │  └─────────┘ └───────────┘   │  │
+│                      │                              │  │
+│  ┌──────────────┐    │  ┌─────────┐ ┌───────────┐   │  │
+│  │ MSK (Kafka)  │───►│  │Fraud    │ │Intelligent│   │  │
+│  └──────────────┘    │  │Mgmt     │ │Decisioning│   │  │
+│                      │  └─────────┘ └───────────┘   │  │
+│  ┌──────────────┐    │                              │  │
+│  │ CloudWatch   │◄───│  ┌─────────────────────┐    │  │
+│  └──────────────┘    │  │  Model Manager       │    │  │
+│                      │  │  (Govern + Monitor)  │    │  │
+│  ┌──────────────┐    │  └─────────────────────┘    │  │
+│  │ SageMaker    │    │                              │  │
+│  │ (Coexist)   │    └──────────────────────────────┘  │
+│  └──────────────┘                                      │
+└─────────────────────────────────────────────────────────┘</pre>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="Partner When" icon="✅" defaultOpen={true}>
+      <ul class="space-y-2">
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-success shrink-0 mt-0.5">✓</span>
+          <span>Customer is AWS-standardized (all workloads on AWS)</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-success shrink-0 mt-0.5">✓</span>
+          <span>Need SAS-specific solutions (fraud, AML, risk, clinical) that SageMaker can't deliver</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-success shrink-0 mt-0.5">✓</span>
+          <span>AWS Marketplace procurement simplifies purchasing for customer</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-success shrink-0 mt-0.5">✓</span>
+          <span>Customer needs business-user analytics (not just data scientist tooling)</span>
+        </li>
+      </ul>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="Compete When" icon="⚔️" defaultOpen={true}>
+      <ul class="space-y-2">
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-danger shrink-0 mt-0.5">✗</span>
+          <span>AWS is positioning SageMaker as a 'complete ML platform' replacement for SAS</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-danger shrink-0 mt-0.5">✗</span>
+          <span>Customer evaluating cloud ML for the first time (no existing SAS footprint)</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-danger shrink-0 mt-0.5">✗</span>
+          <span>Budget is limited to AWS committed spend only</span>
+        </li>
+      </ul>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="Positioning Statement" icon="💬" defaultOpen={true}>
+      <div class="flex items-start gap-3">
+        <p class="text-sm text-text-secondary leading-relaxed flex-1">{positioningStatement}</p>
+        <CopyButton text={positioningStatement} label="Copy" />
+      </div>
+    </CollapsibleSection>
+  </div>
+</BaseLayout>

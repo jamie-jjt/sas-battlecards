@@ -1,0 +1,152 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import CopyButton from '@components/ui/CopyButton.astro';
+
+const objectionEntries = await getCollection('objections');
+
+const themeIcons: Record<string, string> = {
+  cost: '💰',
+  legacy: '🏚️',
+  'open-source': '🐍',
+  'already-have': '🔒',
+};
+
+const themeColors: Record<string, string> = {
+  cost: 'border-warning/30 bg-warning/5',
+  legacy: 'border-sas-blue/30 bg-sas-blue/5',
+  'open-source': 'border-success/30 bg-success/5',
+  'already-have': 'border-danger/30 bg-danger/5',
+};
+---
+
+<BaseLayout title="Objection Handling">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <Breadcrumb items={[{ label: 'Objection Handling' }]} />
+
+    <div class="space-y-2">
+      <h1 class="text-2xl font-bold text-text-primary">Objection Handling</h1>
+      <p class="text-text-secondary max-w-2xl">
+        Structured responses for common objections. Each follows the AREC framework: Acknowledge → Reframe → Evidence → Close.
+      </p>
+    </div>
+
+    <!-- Theme Filter -->
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="text-sm font-medium text-text-secondary">Theme:</span>
+      <button data-theme-filter="all" class="theme-filter text-xs px-3 py-1.5 rounded-full border border-sas-blue bg-sas-blue/10 text-sas-blue font-medium cursor-pointer">All</button>
+      {objectionEntries.map((entry) => (
+        <button data-theme-filter={entry.data.theme} class="theme-filter text-xs px-3 py-1.5 rounded-full border border-border-default text-text-muted hover:text-text-primary cursor-pointer transition-colors">
+          {themeIcons[entry.data.theme] || '📋'} {entry.data.displayName}
+        </button>
+      ))}
+    </div>
+
+    <!-- Objections List -->
+    <div class="space-y-8" id="objections-list">
+      {objectionEntries.map((entry) => (
+        <section class="objection-theme space-y-4" data-theme={entry.data.theme}>
+          <div class="flex items-center gap-3">
+            <span class="text-xl">{themeIcons[entry.data.theme] || '📋'}</span>
+            <h2 class="text-lg font-semibold text-text-primary">{entry.data.displayName}</h2>
+            <span class="text-xs text-text-muted">{entry.data.items.length} objections</span>
+          </div>
+
+          <div class="space-y-6">
+            {entry.data.items.map((item) => (
+              <article class={`rounded-lg border p-5 space-y-4 ${themeColors[entry.data.theme] || 'border-border-default bg-bg-surface'}`}>
+                <!-- Customer objection -->
+                <div class="flex justify-start">
+                  <div class="max-w-[90%] bg-bg-elevated border border-border-default rounded-lg rounded-bl-none px-4 py-3">
+                    <p class="text-base font-medium text-text-primary">"{item.objection}"</p>
+                  </div>
+                </div>
+
+                <!-- Underlying concern -->
+                <p class="text-xs text-text-muted italic pl-4">
+                  <span class="font-semibold">Underlying concern:</span> {item.underlyingConcern}
+                </p>
+
+                <!-- AREC Response -->
+                <div class="space-y-3 pl-4">
+                  <div class="flex justify-end">
+                    <div class="max-w-[90%] border-l-4 border-sas-blue bg-bg-surface rounded-lg rounded-br-none px-4 py-3 space-y-2">
+                      <p class="text-sm text-text-secondary">
+                        <span class="font-semibold text-success">Acknowledge:</span> {item.response.acknowledge}
+                      </p>
+                      <p class="text-sm text-text-secondary">
+                        <span class="font-semibold text-sas-blue">Reframe:</span> {item.response.reframe}
+                      </p>
+                      <p class="text-sm text-text-secondary">
+                        <span class="font-semibold text-sas-teal">Evidence:</span> {item.response.evidence}
+                      </p>
+                      <p class="text-sm text-text-secondary">
+                        <span class="font-semibold text-warning">Close:</span> {item.response.close}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-end">
+                    <CopyButton text={`${item.response.acknowledge}\n\n${item.response.reframe}\n\n${item.response.evidence}\n\n${item.response.close}`} label="Copy Response" />
+                  </div>
+                </div>
+
+                <!-- Proof Points -->
+                {item.proofPoints.length > 0 && (
+                  <div class="pl-4">
+                    <p class="text-xs font-semibold text-text-muted mb-1">Proof Points:</p>
+                    <ul class="space-y-1">
+                      {item.proofPoints.map((point) => (
+                        <li class="text-xs text-text-muted flex items-start gap-1.5">
+                          <span class="text-success shrink-0">•</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <!-- What NOT to say -->
+                <div class="border border-danger/30 bg-danger/5 rounded-lg px-4 py-2 ml-4">
+                  <p class="text-xs text-danger">
+                    <span class="font-semibold">⚠️ Don't say:</span> {item.whatNotToSay}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll('.theme-filter');
+  const sections = document.querySelectorAll('.objection-theme');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = (btn as HTMLElement).dataset.themeFilter;
+
+      // Update active state
+      buttons.forEach(b => {
+        b.classList.remove('border-sas-blue', 'bg-sas-blue/10', 'text-sas-blue', 'font-medium');
+        b.classList.add('border-border-default', 'text-text-muted');
+      });
+      btn.classList.remove('border-border-default', 'text-text-muted');
+      btn.classList.add('border-sas-blue', 'bg-sas-blue/10', 'text-sas-blue', 'font-medium');
+
+      // Filter sections
+      sections.forEach(section => {
+        const theme = (section as HTMLElement).dataset.theme;
+        if (filter === 'all' || theme === filter) {
+          (section as HTMLElement).style.display = '';
+        } else {
+          (section as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

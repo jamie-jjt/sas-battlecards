@@ -1,0 +1,72 @@
+---
+import type { Industry } from '@lib/types';
+
+interface Props {
+  slug: string;
+  name: string;
+  elevatorPitch: string;
+  industries: Industry[];
+  targetBuyer: string;
+}
+
+const { slug, name, elevatorPitch, industries, targetBuyer } = Astro.props;
+
+const industryLabels: Record<string, string> = {
+  banking: 'Banking',
+  insurance: 'Insurance',
+  telco: 'Telco',
+  government: 'Government',
+  retail: 'Retail',
+  healthcare: 'Healthcare',
+  manufacturing: 'Manufacturing',
+  energy: 'Energy',
+};
+
+const industryColors: Record<string, string> = {
+  banking: 'bg-sas-blue/15 text-sas-blue border-sas-blue/30',
+  insurance: 'bg-cat-grc/15 text-cat-grc border-cat-grc/30',
+  telco: 'bg-cat-ml/15 text-cat-ml border-cat-ml/30',
+  government: 'bg-cat-bi/15 text-cat-bi border-cat-bi/30',
+  retail: 'bg-cat-cloud/15 text-cat-cloud border-cat-cloud/30',
+  healthcare: 'bg-success/15 text-success border-success/30',
+  manufacturing: 'bg-cat-prep/15 text-cat-prep border-cat-prep/30',
+  energy: 'bg-warning/15 text-warning border-warning/30',
+};
+---
+
+<a
+  href={`/sas-battlecards/solutions/${slug}/`}
+  class:list={[
+    "group block rounded-lg border border-border-default bg-bg-surface",
+    "transition-all duration-200 ease-out",
+    "hover:scale-[1.01] hover:border-border-emphasis hover:shadow-lg",
+    "focus-visible:outline-2 focus-visible:outline-sas-blue focus-visible:outline-offset-2",
+  ]}
+  data-industries={industries.join(',')}
+>
+  <div class="p-4 sm:p-5">
+    <!-- Name -->
+    <h3 class="font-semibold text-text-primary text-base group-hover:text-sas-blue transition-colors mb-2">
+      {name}
+    </h3>
+
+    <!-- Elevator Pitch -->
+    <p class="text-sm text-text-secondary line-clamp-2 mb-3">
+      {elevatorPitch}
+    </p>
+
+    <!-- Target Buyer -->
+    <p class="text-xs text-text-muted mb-3">
+      <span class="font-medium">Buyer:</span> {targetBuyer}
+    </p>
+
+    <!-- Industry badges -->
+    <div class="flex flex-wrap gap-1">
+      {industries.map((ind) => (
+        <span class:list={["inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium border", industryColors[ind] ?? 'bg-bg-elevated text-text-muted border-border-default']}>
+          {industryLabels[ind] ?? ind}
+        </span>
+      ))}
+    </div>
+  </div>
+</a>

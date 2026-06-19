@@ -1,0 +1,39 @@
+{
+  "slug": "bsp-1213",
+  "name": "BSP Circular 1213 — Fraud Management System Requirements",
+  "citation": "BSP Circular No. 1213, Series of 2024",
+  "issuingBody": "Bangko Sentral ng Pilipinas (BSP)",
+  "effectiveDate": "2025-06-25",
+  "complianceDeadline": "2026-06-30",
+  "summary": "Requires all BSP-supervised financial institutions to deploy real-time fraud management systems with behavioral monitoring, blacklist screening, and geolocation capabilities.",
+  "lastUpdated": "2025-06-15",
+  "requirements": [
+    "Real-time behavioral anomaly detection for all digital transactions",
+    "Blacklist screening integrated into transaction flow",
+    "Geolocation monitoring for suspicious access patterns",
+    "Mobile device and account information change monitoring",
+    "Phase out SMS/email OTP for high-risk transactions",
+    "Fraud Management System must detect unauthorized transactions before completion",
+    "Integration with BSP's shared fraud intelligence network"
+  ],
+  "penalties": "Non-compliant institutions face BSP sanctions, potential license restrictions, and shared liability for fraud losses under Circular 1214.",
+  "affectedEntities": ["Universal banks", "Commercial banks", "Thrift banks", "Rural banks", "Digital banks", "E-money issuers", "Payment operators"],
+  "sasCapabilityMapping": [
+    { "requirement": "Real-time behavioral anomaly detection", "sasProduct": "SAS Fraud Management", "specificFeature": "Adaptive behavioral analytics with <10ms scoring" },
+    { "requirement": "Blacklist screening", "sasProduct": "SAS Fraud Management", "specificFeature": "Integrated watchlist and blacklist matching engine" },
+    { "requirement": "Geolocation monitoring", "sasProduct": "SAS Fraud Management", "specificFeature": "Location-based risk scoring with device fingerprinting" },
+    { "requirement": "Device/account change monitoring", "sasProduct": "SAS Intelligent Decisioning", "specificFeature": "Event-driven rules triggering on profile changes" }
+  ],
+  "competitivePositioning": "SAS Fraud Management is purpose-built for this circular. Competitors like Databricks/Snowflake require custom engineering. FICO Falcon and NICE Actimize also comply but at higher TCO and without the analytics platform breadth.",
+  "talkingPoints": [
+    "SAS meets ALL Circular 1213 FMS requirements out-of-the-box — no custom development",
+    "June 30, 2026 deadline applies to ALL BSFIs — including rural banks with no current FMS",
+    "Non-compliance triggers shared liability under Circular 1214",
+    "SAS can go live in 8-12 weeks — critical given the approaching deadline",
+    "SAS is named as a Leader in Forrester Wave EFM APAC 2025"
+  ],
+  "officialSourceUrl": "https://www.bsp.gov.ph",
+  "relatedBattleCards": ["fico", "nice-actimize", "databricks"],
+  "relatedSolutions": ["fraud-management", "intelligent-decisioning"],
+  "industries": ["banking"]
+}

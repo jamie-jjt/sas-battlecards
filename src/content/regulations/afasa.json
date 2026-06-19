@@ -1,0 +1,38 @@
+{
+  "slug": "afasa",
+  "name": "AFASA — Anti-Financial Account Scamming Act (RA 12010)",
+  "citation": "Republic Act No. 12010",
+  "issuingBody": "Congress of the Philippines",
+  "effectiveDate": "2024-07-20",
+  "complianceDeadline": null,
+  "summary": "Criminalizes financial account scamming, enables 30-day admin freezes without court order, and establishes shared responsibility framework for unauthorized transactions.",
+  "lastUpdated": "2025-06-15",
+  "requirements": [
+    "Criminal liability for mule accounts — up to 20 years imprisonment",
+    "Financial institutions must deploy fraud management systems",
+    "30-day administrative freeze authority without court order for suspected fraud accounts",
+    "Reimbursement obligations for unauthorized transactions where FI negligence is proven",
+    "Mandatory suspicious transaction reporting to AMLC within 24 hours",
+    "Telco cooperation requirements for SIM-linked fraud investigations"
+  ],
+  "penalties": "Criminal penalties up to 20 years imprisonment for mule accounts and financial scamming. Financial institutions face shared liability for losses if FMS requirements are not met.",
+  "affectedEntities": ["Universal banks", "Commercial banks", "Thrift banks", "Rural banks", "Digital banks", "E-money issuers", "Payment operators", "Telecommunications companies"],
+  "sasCapabilityMapping": [
+    { "requirement": "Fraud management system deployment", "sasProduct": "SAS Fraud Management", "specificFeature": "End-to-end real-time fraud detection with adaptive ML models" },
+    { "requirement": "Mule account detection", "sasProduct": "SAS Anti-Money Laundering", "specificFeature": "Network analytics and behavioral profiling for mule identification" },
+    { "requirement": "Suspicious transaction reporting", "sasProduct": "SAS Anti-Money Laundering", "specificFeature": "Automated STR generation and AMLC filing" },
+    { "requirement": "Administrative freeze decisioning", "sasProduct": "SAS Intelligent Decisioning", "specificFeature": "Real-time freeze/unfreeze decision rules with audit trail" }
+  ],
+  "competitivePositioning": "AFASA's shared liability framework makes FMS investment non-optional. SAS provides the only integrated fraud + AML platform that covers both the detection (Fraud Management) and reporting (AML) requirements in a single vendor relationship.",
+  "talkingPoints": [
+    "AFASA is already in effect — non-compliance exposes institutions to shared liability NOW",
+    "Mule account detection requires network analytics — SAS AML has this built-in",
+    "30-day freeze authority means institutions need real-time decisioning capabilities",
+    "Combined fraud + AML platform reduces total cost vs. separate point solutions",
+    "SAS supports the full AFASA lifecycle: detect → freeze → investigate → report"
+  ],
+  "officialSourceUrl": "https://www.officialgazette.gov.ph",
+  "relatedBattleCards": ["fico", "nice-actimize"],
+  "relatedSolutions": ["fraud-management", "anti-money-laundering"],
+  "industries": ["banking", "telco"]
+}

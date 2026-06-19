@@ -1,0 +1,51 @@
+{
+  "theme": "already-have",
+  "displayName": "\"We Already Have...\" Objections",
+  "items": [
+    {
+      "id": "already-001",
+      "objection": "We already have Databricks — why do we need SAS?",
+      "underlyingConcern": "Sunk cost. Don't want to displace existing investment. Data engineering team is happy with Databricks.",
+      "response": {
+        "acknowledge": "Databricks is a strong platform — your data engineering team's investment makes sense.",
+        "reframe": "We're not asking you to replace Databricks. The question is: does Databricks give you everything you need for regulated production analytics? Specifically: model governance with approval workflows, BSP-format documentation, real-time fraud scoring, and business-user self-service?",
+        "evidence": "Most of our banking customers run Databricks AND SAS. Databricks handles data engineering (ETL, Delta Lake, feature engineering). SAS handles governed analytics (model lifecycle, fraud scoring, regulatory compliance). It's a complementary architecture.",
+        "close": "Would it help to see how other banks architect Databricks + SAS together? I can show you the integration pattern."
+      },
+      "proofPoints": ["Better Together architecture is common in banking", "Databricks handles data engineering; SAS handles governed analytics", "BSP examiners need more than MLflow notebooks for model documentation"],
+      "whatNotToSay": "Don't say 'Databricks is just for data engineering' — it does ML too. Focus on the regulated governance and industry solutions gap.",
+      "relatedCompetitors": ["databricks"],
+      "persona": ["cto-cdo", "head-data-science"]
+    },
+    {
+      "id": "already-002",
+      "objection": "We already have Azure ML / Microsoft Fabric — it's bundled with our EA",
+      "underlyingConcern": "Path of least resistance. Microsoft EA covers many tools. Adding another vendor requires justification. Microsoft account team may be blocking.",
+      "response": {
+        "acknowledge": "Having analytics capabilities bundled in your EA is convenient — I understand why that's attractive.",
+        "reframe": "Two questions: First, is Azure ML giving you BSP-grade model governance with formal approval workflows? Second, does it provide pre-built fraud/AML solutions for Philippine regulations? If not — those gaps are what SAS fills. And SAS runs on Azure.",
+        "evidence": "SAS Viya deploys on AKS (Azure Kubernetes Service). We're not asking you to leave Microsoft — we run ON Microsoft. The value-add: regulated governance, industry solutions, and business-user tools that Azure ML doesn't provide. Your Microsoft investment is preserved.",
+        "close": "Can I show you what SAS adds on top of your existing Azure environment? It's additive, not competitive."
+      },
+      "proofPoints": ["SAS Viya runs natively on Azure AKS", "Available on Azure Marketplace for simplified procurement", "Microsoft and SAS have strategic partnership"],
+      "whatNotToSay": "Don't attack Microsoft directly — many customers are loyal to their Microsoft relationship. Position SAS as a complement within Azure.",
+      "relatedCompetitors": ["microsoft"],
+      "persona": ["cto-cdo", "cfo-coo"]
+    },
+    {
+      "id": "already-003",
+      "objection": "We already invested in a different fraud solution — we can't switch",
+      "underlyingConcern": "Sunk cost fallacy. Implementation fatigue. Political capital spent getting current solution approved. Switching costs seem high.",
+      "response": {
+        "acknowledge": "Replacing a system that's already deployed is painful — I wouldn't recommend it lightly.",
+        "reframe": "Let's separate two questions: Is your current solution meeting regulatory requirements? And is it keeping up with evolving fraud patterns? If either answer is 'no', the cost of NOT switching may exceed the switching cost.",
+        "evidence": "BSP Circular 1213 sets a specific bar: real-time behavioral monitoring, network analytics, model governance. Many existing solutions — particularly rules-based systems — don't meet this bar. The cost of non-compliance (sanctions, restrictions) dwarfs migration costs.",
+        "close": "What if we did a gap analysis — comparing your current solution against BSP 1213 requirements? If gaps exist, we can show a phased migration approach rather than a big-bang switch."
+      },
+      "proofPoints": ["BSP 1213 requires capabilities many legacy systems lack", "Phased migration reduces risk and spreads cost", "Cost of non-compliance: potential sanctions and operational restrictions"],
+      "whatNotToSay": "Don't say their current solution is 'bad' — respect the decision that was made. Focus on whether it meets FUTURE requirements.",
+      "relatedCompetitors": ["fico", "nice-actimize"],
+      "persona": ["ciso-cro", "head-fraud-compliance", "cfo-coo"]
+    }
+  ]
+}

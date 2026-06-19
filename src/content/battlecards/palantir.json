@@ -1,0 +1,142 @@
+{
+  "slug": "palantir",
+  "name": "Palantir",
+  "category": "ml-platform",
+  "threatLevel": "medium",
+  "priority": "P2",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on transparency, open standards, and self-service analytics for regulated industries",
+  "overview": {
+    "whatTheyDo": "Data integration and AI platform with Foundry (enterprise) and Gotham (government/defense). Known for ontology-based data modeling, operational workflows, and AI/ML deployment via AIP (Artificial Intelligence Platform).",
+    "sweetSpot": "Government defense and intelligence. Large enterprises needing complex data integration across siloed systems. Organizations wanting operational AI with human-in-the-loop workflows.",
+    "typicalBuyer": "CEO/COO (top-down), Head of Digital Transformation, Government CIO",
+    "phPresence": "No direct PH presence. Selling through US government partnerships and direct enterprise engagement. Limited ASEAN footprint outside Singapore defense contracts.",
+    "recentMomentum": "AIP (AI Platform) launch driving commercial growth. Stock surge on AI hype. Strong US government revenue. Expanding into healthcare and commercial sectors.",
+    "pricingModel": "Custom enterprise pricing (typically $1M+ annual contracts). Long implementation cycles with embedded consultants. High switching costs by design."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Transparency & Open Standards",
+      "explanation": "SAS uses open, documented algorithms with full explainability. Palantir's ontology and models operate as a black box — customers depend on Palantir consultants to understand their own data. For regulated industries, this opacity is a compliance risk.",
+      "proofPoint": "Philippine regulators (BSP, IC) require model explainability — Palantir cannot provide the audit trail format BSP examiners expect."
+    },
+    {
+      "headline": "Self-Service for Business Users",
+      "explanation": "SAS enables business analysts to build and deploy analytics without coding. Palantir requires dedicated Palantir engineers (Forward Deployed Engineers) embedded at the customer. This creates dependency and inflates long-term costs.",
+      "proofPoint": "60% of SAS Viya users are non-programmers. Palantir typically requires 5-10 embedded engineers per deployment."
+    },
+    {
+      "headline": "Industry Solutions Out-of-the-Box",
+      "explanation": "SAS delivers pre-built fraud, AML, risk, and clinical solutions with Philippine regulatory compliance built in. Palantir is a horizontal platform — everything must be custom-built by their engineering team at significant cost.",
+      "proofPoint": "SAS Fraud Management deploys in weeks with pre-built detection models. Palantir fraud solutions require 6-12 months of custom development."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Complex Data Integration (Ontology)",
+      "whyItMatters": "Palantir's ontology approach excels at connecting highly disparate data sources into a unified operational model. Strong for organizations with 50+ siloed systems.",
+      "howToNeutralize": "SAS Data Management handles complex integration. For most PH enterprises, the data landscape is simpler than Palantir's sweet spot. Ask: 'How many data sources are we talking about?' If <20, SAS handles it without Palantir complexity."
+    },
+    {
+      "area": "Government/Defense Credentials",
+      "whyItMatters": "Palantir has strong credentials with US and allied defense/intelligence agencies. This can influence government deals through top-down relationships.",
+      "howToNeutralize": "SAS has decades of civilian government analytics experience (tax, fraud, healthcare). In PH, the need is civilian analytics — not defense intelligence. SAS's regulatory and public sector track record is more relevant."
+    },
+    {
+      "area": "Operational AI Workflows",
+      "whyItMatters": "AIP enables non-technical users to interact with AI through natural language and operational workflows. Strong UX for decision-makers.",
+      "howToNeutralize": "SAS Intelligent Decisioning provides similar operational AI with the added benefit of governance, audit trails, and regulatory compliance. AIP is new and unproven in regulated environments."
+    }
+  ],
+  "features": [
+    { "capability": "Model Governance & Audit Trail", "sas": "full", "competitor": "partial", "notes": "Palantir lacks formal model governance for regulated industries" },
+    { "capability": "Business User Self-Service", "sas": "full", "competitor": "none", "notes": "Palantir requires embedded engineers for most operations" },
+    { "capability": "Regulatory Compliance (BSP/AMLC)", "sas": "full", "competitor": "none", "notes": "No pre-built Philippine regulatory compliance" },
+    { "capability": "Industry Solutions (Fraud/AML/Risk)", "sas": "full", "competitor": "none", "notes": "Palantir is horizontal — everything custom-built" },
+    { "capability": "Data Integration & Ontology", "sas": "partial", "competitor": "full", "notes": "Palantir's ontology is uniquely strong for complex environments" },
+    { "capability": "Real-Time Decisioning", "sas": "full", "competitor": "partial", "notes": "SAS sub-10ms scoring vs. Palantir's workflow-based approach" },
+    { "capability": "Complex Data Visualization", "sas": "partial", "competitor": "full", "notes": "Palantir's visual analytics for graph/network data is strong" },
+    { "capability": "Natural Language AI Interface", "sas": "partial", "competitor": "full", "notes": "AIP's natural language interaction is ahead of SAS current offerings" },
+    { "capability": "On-Premises Deployment", "sas": "full", "competitor": "full", "notes": "Both support on-prem for data sovereignty" },
+    { "capability": "Pricing Transparency", "sas": "full", "competitor": "none", "notes": "Palantir pricing is opaque and typically $1M+ annual minimum" },
+    { "capability": "AutoML", "sas": "full", "competitor": "partial", "notes": "SAS AutoML is mature; Palantir's is emerging" },
+    { "capability": "Statistical Computing (Classical)", "sas": "full", "competitor": "partial", "notes": "SAS has 50 years of validated statistical procedures" }
+  ],
+  "landmines": [
+    {
+      "question": "Can your team operate the platform independently — without vendor engineers on-site?",
+      "expectedAnswer": "Palantir deployments typically require Forward Deployed Engineers",
+      "whatToSayNext": "SAS enables your team to be self-sufficient after training. No ongoing dependency on embedded vendor consultants."
+    },
+    {
+      "question": "How would you demonstrate model decisions to BSP during an examination?",
+      "expectedAnswer": "Palantir can't produce BSP-format model documentation",
+      "whatToSayNext": "SAS Model Manager auto-generates regulatory documentation in the format BSP examiners expect."
+    },
+    {
+      "question": "What's the total cost including implementation consultants for the first 3 years?",
+      "expectedAnswer": "Palantir TCO is typically 3-5x the license cost due to embedded engineers",
+      "whatToSayNext": "SAS total cost is predictable — license + standard implementation. No ongoing consultant dependency."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Palantir's AI Platform (AIP) is more advanced",
+      "whyTheySayIt": "AIP demo is impressive. Natural language interface is compelling to executives.",
+      "response": "AIP is impressive for ad-hoc queries and operational workflows. But for production ML in regulated industries — where you need governance, explainability, audit trails, and regulatory compliance — SAS provides what AIP cannot. Ask: 'Will BSP accept an AIP-generated decision as auditable?'",
+      "proofPoints": ["Palantir has zero Philippine banking references for regulated analytics", "BSP requires documented model lifecycle that AIP doesn't provide"],
+      "whatNotToSay": "Don't dismiss AIP as 'just a chatbot' — it's genuinely innovative. Acknowledge it and pivot to governance."
+    },
+    {
+      "objection": "Palantir is used by the biggest organizations in the world",
+      "whyTheySayIt": "Brand prestige and perceived safety. US government adoption impresses executives.",
+      "response": "Palantir excels in defense and intelligence — where budgets are unlimited and data is classified. In civilian regulated industries — banking, insurance, healthcare — SAS has 50 years of proven deployments. The question is: which platform was built for YOUR industry's specific requirements?",
+      "proofPoints": ["SAS serves 9 of top 10 global banks", "Palantir's commercial revenue is growing but concentrated in US"],
+      "whatNotToSay": "Don't attack their government credentials — respect them and redirect to commercial/regulated context."
+    }
+  ],
+  "phContext": {
+    "localPresence": "No Philippines office or team. Nearest presence is Singapore. Would require direct engagement from US/Singapore team or through a systems integrator.",
+    "knownCustomers": ["No known PH commercial customers", "Some government interest through defense channels"],
+    "localPricing": "Enterprise-only pricing starting at $1M+ annually. Not accessible for mid-market PH organizations. No marketplace or flexible consumption model.",
+    "regulatoryGaps": [
+      "No BSP/IC/AMLC compliance features",
+      "No pre-built fraud or AML solutions for PH market",
+      "Model explainability doesn't meet PH regulatory format requirements",
+      "Forward Deployed Engineer dependency creates vendor lock-in risk"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer has complex data integration needs across 50+ systems (government scale)",
+      "Defense or intelligence use case where Palantir has clearance and SAS doesn't",
+      "Palantir handles data layer, SAS handles analytics and compliance layer"
+    ],
+    "competeWhen": [
+      "Commercial regulated industry (banking, insurance)",
+      "Customer needs self-service analytics (not embedded engineers)",
+      "Budget-conscious organization ($1M+ Palantir minimum is too high)",
+      "Philippine regulatory compliance is a primary requirement"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "Different market positioning",
+      "detail": "Gartner positions Palantir in Decision Intelligence, while SAS leads in Advanced Analytics and AI — different categories serving different needs.",
+      "source": "Gartner 2024"
+    },
+    {
+      "type": "customer-win",
+      "title": "SAS self-sufficiency vs. Palantir dependency",
+      "detail": "Organizations report 12-18 month timelines to reduce Palantir consultant dependency. SAS customers are typically self-sufficient within 3-6 months."
+    },
+    {
+      "type": "benchmark",
+      "title": "TCO comparison at 3-year mark",
+      "detail": "Palantir TCO (license + embedded engineers + custom development) typically 2-3x SAS TCO for equivalent regulated analytics use cases."
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "bsp-1112", "amla"],
+  "relatedSolutions": ["fraud-management", "model-manager", "intelligent-decisioning"]
+}

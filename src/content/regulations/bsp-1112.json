@@ -1,0 +1,39 @@
+{
+  "slug": "bsp-1112",
+  "name": "BSP Circular 1112 — Model Risk Management Guidelines",
+  "citation": "BSP Circular No. 1112, Series of 2021",
+  "issuingBody": "Bangko Sentral ng Pilipinas (BSP)",
+  "effectiveDate": "2021-03-15",
+  "complianceDeadline": null,
+  "summary": "Requires BSFIs to establish model risk management frameworks including model inventory, validation, documentation, and lifecycle governance.",
+  "lastUpdated": "2025-06-15",
+  "requirements": [
+    "Maintain comprehensive model inventory with risk tiering",
+    "Independent model validation (separate from development team)",
+    "Standardized model documentation including assumptions and limitations",
+    "Ongoing performance monitoring with defined thresholds",
+    "Model approval workflows with senior management sign-off",
+    "Annual model risk assessment and reporting to the board"
+  ],
+  "penalties": "BSP enforcement actions including memoranda of understanding, cease-and-desist orders, and monetary penalties for governance failures identified during examination.",
+  "affectedEntities": ["Universal banks", "Commercial banks", "Thrift banks", "Digital banks"],
+  "sasCapabilityMapping": [
+    { "requirement": "Model inventory with risk tiering", "sasProduct": "SAS Model Manager", "specificFeature": "Centralized model registry with automated risk classification" },
+    { "requirement": "Independent model validation", "sasProduct": "SAS Model Manager", "specificFeature": "Validation workflow engine with challenger model comparison" },
+    { "requirement": "Standardized documentation", "sasProduct": "SAS Model Manager", "specificFeature": "Auto-generated model cards and documentation templates" },
+    { "requirement": "Performance monitoring", "sasProduct": "SAS Model Manager", "specificFeature": "Real-time drift detection with automated alerting" },
+    { "requirement": "Approval workflows", "sasProduct": "SAS Model Manager", "specificFeature": "Configurable approval chains with full audit trail" }
+  ],
+  "competitivePositioning": "Most competitors (Databricks, open-source MLflow) provide basic model registries but lack the governance depth required by BSP 1112. SAS Model Manager is purpose-built for regulated industries with pre-configured validation frameworks.",
+  "talkingPoints": [
+    "BSP examiners specifically look for model governance during BSFI examinations",
+    "SAS Model Manager provides BSP 1112-aligned workflows out-of-the-box",
+    "Databricks/MLflow require significant custom development for regulatory governance",
+    "Champion/challenger testing is built-in — not an add-on or custom code",
+    "Full audit trail satisfies BSP documentation requirements automatically"
+  ],
+  "officialSourceUrl": "https://www.bsp.gov.ph",
+  "relatedBattleCards": ["databricks", "opensource"],
+  "relatedSolutions": ["model-manager"],
+  "industries": ["banking", "insurance"]
+}

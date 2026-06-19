@@ -1,0 +1,242 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import CollapsibleSection from '@components/battlecard/CollapsibleSection.astro';
+import CountdownTimer from '@components/ui/CountdownTimer.astro';
+import CopyButton from '@components/ui/CopyButton.astro';
+import type { Regulation } from '@lib/types';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('regulations');
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { regulation: entry.data as unknown as Regulation },
+  }));
+}
+
+interface Props {
+  regulation: Regulation;
+}
+
+const { regulation } = Astro.props;
+
+// Get related battle cards and solutions for cross-linking
+const battlecardEntries = await getCollection('battlecards');
+const solutionEntries = await getCollection('solutions');
+
+const relatedCards = battlecardEntries
+  .filter((e) => regulation.relatedBattleCards.includes(e.data.slug))
+  .map((e) => e.data);
+
+const relatedSolutions = solutionEntries
+  .filter((e) => regulation.relatedSolutions.includes(e.data.slug))
+  .map((e) => e.data);
+
+const industryLabels: Record<string, string> = {
+  banking: 'Banking',
+  insurance: 'Insurance',
+  telco: 'Telco',
+  government: 'Government',
+  retail: 'Retail',
+  healthcare: 'Healthcare',
+};
+---
+
+<BaseLayout title={regulation.name} description={regulation.summary}>
+  <div class="mx-auto max-w-4xl px-4 py-6 sm:py-8">
+    <Breadcrumb items={[
+      { label: "Regulations", href: "/sas-battlecards/regulations/" },
+      { label: regulation.name }
+    ]} />
+
+    <!-- Header -->
+    <header class="mb-8">
+      <div class="flex items-center gap-2 mb-2 text-sm text-text-muted">
+        <span>{regulation.citation}</span>
+        <span>·</span>
+        <span>{regulation.issuingBody}</span>
+      </div>
+      <h1 class="text-2xl font-bold text-text-primary sm:text-3xl mb-3">
+        {regulation.name}
+      </h1>
+      <p class="text-text-secondary text-base leading-relaxed">
+        {regulation.summary}
+      </p>
+
+      <!-- Meta row -->
+      <div class="mt-4 flex flex-wrap items-center gap-3 text-xs text-text-muted">
+        <span>Effective: {new Date(regulation.effectiveDate).toLocaleDateString('en-PH', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+        <span>·</span>
+        <span>Updated: {new Date(regulation.lastUpdated).toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+        {regulation.officialSourceUrl && (
+          <>
+            <span>·</span>
+            <a href={regulation.officialSourceUrl} target="_blank" rel="noopener noreferrer" class="text-sas-blue hover:underline">
+              Official source ↗
+            </a>
+          </>
+        )}
+      </div>
+    </header>
+
+    <!-- Countdown Timer (if deadline exists) -->
+    {regulation.complianceDeadline && (
+      <div class="mb-8">
+        <CountdownTimer deadline={regulation.complianceDeadline} label="Compliance Deadline" />
+      </div>
+    )}
+
+    <div class="space-y-6">
+      <!-- Requirements -->
+      <section id="requirements">
+        <CollapsibleSection title="Requirements" icon="📋" defaultOpen={true}>
+          <ul class="space-y-2">
+            {regulation.requirements.map((req, i) => (
+              <li class="flex items-start gap-3 text-sm text-text-secondary">
+                <span class="shrink-0 w-5 h-5 rounded-full bg-sas-blue/15 text-sas-blue text-xs flex items-center justify-center font-medium">
+                  {i + 1}
+                </span>
+                <span>{req}</span>
+              </li>
+            ))}
+          </ul>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Penalties -->
+      <section id="penalties">
+        <CollapsibleSection title="Penalties" icon="⚠️" defaultOpen={true}>
+          <div class="bg-danger/5 border border-danger/20 rounded-lg p-4">
+            <p class="text-sm text-text-secondary">{regulation.penalties}</p>
+          </div>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Affected Entities -->
+      <section id="affected-entities">
+        <CollapsibleSection title="Affected Entities" icon="🏦">
+          <div class="flex flex-wrap gap-2">
+            {regulation.affectedEntities.map((entity) => (
+              <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-bg-elevated text-text-secondary border border-border-default">
+                {entity}
+              </span>
+            ))}
+          </div>
+        </CollapsibleSection>
+      </section>
+
+      <!-- SAS Capability Mapping -->
+      <section id="capability-mapping">
+        <CollapsibleSection title="SAS Capability Mapping" icon="🎯" defaultOpen={true}>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-border-default">
+                  <th class="text-left py-2 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Requirement</th>
+                  <th class="text-left py-2 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">SAS Product</th>
+                  <th class="text-left py-2 px-3 text-xs font-medium text-text-muted uppercase tracking-wider">Feature</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border-muted">
+                {regulation.sasCapabilityMapping.map((mapping) => (
+                  <tr class="hover:bg-bg-elevated/50 transition-colors">
+                    <td class="py-2.5 px-3 text-text-secondary">{mapping.requirement}</td>
+                    <td class="py-2.5 px-3">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-sas-blue/15 text-sas-blue border border-sas-blue/30">
+                        {mapping.sasProduct}
+                      </span>
+                    </td>
+                    <td class="py-2.5 px-3 text-text-muted text-xs">{mapping.specificFeature}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Competitive Positioning -->
+      <section id="positioning">
+        <CollapsibleSection title="Competitive Positioning" icon="⚔️">
+          <p class="text-sm text-text-secondary leading-relaxed">{regulation.competitivePositioning}</p>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Talking Points -->
+      <section id="talking-points">
+        <CollapsibleSection title="Talking Points" icon="💬" defaultOpen={true}>
+          <div class="space-y-3">
+            {regulation.talkingPoints.map((point) => (
+              <div class="flex items-start gap-3 group/tp">
+                <span class="text-sas-blue shrink-0 mt-0.5">▸</span>
+                <p class="text-sm text-text-secondary flex-1">{point}</p>
+                <div class="opacity-0 group-hover/tp:opacity-100 transition-opacity shrink-0">
+                  <CopyButton text={point} label="Copy" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </CollapsibleSection>
+      </section>
+
+      <!-- Related Battle Cards -->
+      {relatedCards.length > 0 && (
+        <section id="related-battlecards">
+          <CollapsibleSection title="Related Battle Cards" icon="⚔️">
+            <div class="grid gap-3 sm:grid-cols-2">
+              {relatedCards.map((card) => (
+                <a
+                  href={`/sas-battlecards/battlecards/${card.slug}/`}
+                  class="flex items-center gap-3 p-3 rounded-lg border border-border-default bg-bg-elevated hover:border-border-emphasis transition-colors"
+                >
+                  <span class="text-lg">⚔️</span>
+                  <div>
+                    <p class="text-sm font-medium text-text-primary">{card.name}</p>
+                    <p class="text-xs text-text-muted">{card.tagline}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </CollapsibleSection>
+        </section>
+      )}
+
+      <!-- Related Solutions -->
+      {relatedSolutions.length > 0 && (
+        <section id="related-solutions">
+          <CollapsibleSection title="Related Solutions" icon="🧩">
+            <div class="grid gap-3 sm:grid-cols-2">
+              {relatedSolutions.map((sol) => (
+                <a
+                  href={`/sas-battlecards/solutions/${sol.slug}/`}
+                  class="flex items-center gap-3 p-3 rounded-lg border border-border-default bg-bg-elevated hover:border-border-emphasis transition-colors"
+                >
+                  <span class="text-lg">🧩</span>
+                  <div>
+                    <p class="text-sm font-medium text-text-primary">{sol.name}</p>
+                    <p class="text-xs text-text-muted">{sol.elevatorPitch}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </CollapsibleSection>
+        </section>
+      )}
+
+      <!-- Industries -->
+      <section id="industries" class="pb-4">
+        <div class="flex items-center gap-2 text-xs text-text-muted">
+          <span class="font-medium">Industries:</span>
+          <div class="flex flex-wrap gap-1">
+            {regulation.industries.map((ind) => (
+              <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-bg-elevated text-text-muted border border-border-default">
+                {industryLabels[ind] ?? ind}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

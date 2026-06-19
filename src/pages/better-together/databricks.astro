@@ -1,0 +1,113 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import CollapsibleSection from '@components/battlecard/CollapsibleSection.astro';
+import CopyButton from '@components/ui/CopyButton.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const positioningStatement = "Databricks excels at large-scale data engineering and ML experimentation. SAS adds the production governance, real-time decisioning, and regulatory compliance layer that financial institutions require. Together, they deliver a complete data-to-decision platform: Databricks for the data lakehouse, SAS for the governed analytics and industry solutions.";
+---
+
+<BaseLayout title="Better Together — Databricks">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-6">
+    <Breadcrumb items={[
+      { label: 'Better Together', href: `${base}/better-together/` },
+      { label: 'Databricks' },
+    ]} />
+
+    <div class="flex items-center gap-3">
+      <span class="text-3xl">🧱</span>
+      <h1 class="text-2xl font-bold text-text-primary">SAS + Databricks</h1>
+    </div>
+
+    <CollapsibleSection title="Integration Story" icon="📖" defaultOpen={true}>
+      <p class="text-sm text-text-secondary leading-relaxed">
+        Databricks provides the data lakehouse foundation — Delta Lake for storage, Spark for processing, Unity Catalog for data governance. SAS Viya deploys on the same Kubernetes infrastructure and connects to Databricks-managed data through native connectors. The integration is bi-directional: data engineers prepare features in Databricks, data scientists build and validate models in SAS, and production scoring happens through SAS Intelligent Decisioning with Databricks as the feature store.
+      </p>
+      <p class="text-sm text-text-secondary leading-relaxed mt-3">
+        For Philippine banks facing BSP Circular 1213, this means Databricks handles the data pipeline (CDC from core banking, transaction enrichment) while SAS delivers the fraud management system with regulatory-compliant model governance and real-time scoring.
+      </p>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="Architecture" icon="🏗️" defaultOpen={true}>
+      <pre class="text-xs font-mono text-text-secondary bg-bg-base rounded-lg p-4 overflow-x-auto border border-border-default">
+┌─────────────────────────────────────────────────────────┐
+│                   KUBERNETES CLUSTER (AKS/EKS)          │
+├──────────────────────┬──────────────────────────────────┤
+│    DATABRICKS        │         SAS VIYA                 │
+│                      │                                  │
+│  ┌──────────────┐    │    ┌──────────────────┐         │
+│  │ Delta Lake   │◄───┼───►│ SAS Data Connectors│        │
+│  │ (Bronze/     │    │    └────────┬─────────┘         │
+│  │  Silver/Gold)│    │             │                    │
+│  └──────────────┘    │    ┌────────▼─────────┐         │
+│                      │    │  SAS Model Studio │         │
+│  ┌──────────────┐    │    │  (Build/Validate) │         │
+│  │ MLflow       │    │    └────────┬─────────┘         │
+│  │ (Experiment  │    │             │                    │
+│  │  Tracking)   │    │    ┌────────▼─────────┐         │
+│  └──────────────┘    │    │  SAS Model Manager│         │
+│                      │    │  (Govern/Monitor) │         │
+│  ┌──────────────┐    │    └────────┬─────────┘         │
+│  │ Unity Catalog│    │             │                    │
+│  │ (Data Gov)   │    │    ┌────────▼─────────┐         │
+│  └──────────────┘    │    │  SAS Intelligent  │         │
+│                      │    │  Decisioning      │         │
+│                      │    │  (Real-time Score)│         │
+│                      │    └──────────────────┘         │
+├──────────────────────┴──────────────────────────────────┤
+│          SHARED: Object Storage / Networking            │
+└─────────────────────────────────────────────────────────┘</pre>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="Partner When" icon="✅" defaultOpen={true}>
+      <ul class="space-y-2">
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-success shrink-0 mt-0.5">✓</span>
+          <span>Customer has >$500K/yr Databricks investment for data engineering</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-success shrink-0 mt-0.5">✓</span>
+          <span>Data engineering team is happy — gap is governance / production ML</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-success shrink-0 mt-0.5">✓</span>
+          <span>Budget is additive (not either/or)</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-success shrink-0 mt-0.5">✓</span>
+          <span>Regulatory pressure (BSP 1213, IFRS 17) creates need for SAS layer on top</span>
+        </li>
+      </ul>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="Compete When" icon="⚔️" defaultOpen={true}>
+      <ul class="space-y-2">
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-danger shrink-0 mt-0.5">✗</span>
+          <span>Customer evaluating Databricks for first time (greenfield)</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-danger shrink-0 mt-0.5">✗</span>
+          <span>Primary use case is analytics/ML (not data engineering)</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-danger shrink-0 mt-0.5">✗</span>
+          <span>Budget is either/or (displacement scenario)</span>
+        </li>
+        <li class="text-sm text-text-secondary flex items-start gap-2">
+          <span class="text-danger shrink-0 mt-0.5">✗</span>
+          <span>Databricks is pitching Unity Catalog as 'enough' for governance</span>
+        </li>
+      </ul>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="Positioning Statement" icon="💬" defaultOpen={true}>
+      <div class="flex items-start gap-3">
+        <p class="text-sm text-text-secondary leading-relaxed flex-1">{positioningStatement}</p>
+        <CopyButton text={positioningStatement} label="Copy" />
+      </div>
+    </CollapsibleSection>
+  </div>
+</BaseLayout>
