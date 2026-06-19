@@ -1,0 +1,57 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BattleCardHeader from '@components/battlecard/BattleCardHeader.astro';
+import type { BattleCard } from '@lib/types';
+
+interface Props {
+  card: BattleCard;
+}
+
+const { card } = Astro.props;
+
+const sections = [
+  { id: 'overview', label: 'Overview', icon: '📋' },
+  { id: 'where-we-win', label: 'Where SAS Wins', icon: '🏆' },
+  { id: 'where-they-win', label: 'Where They Win', icon: '⚡' },
+  { id: 'features', label: 'Feature Comparison', icon: '📊' },
+  { id: 'landmines', label: 'Landmine Questions', icon: '💣' },
+  { id: 'objections', label: 'Objection Handling', icon: '🛡️' },
+  { id: 'ph-context', label: 'PH Context', icon: '🇵🇭' },
+  { id: 'better-together', label: 'Better Together', icon: '🤝' },
+  { id: 'proof-points', label: 'Proof Points', icon: '✅' },
+];
+---
+
+<BaseLayout title={`${card.name} Battle Card`} description={card.tagline}>
+  <BattleCardHeader
+    name={card.name}
+    category={card.category}
+    threatLevel={card.threatLevel}
+    tagline={card.tagline}
+    lastUpdated={card.lastUpdated}
+  />
+
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-6">
+    <div class="flex gap-8">
+      <!-- Side TOC (desktop only) -->
+      <aside class="hidden lg:block w-48 shrink-0">
+        <nav class="sticky top-36 space-y-1" aria-label="Table of contents">
+          {sections.map((section) => (
+            <a
+              href={`#${section.id}`}
+              class="flex items-center gap-2 px-3 py-1.5 text-xs text-text-muted hover:text-text-primary hover:bg-bg-elevated rounded-md transition-colors"
+            >
+              <span aria-hidden="true">{section.icon}</span>
+              <span>{section.label}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      <!-- Main content -->
+      <div class="flex-1 min-w-0">
+        <slot />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

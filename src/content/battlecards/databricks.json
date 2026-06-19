@@ -1,0 +1,183 @@
+{
+  "slug": "databricks",
+  "name": "Databricks",
+  "category": "ml-platform",
+  "threatLevel": "high",
+  "priority": "P1",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on governance, industry solutions, and production-grade decisioning",
+  "overview": {
+    "whatTheyDo": "Unified data and AI platform built on Apache Spark. Combines data engineering (Delta Lake, ETL pipelines) with ML experimentation (MLflow, Mosaic AI) in a lakehouse architecture.",
+    "sweetSpot": "Data engineering teams wanting one platform for ETL + ML. Cloud-native, Python-first organizations with strong engineering cultures.",
+    "typicalBuyer": "CDO, Head of Data Engineering, VP Data Platform",
+    "phPresence": "No direct PH office (Singapore hub). Sold through Azure/AWS marketplaces and local resellers. Growing in PH tech companies but limited banking references.",
+    "recentMomentum": "Mosaic AI (GenAI), Unity Catalog open-sourced, Tabular (Iceberg) acquisition, pre-IPO at ~$60B valuation.",
+    "pricingModel": "Consumption-based (DBU per hour). Appears transparent but costs spike at scale. No bundled governance — each add-on increases cost."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Governed Model Lifecycle (BSP 1112 Compliant)",
+      "explanation": "SAS Model Manager provides end-to-end model governance with approval workflows, documentation generation, and regulatory audit trails — specifically designed for BSP Circular 1112 model risk management requirements. Databricks MLflow tracks experiments but lacks formal approval chains and regulatory documentation.",
+      "proofPoint": "9 of top 10 global banks use SAS for model governance."
+    },
+    {
+      "headline": "Real-Time Fraud Decisioning (AFASA Ready)",
+      "explanation": "SAS Intelligent Decisioning combines business rules + ML models + network analytics for real-time scoring in <10ms. Meets BSP Circular 1213 FMS requirements out-of-the-box. Databricks requires custom engineering for equivalent real-time decisioning.",
+      "proofPoint": "SAS processes billions of fraud transactions daily across 3,000+ financial institutions."
+    },
+    {
+      "headline": "Business User Self-Service (No Code)",
+      "explanation": "SAS Visual Analytics + Model Studio enable business analysts and citizen data scientists to build, validate, and deploy models without writing Python. Databricks AI/BI (Genie) is emerging but narrow compared to SAS's mature visual interfaces.",
+      "proofPoint": "60% of SAS Viya users are non-programmers who contribute to production analytics."
+    },
+    {
+      "headline": "Pre-Built Industry Solutions",
+      "explanation": "SAS delivers production-ready solutions for fraud, AML, risk, clinical trials, and supply chain — with domain expertise encoded from 50 years of industry engagement. Databricks is a horizontal toolkit where everything must be built from scratch.",
+      "proofPoint": "SAS Fraud Management deployed at 200+ financial institutions globally, with pre-built detection models for Philippine payment fraud patterns."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Data Engineering & Lakehouse",
+      "whyItMatters": "Spark-native processing, Delta Lake, Unity Catalog provide a strong foundation for data teams already using Databricks for ETL. Hard to dislodge once embedded.",
+      "howToNeutralize": "Position SAS as the 'last mile' — Databricks for data engineering, SAS for governed analytics and production decisioning. Better Together architecture."
+    },
+    {
+      "area": "Developer Experience (Python-first)",
+      "whyItMatters": "Notebook-driven, Git-integrated, Python/SQL-first experience appeals to modern data science teams. Young data scientists learn Databricks in bootcamps.",
+      "howToNeutralize": "SAS Viya supports Python and R natively. Show SAS Studio's modern interface. Emphasize that governance and production readiness matter more than notebook convenience."
+    },
+    {
+      "area": "GenAI / LLM Infrastructure",
+      "whyItMatters": "Mosaic AI, DBRX foundation models, model serving for LLMs — Databricks is investing heavily in GenAI infrastructure.",
+      "howToNeutralize": "SAS adds governance FOR GenAI — prompt monitoring, output quality gates, model cards for LLMs. Position: 'Build on Databricks, govern with SAS.'"
+    },
+    {
+      "area": "Ecosystem & Community",
+      "whyItMatters": "Large community, extensive integrations, partner ecosystem. Customers feel safe choosing a platform with broad adoption.",
+      "howToNeutralize": "SAS has 50 years of enterprise relationships. In regulated industries, proven track record > community size. Ask: 'Will your regulator accept a Databricks notebook as model documentation?'"
+    }
+  ],
+  "features": [
+    { "capability": "Model Governance & Lineage", "sas": "full", "competitor": "partial", "notes": "Databricks Unity Catalog improving but lacks BSP Circular 1112 depth" },
+    { "capability": "Champion/Challenger Testing", "sas": "full", "competitor": "partial", "notes": "Databricks has A/B via MLflow but lacks formal approval workflows and regulatory audit trails" },
+    { "capability": "Regulatory Compliance (Basel/IFRS9/BSP)", "sas": "full", "competitor": "none", "notes": "Purpose-built for regulated industries; BSP 1213 FMS-ready" },
+    { "capability": "Business User Self-Service (No Code)", "sas": "full", "competitor": "partial", "notes": "Databricks AI/BI (Genie) emerging but narrow vs. SAS VA + Model Studio" },
+    { "capability": "Real-Time Decisioning (Rules + ML)", "sas": "full", "competitor": "partial", "notes": "SAS Intelligent Decisioning vs. custom MLflow setup" },
+    { "capability": "Industry-Specific Solutions", "sas": "full", "competitor": "none", "notes": "Fraud, AML, risk, clinical, supply chain pre-built" },
+    { "capability": "Data Engineering / ETL", "sas": "partial", "competitor": "full", "notes": "Databricks Spark-native pipeline strength" },
+    { "capability": "Lakehouse Architecture", "sas": "partial", "competitor": "full", "notes": "Delta Lake + Iceberg is purpose-built" },
+    { "capability": "Python/SQL Notebook Experience", "sas": "partial", "competitor": "full", "notes": "Databricks excels at notebook collaboration" },
+    { "capability": "AutoML", "sas": "full", "competitor": "full", "notes": "Both strong; SAS adds governance layer to AutoML output" },
+    { "capability": "Explainability / Interpretability", "sas": "full", "competitor": "partial", "notes": "SAS has native interpretability across all algorithms" },
+    { "capability": "Multi-Cloud / On-Prem", "sas": "full", "competitor": "partial", "notes": "SAS runs anywhere; Databricks primarily cloud (limited on-prem emerging)" },
+    { "capability": "Text Analytics / NLP", "sas": "full", "competitor": "full", "notes": "Databricks has strong GenAI/LLM via Mosaic AI; SAS has purpose-built NLP for structured text" },
+    { "capability": "Optimization / Operations Research", "sas": "full", "competitor": "none", "notes": "SAS OR procedures are unmatched" },
+    { "capability": "Model Monitoring & Drift Detection", "sas": "full", "competitor": "partial", "notes": "Native in SAS Model Manager vs. MLflow add-ons" },
+    { "capability": "Production Deployment (API Scoring)", "sas": "full", "competitor": "full", "notes": "Both support REST API scoring" },
+    { "capability": "Time Series / Forecasting", "sas": "full", "competitor": "partial", "notes": "SAS has dedicated enterprise forecasting suite" },
+    { "capability": "Data Quality & Profiling", "sas": "full", "competitor": "partial", "notes": "SAS Data Quality embedded in pipeline" },
+    { "capability": "Generative AI / LLM Governance", "sas": "partial", "competitor": "full", "notes": "Databricks leads on GenAI infra; SAS adds governance layer for LLM outputs" }
+  ],
+  "landmines": [
+    {
+      "question": "How do you demonstrate model lineage and governance to BSP examiners during on-site examination?",
+      "expectedAnswer": "They struggle or say 'we use notebooks' — not acceptable for BSP",
+      "whatToSayNext": "SAS Model Manager auto-generates regulatory documentation. Let me show you what a BSP-ready model report looks like."
+    },
+    {
+      "question": "What's your process for promoting a model from development to production with formal approval workflows?",
+      "expectedAnswer": "If informal or engineering-driven — no regulated governance",
+      "whatToSayNext": "BSP Circular 1112 requires documented approval chains. SAS has built-in workflow with role-based approvals."
+    },
+    {
+      "question": "How do your business analysts participate in the analytics process today?",
+      "expectedAnswer": "They don't — it's all Python engineers",
+      "whatToSayNext": "That's common. SAS enables analysts to build and validate models visually, expanding your analytics capacity without hiring more engineers."
+    },
+    {
+      "question": "Can you show me your real-time fraud scoring architecture — what latency do you achieve?",
+      "expectedAnswer": "Batch or slow (>100ms) — not meeting BSP 1213 FMS requirements",
+      "whatToSayNext": "SAS scores in <10ms with network analytics. That's what BSP Circular 1213 requires for real-time behavioral monitoring."
+    },
+    {
+      "question": "What happens to your analytics if you need to move to a different cloud provider?",
+      "expectedAnswer": "Significant rework — Databricks notebooks have cloud dependencies",
+      "whatToSayNext": "SAS runs identically on AWS, Azure, GCP, or on-prem. Zero code changes between environments."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Databricks can do everything SAS does",
+      "whyTheySayIt": "Databricks sales positions as full platform. Customer hasn't tested governance depth.",
+      "response": "Databricks excels at data engineering and experimentation. But ask them to show: model approval workflows, regulatory audit trails, champion/challenger with automatic rollback, and real-time decisioning combining business rules with ML. These are native in SAS — they require custom engineering on Databricks.",
+      "proofPoints": ["9/10 top banks use SAS for governance", "BSP examiners specifically look for documented model lifecycle"],
+      "whatNotToSay": "Don't say 'Databricks is just for data engineering' — that's dismissive and inaccurate."
+    },
+    {
+      "objection": "SAS is legacy / old technology",
+      "whyTheySayIt": "Perception from SAS 9.4 era. Haven't seen Viya.",
+      "response": "SAS Viya runs on Kubernetes, supports Python/R natively, has modern REST APIs, and deploys on any cloud. The 50 years isn't baggage — it's 50 years of statistical algorithms and production hardening. Show them: Viya on AKS, Python code running in SAS Studio, the CI/CD pipeline.",
+      "proofPoints": ["Viya is cloud-native since 2020", "Runs on same K8s infrastructure as Databricks"],
+      "whatNotToSay": "Don't get defensive. Acknowledge SAS 9.4 was old. Pivot to Viya immediately."
+    },
+    {
+      "objection": "Databricks is cheaper",
+      "whyTheySayIt": "Lower sticker price per DBU. Customer hasn't done full TCO.",
+      "response": "Compare total cost: Databricks DBUs + cloud compute (spikes with auto-scaling) + hiring Spark engineers + building governance from scratch + building monitoring + compliance consulting. SAS includes governance, monitoring, industry solutions, and support. The delivered cost is often 30-40% lower than build-from-scratch.",
+      "proofPoints": ["Gartner TCO analysis favors integrated platforms for regulated workloads", "PH market: hard to hire Spark/MLflow engineers locally"],
+      "whatNotToSay": "Don't attack Databricks pricing directly — instead, broaden the comparison to TCO."
+    }
+  ],
+  "phContext": {
+    "localPresence": "No direct Philippines office. Nearest team is Singapore. Sold through Azure Marketplace and AWS Marketplace. Some local SI partners but no dedicated PH account team.",
+    "knownCustomers": ["Growing adoption in PH tech companies", "Some pilot activity in progressive banks via Azure deals"],
+    "localPricing": "Consumption-based DBUs — attractive for small workloads but unpredictable at scale. No PH-specific pricing. USD-denominated.",
+    "regulatoryGaps": [
+      "No native BSP Circular 1213 FMS compliance",
+      "No pre-built AFASA behavioral monitoring",
+      "Model documentation doesn't meet BSP 1112 examination format",
+      "No AML/CFT-specific solution — must build from scratch"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer has >$500K/yr Databricks investment for data engineering",
+      "Data engineering team is happy — gap is governance/production ML",
+      "Budget is additive (not either/or)",
+      "Regulatory pressure creates need for SAS Model Manager on top"
+    ],
+    "competeWhen": [
+      "Customer evaluating Databricks for first time",
+      "Primary use case is analytics/ML (not data engineering)",
+      "Budget is either/or",
+      "Databricks is pitching Unity Catalog as 'enough' for governance"
+    ],
+    "partnerLink": "/sas-battlecards/better-together/databricks/"
+  },
+  "proofPoints": [
+    {
+      "type": "customer-win",
+      "title": "9 of top 10 global banks",
+      "detail": "Use SAS for risk and compliance — validated governance meets regulatory requirements worldwide",
+      "source": "SAS corporate"
+    },
+    {
+      "type": "analyst",
+      "title": "Forrester Wave EFM APAC 2025",
+      "detail": "SAS named as Leader for Enterprise Fraud Management in Asia-Pacific alongside NICE Actimize and FICO"
+    },
+    {
+      "type": "benchmark",
+      "title": "Real-time scoring <10ms",
+      "detail": "SAS Fraud Management processes transactions in <10ms — meeting BSP Circular 1213 real-time requirements"
+    },
+    {
+      "type": "case-study",
+      "title": "National-scale fraud prevention",
+      "detail": "Multiple ASEAN governments use SAS for national fraud programs preventing billions in losses annually"
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "afasa", "bsp-1112", "amla"],
+  "relatedSolutions": ["fraud-management", "model-manager", "intelligent-decisioning", "visual-analytics"]
+}

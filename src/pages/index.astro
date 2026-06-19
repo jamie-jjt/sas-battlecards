@@ -1,0 +1,121 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CountdownTimer from '@components/ui/CountdownTimer.astro';
+import QuickAccessCard from '@components/cards/QuickAccessCard.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const quickAccessCards = [
+  { slug: 'databricks', name: 'Databricks', category: 'ml-platform', threatLevel: 'high' as const },
+  { slug: 'microsoft', name: 'Microsoft', category: 'cloud-data', threatLevel: 'high' as const },
+  { slug: 'fico', name: 'FICO', category: 'fraud-fincrime', threatLevel: 'high' as const },
+  { slug: 'nice-actimize', name: 'NICE Actimize', category: 'fraud-fincrime', threatLevel: 'high' as const },
+  { slug: 'powerbi', name: 'Power BI', category: 'bi-visualization', threatLevel: 'medium' as const },
+  { slug: 'opensource', name: 'Python/R Open Source', category: 'open-source', threatLevel: 'medium' as const },
+];
+---
+
+<BaseLayout title="Home">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+
+    <!-- Hero -->
+    <section class="flex flex-col items-center text-center gap-4">
+      <div class="flex items-center gap-3">
+        <svg class="h-10 w-10 text-sas-blue" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1 class="text-3xl font-bold text-text-primary">
+          SAS Battle Cards
+        </h1>
+      </div>
+      <p class="max-w-md text-text-secondary text-lg">
+        Philippine SE Intelligence Tool
+      </p>
+      <a
+        href={`${base}/wizard/`}
+        class="mt-2 inline-flex items-center gap-2 rounded-lg bg-sas-blue px-6 py-3 font-semibold text-white transition-colors hover:bg-sas-blue-hover focus-visible:ring-2 focus-visible:ring-sas-blue focus-visible:ring-offset-2 focus-visible:ring-offset-bg-base"
+      >
+        Quick Prep
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+    </section>
+
+    <!-- Search trigger -->
+    <section>
+      <button
+        type="button"
+        id="homepage-search"
+        class="w-full rounded-lg border border-border-default bg-bg-surface px-4 py-3 text-left text-text-muted transition-colors hover:border-border-emphasis hover:bg-bg-elevated cursor-pointer"
+        aria-label="Open search"
+        data-search-trigger
+      >
+        <span class="flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Search anything...
+          </span>
+          <kbd class="hidden sm:inline-flex items-center gap-1 rounded border border-border-default bg-bg-base px-2 py-0.5 text-xs font-mono text-text-muted">
+            ⌘K
+          </kbd>
+        </span>
+      </button>
+    </section>
+
+    <!-- Regulatory Countdown -->
+    <section>
+      <h2 class="sr-only">Regulatory Deadlines</h2>
+      <CountdownTimer
+        deadline="2026-06-30"
+        label="BSP Circular 1213 — Fraud Management System"
+      />
+    </section>
+
+    <!-- Quick Access Grid -->
+    <section>
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-semibold text-text-primary">Quick Access</h2>
+        <a href={`${base}/battlecards/`} class="text-sm text-text-link hover:underline">
+          View all →
+        </a>
+      </div>
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {quickAccessCards.map((card) => (
+          <QuickAccessCard
+            slug={card.slug}
+            name={card.name}
+            category={card.category}
+            threatLevel={card.threatLevel}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Architecture Summary -->
+    <section class="rounded-lg border border-border-default bg-bg-surface p-6">
+      <h2 class="text-lg font-semibold text-text-primary mb-4">What's Inside</h2>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="text-center">
+          <p class="text-2xl font-bold text-sas-blue">7</p>
+          <p class="text-sm text-text-muted">Battle Cards</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl font-bold text-sas-teal">22</p>
+          <p class="text-sm text-text-muted">Scoping Questions</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl font-bold text-cat-ml">5</p>
+          <p class="text-sm text-text-muted">Wizard Steps</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl font-bold text-success">1</p>
+          <p class="text-sm text-text-muted">Regulation Tracked</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

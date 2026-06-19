@@ -1,0 +1,176 @@
+{
+  "slug": "microsoft",
+  "name": "Microsoft Fabric / Azure ML",
+  "category": "cloud-data",
+  "threatLevel": "high",
+  "priority": "P1",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on analytical depth, multi-cloud independence, and real-time decisioning",
+  "overview": {
+    "whatTheyDo": "Unified analytics platform combining Azure ML, Synapse, Power BI, and Data Factory under the Fabric brand. Deeply integrated with Microsoft 365, Teams, and the broader Azure ecosystem. Positioned as 'already included' in Enterprise Agreements.",
+    "sweetSpot": "Organizations already deep in the Microsoft ecosystem (M365, Azure AD, Teams) looking to consolidate analytics under one vendor. CIOs wanting to reduce vendor count and leverage existing EA spend.",
+    "typicalBuyer": "CIO, CTO, VP of IT, Head of Enterprise Architecture",
+    "phPresence": "Strong direct presence — Microsoft Philippines office in Makati (BGC). Extensive local partner network (Accenture, Avanade, local SIs). Embedded in virtually every PH enterprise via M365/Azure AD. EA bundling means Fabric is 'already paid for' in many accounts.",
+    "recentMomentum": "Fabric GA (Nov 2023), Copilot AI across all products, aggressive Azure consumption credits, Power BI embedded in Teams. Microsoft is the most aggressive competitor in PH enterprise.",
+    "pricingModel": "Bundled with Enterprise Agreement — appears 'free' or 'already included.' Fabric capacity units (CU) consumption-based. Actual cost hidden in EA true-up. Power BI Pro included in E5, Premium per capacity."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Multi-Cloud Independence (No Lock-In)",
+      "explanation": "SAS Viya runs identically on Azure, AWS, GCP, or on-premises with zero code changes. Microsoft Fabric is Azure-only — choosing Fabric means choosing Azure forever. For PH banks with multi-cloud strategies or data sovereignty requirements, SAS provides deployment freedom.",
+      "proofPoint": "SAS Viya certified on all three hyperscalers plus on-prem Kubernetes. Multiple PH banks run hybrid cloud strategies."
+    },
+    {
+      "headline": "Analytical Depth (200+ Algorithms vs. Generic ML)",
+      "explanation": "SAS provides 200+ purpose-built statistical and ML algorithms with 50 years of refinement — including specialized fraud detection, time series, survival analysis, and optimization. Azure ML offers generic open-source wrappers (scikit-learn, PyTorch) without domain-specific statistical depth.",
+      "proofPoint": "SAS has 9,000+ statistical procedures purpose-built for regulated industries. Azure ML relies on open-source libraries."
+    },
+    {
+      "headline": "Real-Time Intelligent Decisioning",
+      "explanation": "SAS Intelligent Decisioning combines business rules + ML models + network analytics for sub-10ms scoring — meeting BSP Circular 1213 FMS requirements. Microsoft has no equivalent real-time decisioning engine that combines rules and ML in production.",
+      "proofPoint": "SAS processes billions of fraud decisions daily. Microsoft has no equivalent to SAS Intelligent Decisioning for real-time operational analytics."
+    },
+    {
+      "headline": "Regulatory-Grade Governance (BSP 1112 Compliant)",
+      "explanation": "SAS Model Manager provides complete model lifecycle governance with approval workflows, regulatory documentation generation, champion/challenger testing, and drift monitoring — designed specifically for BSP Circular 1112 model risk management. Azure ML's MLOps is engineering-focused, not regulator-focused.",
+      "proofPoint": "9 of top 10 global banks use SAS for model governance. BSP examiners recognize SAS documentation format."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "M365 Ecosystem Lock-In",
+      "whyItMatters": "Microsoft is already embedded in every PH enterprise. Azure AD, Teams, Outlook, SharePoint — users live in Microsoft. Adding Fabric/Azure ML feels like a natural extension, not a new vendor decision.",
+      "howToNeutralize": "Acknowledge the ecosystem strength. Position SAS as complementary — 'Microsoft for productivity, SAS for production analytics.' Show that SAS integrates with Azure (runs ON Azure) while maintaining independence."
+    },
+    {
+      "area": "EA Bundling ('Free' Perception)",
+      "whyItMatters": "Fabric/Power BI capacity often appears 'already paid for' in Enterprise Agreements. CFOs see zero incremental cost. This is the #1 objection in PH.",
+      "howToNeutralize": "Nothing is free — show hidden costs: Fabric CU overages, premium capacity charges, consultant costs to build what SAS provides out-of-box. Ask: 'If it's free, why do you still need a separate fraud system, a separate governance layer, separate statistical tools?'"
+    },
+    {
+      "area": "Power BI Ubiquity",
+      "whyItMatters": "Power BI is on every desktop in PH enterprise. Business users know it. It's the default reporting tool. Asking users to learn a new BI tool feels unnecessary.",
+      "howToNeutralize": "SAS Visual Analytics is not replacing Power BI for basic reporting. Position VA for advanced analytical exploration and governed self-service analytics. Power BI for dashboards, SAS for decisions."
+    },
+    {
+      "area": "CIO Relationship & Trust",
+      "whyItMatters": "Microsoft has dedicated PH account teams, regular executive briefings, and deep CIO relationships. They're a trusted strategic partner, not just a vendor.",
+      "howToNeutralize": "Don't compete at the CIO-trust level — that's a losing battle. Go to the business/analytics leader who knows their analytical needs aren't met by generic tools. Win at the use-case level (fraud, risk, compliance) where Microsoft is generic."
+    }
+  ],
+  "features": [
+    { "capability": "Multi-Cloud Deployment", "sas": "full", "competitor": "none", "notes": "SAS runs on any cloud/on-prem; Fabric is Azure-only" },
+    { "capability": "Statistical Algorithm Depth (200+)", "sas": "full", "competitor": "partial", "notes": "Azure ML wraps open-source; SAS has proprietary purpose-built algorithms" },
+    { "capability": "Real-Time Decisioning (Rules + ML)", "sas": "full", "competitor": "none", "notes": "No Microsoft equivalent to SAS Intelligent Decisioning" },
+    { "capability": "Model Governance & Regulatory Compliance", "sas": "full", "competitor": "partial", "notes": "Azure ML MLOps is engineering-focused, not BSP 1112-ready" },
+    { "capability": "Business User Self-Service (No Code)", "sas": "full", "competitor": "full", "notes": "Power BI strong for reporting; SAS VA adds analytics depth" },
+    { "capability": "Pre-Built Industry Solutions", "sas": "full", "competitor": "none", "notes": "SAS has fraud, AML, risk solutions; Microsoft provides generic platform" },
+    { "capability": "Data Integration / ETL", "sas": "full", "competitor": "full", "notes": "Both strong — Data Factory vs SAS Data Management" },
+    { "capability": "Enterprise BI / Dashboarding", "sas": "partial", "competitor": "full", "notes": "Power BI dominates BI; SAS VA is analytical exploration" },
+    { "capability": "GenAI / Copilot Integration", "sas": "partial", "competitor": "full", "notes": "Microsoft Copilot across all products; SAS adding GenAI governance" },
+    { "capability": "Collaboration (Teams/Notebook)", "sas": "partial", "competitor": "full", "notes": "Microsoft Teams integration unmatched; SAS Studio collaborative but different" },
+    { "capability": "Fraud Management (Enterprise)", "sas": "full", "competitor": "none", "notes": "Microsoft has no fraud solution — must partner or build custom" },
+    { "capability": "AML / Financial Crime", "sas": "full", "competitor": "none", "notes": "Microsoft has no AML solution; SAS is purpose-built" },
+    { "capability": "Time Series / Forecasting", "sas": "full", "competitor": "partial", "notes": "SAS dedicated forecasting suite vs. generic Azure ML AutoML" },
+    { "capability": "Optimization / Operations Research", "sas": "full", "competitor": "none", "notes": "SAS OR procedures; no Microsoft equivalent" },
+    { "capability": "Champion/Challenger Model Testing", "sas": "full", "competitor": "partial", "notes": "Native in SAS Model Manager; requires custom in Azure ML" },
+    { "capability": "Text Analytics / NLP", "sas": "full", "competitor": "full", "notes": "Both strong — Azure OpenAI + Cognitive Services vs SAS Text Analytics" },
+    { "capability": "Model Monitoring & Drift Detection", "sas": "full", "competitor": "partial", "notes": "SAS native monitoring; Azure ML monitoring improving but less mature" }
+  ],
+  "landmines": [
+    {
+      "question": "If your analytics platform is Azure-only, what happens when your board mandates a multi-cloud strategy for resilience?",
+      "expectedAnswer": "They acknowledge lock-in risk or say 'we're committed to Azure'",
+      "whatToSayNext": "SAS runs identically on any cloud. Several PH banks are adopting multi-cloud for business continuity — your analytics shouldn't be the blocker."
+    },
+    {
+      "question": "Can you show me the model governance documentation your BSP examiner would review during an on-site examination?",
+      "expectedAnswer": "They show Azure ML experiment tracking — not regulatory-grade documentation",
+      "whatToSayNext": "BSP Circular 1112 requires formal model documentation with approval chains. SAS auto-generates examination-ready reports. Let me show you the difference."
+    },
+    {
+      "question": "How do you combine business rules with ML models for real-time fraud scoring under 10ms?",
+      "expectedAnswer": "They describe batch scoring or don't have a real-time answer",
+      "whatToSayNext": "BSP Circular 1213 requires real-time behavioral monitoring. SAS Intelligent Decisioning does rules + ML + network analytics in <10ms. Microsoft has no equivalent."
+    },
+    {
+      "question": "What's the true consumption cost of Fabric when you run enterprise analytics workloads at scale?",
+      "expectedAnswer": "They struggle with specific numbers or say 'it's included in EA'",
+      "whatToSayNext": "Fabric CU overages can be 3-5x the expected cost at enterprise scale. Let's do a real TCO comparison including capacity units, premium features, and the custom development Microsoft requires."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "We already have Microsoft — Fabric is included in our EA",
+      "whyTheySayIt": "CFO/CIO sees zero incremental cost. Why buy another platform when 'it's already paid for'?",
+      "response": "Fabric gives you a data platform and basic ML — not production analytics for regulated industries. Ask yourself: if Fabric solved fraud, risk, and compliance, why do banks still need specialized tools? SAS provides what Fabric cannot: real-time decisioning, model governance for BSP, pre-built industry solutions. The 'free' platform still needs ₱50M+ in custom development to match what SAS delivers out-of-box.",
+      "proofPoints": ["PH banks with full Microsoft EA still choose SAS for fraud and risk", "Custom development on Azure costs 3-5x more than pre-built SAS solutions", "BSP examiners don't accept Azure ML notebooks as model documentation"],
+      "whatNotToSay": "Don't say 'Microsoft is bad' — acknowledge the ecosystem. Position SAS as the specialized analytics layer Microsoft doesn't provide."
+    },
+    {
+      "objection": "Microsoft has Copilot AI — SAS is behind on GenAI",
+      "whyTheySayIt": "Copilot hype cycle is massive. Every CIO is being pitched Copilot.",
+      "response": "Copilot is great for productivity (summarize emails, generate presentations). But regulated analytics needs more than a chatbot — it needs governed model deployment, explainable decisions, and audit trails. SAS is adding GenAI governance: monitoring LLM outputs, ensuring compliance of AI-generated decisions, model cards for generative models. Different problem, different solution.",
+      "proofPoints": ["BSP will require governance of GenAI outputs — SAS is building this", "Copilot cannot replace statistical modeling or real-time decisioning", "SAS supports Python GenAI libraries within governed pipelines"],
+      "whatNotToSay": "Don't dismiss Copilot — it's genuinely useful for productivity. Just clarify it doesn't solve analytical governance."
+    },
+    {
+      "objection": "All our data is already in Azure — why not keep analytics there too?",
+      "whyTheySayIt": "Data gravity argument — analytics should be near the data.",
+      "response": "SAS Viya runs natively ON Azure — same data center, same network, direct access to your Azure data lake. You get Azure data proximity PLUS multi-cloud portability, regulatory governance, and industry solutions. It's not Azure vs. SAS — it's Azure + SAS for production-grade analytics.",
+      "proofPoints": ["SAS Viya is certified on Azure AKS", "SAS connects natively to ADLS, Synapse, Azure SQL", "Multiple PH enterprises run SAS on Azure today"],
+      "whatNotToSay": "Don't argue against Azure — SAS runs on it. Position as complementary, not competitive at the infrastructure level."
+    }
+  ],
+  "phContext": {
+    "localPresence": "Microsoft Philippines has a large office in Makati (BGC). Dedicated enterprise sales teams, partner managers, and technical specialists. Regular executive briefings and customer events. Extensive local SI partner network (Accenture, Avanade, DXC, local partners).",
+    "knownCustomers": ["Virtually every PH enterprise uses M365", "Azure growing rapidly in PH banking and telco", "Power BI is the de facto BI standard across industries", "Fabric adoption still early but being pushed aggressively in EA renewals"],
+    "localPricing": "Bundled in Enterprise Agreements — perceived as zero incremental cost. Actual Fabric capacity units charged separately at scale. Power BI Pro in E5 license. Premium Per Capacity for enterprise deployments. PHP pricing available through local partners.",
+    "regulatoryGaps": [
+      "No purpose-built fraud management solution (must build or buy third-party)",
+      "No AML/CFT compliance solution for BSP Circular 1213",
+      "Model governance doesn't meet BSP Circular 1112 examination standards",
+      "No real-time decisioning engine for AFASA behavioral monitoring",
+      "Azure ML MLOps is engineering-focused, not regulator-focused"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer is deeply committed to Azure and M365 — not switching",
+      "Power BI is entrenched for reporting — SAS VA for advanced analytics",
+      "Data lake is in Azure — SAS runs on top of Azure data",
+      "Budget is additive — SAS for specialized use cases Microsoft can't cover"
+    ],
+    "competeWhen": [
+      "Customer evaluating Fabric as 'enough' for all analytics",
+      "Microsoft positioning Azure ML as replacement for SAS",
+      "Fraud, AML, or risk is the primary use case",
+      "Multi-cloud strategy is a board-level requirement"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "customer-win",
+      "title": "PH banks choose SAS despite full Microsoft EA",
+      "detail": "Multiple Philippine universal banks maintain SAS for fraud and risk analytics despite having complete Microsoft Enterprise Agreements — proving Microsoft doesn't cover regulated analytics.",
+      "source": "SAS Philippines"
+    },
+    {
+      "type": "analyst",
+      "title": "Gartner Magic Quadrant — Data Science & ML Platforms",
+      "detail": "SAS positioned as Leader in Gartner MQ for Data Science & Machine Learning Platforms, recognized for enterprise governance and production deployment capabilities."
+    },
+    {
+      "type": "benchmark",
+      "title": "SAS on Azure performance parity",
+      "detail": "SAS Viya on Azure AKS delivers identical performance to on-premises deployment — proving cloud independence without compromise."
+    },
+    {
+      "type": "case-study",
+      "title": "Global bank: Azure data lake + SAS analytics",
+      "detail": "Top-5 global bank runs data engineering on Azure (Synapse/ADLS) with SAS Viya for model governance and production scoring — proving 'better together' architecture works."
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "bsp-1112", "afasa", "amla"],
+  "relatedSolutions": ["viya", "intelligent-decisioning", "visual-analytics", "fraud-management"]
+}

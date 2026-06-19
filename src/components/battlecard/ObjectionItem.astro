@@ -1,0 +1,49 @@
+---
+interface Props {
+  objection: string;
+  whyTheySayIt: string;
+  response: string;
+  proofPoints: string[];
+  whatNotToSay?: string;
+}
+
+const { objection, whyTheySayIt, response, proofPoints, whatNotToSay } = Astro.props;
+---
+
+<div class="space-y-3">
+  <!-- Customer speech bubble -->
+  <div class="flex justify-start">
+    <div class="max-w-[85%] bg-bg-elevated border border-border-default rounded-lg rounded-bl-none px-4 py-3">
+      <p class="text-sm font-medium text-text-primary">"{objection}"</p>
+    </div>
+  </div>
+
+  <!-- Why they say it -->
+  <p class="text-xs text-text-muted italic pl-4">Why: {whyTheySayIt}</p>
+
+  <!-- Your response -->
+  <div class="flex justify-end">
+    <div class="max-w-[85%] border-l-4 border-sas-blue bg-bg-surface rounded-lg rounded-br-none px-4 py-3">
+      <p class="text-sm text-text-secondary leading-relaxed">{response}</p>
+      {proofPoints.length > 0 && (
+        <ul class="mt-2 space-y-1">
+          {proofPoints.map((point) => (
+            <li class="text-xs text-text-muted flex items-start gap-1.5">
+              <span class="text-success shrink-0">•</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+
+  <!-- What NOT to say -->
+  {whatNotToSay && (
+    <div class="border border-danger/30 bg-danger/5 rounded-lg px-4 py-2 ml-4">
+      <p class="text-xs text-danger">
+        <span class="font-semibold">⚠️ Don't say:</span> {whatNotToSay}
+      </p>
+    </div>
+  )}
+</div>

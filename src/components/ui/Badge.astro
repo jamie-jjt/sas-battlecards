@@ -1,0 +1,56 @@
+---
+import type { Category } from '@lib/types';
+
+interface Props {
+  variant: 'category' | 'threat' | 'status';
+  value: string;
+  category?: Category;
+}
+
+const { variant, value, category } = Astro.props;
+
+const categoryColorMap: Record<string, string> = {
+  'ml-platform': 'bg-cat-ml/15 text-cat-ml border-cat-ml/30',
+  'cloud-data': 'bg-cat-cloud/15 text-cat-cloud border-cat-cloud/30',
+  'fraud-fincrime': 'bg-cat-fraud/15 text-cat-fraud border-cat-fraud/30',
+  'grc-risk': 'bg-cat-grc/15 text-cat-grc border-cat-grc/30',
+  'bi-visualization': 'bg-cat-bi/15 text-cat-bi border-cat-bi/30',
+  'data-prep': 'bg-cat-prep/15 text-cat-prep border-cat-prep/30',
+  'open-source': 'bg-cat-oss/15 text-cat-oss border-cat-oss/30',
+};
+
+const threatColorMap: Record<string, string> = {
+  high: 'bg-danger/15 text-danger border-danger/30',
+  medium: 'bg-warning/15 text-warning border-warning/30',
+  low: 'bg-success/15 text-success border-success/30',
+};
+
+const statusColorMap: Record<string, string> = {
+  active: 'bg-success/15 text-success border-success/30',
+  stale: 'bg-warning/15 text-warning border-warning/30',
+  outdated: 'bg-danger/15 text-danger border-danger/30',
+};
+
+function getClasses(): string {
+  if (variant === 'category' && category) return categoryColorMap[category] ?? 'bg-bg-elevated text-text-secondary border-border-default';
+  if (variant === 'threat') return threatColorMap[value] ?? 'bg-bg-elevated text-text-secondary border-border-default';
+  if (variant === 'status') return statusColorMap[value] ?? 'bg-bg-elevated text-text-secondary border-border-default';
+  return 'bg-bg-elevated text-text-secondary border-border-default';
+}
+
+const categoryLabels: Record<string, string> = {
+  'ml-platform': 'ML/AI Platform',
+  'cloud-data': 'Cloud Data',
+  'fraud-fincrime': 'Fraud/FinCrime',
+  'grc-risk': 'GRC/Risk',
+  'bi-visualization': 'BI & Viz',
+  'data-prep': 'Data Prep',
+  'open-source': 'Open Source',
+};
+
+const displayValue = variant === 'category' && category ? (categoryLabels[category] ?? value) : value;
+---
+
+<span class:list={["inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border", getClasses()]}>
+  {displayValue}
+</span>

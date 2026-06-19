@@ -1,0 +1,174 @@
+{
+  "slug": "dataiku",
+  "name": "Dataiku",
+  "category": "ml-platform",
+  "threatLevel": "medium",
+  "priority": "P1",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on enterprise scale, regulatory depth, and production-grade governance",
+  "overview": {
+    "whatTheyDo": "Collaborative data science platform combining visual ML, code-based development, and MLOps in a single interface. Emphasizes 'Everyday AI' — democratizing data science across organizations with low-code/no-code capabilities alongside full Python/R support.",
+    "sweetSpot": "Mid-market to large enterprise organizations democratizing data science. Teams wanting to bridge the gap between business analysts and data scientists. Companies prioritizing collaboration over deep statistical rigor.",
+    "typicalBuyer": "Head of Data Science, CDO, VP Analytics, Director of AI/ML",
+    "phPresence": "No direct Philippines office — managed from Singapore hub. Some FSI pilot activity in PH through regional partnerships. Limited brand awareness compared to SAS or Microsoft in PH market.",
+    "recentMomentum": "LLM Mesh for GenAI governance, strong Series F funding ($200M+), growing APAC presence, Gartner MQ Leader positioning, active PH FSI conversations through SG team.",
+    "pricingModel": "Node-based licensing (per compute node). Enterprise edition pricing competitive vs. SAS for small-to-mid deployments. Costs scale with data volume and user count. Free Community Edition creates awareness."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Enterprise Scale & Performance (CAS Engine)",
+      "explanation": "SAS Cloud Analytic Services (CAS) provides distributed in-memory processing for massive datasets — billions of rows in seconds. Dataiku relies on external compute (Spark, Kubernetes) and lacks a native high-performance analytics engine for enterprise-scale workloads.",
+      "proofPoint": "SAS CAS processes 100B+ row datasets in production at global banks. Dataiku requires external Spark clusters for equivalent scale."
+    },
+    {
+      "headline": "Regulatory Governance Depth (BSP/IFRS9)",
+      "explanation": "SAS Model Manager delivers complete regulatory model lifecycle management — approval workflows, documentation generation, challenger testing, drift monitoring — designed for BSP Circular 1112 and Basel/IFRS9 compliance. Dataiku's governance is operational (tracking experiments) not regulatory (meeting examiner requirements).",
+      "proofPoint": "SAS model governance meets BSP, APRA, Fed SR 11-7, and ECB requirements. Dataiku has no regulatory-specific governance capabilities."
+    },
+    {
+      "headline": "Statistical Depth & Proven Algorithms",
+      "explanation": "SAS provides 200+ purpose-built statistical procedures with 50 years of peer-reviewed validation — survival analysis, mixed models, Bayesian methods, optimization. Dataiku wraps open-source libraries (scikit-learn, H2O) without proprietary statistical depth.",
+      "proofPoint": "SAS algorithms are FDA-validated for clinical trials — the gold standard for statistical rigor. Dataiku cannot match this validation level."
+    },
+    {
+      "headline": "Pre-Built Industry Solutions (Not Just a Platform)",
+      "explanation": "SAS delivers complete industry solutions — fraud management, AML, credit risk, clinical trials — not just a platform to build on. Dataiku is purely horizontal — every industry solution must be custom-built by the customer or partner.",
+      "proofPoint": "SAS Fraud Management is deployed at 200+ financial institutions with pre-built PH payment fraud detection models."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Modern UX & Onboarding Experience",
+      "whyItMatters": "Dataiku's interface is genuinely modern — clean, intuitive, well-designed. New users can start building flows within minutes. First impressions matter in competitive evaluations, and Dataiku demos well.",
+      "howToNeutralize": "Show SAS Viya's modern interface (not SAS 9.4). Demonstrate SAS Studio and Model Studio. Acknowledge UX is important but emphasize that production analytics needs more than pretty interfaces — it needs governance, scale, and regulatory compliance."
+    },
+    {
+      "area": "Collaborative Features (Team Data Science)",
+      "whyItMatters": "Dataiku excels at team collaboration — shared projects, commenting, visual flow building that non-coders can follow. Their 'Everyday AI' positioning resonates with companies wanting to scale data science beyond a small team.",
+      "howToNeutralize": "SAS Viya supports collaboration via shared environments, lineage tracking, and role-based access. Position: collaboration is important, but governed collaboration (audit trails, approval workflows, reproducibility) is what regulated industries actually need."
+    },
+    {
+      "area": "Competitive Price Point (Mid-Market)",
+      "whyItMatters": "For small-to-medium deployments (5-20 users), Dataiku's pricing is significantly lower than SAS. The Free Community Edition lowers the barrier to entry and creates internal champions.",
+      "howToNeutralize": "Compare total cost at scale — Dataiku pricing increases sharply with nodes. Include the cost of building governance, industry solutions, and regulatory compliance on Dataiku vs. getting them out-of-box with SAS. For BSP-regulated entities, the compliance cost alone justifies SAS."
+    },
+    {
+      "area": "Plugin Ecosystem & Extensibility",
+      "whyItMatters": "Dataiku's plugin marketplace allows easy extension — connect to any tool, add custom visualizations, integrate third-party models. Feels modern and open.",
+      "howToNeutralize": "SAS integrates with Python, R, and REST APIs. For regulated environments, a curated integration approach (validated, supported, documented) is better than a plugin marketplace with no governance over what's deployed in production."
+    }
+  ],
+  "features": [
+    { "capability": "Enterprise Scale (Billions of Rows)", "sas": "full", "competitor": "partial", "notes": "SAS CAS native engine; Dataiku relies on external Spark" },
+    { "capability": "Model Governance & Regulatory Compliance", "sas": "full", "competitor": "partial", "notes": "SAS purpose-built for BSP/Basel; Dataiku operational-only governance" },
+    { "capability": "Statistical Algorithm Depth", "sas": "full", "competitor": "partial", "notes": "SAS 200+ proprietary algorithms; Dataiku wraps open-source" },
+    { "capability": "Pre-Built Industry Solutions", "sas": "full", "competitor": "none", "notes": "SAS has fraud, AML, risk, clinical; Dataiku is horizontal-only" },
+    { "capability": "Visual/Low-Code ML Building", "sas": "full", "competitor": "full", "notes": "Both strong — Dataiku's visual flow is particularly polished" },
+    { "capability": "Python/R Integration", "sas": "full", "competitor": "full", "notes": "Both support Python/R natively" },
+    { "capability": "Collaborative Data Science", "sas": "partial", "competitor": "full", "notes": "Dataiku's collaboration features are best-in-class" },
+    { "capability": "Modern UX / First Impression", "sas": "partial", "competitor": "full", "notes": "Dataiku demos better; SAS Viya has improved but different audience" },
+    { "capability": "AutoML", "sas": "full", "competitor": "full", "notes": "Both have strong AutoML; SAS adds governance to AutoML outputs" },
+    { "capability": "Real-Time Decisioning", "sas": "full", "competitor": "partial", "notes": "SAS Intelligent Decisioning native; Dataiku requires custom API scoring" },
+    { "capability": "Model Monitoring & Drift", "sas": "full", "competitor": "full", "notes": "Both have model monitoring; SAS adds regulatory alerting" },
+    { "capability": "Time Series / Forecasting", "sas": "full", "competitor": "partial", "notes": "SAS dedicated forecasting suite vs. Dataiku generic time series" },
+    { "capability": "Optimization / OR", "sas": "full", "competitor": "none", "notes": "SAS has full optimization suite; Dataiku has none" },
+    { "capability": "Data Preparation & Quality", "sas": "full", "competitor": "full", "notes": "Both strong in data prep; different approaches" },
+    { "capability": "GenAI / LLM Integration", "sas": "partial", "competitor": "full", "notes": "Dataiku LLM Mesh is ahead; SAS adding GenAI governance" },
+    { "capability": "Explainability / Interpretability", "sas": "full", "competitor": "partial", "notes": "SAS native across all algorithms; Dataiku uses SHAP/LIME wrappers" }
+  ],
+  "landmines": [
+    {
+      "question": "How does your platform handle BSP Circular 1112 model documentation requirements for on-site examinations?",
+      "expectedAnswer": "They'll describe experiment tracking or generic documentation — not regulatory-grade output",
+      "whatToSayNext": "BSP examiners expect specific documentation format with approval chains, validation results, and monitoring evidence. SAS auto-generates this. Let me show you a sample BSP examination report."
+    },
+    {
+      "question": "What happens when your data grows from millions to billions of rows — does the platform scale without external infrastructure?",
+      "expectedAnswer": "They'll mention Spark integration or Kubernetes — admitting they need external compute",
+      "whatToSayNext": "SAS CAS is a native distributed engine — no external infrastructure needed. For PH banks processing millions of daily transactions, native scale matters."
+    },
+    {
+      "question": "Can you show me a pre-built fraud detection or AML solution — not a framework, but a production-ready solution?",
+      "expectedAnswer": "They can't — Dataiku is horizontal. They'll offer to 'help you build one'",
+      "whatToSayNext": "Building fraud detection from scratch takes 12-18 months and ₱30M+. SAS Fraud Management deploys in weeks with PH-specific detection patterns already built."
+    },
+    {
+      "question": "How do your business users who don't know Python participate in the model building process?",
+      "expectedAnswer": "Dataiku will show visual flow — which is genuinely good",
+      "whatToSayNext": "This is Dataiku's strength — acknowledge it. Then pivot: 'But can those same business users also access governed reporting, what-if scenarios, and decision optimization in the same platform? That's what SAS Visual Analytics adds.'"
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Dataiku's UX is so much better than SAS",
+      "whyTheySayIt": "First impression from a demo. Dataiku genuinely has a clean, modern interface. SAS 9.4 legacy perception lingers.",
+      "response": "Have you seen SAS Viya? It's a complete redesign — cloud-native, modern web interface, SAS Studio for development, Model Studio for visual ML. But here's the real question: are you buying a platform for demos or for production? In production, you need governance, scale, and regulatory compliance — and that's where SAS delivers and Dataiku falls short.",
+      "proofPoints": ["SAS Viya cloud-native interface since 2020", "Model Studio provides visual ML with enterprise governance", "SAS Studio supports modern collaborative development"],
+      "whatNotToSay": "Don't dismiss UX concerns — acknowledge Dataiku looks good. Then redirect to what matters in production."
+    },
+    {
+      "objection": "Dataiku is more cost-effective for our team size",
+      "whyTheySayIt": "True for small teams (5-10 users). Dataiku entry pricing is lower than SAS.",
+      "response": "For a 10-person data science team doing exploratory work, maybe. But what's the total cost when you add: regulatory governance (custom build), industry solutions (custom build), enterprise support (24/7 SLAs), production deployment infrastructure, and BSP compliance documentation? Those hidden costs typically make 'cheaper' platforms 2-3x more expensive in regulated environments.",
+      "proofPoints": ["TCO analysis shows SAS 30-40% lower for regulated workloads", "Custom governance development costs ₱10-20M for PH banks", "Dataiku has no pre-built regulatory compliance for BSP"],
+      "whatNotToSay": "Don't claim SAS is cheaper for every scenario — be honest that Dataiku wins on entry price for small teams."
+    },
+    {
+      "objection": "We want to democratize data science — Dataiku is better for that",
+      "whyTheySayIt": "Dataiku's 'Everyday AI' message resonates. Citizen data science is trendy.",
+      "response": "Democratization without governance is dangerous in regulated industries. SAS enables governed democratization — business users CAN participate in analytics through Visual Analytics and Model Studio, but within guardrails that ensure model quality, compliance, and reproducibility. Ungoverned citizen data science in banking is a BSP finding waiting to happen.",
+      "proofPoints": ["BSP Circular 1112 requires governance over all models including citizen-built", "SAS enables 'governed self-service' — democratization with guardrails", "60% of SAS users are non-programmers contributing to production analytics"],
+      "whatNotToSay": "Don't dismiss democratization — it's a valid goal. Position SAS as 'governed democratization' vs. Dataiku's ungoverned approach."
+    }
+  ],
+  "phContext": {
+    "localPresence": "No Philippines office. Managed from Singapore hub. Limited local partner network. Some direct engagement with progressive PH banks and telcos through regional team. Brand awareness lower than SAS, Microsoft, or even Databricks in PH.",
+    "knownCustomers": ["Some pilot activity in PH FSI sector", "Growing awareness among PH data science teams via community edition", "Several APAC banks using Dataiku (SG, AU) — could influence PH subsidiaries"],
+    "localPricing": "Node-based licensing, priced through SG office. No PH-specific pricing. Competitive for small deployments (5-10 users) but scales steeply. Free Community Edition used by some PH data scientists for personal projects.",
+    "regulatoryGaps": [
+      "No BSP Circular 1112 model governance capabilities",
+      "No pre-built regulatory compliance documentation",
+      "No industry solutions for fraud, AML, or credit risk",
+      "Governance is operational (MLOps) not regulatory (examination-ready)",
+      "No real-time decisioning for BSP 1213 FMS requirements"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer wants Dataiku for exploratory/collaborative data science AND SAS for production governance",
+      "Small data science team using Dataiku for experimentation — SAS for regulated production deployment",
+      "Budget allows both — Dataiku for citizen DS, SAS for enterprise analytics"
+    ],
+    "competeWhen": [
+      "Customer evaluating for enterprise-wide analytics platform (not just data science team)",
+      "Primary use cases are in regulated domains (fraud, risk, compliance)",
+      "Customer needs pre-built industry solutions, not a DIY platform",
+      "BSP governance requirements are driving the decision"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "Gartner MQ: Both Leaders, Different Strengths",
+      "detail": "Both SAS and Dataiku positioned as Leaders in Gartner MQ for Data Science & ML Platforms — SAS for governance and completeness, Dataiku for usability and collaboration."
+    },
+    {
+      "type": "customer-win",
+      "title": "Global bank chose SAS over Dataiku for regulated ML",
+      "detail": "Top-10 global bank evaluated both — chose SAS for production model governance and BSP-equivalent regulatory compliance. Dataiku remained for team experimentation.",
+      "source": "SAS corporate"
+    },
+    {
+      "type": "benchmark",
+      "title": "SAS CAS vs. Dataiku performance at scale",
+      "detail": "SAS CAS processes 10x larger datasets natively without external Spark infrastructure — critical for PH banks with growing transaction volumes."
+    },
+    {
+      "type": "case-study",
+      "title": "APAC bank: SAS for governance layer",
+      "detail": "Major APAC bank standardized on SAS for model governance while allowing data science teams to use multiple tools (including Dataiku) for exploration — SAS as the governance backbone."
+    }
+  ],
+  "relatedRegulations": ["bsp-1112", "bsp-1213", "afasa"],
+  "relatedSolutions": ["viya", "model-manager", "visual-analytics", "intelligent-decisioning"]
+}

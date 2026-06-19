@@ -1,0 +1,119 @@
+{
+  "industry": "banking",
+  "displayName": "Universal (All Industries)",
+  "phPriority": "high",
+  "keySasPlay": "SAS Viya Platform Modernization",
+  "primaryRegulation": "Multiple (industry-dependent)",
+  "questions": [
+    {
+      "id": "universal-001",
+      "question": "What does your analytics stack look like today — what tools are your data scientists using day-to-day?",
+      "intent": "Maps the competitive landscape. Identifies what to position against.",
+      "followUp": "Are they happy with those tools, or are there pain points?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["discovery", "landscape", "tools", "baseline"]
+    },
+    {
+      "id": "universal-002",
+      "question": "How many people on your team actually build models vs. consume insights from them?",
+      "intent": "Sizing question. Also reveals if business users need self-service tools.",
+      "followUp": "Do business users have any way to run analyses without the data team?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["sizing", "team-structure", "self-service"]
+    },
+    {
+      "id": "universal-003",
+      "question": "What's the biggest bottleneck in getting a model from development to production?",
+      "intent": "Universal pain point. Opens MLOps conversation regardless of industry.",
+      "followUp": "How long does that typically take — weeks or months?",
+      "mapsTo": "SAS Model Manager",
+      "maturity": ["L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["mlops", "deployment", "bottleneck", "production"]
+    },
+    {
+      "id": "universal-004",
+      "question": "Are you running on-premises, cloud, or hybrid — and is there a cloud migration strategy in play?",
+      "intent": "Deployment architecture question. SAS Viya runs anywhere — this is a strength.",
+      "followUp": "Which cloud provider are you standardizing on?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["infrastructure", "cloud", "deployment", "migration"]
+    },
+    {
+      "id": "universal-005",
+      "question": "How do you govern your models — is there a review process, performance monitoring, or bias detection?",
+      "intent": "Model governance is often missing. Opens responsible AI conversation.",
+      "followUp": "Who is accountable when a model underperforms or causes harm?",
+      "mapsTo": "SAS Model Manager",
+      "maturity": ["L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["governance", "responsible-ai", "monitoring", "bias"]
+    },
+    {
+      "id": "universal-006",
+      "question": "What's driving this analytics investment right now — a specific business problem, a regulation, or a strategic initiative?",
+      "intent": "Identifies the buying trigger. Helps position SAS to the real need.",
+      "followUp": "Is there a timeline or event driving urgency?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["discovery", "motivation", "trigger", "urgency"]
+    },
+    {
+      "id": "universal-007",
+      "question": "Do you have a data quality or data management practice — or are teams mostly managing their own data?",
+      "intent": "Bad data = bad models. Opens data management conversation.",
+      "followUp": "How much time does your team spend on data prep vs. actual modeling?",
+      "mapsTo": "SAS Data Management",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["data-quality", "data-management", "prep"]
+    },
+    {
+      "id": "universal-008",
+      "question": "If you had to explain to your board how a model-driven decision was made, could you do that today?",
+      "intent": "Explainability test. Particularly relevant for regulated industries but universal concern.",
+      "followUp": "Is that a current board-level concern or something on the horizon?",
+      "mapsTo": "SAS Model Manager",
+      "maturity": ["L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["explainability", "transparency", "board", "governance"]
+    },
+    {
+      "id": "universal-009",
+      "question": "What does success look like for this project — is there a specific KPI or outcome you're targeting?",
+      "intent": "Grounds the conversation in measurable outcomes. Helps build ROI story.",
+      "followUp": "How will you measure whether the investment paid off?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["kpi", "success-criteria", "roi", "outcomes"]
+    },
+    {
+      "id": "universal-010",
+      "question": "Who else is involved in this decision — procurement, IT security, the business unit requesting it?",
+      "intent": "Maps the buying committee. Essential for deal strategy.",
+      "followUp": "Would it be helpful to bring a more technical session for the IT team separately?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L1", "L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science", "cfo-coo", "ciso-cro", "head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking", "insurance", "telco", "government", "retail", "healthcare", "manufacturing", "energy"],
+      "tags": ["buying-committee", "stakeholders", "decision-process"]
+    }
+  ]
+}

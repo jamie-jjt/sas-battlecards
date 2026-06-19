@@ -1,0 +1,525 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Meeting Prep Wizard">
+  <div class="mx-auto max-w-3xl px-4 py-8">
+
+    <!-- Step Indicator -->
+    <nav aria-label="Wizard progress" class="mb-8">
+      <ol id="step-indicator" class="flex items-center justify-between gap-2 text-xs sm:text-sm">
+        <li data-step="1" class="flex flex-col items-center gap-1 text-sas-blue font-medium">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full border-2 border-sas-blue bg-sas-blue text-white text-xs font-bold">1</span>
+          <span class="hidden sm:block">Industry</span>
+        </li>
+        <li class="flex-1 h-0.5 bg-border-default" aria-hidden="true"></li>
+        <li data-step="2" class="flex flex-col items-center gap-1 text-text-muted">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full border-2 border-border-default text-xs font-bold">2</span>
+          <span class="hidden sm:block">Competitor</span>
+        </li>
+        <li class="flex-1 h-0.5 bg-border-default" aria-hidden="true"></li>
+        <li data-step="3" class="flex flex-col items-center gap-1 text-text-muted">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full border-2 border-border-default text-xs font-bold">3</span>
+          <span class="hidden sm:block">Use Case</span>
+        </li>
+        <li class="flex-1 h-0.5 bg-border-default" aria-hidden="true"></li>
+        <li data-step="4" class="flex flex-col items-center gap-1 text-text-muted">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full border-2 border-border-default text-xs font-bold">4</span>
+          <span class="hidden sm:block">Meeting</span>
+        </li>
+        <li class="flex-1 h-0.5 bg-border-default" aria-hidden="true"></li>
+        <li data-step="5" class="flex flex-col items-center gap-1 text-text-muted">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full border-2 border-border-default text-xs font-bold">5</span>
+          <span class="hidden sm:block">Maturity</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Wizard Content -->
+    <div id="wizard-content" class="min-h-[400px]">
+      <!-- Steps rendered by JS -->
+    </div>
+
+    <!-- Navigation -->
+    <div id="wizard-nav" class="mt-8 flex items-center justify-between">
+      <button id="btn-back" type="button" class="hidden rounded-lg border border-border-default bg-bg-surface px-5 py-2.5 text-sm font-medium text-text-primary transition-colors hover:bg-bg-elevated">
+        ← Back
+      </button>
+      <div></div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script define:vars={{ base }}>
+(function() {
+  // ============================================================
+  // STATE
+  // ============================================================
+  const state = {
+    step: 1,
+    industry: '',
+    competitors: [],
+    useCase: '',
+    meetingType: '',
+    maturity: ''
+  };
+
+  // ============================================================
+  // DATA
+  // ============================================================
+  const industries = [
+    { id: 'banking', label: 'Banking', emoji: '🏦' },
+    { id: 'insurance', label: 'Insurance', emoji: '🛡️' },
+    { id: 'telco', label: 'Telco', emoji: '📡' },
+    { id: 'government', label: 'Government', emoji: '🏛️' },
+    { id: 'healthcare', label: 'Healthcare', emoji: '🏥' },
+    { id: 'retail', label: 'Retail', emoji: '🛒' },
+    { id: 'manufacturing', label: 'Manufacturing', emoji: '🏭' },
+    { id: 'energy', label: 'Energy', emoji: '⚡' },
+  ];
+
+  const competitors = [
+    { id: 'databricks', label: 'Databricks' },
+    { id: 'microsoft', label: 'Microsoft' },
+    { id: 'dataiku', label: 'Dataiku' },
+    { id: 'fico', label: 'FICO' },
+    { id: 'nice-actimize', label: 'NICE Actimize' },
+    { id: 'powerbi', label: 'Power BI' },
+    { id: 'python-r', label: 'Python/R' },
+    { id: 'snowflake', label: 'Snowflake' },
+    { id: 'aws', label: 'AWS' },
+    { id: 'google', label: 'Google' },
+    { id: 'none', label: 'None / Unknown' },
+  ];
+
+  const useCases = [
+    { id: 'fraud-detection', label: 'Fraud Detection', emoji: '🚨' },
+    { id: 'aml', label: 'AML / Financial Crime', emoji: '🔍' },
+    { id: 'risk-modeling', label: 'Risk Modeling', emoji: '📊' },
+    { id: 'customer-analytics', label: 'Customer Analytics', emoji: '👥' },
+    { id: 'forecasting', label: 'Forecasting / Planning', emoji: '📈' },
+    { id: 'platform-modernization', label: 'Platform Modernization', emoji: '🔄' },
+    { id: 'genai-llm', label: 'GenAI / LLM', emoji: '🤖' },
+    { id: 'clinical-trials', label: 'Clinical Trials', emoji: '💊' },
+    { id: 'supply-chain', label: 'Supply Chain', emoji: '🚛' },
+    { id: 'general-ml', label: 'General ML', emoji: '🧠' },
+  ];
+
+  const meetingTypes = [
+    { id: 'discovery', label: 'Discovery', desc: 'First meeting — learn about them' },
+    { id: 'competitive-bakeoff', label: 'Competitive Bake-off / RFP', desc: 'Head-to-head comparison' },
+    { id: 'expansion', label: 'Customer Expansion', desc: 'Existing SAS customer, new use case' },
+    { id: 'technical-deepdive', label: 'Technical Deep Dive', desc: 'Architecture & integration focus' },
+    { id: 'executive-presentation', label: 'Executive Presentation', desc: 'CxO-level, strategic value' },
+    { id: 'poc-planning', label: 'POC Planning', desc: 'Scoping a proof of concept' },
+  ];
+
+  const maturityLevels = [
+    { id: 'L1', label: 'L1 Greenfield', desc: 'No analytics team, Excel/manual processes' },
+    { id: 'L2', label: 'L2 Emerging', desc: 'Small team, basic tools (Alteryx, notebooks)' },
+    { id: 'L3', label: 'L3 Intermediate', desc: 'Established function, models in production' },
+    { id: 'L4', label: 'L4 Advanced', desc: 'Full MLOps, multiple platforms, mature governance' },
+  ];
+
+  // Battle card slug to tagline mapping
+  const battleCardData = {
+    'databricks': { name: 'Databricks', tagline: 'SAS wins on governance, explainability, and regulated-industry depth.' },
+    'microsoft': { name: 'Microsoft', tagline: 'SAS wins on advanced analytics depth and model governance at scale.' },
+    'dataiku': { name: 'Dataiku', tagline: 'SAS wins on enterprise scalability, regulatory depth, and production hardening.' },
+    'fico': { name: 'FICO', tagline: 'SAS wins on ML flexibility, total platform breadth, and cost of ownership.' },
+    'nice-actimize': { name: 'NICE Actimize', tagline: 'SAS wins on analytics depth, false positive reduction, and platform openness.' },
+    'powerbi': { name: 'Power BI', tagline: 'SAS wins on advanced analytics, forecasting, and governed model deployment.' },
+    'opensource': { name: 'Python/R Open Source', tagline: 'SAS wins on production governance, enterprise support, and business user access.' },
+  };
+
+  // Scoping questions (merged banking + universal, filtered at output time)
+  const scopingQuestions = [
+    { q: "What does your current fraud detection look like — rules-based or machine learning?", tags: ["fraud","banking"], maturity: ["L1","L2"] },
+    { q: "Where are you in your BSP Circular 1213 compliance journey?", tags: ["regulation","banking"], maturity: ["L1","L2","L3"] },
+    { q: "How many data sources feed your current transaction monitoring?", tags: ["data-integration","banking"], maturity: ["L2","L3"] },
+    { q: "Do you have a formal model inventory — how many models are in production?", tags: ["model-governance"], maturity: ["L2","L3","L4"] },
+    { q: "What's your current false positive rate on fraud alerts?", tags: ["fraud","banking"], maturity: ["L2","L3"] },
+    { q: "Can your business users adjust detection rules without IT involvement?", tags: ["business-user"], maturity: ["L1","L2","L3"] },
+    { q: "What does your analytics stack look like today?", tags: ["discovery"], maturity: ["L1","L2","L3","L4"] },
+    { q: "What's the biggest bottleneck in getting a model from development to production?", tags: ["mlops"], maturity: ["L2","L3","L4"] },
+    { q: "Are you running on-premises, cloud, or hybrid?", tags: ["infrastructure"], maturity: ["L1","L2","L3","L4"] },
+    { q: "How do you govern your models — performance monitoring, bias detection?", tags: ["governance"], maturity: ["L2","L3","L4"] },
+    { q: "What's driving this analytics investment right now?", tags: ["discovery"], maturity: ["L1","L2","L3","L4"] },
+    { q: "If you had to explain to your board how a model decision was made, could you?", tags: ["explainability"], maturity: ["L2","L3","L4"] },
+    { q: "What does success look like for this project?", tags: ["kpi"], maturity: ["L1","L2","L3","L4"] },
+    { q: "Are you using network analytics to detect organized fraud rings?", tags: ["fraud","advanced"], maturity: ["L3","L4"] },
+    { q: "Are you evaluating GenAI or LLMs for any compliance use cases?", tags: ["genai"], maturity: ["L3","L4"] },
+  ];
+
+  // Meeting tips by type
+  const meetingTips = {
+    'discovery': [
+      "Listen 80% / talk 20% — this meeting is about learning.",
+      "Don't demo unless they ask. Focus on their pain, not your product.",
+      "End with: \"Based on what you've shared, here's what I'd recommend as a next step.\"",
+      "Map their org chart: who's the economic buyer vs. technical evaluator?",
+      "Ask about timelines and budget cycles early — saves wasted effort.",
+    ],
+    'competitive-bakeoff': [
+      "Lead with differentiators, not features. What can SAS do that they can't?",
+      "Prepare landmine questions from the relevant battle card.",
+      "Know the competitor's pricing model — be ready to reframe cost discussions.",
+      "Bring a proof point for every major claim.",
+      "Don't trash the competitor — acknowledge strengths, then pivot to gaps.",
+    ],
+    'expansion': [
+      "Reference their existing SAS investment — show you know their environment.",
+      "Position the new use case as low incremental risk: same platform, same governance.",
+      "Identify a champion in the business unit requesting the new capability.",
+      "Show how the new use case complements what they already have (data reuse, shared models).",
+    ],
+    'technical-deepdive': [
+      "Bring architecture diagrams. Show integration points with their existing stack.",
+      "Be prepared for tough questions on scalability, latency, and deployment options.",
+      "Know the deployment topology: Kubernetes, cloud provider, sizing.",
+      "Have a reference architecture ready for their industry vertical.",
+    ],
+    'executive-presentation': [
+      "Lead with business outcomes, not technology. Revenue, risk reduction, efficiency.",
+      "Keep it under 20 minutes. Executives value brevity.",
+      "One key message: \"SAS helps you [outcome] by [mechanism] with [proof].\"",
+      "Have one customer reference story that mirrors their situation.",
+      "End with a clear ask: next step, timeline, decision criteria.",
+    ],
+    'poc-planning': [
+      "Define success criteria BEFORE starting. What does a successful POC prove?",
+      "Scope tight: 4-6 weeks max. One use case, measurable outcome.",
+      "Identify data availability early — data access is the #1 POC blocker.",
+      "Agree on evaluation rubric: don't let them move goalposts mid-POC.",
+      "Plan the path from POC to production — avoid \"POC purgatory\".",
+    ],
+  };
+
+  // ============================================================
+  // DOM REFERENCES
+  // ============================================================
+  const content = document.getElementById('wizard-content');
+  const btnBack = document.getElementById('btn-back');
+  const stepIndicator = document.getElementById('step-indicator');
+
+  // ============================================================
+  // RENDER FUNCTIONS
+  // ============================================================
+  function renderStep() {
+    updateIndicator();
+    btnBack.classList.toggle('hidden', state.step === 1);
+
+    switch(state.step) {
+      case 1: renderIndustry(); break;
+      case 2: renderCompetitors(); break;
+      case 3: renderUseCase(); break;
+      case 4: renderMeetingType(); break;
+      case 5: renderMaturity(); break;
+      case 6: renderPrepSheet(); break;
+    }
+  }
+
+  function updateIndicator() {
+    const steps = stepIndicator.querySelectorAll('[data-step]');
+    steps.forEach(li => {
+      const s = parseInt(li.dataset.step);
+      const dot = li.querySelector('span:first-child');
+      if (s < state.step) {
+        li.className = 'flex flex-col items-center gap-1 text-success font-medium';
+        dot.className = 'flex h-7 w-7 items-center justify-center rounded-full border-2 border-success bg-success text-white text-xs font-bold';
+        dot.textContent = '✓';
+      } else if (s === state.step) {
+        li.className = 'flex flex-col items-center gap-1 text-sas-blue font-medium';
+        dot.className = 'flex h-7 w-7 items-center justify-center rounded-full border-2 border-sas-blue bg-sas-blue text-white text-xs font-bold';
+        dot.textContent = s;
+      } else {
+        li.className = 'flex flex-col items-center gap-1 text-text-muted';
+        dot.className = 'flex h-7 w-7 items-center justify-center rounded-full border-2 border-border-default text-xs font-bold';
+        dot.textContent = s;
+      }
+    });
+
+    // Hide indicator on prep sheet
+    stepIndicator.parentElement.classList.toggle('hidden', state.step === 6);
+  }
+
+  function makeGrid(items, onSelect, selected, multiSelect = false) {
+    const cols = items.length > 6 ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4' : 'grid-cols-2 sm:grid-cols-3';
+    let html = `<div class="grid ${cols} gap-3">`;
+    items.forEach(item => {
+      const isSelected = multiSelect
+        ? (selected || []).includes(item.id)
+        : selected === item.id;
+      const selectedClass = isSelected
+        ? 'border-sas-blue bg-sas-blue/10 text-sas-blue ring-1 ring-sas-blue'
+        : 'border-border-default bg-bg-surface text-text-primary hover:border-border-emphasis hover:bg-bg-elevated';
+      html += `
+        <button type="button" data-id="${item.id}" class="wizard-option rounded-lg border p-4 text-center transition-all duration-150 cursor-pointer ${selectedClass}">
+          ${item.emoji ? `<span class="text-2xl block mb-1">${item.emoji}</span>` : ''}
+          <span class="text-sm font-medium block">${item.label}</span>
+          ${item.desc ? `<span class="text-xs text-text-muted block mt-1">${item.desc}</span>` : ''}
+        </button>
+      `;
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function renderIndustry() {
+    content.innerHTML = `
+      <h2 class="text-xl font-bold text-text-primary mb-2">Select Industry</h2>
+      <p class="text-sm text-text-secondary mb-6">What sector is the customer in?</p>
+      ${makeGrid(industries, null, state.industry)}
+    `;
+    content.querySelectorAll('.wizard-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.industry = btn.dataset.id;
+        state.step = 2;
+        renderStep();
+      });
+    });
+  }
+
+  function renderCompetitors() {
+    content.innerHTML = `
+      <h2 class="text-xl font-bold text-text-primary mb-2">Competitor / Incumbent</h2>
+      <p class="text-sm text-text-secondary mb-6">What platforms are they using or evaluating? <span class="text-text-muted">(Select 1-3)</span></p>
+      ${makeGrid(competitors, null, state.competitors, true)}
+      <button id="btn-next-comp" type="button" class="mt-6 w-full rounded-lg bg-sas-blue px-5 py-3 font-semibold text-white transition-colors hover:bg-sas-blue-hover disabled:opacity-40 disabled:cursor-not-allowed" ${state.competitors.length === 0 ? 'disabled' : ''}>
+        Next →
+      </button>
+    `;
+    content.querySelectorAll('.wizard-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const idx = state.competitors.indexOf(id);
+        if (idx > -1) {
+          state.competitors.splice(idx, 1);
+        } else if (state.competitors.length < 3) {
+          state.competitors.push(id);
+        }
+        renderCompetitors();
+      });
+    });
+    const nextBtn = document.getElementById('btn-next-comp');
+    nextBtn.addEventListener('click', () => {
+      if (state.competitors.length > 0) {
+        state.step = 3;
+        renderStep();
+      }
+    });
+  }
+
+  function renderUseCase() {
+    content.innerHTML = `
+      <h2 class="text-xl font-bold text-text-primary mb-2">Primary Use Case</h2>
+      <p class="text-sm text-text-secondary mb-6">What are they trying to solve?</p>
+      ${makeGrid(useCases, null, state.useCase)}
+    `;
+    content.querySelectorAll('.wizard-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.useCase = btn.dataset.id;
+        state.step = 4;
+        renderStep();
+      });
+    });
+  }
+
+  function renderMeetingType() {
+    content.innerHTML = `
+      <h2 class="text-xl font-bold text-text-primary mb-2">Meeting Type</h2>
+      <p class="text-sm text-text-secondary mb-6">What kind of conversation is this?</p>
+      ${makeGrid(meetingTypes, null, state.meetingType)}
+    `;
+    content.querySelectorAll('.wizard-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.meetingType = btn.dataset.id;
+        state.step = 5;
+        renderStep();
+      });
+    });
+  }
+
+  function renderMaturity() {
+    content.innerHTML = `
+      <h2 class="text-xl font-bold text-text-primary mb-2">Customer Maturity</h2>
+      <p class="text-sm text-text-secondary mb-6">Where are they on the analytics journey?</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        ${maturityLevels.map(m => {
+          const isSelected = state.maturity === m.id;
+          const cls = isSelected
+            ? 'border-sas-blue bg-sas-blue/10 ring-1 ring-sas-blue'
+            : 'border-border-default bg-bg-surface hover:border-border-emphasis hover:bg-bg-elevated';
+          return `
+            <button type="button" data-id="${m.id}" class="wizard-option rounded-lg border p-5 text-left transition-all duration-150 cursor-pointer ${cls}">
+              <span class="text-sm font-bold text-text-primary block">${m.label}</span>
+              <span class="text-xs text-text-muted block mt-1">${m.desc}</span>
+            </button>
+          `;
+        }).join('')}
+      </div>
+    `;
+    content.querySelectorAll('.wizard-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.maturity = btn.dataset.id;
+        state.step = 6;
+        renderStep();
+      });
+    });
+  }
+
+  function renderPrepSheet() {
+    btnBack.classList.add('hidden');
+
+    // Filter scoping questions
+    const filteredQs = scopingQuestions.filter(q => q.maturity.includes(state.maturity)).slice(0, 6);
+
+    // Get relevant battle cards
+    const relevantCards = state.competitors
+      .map(c => {
+        // Map competitor wizard IDs to battle card slugs
+        const slugMap = { 'python-r': 'opensource', 'snowflake': null, 'aws': null, 'google': null, 'none': null };
+        const slug = slugMap[c] !== undefined ? slugMap[c] : c;
+        if (!slug || !battleCardData[slug]) return null;
+        return { slug, ...battleCardData[slug] };
+      })
+      .filter(Boolean);
+
+    // Get tips
+    const tips = meetingTips[state.meetingType] || meetingTips['discovery'];
+
+    // Positioning statement
+    const positioning = relevantCards.length > 0
+      ? relevantCards[0].tagline
+      : 'SAS delivers trusted analytics with enterprise governance, regulatory depth, and production scalability that open-source and cloud-native tools cannot match.';
+
+    content.innerHTML = `
+      <div class="space-y-6" id="prep-sheet">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-bold text-text-primary">Your Prep Sheet</h2>
+          <div class="flex items-center gap-2 no-print">
+            <button id="btn-copy" type="button" class="rounded-lg border border-border-default bg-bg-surface px-3 py-2 text-xs font-medium text-text-primary hover:bg-bg-elevated transition-colors">
+              📋 Copy All
+            </button>
+            <button id="btn-print" type="button" class="rounded-lg border border-border-default bg-bg-surface px-3 py-2 text-xs font-medium text-text-primary hover:bg-bg-elevated transition-colors">
+              🖨️ Print
+            </button>
+            <button id="btn-restart" type="button" class="rounded-lg border border-sas-blue bg-sas-blue/10 px-3 py-2 text-xs font-medium text-sas-blue hover:bg-sas-blue/20 transition-colors">
+              ↺ Start Over
+            </button>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="rounded-lg border border-border-default bg-bg-surface p-4">
+          <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">Meeting Context</h3>
+          <div class="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
+            <div>
+              <span class="text-text-muted block text-xs">Industry</span>
+              <span class="font-medium text-text-primary capitalize">${state.industry}</span>
+            </div>
+            <div>
+              <span class="text-text-muted block text-xs">Use Case</span>
+              <span class="font-medium text-text-primary">${useCases.find(u => u.id === state.useCase)?.label || state.useCase}</span>
+            </div>
+            <div>
+              <span class="text-text-muted block text-xs">Meeting Type</span>
+              <span class="font-medium text-text-primary">${meetingTypes.find(m => m.id === state.meetingType)?.label || state.meetingType}</span>
+            </div>
+            <div>
+              <span class="text-text-muted block text-xs">Maturity</span>
+              <span class="font-medium text-text-primary">${state.maturity}</span>
+            </div>
+            <div class="col-span-2">
+              <span class="text-text-muted block text-xs">Competitors</span>
+              <span class="font-medium text-text-primary">${state.competitors.map(c => competitors.find(x => x.id === c)?.label).join(', ')}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Positioning Statement -->
+        <div class="rounded-lg border border-sas-blue/30 bg-sas-blue/5 p-4">
+          <h3 class="text-sm font-semibold text-sas-blue uppercase tracking-wide mb-2">Positioning Statement</h3>
+          <p class="text-text-primary font-medium italic">"${positioning}"</p>
+        </div>
+
+        <!-- Recommended Battle Cards -->
+        ${relevantCards.length > 0 ? `
+        <div class="rounded-lg border border-border-default bg-bg-surface p-4">
+          <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">Recommended Battle Cards</h3>
+          <div class="space-y-2">
+            ${relevantCards.map(card => `
+              <a href="${base}/battlecards/${card.slug}/" class="flex items-center justify-between rounded-md border border-border-default p-3 hover:bg-bg-elevated transition-colors">
+                <span class="font-medium text-text-primary">${card.name}</span>
+                <span class="text-xs text-text-link">Open →</span>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+        ` : ''}
+
+        <!-- Scoping Questions -->
+        <div class="rounded-lg border border-border-default bg-bg-surface p-4">
+          <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">Scoping Questions</h3>
+          <ol class="space-y-3 list-decimal list-inside">
+            ${filteredQs.map(q => `
+              <li class="text-sm text-text-primary leading-relaxed">${q.q}</li>
+            `).join('')}
+          </ol>
+        </div>
+
+        <!-- Meeting Tips -->
+        <div class="rounded-lg border border-border-default bg-bg-surface p-4">
+          <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">Meeting Tips</h3>
+          <ul class="space-y-2">
+            ${tips.map(t => `
+              <li class="flex items-start gap-2 text-sm text-text-primary">
+                <span class="text-sas-teal mt-0.5">•</span>
+                <span>${t}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      </div>
+    `;
+
+    // Event listeners for prep sheet actions
+    document.getElementById('btn-print').addEventListener('click', () => window.print());
+    document.getElementById('btn-restart').addEventListener('click', () => {
+      state.step = 1;
+      state.industry = '';
+      state.competitors = [];
+      state.useCase = '';
+      state.meetingType = '';
+      state.maturity = '';
+      renderStep();
+    });
+    document.getElementById('btn-copy').addEventListener('click', () => {
+      const sheet = document.getElementById('prep-sheet');
+      const text = sheet.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('btn-copy');
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => { btn.textContent = '📋 Copy All'; }, 2000);
+      });
+    });
+  }
+
+  // ============================================================
+  // EVENT LISTENERS
+  // ============================================================
+  btnBack.addEventListener('click', () => {
+    if (state.step > 1) {
+      state.step--;
+      renderStep();
+    }
+  });
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  renderStep();
+})();
+</script>

@@ -1,0 +1,37 @@
+---
+import type { LandmineQuestion } from '@lib/types';
+import CopyButton from '@components/ui/CopyButton.astro';
+
+interface Props {
+  landmines: LandmineQuestion[];
+}
+
+const { landmines } = Astro.props;
+---
+
+<ol class="space-y-4 list-none p-0">
+  {landmines.map((lm, i) => (
+    <li class="border-l-4 border-danger pl-4 py-2">
+      <div class="flex items-start justify-between gap-2">
+        <p class="font-semibold text-text-primary text-sm">
+          <span class="text-danger font-bold mr-2">{i + 1}.</span>
+          {lm.question}
+        </p>
+        <CopyButton text={lm.question} label="Copy" />
+      </div>
+      <details class="mt-2 group">
+        <summary class="text-xs text-text-muted cursor-pointer hover:text-text-secondary transition-colors select-none">
+          Show expected answer & follow-up
+        </summary>
+        <div class="mt-2 space-y-2 pl-2 border-l border-border-muted">
+          <p class="text-xs text-text-secondary">
+            <span class="font-medium text-warning">Expected:</span> {lm.expectedAnswer}
+          </p>
+          <p class="text-xs text-text-secondary">
+            <span class="font-medium text-success">Say next:</span> {lm.whatToSayNext}
+          </p>
+        </div>
+      </details>
+    </li>
+  ))}
+</ol>

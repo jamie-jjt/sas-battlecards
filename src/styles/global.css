@@ -1,0 +1,202 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+@theme {
+  /* === BACKGROUNDS (dark theme) === */
+  --color-bg-base: #0d1117;
+  --color-bg-surface: #161b22;
+  --color-bg-elevated: #1c2128;
+  --color-bg-overlay: #21262d;
+
+  /* === BORDERS === */
+  --color-border-default: #30363d;
+  --color-border-muted: #21262d;
+  --color-border-emphasis: #484f58;
+
+  /* === TEXT === */
+  --color-text-primary: #e6edf3;
+  --color-text-secondary: #8b949e;
+  --color-text-muted: #656d76;
+  --color-text-link: #58a6ff;
+
+  /* === BRAND (SAS-verified) === */
+  --color-sas-blue: #0078D4;
+  --color-sas-blue-hover: #1a8adf;
+  --color-sas-teal: #00B4D8;
+  --color-sas-navy: #002A4E;
+
+  /* === SEMANTIC === */
+  --color-success: #3fb950;
+  --color-warning: #d29922;
+  --color-danger: #f85149;
+  --color-info: #58a6ff;
+
+  /* === THREAT LEVELS === */
+  --color-threat-high: #f85149;
+  --color-threat-medium: #d29922;
+  --color-threat-low: #3fb950;
+
+  /* === CATEGORY COLORS === */
+  --color-cat-ml: #bc8cff;
+  --color-cat-cloud: #58a6ff;
+  --color-cat-fraud: #f85149;
+  --color-cat-grc: #d29922;
+  --color-cat-bi: #3fb950;
+  --color-cat-prep: #79c0ff;
+  --color-cat-oss: #8b949e;
+
+  /* === LIGHT THEME OVERRIDES === */
+  --color-bg-base-light: #ffffff;
+  --color-bg-surface-light: #f6f8fa;
+  --color-text-primary-light: #1f2328;
+  --color-text-secondary-light: #656d76;
+  --color-border-default-light: #d0d7de;
+}
+
+/* === BASE STYLES === */
+html {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 200ms, color 200ms;
+}
+
+/* === LIGHT THEME === */
+[data-theme="light"] {
+  --color-bg-base: #ffffff;
+  --color-bg-surface: #f6f8fa;
+  --color-bg-elevated: #ffffff;
+  --color-bg-overlay: #f0f0f0;
+  --color-border-default: #d0d7de;
+  --color-border-muted: #e8e8e8;
+  --color-border-emphasis: #a0a0a0;
+  --color-text-primary: #1f2328;
+  --color-text-secondary: #656d76;
+  --color-text-muted: #8b949e;
+  --color-text-link: #0078D4;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === FOCUS STYLES === */
+:focus-visible {
+  outline: 2px solid var(--color-sas-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* === SCROLLBAR (dark theme) === */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-default);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-emphasis);
+}
+
+/* === SKIP LINK === */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: var(--color-sas-blue);
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 150ms ease-out;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* === PRINT STYLES === */
+@media print {
+  header, footer, nav, .no-print,
+  #search-modal, #theme-toggle, #mobile-nav,
+  [data-search-trigger], button[aria-label*="theme"],
+  .skip-link {
+    display: none !important;
+  }
+
+  html, body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  /* Remove borders and shadows */
+  * {
+    box-shadow: none !important;
+    border-color: #ccc !important;
+  }
+
+  /* Expand all collapsible sections */
+  details {
+    open: true;
+  }
+  details > summary {
+    display: none;
+  }
+  details > *:not(summary) {
+    display: block !important;
+  }
+
+  /* Page break management */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  .rounded-lg, .rounded-xl, [class*="card"] {
+    page-break-inside: avoid;
+  }
+
+  /* A4 page margins */
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+
+  /* Show URLs for links */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+}

@@ -1,0 +1,54 @@
+---
+interface Props {
+  deadline: string;
+  label: string;
+}
+
+const { deadline, label } = Astro.props;
+
+const deadlineDate = new Date(deadline);
+const now = new Date();
+const diffMs = deadlineDate.getTime() - now.getTime();
+const daysRemaining = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+
+// Color logic based on proximity
+let colorClass = 'text-text-muted border-border-default';
+let bgClass = 'bg-bg-surface';
+let dotClass = 'bg-text-muted';
+let urgency = 'muted';
+
+if (daysRemaining <= 30) {
+  colorClass = 'text-danger border-danger/40';
+  bgClass = 'bg-danger/10';
+  dotClass = 'bg-danger animate-pulse';
+  urgency = 'critical';
+} else if (daysRemaining <= 90) {
+  colorClass = 'text-warning border-warning/40';
+  bgClass = 'bg-warning/10';
+  dotClass = 'bg-warning';
+  urgency = 'warning';
+} else if (daysRemaining <= 180) {
+  colorClass = 'text-info border-info/40';
+  bgClass = 'bg-info/10';
+  dotClass = 'bg-info';
+  urgency = 'info';
+}
+---
+
+<div class={`rounded-lg border p-4 ${colorClass} ${bgClass}`}>
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class={`h-2.5 w-2.5 rounded-full ${dotClass}`}></span>
+      <div>
+        <p class="text-sm font-medium text-text-secondary">{label}</p>
+        <p class="text-2xl font-bold">
+          {daysRemaining} <span class="text-sm font-normal">days remaining</span>
+        </p>
+      </div>
+    </div>
+    <div class="text-right">
+      <p class="text-xs text-text-muted">Deadline</p>
+      <p class="text-sm font-medium">{deadlineDate.toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+    </div>
+  </div>
+</div>

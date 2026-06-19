@@ -1,0 +1,49 @@
+---
+import type { Category, ThreatLevel } from '@lib/types';
+import Badge from '@components/ui/Badge.astro';
+import ThreatBadge from '@components/ui/ThreatBadge.astro';
+
+interface Props {
+  name: string;
+  category: Category;
+  threatLevel: ThreatLevel;
+  tagline: string;
+  lastUpdated: string;
+}
+
+const { name, category, threatLevel, tagline, lastUpdated } = Astro.props;
+
+const updatedDate = new Date(lastUpdated);
+const now = new Date();
+const diffDays = Math.floor((now.getTime() - updatedDate.getTime()) / (1000 * 60 * 60 * 24));
+const isStale = diffDays > 90;
+
+const formattedDate = updatedDate.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<div class="sticky top-14 z-30 bg-bg-surface/95 backdrop-blur-sm border-b border-border-default py-4 px-4 md:px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-3 flex-wrap">
+          <h1 class="text-2xl font-bold text-text-primary">{name}</h1>
+          <Badge variant="category" value={category} category={category} />
+          <ThreatBadge level={threatLevel} />
+        </div>
+        <p class="mt-1 text-sm text-text-secondary">{tagline}</p>
+      </div>
+      <div class="flex items-center gap-2 text-xs text-text-muted shrink-0">
+        <span>Updated: {formattedDate}</span>
+        {isStale && (
+          <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-warning/15 text-warning border border-warning/30 text-xs">
+            ⚠️ {diffDays}d old
+          </span>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

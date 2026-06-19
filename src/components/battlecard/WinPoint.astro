@@ -1,0 +1,15 @@
+---
+interface Props {
+  headline: string;
+  explanation: string;
+  proofPoint: string;
+}
+
+const { headline, explanation, proofPoint } = Astro.props;
+---
+
+<div class="border-l-4 border-success pl-4 py-3 hover:translate-x-1 transition-transform duration-150">
+  <h4 class="font-semibold text-text-primary text-base">{headline}</h4>
+  <p class="mt-1 text-sm text-text-secondary leading-relaxed">{explanation}</p>
+  <p class="mt-2 text-xs text-text-muted italic">📊 {proofPoint}</p>
+</div>

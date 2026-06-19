@@ -1,0 +1,201 @@
+---
+import { getCollection } from 'astro:content';
+import BattleCardLayout from '@layouts/BattleCardLayout.astro';
+import CollapsibleSection from '@components/battlecard/CollapsibleSection.astro';
+import WinPoint from '@components/battlecard/WinPoint.astro';
+import ComparisonGrid from '@components/battlecard/ComparisonGrid.astro';
+import LandmineList from '@components/battlecard/LandmineList.astro';
+import ObjectionItem from '@components/battlecard/ObjectionItem.astro';
+import type { BattleCard } from '@lib/types';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('battlecards');
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { card: entry.data as BattleCard },
+  }));
+}
+
+interface Props {
+  card: BattleCard;
+}
+
+const { card } = Astro.props;
+---
+
+<BattleCardLayout card={card}>
+  <div class="space-y-6">
+    <!-- Overview -->
+    <section id="overview">
+      <CollapsibleSection title="Overview" icon="📋" defaultOpen={true}>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">What They Do</h4>
+            <p class="text-sm text-text-secondary">{card.overview.whatTheyDo}</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">Sweet Spot</h4>
+            <p class="text-sm text-text-secondary">{card.overview.sweetSpot}</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">Typical Buyer</h4>
+            <p class="text-sm text-text-secondary">{card.overview.typicalBuyer}</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">PH Presence</h4>
+            <p class="text-sm text-text-secondary">{card.overview.phPresence}</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">Recent Momentum</h4>
+            <p class="text-sm text-text-secondary">{card.overview.recentMomentum}</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">Pricing Model</h4>
+            <p class="text-sm text-text-secondary">{card.overview.pricingModel}</p>
+          </div>
+        </div>
+      </CollapsibleSection>
+    </section>
+
+    <!-- Where SAS Wins -->
+    <section id="where-we-win">
+      <CollapsibleSection title="Where SAS Wins" icon="🏆" defaultOpen={true}>
+        <div class="space-y-4">
+          {card.whereWeWin.map((point) => (
+            <WinPoint headline={point.headline} explanation={point.explanation} proofPoint={point.proofPoint} />
+          ))}
+        </div>
+      </CollapsibleSection>
+    </section>
+
+    <!-- Where They Win -->
+    <section id="where-they-win">
+      <CollapsibleSection title="Where They Win" icon="⚡">
+        <div class="space-y-4">
+          {card.whereTheyWin.map((strength) => (
+            <div class="border-l-4 border-warning pl-4 py-3">
+              <h4 class="font-semibold text-text-primary text-base">{strength.area}</h4>
+              <p class="mt-1 text-sm text-text-secondary">{strength.whyItMatters}</p>
+              <p class="mt-2 text-xs text-sas-blue">
+                <span class="font-medium">Neutralize:</span> {strength.howToNeutralize}
+              </p>
+            </div>
+          ))}
+        </div>
+      </CollapsibleSection>
+    </section>
+
+    <!-- Feature Comparison -->
+    <section id="features">
+      <CollapsibleSection title="Feature Comparison" icon="📊">
+        <ComparisonGrid competitorName={card.name} features={card.features} />
+      </CollapsibleSection>
+    </section>
+
+    <!-- Landmine Questions -->
+    <section id="landmines">
+      <CollapsibleSection title="Landmine Questions" icon="💣">
+        <LandmineList landmines={card.landmines} />
+      </CollapsibleSection>
+    </section>
+
+    <!-- Objection Handling -->
+    <section id="objections">
+      <CollapsibleSection title="Objection Handling" icon="🛡️">
+        <div class="space-y-8">
+          {card.objections.map((obj) => (
+            <ObjectionItem
+              objection={obj.objection}
+              whyTheySayIt={obj.whyTheySayIt}
+              response={obj.response}
+              proofPoints={obj.proofPoints}
+              whatNotToSay={obj.whatNotToSay}
+            />
+          ))}
+        </div>
+      </CollapsibleSection>
+    </section>
+
+    <!-- PH Context -->
+    <section id="ph-context">
+      <CollapsibleSection title="Philippine Context" icon="🇵🇭">
+        <div class="space-y-4">
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">Local Presence</h4>
+            <p class="text-sm text-text-secondary">{card.phContext.localPresence}</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">Known Customers</h4>
+            <ul class="list-disc pl-4 space-y-0.5">
+              {card.phContext.knownCustomers.map((c) => (
+                <li class="text-sm text-text-secondary">{c}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">Local Pricing</h4>
+            <p class="text-sm text-text-secondary">{card.phContext.localPricing}</p>
+          </div>
+          <div>
+            <h4 class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">Regulatory Gaps</h4>
+            <ul class="list-disc pl-4 space-y-0.5">
+              {card.phContext.regulatoryGaps.map((gap) => (
+                <li class="text-sm text-danger/80">{gap}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </CollapsibleSection>
+    </section>
+
+    <!-- Better Together -->
+    <section id="better-together">
+      <CollapsibleSection title="Better Together Decision" icon="🤝">
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="bg-success/5 border border-success/20 rounded-lg p-4">
+            <h4 class="text-sm font-semibold text-success mb-2">Partner When</h4>
+            <ul class="space-y-1.5">
+              {card.betterTogetherDecision.partnerWhen.map((condition) => (
+                <li class="text-xs text-text-secondary flex items-start gap-1.5">
+                  <span class="text-success shrink-0">✓</span>
+                  <span>{condition}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-danger/5 border border-danger/20 rounded-lg p-4">
+            <h4 class="text-sm font-semibold text-danger mb-2">Compete When</h4>
+            <ul class="space-y-1.5">
+              {card.betterTogetherDecision.competeWhen.map((condition) => (
+                <li class="text-xs text-text-secondary flex items-start gap-1.5">
+                  <span class="text-danger shrink-0">⚔</span>
+                  <span>{condition}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </CollapsibleSection>
+    </section>
+
+    <!-- Proof Points -->
+    <section id="proof-points">
+      <CollapsibleSection title="Proof Points" icon="✅">
+        <div class="grid gap-3 md:grid-cols-2">
+          {card.proofPoints.map((proof) => (
+            <div class="bg-bg-elevated border border-border-default rounded-lg p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs px-1.5 py-0.5 rounded bg-sas-blue/15 text-sas-blue font-medium">{proof.type}</span>
+              </div>
+              <h4 class="text-sm font-semibold text-text-primary">{proof.title}</h4>
+              <p class="mt-1 text-xs text-text-secondary">{proof.detail}</p>
+              {proof.source && (
+                <p class="mt-1 text-xs text-text-muted">Source: {proof.source}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </CollapsibleSection>
+    </section>
+  </div>
+</BattleCardLayout>

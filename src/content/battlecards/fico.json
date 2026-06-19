@@ -1,0 +1,180 @@
+{
+  "slug": "fico",
+  "name": "FICO (Falcon)",
+  "category": "fraud-fincrime",
+  "threatLevel": "high",
+  "priority": "P1",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on analytics platform breadth, network analytics, and model governance",
+  "overview": {
+    "whatTheyDo": "FICO provides payment fraud scoring (Falcon), credit decisioning (Originations), and decision management (FICO Platform). Falcon is the world's most widely deployed payment fraud scoring system, processing billions of card transactions globally. FICO also owns the FICO Score brand used universally in credit decisioning.",
+    "sweetSpot": "Payment card fraud detection at scale. Banks needing proven, battle-tested fraud scoring with consortium model benefits. Credit decisioning and originations. Organizations that want 'set-and-forget' fraud detection without building in-house ML.",
+    "typicalBuyer": "Head of Fraud Operations, CISO, Head of Cards/Payments, VP Risk Management, Head of Credit",
+    "phPresence": "Strong indirect presence via Singapore hub. Direct relationships with top 3 PH banks (BDO, BPI, Metrobank) for Falcon payment fraud. FICO Scores embedded in TransUnion Philippines (CIBI) credit bureau. Deep-rooted in PH banking card payments infrastructure.",
+    "recentMomentum": "FICO Platform modernization (cloud-native), Falcon 6.0 AI upgrade, real-time payment scoring expansion beyond cards, partnership with Deep Instinct for AI, growing focus on digital banking fraud.",
+    "pricingModel": "Per-transaction scoring (Falcon) — cost increases with volume. Enterprise licensing for Platform/Originations. Consortium model premium for shared intelligence. High switching costs due to integration depth. USD-denominated with volume-based tiers."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Full Analytics Platform (Not Just Fraud)",
+      "explanation": "SAS provides fraud detection AND enterprise analytics, risk management, forecasting, optimization, and BI on one platform. FICO is narrowly focused on fraud scoring and credit decisions — customers still need SAS, Python, or Tableau for everything else. SAS eliminates the need for multiple point solutions.",
+      "proofPoint": "PH banks using FICO Falcon still need 2-3 additional platforms for risk, analytics, and reporting. SAS consolidates all on one platform."
+    },
+    {
+      "headline": "Network/Graph Analytics for Fraud Rings",
+      "explanation": "SAS Visual Investigator and network analytics detect connected fraud rings across accounts, channels, and entities — something Falcon's per-transaction scoring architecture cannot do. Organized fraud (syndicates, collusion) is the fastest-growing threat in PH, and individual transaction scoring misses it.",
+      "proofPoint": "SAS network analytics identified fraud rings involving 50+ connected accounts at APAC banks — patterns invisible to per-transaction scoring systems like Falcon."
+    },
+    {
+      "headline": "Self-Service Model Building (Not Just FICO-Built Models)",
+      "explanation": "SAS enables your data scientists to build, validate, and deploy custom fraud models — not just use FICO's pre-built models. As PH fraud patterns evolve (GCash, Maya, InstaPay-specific fraud), you need the ability to rapidly build custom detection without waiting for FICO's model update cycle.",
+      "proofPoint": "PH digital payment fraud (GCash, Maya) requires local models. SAS enables PH banks to build custom detection models in days, not wait months for FICO updates."
+    },
+    {
+      "headline": "Governed Model Lifecycle (Not Black-Box)",
+      "explanation": "SAS Model Manager provides full transparency — model documentation, validation evidence, approval workflows, drift monitoring. FICO Falcon models are largely opaque (FICO-built, FICO-updated). BSP Circular 1112 requires banks to understand and document their models — difficult with FICO's black-box approach.",
+      "proofPoint": "BSP Circular 1112 requires model documentation and validation. FICO's consortium models are difficult to document per BSP requirements — banks can't explain what they don't build."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Incumbent at BDO/BPI/Metrobank — Switching Cost is Enormous",
+      "whyItMatters": "FICO Falcon is deeply integrated into PH top-tier bank card processing systems. Ripping out Falcon means re-integrating with payment switches, re-certifying with Visa/Mastercard, retraining fraud operations teams, and risking detection gaps during transition. This is a 12-24 month project with massive risk.",
+      "howToNeutralize": "DO NOT propose rip-and-replace of Falcon at BDO/BPI/Metrobank unless customer is genuinely in a replacement cycle. Instead: position SAS for NEW channels (real-time payments, digital wallets, InstaPay) where Falcon isn't deployed. Win new territory, don't fight entrenched battles."
+    },
+    {
+      "area": "FICO Score Brand Recognition",
+      "whyItMatters": "FICO Score is synonymous with credit scoring globally. The brand carries enormous weight with credit risk officers and regulators. 'FICO' = trust in credit decisioning.",
+      "howToNeutralize": "SAS is not competing on credit scoring — we're competing on fraud analytics, risk management, and enterprise analytics. FICO Score is a narrow product (credit bureau score). SAS provides the platform to BUILD credit models, risk models, and fraud models. Different positioning entirely."
+    },
+    {
+      "area": "Deep Payment Fraud Domain Expertise",
+      "whyItMatters": "Falcon has 30+ years of payment fraud expertise with consortium models trained on billions of global transactions. Their domain knowledge in card fraud is unmatched. Payment fraud operations teams trust Falcon's scoring.",
+      "howToNeutralize": "Acknowledge Falcon's card fraud strength. Position SAS for: (1) non-card channels where Falcon is weak (digital payments, real-time transfers), (2) advanced analytics beyond scoring (investigation, network analysis, reporting), (3) the analytical platform that sits ABOVE Falcon for enterprise-wide fraud strategy."
+    },
+    {
+      "area": "Consortium Model (Shared Data Improves Detection)",
+      "whyItMatters": "FICO's consortium model learns from fraud patterns across all participating banks globally — giving detection benefits no single bank could achieve alone. This is genuinely powerful for common card fraud patterns.",
+      "howToNeutralize": "Consortium works for COMMON fraud patterns (card skimming, CNP fraud). But PH-SPECIFIC fraud (GCash scams, InstaPay social engineering, authorized push payment fraud) isn't in FICO's consortium. SAS lets you build LOCAL models for LOCAL patterns — faster than waiting for FICO's global model update."
+    }
+  ],
+  "features": [
+    { "capability": "Payment Card Fraud Scoring", "sas": "full", "competitor": "full", "notes": "FICO Falcon is gold standard for cards; SAS equally capable but less entrenched" },
+    { "capability": "Real-Time Payment Fraud (InstaPay/PESONet)", "sas": "full", "competitor": "partial", "notes": "SAS purpose-built for real-time payments; Falcon expanding beyond cards" },
+    { "capability": "Network/Graph Analytics (Fraud Rings)", "sas": "full", "competitor": "none", "notes": "SAS Visual Investigator native; FICO is per-transaction only" },
+    { "capability": "Custom Model Building", "sas": "full", "competitor": "partial", "notes": "SAS full self-service ML; FICO primarily vendor-built models" },
+    { "capability": "Enterprise Analytics Platform", "sas": "full", "competitor": "none", "notes": "SAS is full platform; FICO is fraud/credit point solutions" },
+    { "capability": "Model Governance (BSP 1112)", "sas": "full", "competitor": "partial", "notes": "SAS transparent governance; FICO black-box consortium models" },
+    { "capability": "Credit Scoring / Originations", "sas": "full", "competitor": "full", "notes": "Both strong; FICO Score brand is unique advantage" },
+    { "capability": "AML / Transaction Monitoring", "sas": "full", "competitor": "none", "notes": "SAS full AML suite; FICO doesn't do AML" },
+    { "capability": "Digital Wallet Fraud (GCash/Maya)", "sas": "full", "competitor": "partial", "notes": "SAS flexible for new channels; Falcon still card-centric" },
+    { "capability": "Consortium Model (Shared Learning)", "sas": "partial", "competitor": "full", "notes": "FICO's global consortium is unique; SAS supports but doesn't match scale" },
+    { "capability": "Investigation & Case Management", "sas": "full", "competitor": "partial", "notes": "SAS Visual Investigator; FICO limited investigation tools" },
+    { "capability": "Decision Management (Rules + ML)", "sas": "full", "competitor": "full", "notes": "Both strong; SAS Intelligent Decisioning vs FICO Platform" },
+    { "capability": "Risk Management (Credit/Market/Op)", "sas": "full", "competitor": "partial", "notes": "SAS full risk suite; FICO only credit risk" },
+    { "capability": "Reporting & BI", "sas": "full", "competitor": "partial", "notes": "SAS Visual Analytics; FICO basic operational reporting" },
+    { "capability": "Time Series / Forecasting", "sas": "full", "competitor": "none", "notes": "SAS dedicated forecasting; FICO has no equivalent" }
+  ],
+  "landmines": [
+    {
+      "question": "How do you detect organized fraud rings that span multiple accounts and channels — not just individual transaction anomalies?",
+      "expectedAnswer": "FICO scores individual transactions — limited ability to connect entities across accounts for ring detection",
+      "whatToSayNext": "SAS network analytics maps connections between accounts, devices, locations, and beneficiaries — identifying fraud syndicates that individual transaction scoring misses. This is the fastest-growing threat in PH."
+    },
+    {
+      "question": "For your digital channels (GCash transfers, InstaPay, online banking) — are those covered by the same fraud system as your cards?",
+      "expectedAnswer": "Often 'no' — Falcon covers cards, digital channels may be separate or unprotected",
+      "whatToSayNext": "SAS provides unified fraud detection across ALL channels — cards, digital wallets, real-time payments, online banking — in one platform. No gaps between channels that fraudsters can exploit."
+    },
+    {
+      "question": "Can your data scientists build and validate custom fraud models, or do you rely entirely on vendor-provided models?",
+      "expectedAnswer": "Primarily FICO-built models with limited customization",
+      "whatToSayNext": "PH fraud patterns are unique — GCash scams, love scams, authorized push payment fraud. You need the ability to build LOCAL models FAST. SAS gives your team full model building capabilities alongside pre-built detection."
+    },
+    {
+      "question": "When BSP examines your fraud models under Circular 1112 — can you provide complete model documentation including validation evidence and approval chains?",
+      "expectedAnswer": "Difficult with consortium/black-box models — banks can't fully document what they didn't build",
+      "whatToSayNext": "BSP Circular 1112 requires you to understand, document, and validate ALL models — including vendor models. SAS provides full transparency and auto-generates BSP-ready documentation. How do you document a black-box model?"
+    },
+    {
+      "question": "What's your per-transaction cost at current volumes, and how does that scale as digital payments grow 30%+ annually?",
+      "expectedAnswer": "Per-transaction pricing means costs grow linearly with volume — potentially unsustainable",
+      "whatToSayNext": "SAS provides capacity-based licensing — your fraud detection cost doesn't spike with transaction growth. As PH digital payments grow 30%+ annually, per-transaction pricing becomes increasingly expensive."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "We can't replace Falcon — it's too deeply integrated and the switching risk is too high",
+      "whyTheySayIt": "Legitimate concern. Falcon integration with payment switches, Visa/MC certification, and operational workflows makes replacement a multi-year project with real risk.",
+      "response": "I agree — ripping out Falcon for card fraud isn't the right move right now. But here's the opportunity: Falcon covers card payments. What about InstaPay real-time fraud? GCash/Maya transfer fraud? Online banking fraud? Application fraud? These are GROWING channels where you likely have gaps. SAS covers what Falcon doesn't — start there, prove value, and you'll have options when Falcon contract renews.",
+      "proofPoints": ["PH digital payments growing 30%+ annually — mostly uncovered by Falcon", "InstaPay/PESONet fraud is the fastest-growing category in PH", "SAS can score real-time payments in <10ms — same as Falcon does for cards"],
+      "whatNotToSay": "NEVER propose ripping out Falcon at BDO/BPI/Metrobank unless they explicitly tell you they're in a replacement cycle. This is career-ending advice for the fraud officer."
+    },
+    {
+      "objection": "FICO's consortium model gives better detection than any single-bank model",
+      "whyTheySayIt": "True for common global fraud patterns. FICO's consortium trains on billions of transactions across thousands of banks.",
+      "response": "Consortium is powerful for generic card fraud patterns — CNP, skimming, counterfeit. But the fastest-growing fraud in PH is LOCAL: GCash social engineering, InstaPay authorized push payment fraud, love scams, investment scams. These aren't in FICO's global consortium. You need local models trained on PH patterns. SAS lets you build these rapidly while Falcon handles the global patterns. Best of both worlds.",
+      "proofPoints": ["PH-specific fraud patterns (GCash scams, love scams) aren't in global consortium data", "BSP Circular 1213 requires monitoring of local payment channels", "SAS enables custom model deployment in days, not months"],
+      "whatNotToSay": "Don't dismiss consortium value — it's genuinely useful for card fraud. Focus on what it DOESN'T cover (local patterns, new channels)."
+    },
+    {
+      "objection": "FICO has 30+ years of fraud expertise — SAS is an analytics company, not a fraud company",
+      "whyTheySayIt": "Brand perception. FICO = fraud. SAS = statistics/analytics.",
+      "response": "SAS has been doing fraud detection for 20+ years — deployed at 200+ financial institutions globally, including national fraud programs for entire countries. We're named alongside FICO in the Forrester Wave for Enterprise Fraud Management. The difference is: SAS provides fraud detection AND the analytical platform to continuously improve it. FICO gives you a scoring engine — SAS gives you the engine plus the workshop to build new engines.",
+      "proofPoints": ["SAS Fraud Management at 200+ financial institutions", "Forrester Wave EFM APAC 2025 — SAS named as Leader", "SAS processes billions of fraud transactions daily across 3,000+ institutions"],
+      "whatNotToSay": "Don't say 'FICO is just a score company' — that's dismissive. Acknowledge their fraud expertise while positioning SAS's breadth advantage."
+    }
+  ],
+  "phContext": {
+    "localPresence": "No direct Philippines office — Singapore hub manages PH. Deep, long-standing relationships with top 3 PH banks (BDO, BPI, Metrobank) for Falcon payment fraud scoring. FICO Scores embedded in CIBI/TransUnion Philippines credit bureau. Supported by local SIs for implementation.",
+    "knownCustomers": ["BDO Unibank (Falcon payment fraud — flagship PH deployment)", "BPI (Falcon payment fraud + credit decisioning)", "Metrobank (Falcon fraud scoring)", "CIBI/TransUnion Philippines (FICO Scores for credit bureau)", "Multiple PH banks for credit originations"],
+    "localPricing": "Per-transaction pricing for Falcon — cost grows with volume. Enterprise licensing for Platform and Originations. Premium pricing reflecting deep domain. Typical Falcon deployment ₱40-100M+ for large PH banks. Annual fees 20-25% of license.",
+    "regulatoryGaps": [
+      "Black-box consortium models difficult to document per BSP Circular 1112",
+      "No AML/transaction monitoring capabilities (fraud only)",
+      "Limited coverage of non-card channels (InstaPay, GCash, digital wallets)",
+      "No enterprise analytics platform — customers need additional tools",
+      "Per-transaction pricing unsustainable as PH digital payments grow 30%+ annually"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Falcon is deeply entrenched for card fraud — switching cost too high",
+      "Customer wants SAS for NON-CARD channels (real-time payments, digital wallets)",
+      "SAS for enterprise analytics/risk ABOVE Falcon for fraud scoring",
+      "Customer needs AML (which FICO doesn't provide) alongside Falcon"
+    ],
+    "competeWhen": [
+      "New fraud platform evaluation (greenfield digital bank or replacement cycle)",
+      "Customer frustrated with Falcon's per-transaction costs at scale",
+      "Primary need is real-time payment fraud (InstaPay/PESONet) not card fraud",
+      "Customer wants transparency and custom model building over black-box scoring"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "Forrester Wave EFM APAC 2025 — SAS as Leader",
+      "detail": "SAS named as Leader alongside FICO in Forrester Wave for Enterprise Fraud Management in Asia-Pacific — validated as tier-1 fraud solution.",
+      "source": "Forrester Research"
+    },
+    {
+      "type": "customer-win",
+      "title": "APAC digital bank chose SAS over FICO for real-time payments",
+      "detail": "New APAC digital bank evaluated both SAS and FICO for real-time payment fraud — chose SAS for flexibility, custom model building, and lower per-transaction cost at scale.",
+      "source": "SAS APAC"
+    },
+    {
+      "type": "benchmark",
+      "title": "Network analytics detects 40% more fraud",
+      "detail": "SAS network/graph analytics identifies 40% more organized fraud that per-transaction scoring systems miss — critical for PH fraud ring detection."
+    },
+    {
+      "type": "case-study",
+      "title": "National real-time payment fraud program",
+      "detail": "ASEAN country deployed SAS for national real-time payment fraud monitoring — covering all InstaPay-equivalent transactions across all banks in the country."
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "afasa", "bsp-1112", "amla"],
+  "relatedSolutions": ["fraud-management", "intelligent-decisioning", "viya", "model-manager"]
+}

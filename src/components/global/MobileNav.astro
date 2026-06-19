@@ -1,0 +1,24 @@
+---
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 h-16 bg-bg-surface border-t border-border-default" aria-label="Mobile navigation">
+  <div class="h-full grid grid-cols-4 items-center">
+    <a href="/sas-battlecards/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath === '/sas-battlecards/' ? 'text-sas-blue' : 'text-text-muted']}>
+      <span>🏠</span><span>Home</span>
+    </a>
+    <a href="/sas-battlecards/battlecards/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath.includes('/battlecards') ? 'text-sas-blue' : 'text-text-muted']}>
+      <span>⚔️</span><span>Cards</span>
+    </a>
+    <a href="/sas-battlecards/regulations/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath.includes('/regulations') ? 'text-sas-blue' : 'text-text-muted']}>
+      <span>📋</span><span>Regs</span>
+    </a>
+    <a href="/sas-battlecards/solutions/" class:list={["flex flex-col items-center gap-0.5 text-xs", currentPath.includes('/solutions') ? 'text-sas-blue' : 'text-text-muted']}>
+      <span>🧩</span><span>Solutions</span>
+    </a>
+  </div>
+</nav>

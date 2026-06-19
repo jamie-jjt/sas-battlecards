@@ -1,0 +1,141 @@
+{
+  "industry": "banking",
+  "displayName": "Banking & Financial Services",
+  "phPriority": "high",
+  "keySasPlay": "Fraud Management + Model Governance",
+  "primaryRegulation": "BSP Circular 1213 (FMS by June 2026)",
+  "questions": [
+    {
+      "id": "banking-001",
+      "question": "What does your current fraud detection look like — rules-based or machine learning?",
+      "intent": "Establishes baseline maturity. Most PH banks are still rules-based.",
+      "followUp": "How often do you update those rules?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L1", "L2"],
+      "persona": ["ciso-cro", "head-fraud-compliance"],
+      "industry": ["banking"],
+      "tags": ["fraud", "maturity", "baseline"]
+    },
+    {
+      "id": "banking-002",
+      "question": "Where are you in your BSP Circular 1213 compliance journey — have you started the FMS build-out?",
+      "intent": "Identifies urgency and budget timeline. June 2026 deadline is driving most PH bank deals.",
+      "followUp": "What's your target go-live date for the fraud management system?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["ciso-cro", "head-fraud-compliance", "cto-cdo"],
+      "industry": ["banking"],
+      "tags": ["regulation", "bsp-1213", "compliance", "deadline"]
+    },
+    {
+      "id": "banking-003",
+      "question": "How many data sources feed your current transaction monitoring — and how real-time is that pipeline?",
+      "intent": "Assesses data integration complexity. Real-time scoring needs strong data architecture.",
+      "followUp": "Are those batch or streaming feeds?",
+      "mapsTo": "SAS Data Management",
+      "maturity": ["L2", "L3"],
+      "persona": ["cto-cdo", "head-data-science"],
+      "industry": ["banking"],
+      "tags": ["data-integration", "real-time", "architecture"]
+    },
+    {
+      "id": "banking-004",
+      "question": "Do you have a formal model inventory — how many models are in production and who owns them?",
+      "intent": "Opens model governance conversation. Most PH banks lack centralized model registries.",
+      "followUp": "How do you track model performance drift?",
+      "mapsTo": "SAS Model Manager",
+      "maturity": ["L2", "L3", "L4"],
+      "persona": ["head-data-science", "ciso-cro"],
+      "industry": ["banking"],
+      "tags": ["model-governance", "inventory", "mlops"]
+    },
+    {
+      "id": "banking-005",
+      "question": "What's your current false positive rate on fraud alerts — and how does your ops team handle the volume?",
+      "intent": "Quantifies pain. High false positives = analyst fatigue = missed real fraud.",
+      "followUp": "How many analysts review alerts daily?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L2", "L3"],
+      "persona": ["head-fraud-compliance", "cfo-coo"],
+      "industry": ["banking"],
+      "tags": ["false-positives", "operations", "efficiency"]
+    },
+    {
+      "id": "banking-006",
+      "question": "Are you using network analytics to detect organized fraud rings, or is it still account-level detection?",
+      "intent": "Differentiator for SAS. Network/graph analytics finds syndicate fraud that rules miss.",
+      "followUp": "Have you seen cases of coordinated fraud across accounts?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L3", "L4"],
+      "persona": ["head-fraud-compliance", "head-data-science"],
+      "industry": ["banking"],
+      "tags": ["network-analytics", "organized-fraud", "advanced"]
+    },
+    {
+      "id": "banking-007",
+      "question": "How does your AML team handle suspicious activity reporting today — manual or automated workflows?",
+      "intent": "AML is closely tied to fraud. Joint platform = efficiency. Maps to AMLC requirements.",
+      "followUp": "How long does a SAR take from detection to filing?",
+      "mapsTo": "SAS Anti-Money Laundering",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["head-fraud-compliance", "ciso-cro"],
+      "industry": ["banking"],
+      "tags": ["aml", "workflow", "sar", "compliance"]
+    },
+    {
+      "id": "banking-008",
+      "question": "Can your business users — compliance officers, not data scientists — adjust detection rules without IT involvement?",
+      "intent": "Business user access is a major SAS differentiator vs. code-only platforms.",
+      "followUp": "How long does a rule change take end-to-end today?",
+      "mapsTo": "SAS Intelligent Decisioning",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["head-fraud-compliance", "business-unit-leader"],
+      "industry": ["banking"],
+      "tags": ["business-user", "self-service", "agility"]
+    },
+    {
+      "id": "banking-009",
+      "question": "When you deploy a new model to production, what does that process look like — and how long does it take?",
+      "intent": "Model deployment pain is universal. SAS Model Manager automates this pipeline.",
+      "followUp": "Is there a formal approval workflow before a model goes live?",
+      "mapsTo": "SAS Model Manager",
+      "maturity": ["L3", "L4"],
+      "persona": ["head-data-science", "cto-cdo"],
+      "industry": ["banking"],
+      "tags": ["deployment", "mlops", "production"]
+    },
+    {
+      "id": "banking-010",
+      "question": "Are you evaluating GenAI or LLMs for any fraud/compliance use cases — even experimentally?",
+      "intent": "Opens GenAI conversation. SAS has responsible AI governance built in.",
+      "followUp": "What guardrails are you considering for GenAI in regulated processes?",
+      "mapsTo": "SAS Viya",
+      "maturity": ["L3", "L4"],
+      "persona": ["cto-cdo", "head-data-science"],
+      "industry": ["banking"],
+      "tags": ["genai", "llm", "innovation", "governance"]
+    },
+    {
+      "id": "banking-011",
+      "question": "How do you handle real-time scoring at the point of transaction — sub-second latency requirement?",
+      "intent": "Real-time is table stakes for card fraud. Tests if they have the infra for ML at scale.",
+      "followUp": "What's your acceptable latency for a fraud decision?",
+      "mapsTo": "SAS Fraud Management",
+      "maturity": ["L2", "L3", "L4"],
+      "persona": ["cto-cdo", "head-fraud-compliance"],
+      "industry": ["banking"],
+      "tags": ["real-time", "scoring", "performance", "latency"]
+    },
+    {
+      "id": "banking-012",
+      "question": "If BSP asks you to demonstrate how a specific fraud decision was made, can you produce that audit trail today?",
+      "intent": "Explainability is a regulatory requirement. SAS provides full decision lineage.",
+      "followUp": "How do you currently document model decisions for regulators?",
+      "mapsTo": "SAS Model Manager",
+      "maturity": ["L1", "L2", "L3"],
+      "persona": ["ciso-cro", "head-fraud-compliance"],
+      "industry": ["banking"],
+      "tags": ["explainability", "audit", "regulatory", "transparency"]
+    }
+  ]
+}

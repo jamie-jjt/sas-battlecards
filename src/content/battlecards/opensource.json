@@ -1,0 +1,181 @@
+{
+  "slug": "opensource",
+  "name": "Python / R / Open Source",
+  "category": "open-source",
+  "threatLevel": "high",
+  "priority": "P1",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on governance, production readiness, enterprise support, and total cost of ownership",
+  "overview": {
+    "whatTheyDo": "Not a single company but the biggest competitive force in PH analytics. Python (scikit-learn, TensorFlow, PyTorch), R, Jupyter notebooks, MLflow, Airflow, and thousands of open-source libraries. 'Why pay for SAS when Python is free?' is the most common objection across all PH accounts.",
+    "sweetSpot": "Tech-forward organizations with strong engineering cultures, data science teams wanting maximum flexibility, startups and digital-native companies, academic/research environments. Also: any budget-constrained team that hasn't done full TCO analysis.",
+    "typicalBuyer": "Head of Data Science, individual data scientists (bottom-up pressure), CTOs of tech companies, university-trained ML engineers. Often NOT the buyer — it's the existing team resisting a commercial platform.",
+    "phPresence": "Everywhere by default. Every university teaches Python. Every bootcamp uses Jupyter. PH data science community is Python-first. However: senior ML engineers who can build PRODUCTION systems are extremely scarce in PH. The gap between 'can write a notebook' and 'can deploy governed ML at scale' is massive.",
+    "recentMomentum": "GenAI explosion (LangChain, HuggingFace, OpenAI APIs), MLOps maturation (MLflow, Kubeflow, Weights & Biases), AutoML libraries (auto-sklearn, FLAML), growing enterprise adoption of Python for production ML. Constant innovation velocity.",
+    "pricingModel": "Zero license cost. But total cost = engineers (₱1.5-3M/yr senior ML engineer in PH) + cloud infrastructure + MLOps tooling + security/governance custom development + support (none — Stack Overflow) + production maintenance. 'Free' software with ₱20-50M annual hidden costs."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Governance & Reproducibility (BSP 1112 Built-In)",
+      "explanation": "SAS provides model governance OUT OF THE BOX — version control, approval workflows, documentation generation, champion/challenger, drift monitoring, audit trails. Python has nothing built-in for governance. Building equivalent governance in Python requires 6-12 months of custom development (MLflow + custom code + manual processes) that still won't meet BSP Circular 1112 standards.",
+      "proofPoint": "BSP examiners accept SAS model documentation. They do NOT accept a Jupyter notebook as model documentation. Building BSP-grade governance in Python costs ₱15-25M in custom development."
+    },
+    {
+      "headline": "Enterprise Support & SLAs (Production-Grade)",
+      "explanation": "SAS provides 24/7 enterprise support, guaranteed SLAs, dedicated customer success, and long-term product roadmap. Python has: Stack Overflow, GitHub issues, and the hope that the library maintainer (often a single volunteer) doesn't abandon the project. For BSP-regulated systems, 'community support' is not acceptable.",
+      "proofPoint": "BSP expects vendor SLAs for critical banking systems. Open-source has zero SLA guarantees. SAS provides contractual uptime and support commitments."
+    },
+    {
+      "headline": "Time-to-Production (Days vs. Months)",
+      "explanation": "SAS takes a model from development to governed production deployment in days — point-and-click deployment with built-in monitoring. Python: build the model (weeks), build the API (weeks), build monitoring (weeks), build governance (months), integrate with production systems (months), get security sign-off (months). Total: 6-18 months to production.",
+      "proofPoint": "SAS customers deploy models to production 5-10x faster than Python-based teams. Time-to-value difference measured in months."
+    },
+    {
+      "headline": "Total Cost of Ownership (Free + Engineers + Infra = Expensive)",
+      "explanation": "Python is free. But: 3 senior ML engineers (₱9M/yr) + cloud infrastructure (₱5M/yr) + MLOps tools (₱3M/yr) + governance custom dev (₱15M one-time) + ongoing maintenance (₱5M/yr) = ₱37M+ over 3 years. SAS provides equivalent capability at predictable annual cost. 'Free' is the most expensive option for production analytics.",
+      "proofPoint": "TCO analysis consistently shows SAS 30-50% lower than Python-based stack for production-grade, regulated analytics. The 'free' perception ignores 80% of actual costs."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Innovation Speed (GenAI Immediately Available)",
+      "whyItMatters": "When a new model architecture drops (GPT, LLAMA, Stable Diffusion), Python has it same-day via HuggingFace/pip install. SAS product cycles are slower. For cutting-edge research, Python is always first.",
+      "howToNeutralize": "SAS supports Python WITHIN its platform — you can use any library inside SAS Viya. For production analytics, speed of innovation matters less than speed of GOVERNED deployment. Ask: 'How many of those cutting-edge models make it to production at your bank?'"
+    },
+    {
+      "area": "Flexibility (Any Library, Any Approach)",
+      "whyItMatters": "Python's ecosystem is enormous — 350,000+ packages for any conceivable task. Total freedom to choose tools, architectures, and approaches. No vendor lock-in.",
+      "howToNeutralize": "Freedom without governance = chaos in regulated environments. Ask: 'Who governs which libraries are production-approved? Who ensures reproducibility across package versions? Who validates that scipy 1.11 produces the same results as scipy 1.9?' SAS provides curated, validated, production-tested capabilities."
+    },
+    {
+      "area": "Talent Pool (More Python Devs Than SAS Devs)",
+      "whyItMatters": "Every university in PH teaches Python. Data science bootcamps use Python. Hiring Python developers is easier than hiring SAS developers. This is a real structural challenge for SAS adoption.",
+      "howToNeutralize": "Three responses: (1) SAS Viya supports Python natively — existing Python developers can work in SAS. (2) SAS's no-code interfaces (Model Studio, VA) enable business analysts without programming skills. (3) The hard-to-hire skill isn't 'Python developer' — it's 'ML engineer who can build production governance.' That's equally rare in PH."
+    },
+    {
+      "area": "Zero License Cost + Community",
+      "whyItMatters": "No license fees. Massive community. Free learning resources. For budget-constrained PH organizations, 'free' is compelling — especially when leadership doesn't understand the hidden costs.",
+      "howToNeutralize": "Show the FULL cost picture. License cost is 15-20% of total cost for production analytics. Engineers, infrastructure, governance, maintenance, and support are 80%+ of the cost — and they're HIGHER with open source because everything is custom. Present a 3-year TCO comparison."
+    }
+  ],
+  "features": [
+    { "capability": "Model Governance & Audit Trails", "sas": "full", "competitor": "none", "notes": "SAS native governance; Python requires custom MLflow + manual processes" },
+    { "capability": "BSP 1112 Model Documentation", "sas": "full", "competitor": "none", "notes": "SAS auto-generates regulatory docs; Python has nothing built-in" },
+    { "capability": "Production Deployment (One-Click)", "sas": "full", "competitor": "partial", "notes": "SAS point-and-click deployment; Python requires custom API/infrastructure" },
+    { "capability": "Enterprise Support & SLAs", "sas": "full", "competitor": "none", "notes": "SAS 24/7 support with SLAs; open-source has community only" },
+    { "capability": "Algorithm Breadth (Validated)", "sas": "full", "competitor": "full", "notes": "Both broad; SAS validated/tested, open-source quality varies" },
+    { "capability": "GenAI / LLM Libraries", "sas": "partial", "competitor": "full", "notes": "Python has immediate access to all GenAI libraries; SAS adding governance layer" },
+    { "capability": "Flexibility / Custom Code", "sas": "partial", "competitor": "full", "notes": "Python is unlimited flexibility; SAS is governed but supports Python within platform" },
+    { "capability": "Talent Availability", "sas": "partial", "competitor": "full", "notes": "More Python developers available in PH; SAS developers scarcer" },
+    { "capability": "Model Monitoring & Drift Detection", "sas": "full", "competitor": "partial", "notes": "SAS native monitoring; Python requires Evidently/WhyLabs/custom" },
+    { "capability": "Champion/Challenger Testing", "sas": "full", "competitor": "partial", "notes": "SAS native A/B testing; Python requires custom implementation" },
+    { "capability": "Data Preparation & Quality", "sas": "full", "competitor": "partial", "notes": "SAS integrated data quality; Python needs pandas + great_expectations + custom" },
+    { "capability": "Reproducibility Guarantee", "sas": "full", "competitor": "partial", "notes": "SAS guaranteed; Python version conflicts are the #1 production issue" },
+    { "capability": "Pre-Built Industry Solutions", "sas": "full", "competitor": "none", "notes": "SAS has fraud, AML, risk solutions; everything custom in Python" },
+    { "capability": "Security & Access Control", "sas": "full", "competitor": "partial", "notes": "SAS enterprise security; Python requires custom auth/access layers" },
+    { "capability": "Total Cost of Ownership (3-Year)", "sas": "full", "competitor": "partial", "notes": "SAS predictable licensing; Python hidden costs typically 2-3x higher" }
+  ],
+  "landmines": [
+    {
+      "question": "How long did it take your last model to go from Jupyter notebook to governed production deployment with monitoring?",
+      "expectedAnswer": "Months — or it never made it to production at all. 87% of ML models never reach production.",
+      "whatToSayNext": "That's the industry average. 87% of models built in notebooks never reach production. SAS takes models from development to governed production in days, not months. What's the business value of those stuck models?"
+    },
+    {
+      "question": "When BSP comes for their on-site examination, can you show them complete model documentation — lineage, validation, approval history — for every model in production?",
+      "expectedAnswer": "They can't — notebooks don't generate regulatory documentation",
+      "whatToSayNext": "BSP Circular 1112 requires documented model lifecycle for every production model. SAS auto-generates this. Building equivalent documentation in Python is a ₱15-25M custom project. Is that really 'free'?"
+    },
+    {
+      "question": "What's your total annual spend on ML engineers, cloud infrastructure, MLOps tools, and model maintenance — not just software licenses?",
+      "expectedAnswer": "They haven't calculated the full cost — or the number is higher than expected",
+      "whatToSayNext": "Let's add it up: engineers + infra + tooling + maintenance + governance. For production-grade regulated analytics, 'free' software typically costs 30-50% MORE than a commercial platform when you count everything. Here's a TCO framework."
+    },
+    {
+      "question": "How do you ensure that a model producing results today gives the same results if re-run in 6 months — same package versions, same dependencies, same behavior?",
+      "expectedAnswer": "They struggle with reproducibility — Python dependency management is notoriously fragile",
+      "whatToSayNext": "SAS guarantees reproducibility — same code, same results, forever. Python's dependency ecosystem creates 'works on my machine' problems that are dangerous for regulatory compliance. What happens when BSP asks you to reproduce a model's results from 2 years ago?"
+    },
+    {
+      "question": "If your lead data scientist leaves tomorrow, how long before someone else can understand, maintain, and update their production models?",
+      "expectedAnswer": "Major knowledge transfer risk — individual Python code is often undocumented and opaque",
+      "whatToSayNext": "SAS provides self-documenting workflows, visual pipelines, and governed model registries. When a team member leaves, the knowledge stays in the platform — not in their personal notebook collection."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Why pay for SAS when Python is free?",
+      "whyTheySayIt": "The #1 objection in every PH conversation. Leadership sees zero license cost and assumes zero total cost. Data scientists trained on Python resist commercial platforms.",
+      "response": "Python has zero LICENSE cost. But what's the total cost? In PH: 3 senior ML engineers (₱9M/yr), cloud infrastructure (₱5M/yr), building governance from scratch (₱15M), ongoing maintenance (₱5M/yr). Over 3 years, the 'free' Python stack costs ₱52M+. SAS provides equivalent capability — pre-built, governed, supported — at lower total cost. Plus: your team deploys models in days instead of months.",
+      "proofPoints": ["3-year TCO analysis shows SAS 30-50% lower than equivalent Python stack", "87% of Python ML models never reach production", "BSP Circular 1112 governance costs ₱15-25M to build in Python"],
+      "whatNotToSay": "Don't say 'Python is bad' — it's great for research and flexibility. Position SAS as production-grade analytics for regulated industries. Python is a tool; SAS is a platform."
+    },
+    {
+      "objection": "All our data scientists know Python — they don't know SAS",
+      "whyTheySayIt": "Real skills concern. PH universities teach Python. Hiring SAS developers is harder.",
+      "response": "Three facts: (1) SAS Viya runs Python code natively — your data scientists keep using Python INSIDE SAS's governed platform. (2) SAS Model Studio and Visual Analytics don't require programming — they extend analytics to business analysts who don't code at all. (3) The scarcity isn't 'Python developer' — it's 'ML engineer who can build production governance.' That's equally rare. SAS eliminates the need for that rare skill.",
+      "proofPoints": ["SAS Viya supports Python and R natively", "Model Studio enables no-code ML for business users", "PH has plenty of Python coders but very few production ML engineers"],
+      "whatNotToSay": "Don't dismiss Python skills — they're valuable and transfer to SAS Viya. Show that SAS embraces Python, not competes with it."
+    },
+    {
+      "objection": "Open source innovates faster — SAS is always behind on GenAI/LLMs",
+      "whyTheySayIt": "True for bleeding-edge research. New models appear on HuggingFace daily. SAS product cycles are quarterly/annual.",
+      "response": "For research and experimentation — absolutely, use Python. But how many bleeding-edge models make it to PRODUCTION at a regulated bank? Zero, until they're governed, validated, documented, and approved. SAS provides the governance layer that turns experimental models into production systems. Use Python to innovate in the lab. Use SAS to deploy in production. They're not competing — they're sequential stages.",
+      "proofPoints": ["SAS Viya runs Python libraries — use HuggingFace models inside SAS governance", "Regulatory approval for GenAI requires governance SAS provides", "Innovation speed means nothing without production deployment speed"],
+      "whatNotToSay": "Don't claim SAS is as innovative as open source — it's not, and that's by design. Governed, validated, production-ready is the value proposition."
+    }
+  ],
+  "phContext": {
+    "localPresence": "Python is universal in PH — every university teaches it, every data science meetup uses it, every bootcamp graduate knows it. However: the gap between 'knows Python' and 'can build production ML systems' is massive in PH. Most PH bank analysts use Excel — neither SAS nor Python expertise exists at scale. Senior ML engineers who can productionize models are extremely scarce (₱2-3M/yr and constantly poached by tech companies).",
+    "knownCustomers": ["Every PH tech company uses Python for ML", "Banks using Python in data science teams (exploration, not production)", "Universities and research institutions", "Fintech startups built entirely on Python stack", "Some banks attempted Python production ML — most reverted to vendor platforms"],
+    "localPricing": "Zero license cost. But: senior ML engineer ₱1.5-3M/yr (and constantly recruited away). Cloud infrastructure ₱3-8M/yr for production ML. MLOps tooling (Databricks, MLflow, Weights & Biases) ₱2-5M/yr. Custom governance development ₱15-25M one-time. Total 3-year cost typically ₱40-60M for production-grade regulated analytics.",
+    "regulatoryGaps": [
+      "No built-in model governance for BSP Circular 1112 compliance",
+      "No regulatory documentation generation (notebooks are not documentation)",
+      "No enterprise SLAs or vendor support (community only)",
+      "Reproducibility not guaranteed (dependency version conflicts)",
+      "No pre-built solutions for fraud, AML, or regulatory compliance",
+      "Security and access control must be custom-built for every deployment"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Data scientists use Python for experimentation — SAS for production governance",
+      "Python libraries (HuggingFace, GenAI) used within SAS Viya's governed environment",
+      "SAS as governance backbone, Python as development tool",
+      "Customer has strong engineering team — SAS adds governance they can't build"
+    ],
+    "competeWhen": [
+      "Customer thinks Python alone can serve as enterprise analytics platform",
+      "Budget decision makers comparing 'free' Python to 'expensive' SAS without TCO analysis",
+      "Customer evaluating whether to build or buy production ML platform",
+      "Regulated use cases (fraud, risk, compliance) where governance is non-negotiable"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "benchmark",
+      "title": "87% of ML models never reach production",
+      "detail": "Industry research shows 87% of models built in notebooks (Python/R) never reach production deployment. SAS customers deploy at 5-10x higher rate due to built-in production pipeline.",
+      "source": "Gartner Research"
+    },
+    {
+      "type": "customer-win",
+      "title": "PH bank reverted from Python to SAS for production ML",
+      "detail": "Philippine bank attempted production ML deployment in Python — after 18 months and ₱25M+ in custom development, reverted to SAS for governance and production deployment speed.",
+      "source": "SAS Philippines"
+    },
+    {
+      "type": "benchmark",
+      "title": "TCO: SAS 30-50% lower than Python for regulated analytics",
+      "detail": "Independent TCO analysis comparing SAS platform vs. Python + MLOps + governance + infrastructure consistently shows SAS 30-50% lower for production-grade regulated analytics."
+    },
+    {
+      "type": "case-study",
+      "title": "Global bank: Python + SAS governed deployment",
+      "detail": "Top-5 global bank uses Python for data science experimentation within SAS Viya's governed environment — proving coexistence. Models built in Python, deployed and governed through SAS."
+    }
+  ],
+  "relatedRegulations": ["bsp-1112", "bsp-1213", "afasa", "amla"],
+  "relatedSolutions": ["viya", "model-manager", "visual-analytics", "intelligent-decisioning"]
+}

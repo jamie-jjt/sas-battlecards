@@ -1,0 +1,209 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import CompetitorCard from '@components/cards/CompetitorCard.astro';
+import FilterChips from '@components/ui/FilterChips.astro';
+import type { Category, ThreatLevel } from '@lib/types';
+
+const entries = await getCollection('battlecards');
+const cards = entries.map((e) => e.data).sort((a, b) => {
+  // Sort: P1 first, then by threat level (high > medium > low), then alphabetical
+  const priorityOrder = { P1: 0, P2: 1, P3: 2 };
+  const threatOrder = { high: 0, medium: 1, low: 2 };
+  if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
+    return priorityOrder[a.priority] - priorityOrder[b.priority];
+  }
+  if (threatOrder[a.threatLevel] !== threatOrder[b.threatLevel]) {
+    return threatOrder[a.threatLevel] - threatOrder[b.threatLevel];
+  }
+  return a.name.localeCompare(b.name);
+});
+
+// Group by category
+const categoryMeta: Record<string, { label: string; color: string }> = {
+  'ml-platform': { label: 'ML/AI Platforms', color: '#bc8cff' },
+  'cloud-data': { label: 'Cloud Data', color: '#58a6ff' },
+  'fraud-fincrime': { label: 'Fraud & FinCrime', color: '#f85149' },
+  'grc-risk': { label: 'GRC & Risk', color: '#d29922' },
+  'bi-visualization': { label: 'BI & Visualization', color: '#3fb950' },
+  'data-prep': { label: 'Data Preparation', color: '#79c0ff' },
+  'open-source': { label: 'Open Source', color: '#8b949e' },
+};
+
+// Get unique categories and threat levels from actual cards
+const categories = [...new Set(cards.map((c) => c.category))];
+const grouped = categories.map((cat) => ({
+  category: cat,
+  ...categoryMeta[cat],
+  cards: cards.filter((c) => c.category === cat),
+}));
+
+const categoryOptions = categories.map((cat) => ({
+  value: cat,
+  label: categoryMeta[cat]?.label ?? cat,
+  color: categoryMeta[cat]?.color,
+}));
+
+const threatOptions = [
+  { value: 'high', label: 'High', color: '#f85149' },
+  { value: 'medium', label: 'Medium', color: '#d29922' },
+  { value: 'low', label: 'Low', color: '#3fb950' },
+];
+---
+
+<BaseLayout title="Battle Cards" description="Competitive intelligence battle cards for Philippine SAS SE engagements">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:py-8">
+    <Breadcrumb items={[{ label: "Battle Cards" }]} />
+
+    <!-- Page header -->
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold text-text-primary sm:text-3xl">
+        Battle Cards
+      </h1>
+      <p class="mt-1 text-text-secondary">
+        {cards.length} competitive intelligence cards for PH market engagements
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="mb-8 space-y-3 rounded-lg border border-border-default bg-bg-surface p-4">
+      <FilterChips
+        id="filter-category"
+        label="Category"
+        options={categoryOptions}
+        filterKey="category"
+      />
+      <FilterChips
+        id="filter-threat"
+        label="Threat"
+        options={threatOptions}
+        filterKey="threat"
+      />
+    </div>
+
+    <!-- Cards grouped by category -->
+    <div id="battlecard-grid" class="space-y-10">
+      {grouped.map((group) => (
+        <section
+          class="category-group"
+          data-category={group.category}
+        >
+          <!-- Category heading -->
+          <div class="flex items-center gap-2 mb-4">
+            <span
+              class="w-3 h-3 rounded-full shrink-0"
+              style={`background-color: ${group.color}`}
+              aria-hidden="true"
+            ></span>
+            <h2 class="text-lg font-semibold text-text-primary">
+              {group.label}
+            </h2>
+            <span class="text-sm text-text-muted">
+              ({group.cards.length})
+            </span>
+          </div>
+
+          <!-- Cards grid -->
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {group.cards.map((card) => (
+              <CompetitorCard
+                slug={card.slug}
+                name={card.name}
+                category={card.category}
+                threatLevel={card.threatLevel}
+                tagline={card.tagline}
+                lastUpdated={card.lastUpdated}
+                priority={card.priority}
+              />
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Empty state (shown when filters hide everything) -->
+    <div id="empty-state" class="hidden py-16 text-center">
+      <p class="text-text-muted text-lg">No battle cards match the selected filters.</p>
+      <button
+        type="button"
+        id="clear-filters"
+        class="mt-3 text-sm text-sas-blue hover:text-sas-blue-hover transition-colors"
+      >
+        Clear all filters
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Client-side filtering logic
+  const state: Record<string, string[]> = {
+    category: ['all'],
+    threat: ['all'],
+  };
+
+  function applyFilters() {
+    const grid = document.getElementById('battlecard-grid');
+    const emptyState = document.getElementById('empty-state');
+    if (!grid || !emptyState) return;
+
+    const categoryGroups = grid.querySelectorAll<HTMLElement>('.category-group');
+    let anyVisible = false;
+
+    categoryGroups.forEach((group) => {
+      const groupCategory = group.dataset.category;
+      const cards = group.querySelectorAll<HTMLElement>('[data-category]');
+
+      // Check if category matches
+      const categoryMatch = state.category.includes('all') || state.category.includes(groupCategory || '');
+
+      let groupHasVisibleCards = false;
+
+      cards.forEach((card) => {
+        if (card === group) return; // Skip the section itself
+        const cardThreat = card.dataset.threat;
+        const threatMatch = state.threat.includes('all') || state.threat.includes(cardThreat || '');
+        const visible = categoryMatch && threatMatch;
+
+        card.style.display = visible ? '' : 'none';
+        if (visible) groupHasVisibleCards = true;
+      });
+
+      group.style.display = (categoryMatch && groupHasVisibleCards) ? '' : 'none';
+      if (groupHasVisibleCards && categoryMatch) anyVisible = true;
+    });
+
+    emptyState.classList.toggle('hidden', anyVisible);
+    grid.classList.toggle('hidden', !anyVisible);
+  }
+
+  // Listen for filter changes
+  window.addEventListener('filter-change', ((e: CustomEvent) => {
+    const { key, values } = e.detail;
+    state[key] = values;
+    applyFilters();
+  }) as EventListener);
+
+  // Clear filters button
+  document.getElementById('clear-filters')?.addEventListener('click', () => {
+    state.category = ['all'];
+    state.threat = ['all'];
+
+    // Reset all chip UIs
+    document.querySelectorAll('.filter-chips').forEach((group) => {
+      const chips = group.querySelectorAll<HTMLButtonElement>('.chip');
+      chips.forEach((chip) => {
+        if (chip.dataset.value === 'all') {
+          chip.classList.add('chip--active');
+          chip.setAttribute('aria-pressed', 'true');
+        } else {
+          chip.classList.remove('chip--active');
+          chip.setAttribute('aria-pressed', 'false');
+        }
+      });
+    });
+
+    applyFilters();
+  });
+</script>

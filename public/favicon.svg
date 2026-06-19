@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Shield shape -->
+  <path d="M16 2L4 7v9c0 7.5 5.1 14.5 12 16 6.9-1.5 12-8.5 12-16V7L16 2z" fill="#0078D4" opacity="0.9"/>
+  <path d="M16 2L4 7v9c0 7.5 5.1 14.5 12 16 6.9-1.5 12-8.5 12-16V7L16 2z" stroke="#ffffff" stroke-width="0.5" fill="none" opacity="0.3"/>
+  <!-- Crossed swords -->
+  <path d="M11 10l10 12M21 10L11 22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="11" cy="10" r="1.2" fill="#ffffff"/>
+  <circle cx="21" cy="10" r="1.2" fill="#ffffff"/>
+  <path d="M14 15.5h4" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

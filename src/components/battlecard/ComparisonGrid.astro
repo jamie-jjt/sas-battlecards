@@ -1,0 +1,59 @@
+---
+import type { FeatureComparison } from '@lib/types';
+
+interface Props {
+  competitorName: string;
+  features: FeatureComparison[];
+}
+
+const { competitorName, features } = Astro.props;
+
+function getSupportIcon(level: string): string {
+  switch (level) {
+    case 'full': return '✅';
+    case 'partial': return '🟡';
+    case 'none': return '❌';
+    default: return '—';
+  }
+}
+
+function getSupportLabel(level: string): string {
+  switch (level) {
+    case 'full': return 'Full support';
+    case 'partial': return 'Partial support';
+    case 'none': return 'No support';
+    default: return 'Unknown';
+  }
+}
+---
+
+<div class="overflow-x-auto -mx-4 md:mx-0">
+  <table class="w-full text-sm border-collapse min-w-[600px]">
+    <thead>
+      <tr class="sticky top-0 bg-bg-elevated border-b border-border-default">
+        <th class="text-left py-3 px-4 font-medium text-text-primary w-[35%]">Capability</th>
+        <th class="text-center py-3 px-3 font-medium text-text-primary w-[12%]">SAS</th>
+        <th class="text-center py-3 px-3 font-medium text-text-primary w-[12%]">{competitorName}</th>
+        <th class="text-left py-3 px-4 font-medium text-text-primary w-[41%]">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {features.map((feature, i) => (
+        <tr class:list={["border-b border-border-muted", i % 2 === 0 ? 'bg-bg-base' : 'bg-bg-surface']}>
+          <td class="py-2.5 px-4 font-medium text-text-primary">{feature.capability}</td>
+          <td class="py-2.5 px-3 text-center">
+            <span title={getSupportLabel(feature.sas)} aria-label={`SAS: ${getSupportLabel(feature.sas)}`}>
+              {getSupportIcon(feature.sas)}
+            </span>
+          </td>
+          <td class="py-2.5 px-3 text-center">
+            <span title={getSupportLabel(feature.competitor)} aria-label={`${competitorName}: ${getSupportLabel(feature.competitor)}`}>
+              {getSupportIcon(feature.competitor)}
+            </span>
+          </td>
+          <td class="py-2.5 px-4 text-text-secondary text-xs">{feature.notes}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

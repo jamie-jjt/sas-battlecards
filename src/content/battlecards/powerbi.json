@@ -1,0 +1,174 @@
+{
+  "slug": "powerbi",
+  "name": "Microsoft Power BI",
+  "category": "bi-visualization",
+  "threatLevel": "high",
+  "priority": "P1",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS Visual Analytics goes beyond dashboards — analytics + BI in one governed platform",
+  "overview": {
+    "whatTheyDo": "Self-service business intelligence and data visualization platform. Creates interactive dashboards, reports, and data stories. Deeply integrated with Microsoft 365 ecosystem (Excel, Teams, SharePoint). The most widely deployed BI tool globally and virtually ubiquitous in PH enterprise.",
+    "sweetSpot": "Business users needing interactive dashboards and reports. Organizations already in the Microsoft ecosystem wanting consolidated BI. Departments needing quick data visualization without IT involvement. Any organization with M365 licenses.",
+    "typicalBuyer": "Business users (self-service), IT/BI team (deployment), CFO/COO (reporting), Line-of-Business managers. NOT typically a competitive displacement — more a 'good enough' objection.",
+    "phPresence": "EVERYWHERE. Power BI is on virtually every corporate desktop in the Philippines via M365 licensing. Used across all industries — banking, telco, government, retail. Zero awareness gap. The default BI choice for any PH organization.",
+    "recentMomentum": "Fabric integration (Direct Lake), Copilot AI for natural language queries, Power BI embedded in Teams/M365 apps, aggressive pricing (Pro in E5), Microsoft pushing Power BI as the 'one BI tool' across all analytics needs.",
+    "pricingModel": "Power BI Pro included in M365 E5 (effectively free). Premium Per User ~$20/user/month. Premium Per Capacity for enterprise. Perceived as zero incremental cost in most PH organizations with existing M365 agreements."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Advanced Analytics Embedded in BI (Analyze, Not Just Visualize)",
+      "explanation": "SAS Visual Analytics doesn't just show data — it analyzes it. Built-in forecasting, automated insights, decision trees, text analytics, and what-if scenarios within the same interface. Power BI shows what happened. SAS VA shows what happened, why it happened, and what will happen next.",
+      "proofPoint": "SAS VA users generate predictive insights directly in their dashboards — no separate tool needed. Power BI requires Azure ML or Python scripts for any advanced analytics."
+    },
+    {
+      "headline": "Governed Self-Service (Model Building + Reporting Together)",
+      "explanation": "SAS provides a governed environment where business users can build analytical models AND create reports — with approval workflows, data quality checks, and model validation. Power BI is reporting-only with no governed analytical model building capability.",
+      "proofPoint": "SAS enables 'governed citizen data science' — business users build models within guardrails. Power BI users who want to do analytics must leave the tool entirely."
+    },
+    {
+      "headline": "Statistical Depth Within the Same Platform",
+      "explanation": "Need a correlation analysis? Time series forecast? Segmentation? In SAS VA, it's one click within your dashboard. In Power BI, you need to export data, run Python/R scripts in a separate environment, and bring results back. SAS keeps the entire analytical workflow in one governed platform.",
+      "proofPoint": "SAS VA provides 200+ statistical procedures accessible from the same interface as your dashboards — zero context-switching for analytical users."
+    },
+    {
+      "headline": "Real-Time Decisioning (SAS Acts on Data, Power BI Only Shows It)",
+      "explanation": "SAS connects analytics to action — your insights drive real-time decisions through SAS Intelligent Decisioning. Power BI is a window into your data, not a lever to change outcomes. For BSP 1213 compliance, you need systems that ACT on fraud signals in real-time, not just display them.",
+      "proofPoint": "SAS processes fraud decisions in <10ms. Power BI can show a fraud dashboard, but it cannot STOP a fraudulent transaction."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Ubiquitous — Already on Every Desktop",
+      "whyItMatters": "Power BI is the default. Every PH corporate employee has access via M365. Training materials exist, community is huge, and business users are already familiar. Asking them to learn another BI tool feels unnecessary.",
+      "howToNeutralize": "Don't try to replace Power BI for basic dashboarding. Position SAS VA for the 10% of users who need ANALYTICAL exploration — not the 90% who need bar charts. SAS VA is for data-curious power users and analytical teams, not for distributing executive dashboards."
+    },
+    {
+      "area": "Zero Incremental Cost (EA Included)",
+      "whyItMatters": "Power BI Pro is included in M365 E5 licenses. CFOs see zero additional cost for BI. Any separate BI tool has an immediate cost disadvantage.",
+      "howToNeutralize": "Don't compete on cost for basic BI. Compete on capability: 'Yes, Power BI is great for dashboards. But when your analytics team needs to forecast, segment, or build models — they leave Power BI and use Excel or Python. SAS VA keeps them in one governed environment. What's the cost of that fragmentation?'"
+    },
+    {
+      "area": "Familiar to Every Business User",
+      "whyItMatters": "Power BI's interface is familiar — similar to Excel and other Microsoft tools. Learning curve is minimal for basic reporting. User adoption is never a problem because users are already in the Microsoft ecosystem.",
+      "howToNeutralize": "SAS VA has a different audience — not the casual report consumer but the analytical explorer. For users who want to GO BEYOND dashboards into statistical analysis, SAS VA's interface is purpose-built for analytical thinking, not just data visualization."
+    },
+    {
+      "area": "Ecosystem (Teams, Excel, SharePoint Integration)",
+      "whyItMatters": "Power BI embeds in Teams channels, refreshes from SharePoint, connects to Excel. It's woven into the daily workflow of Microsoft-centric organizations. SAS can't match this ecosystem integration depth.",
+      "howToNeutralize": "SAS integrates with the Microsoft ecosystem via APIs and embeddable outputs. But the real message: for the use cases where Power BI IS the right tool (basic reporting, executive dashboards), USE Power BI. For use cases that NEED analytics (fraud investigation, risk analysis, forecasting), SAS VA is the right tool. They coexist."
+    }
+  ],
+  "features": [
+    { "capability": "Basic Dashboards & Reporting", "sas": "full", "competitor": "full", "notes": "Both capable; Power BI more polished for simple dashboards" },
+    { "capability": "Advanced Statistical Analysis (In-Tool)", "sas": "full", "competitor": "none", "notes": "SAS VA has built-in forecasting, correlations, decision trees; Power BI requires external tools" },
+    { "capability": "Predictive Analytics (In-Dashboard)", "sas": "full", "competitor": "partial", "notes": "SAS VA native predictions; Power BI requires Azure ML or Python scripts" },
+    { "capability": "What-If Scenario Analysis", "sas": "full", "competitor": "partial", "notes": "SAS VA native; Power BI has basic what-if parameters only" },
+    { "capability": "Real-Time Decisioning", "sas": "full", "competitor": "none", "notes": "SAS acts on insights; Power BI only displays data" },
+    { "capability": "Self-Service Model Building", "sas": "full", "competitor": "none", "notes": "SAS Model Studio for citizen DS; Power BI has no model building" },
+    { "capability": "M365 / Teams Integration", "sas": "partial", "competitor": "full", "notes": "Power BI deeply embedded in Microsoft ecosystem" },
+    { "capability": "User Adoption (Zero Training)", "sas": "partial", "competitor": "full", "notes": "Power BI familiar interface; SAS VA requires learning" },
+    { "capability": "Natural Language Queries", "sas": "partial", "competitor": "full", "notes": "Power BI Q&A + Copilot; SAS exploring NL interfaces" },
+    { "capability": "Data Governance & Lineage", "sas": "full", "competitor": "partial", "notes": "SAS enterprise governance; Power BI improving via Fabric/Purview" },
+    { "capability": "Enterprise-Scale Analytics", "sas": "full", "competitor": "partial", "notes": "SAS CAS for billions of rows; Power BI capacity limits at scale" },
+    { "capability": "Text Analytics / NLP in Dashboards", "sas": "full", "competitor": "none", "notes": "SAS VA can analyze unstructured text natively" },
+    { "capability": "Automated Insight Discovery", "sas": "full", "competitor": "partial", "notes": "SAS automated analysis deeper than Power BI Quick Insights" },
+    { "capability": "Multi-Cloud Independence", "sas": "full", "competitor": "none", "notes": "SAS cloud-agnostic; Power BI Azure-centric" },
+    { "capability": "Regulatory Reporting (BSP Format)", "sas": "full", "competitor": "partial", "notes": "SAS generates regulatory reports; Power BI is general-purpose only" }
+  ],
+  "landmines": [
+    {
+      "question": "When your analysts need to forecast next quarter's fraud losses or build a customer segmentation — do they stay in Power BI or export to Python/Excel?",
+      "expectedAnswer": "They leave Power BI — export to Excel, use Python, or ask IT for help",
+      "whatToSayNext": "That context-switch costs productivity and breaks governance. SAS VA keeps analytical users in ONE governed environment — from visualization through forecasting to model building. No exports, no ungoverned Excel models."
+    },
+    {
+      "question": "Can Power BI trigger a real-time action — like blocking a suspicious transaction or adjusting a credit limit — based on what it detects?",
+      "expectedAnswer": "No — Power BI only displays data, it doesn't trigger actions",
+      "whatToSayNext": "Exactly. Power BI shows you the fire. SAS puts out the fire. SAS Intelligent Decisioning turns analytical insights into real-time actions — fraud blocking, offer optimization, risk scoring — all in <10ms."
+    },
+    {
+      "question": "How do you ensure that business users building reports aren't creating ungoverned analytical models in Excel on the side?",
+      "expectedAnswer": "They acknowledge the Excel problem — shadow analytics is rampant",
+      "whatToSayNext": "This is the governance gap. Power BI + Excel creates ungoverned 'spreadsheet models' that BSP has no visibility into. SAS provides governed self-service — business users can analyze within guardrails, eliminating shadow analytics."
+    },
+    {
+      "question": "What happens when your Power BI dataset exceeds 10GB or you need to analyze billions of transaction records interactively?",
+      "expectedAnswer": "They hit capacity limits or need Premium/Fabric — which costs significantly more",
+      "whatToSayNext": "SAS CAS handles billions of rows natively — no per-GB limits, no Premium tier surprises. For PH banks with growing transaction volumes, predictable performance at any scale matters."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "We already have Power BI — why do we need another BI tool?",
+      "whyTheySayIt": "Power BI is 'good enough' for their current needs. They don't see the gap between reporting and analytics.",
+      "response": "You don't need another BI tool — you need an ANALYTICS tool. Power BI shows what happened (dashboards). SAS VA shows what WILL happen (forecasting, prediction, optimization). They serve different users: Power BI for the 90% who consume reports, SAS VA for the 10% who build analytical insights. Keep Power BI for reporting. Add SAS for analytics. They complement each other.",
+      "proofPoints": ["80% of SAS VA customers also use Power BI — they coexist", "SAS VA users are analytical power users, not report consumers", "BSP expects analytical capabilities beyond basic reporting for risk management"],
+      "whatNotToSay": "Don't position as 'SAS VA replaces Power BI' — it doesn't and shouldn't. Position as complementary for different user personas."
+    },
+    {
+      "objection": "Power BI is free with our Microsoft license — SAS has additional cost",
+      "whyTheySayIt": "CFO pressure on software costs. Zero perceived incremental cost for Power BI.",
+      "response": "Power BI is great for dashboards at zero cost. But your analytical gaps have a cost too: ungoverned Excel models creating risk, data scientists using Python without governance, compliance teams manually assembling BSP reports. SAS addresses the ANALYTICAL gap Power BI doesn't cover. The question isn't 'Power BI or SAS?' — it's 'what's the cost of NOT having governed analytics alongside your dashboards?'",
+      "proofPoints": ["Cost of ungoverned Excel models: regulatory findings, wrong decisions, manual rework", "BSP Circular 1112 requires governed analytical models — Power BI doesn't provide this", "SAS ROI typically achieved in 6-12 months through risk reduction and automation"],
+      "whatNotToSay": "Don't argue Power BI is expensive — it isn't. Argue the ANALYTICAL GAP is expensive."
+    },
+    {
+      "objection": "Our users already know Power BI — they won't learn another tool",
+      "whyTheySayIt": "Valid adoption concern. Change management is hard. Users resist new tools.",
+      "response": "Your report CONSUMERS should stay in Power BI — they don't need SAS. Your analytical BUILDERS — the 10-20 people who forecast, segment, model, and investigate — they're the SAS VA users. These are typically analysts and data-curious managers who are ALREADY frustrated with Power BI's limitations. They WANT more analytical depth. SAS VA is for the analytically hungry, not the report-satisfied.",
+      "proofPoints": ["SAS VA targets 10-20% of analytical power users, not 100% of report consumers", "These users are typically already working around Power BI limitations in Excel/Python", "SAS VA's visual interface requires minimal training for analytically-minded users"],
+      "whatNotToSay": "Don't claim SAS is easier than Power BI — it's not for basic reporting. Claim it's MORE POWERFUL for analytical users."
+    }
+  ],
+  "phContext": {
+    "localPresence": "Everywhere. Power BI is included in every M365 E5 license in the Philippines. Microsoft Philippines actively promotes Power BI through local events, partner training, and community meetups. Every PH SI and consulting firm has Power BI practice. Zero awareness gap.",
+    "knownCustomers": ["Virtually every Philippine enterprise uses Power BI", "All major banks have Power BI for reporting", "Government agencies use Power BI for data visualization", "Telcos, retail, manufacturing — all sectors", "Power BI user groups active in Manila"],
+    "localPricing": "Power BI Pro included in M365 E5 (zero incremental cost for most PH enterprises). Premium Per User ~$20/user/month. Premium Per Capacity starts at ~$5,000/month. Fabric adds additional capacity costs. Effectively free for basic use — unbeatable on price.",
+    "regulatoryGaps": [
+      "Cannot perform regulatory-grade statistical modeling (BSP 1112)",
+      "No real-time decisioning capability for BSP 1213 compliance",
+      "No model governance or approval workflows",
+      "Limited to visualization — no analytical model building",
+      "Data capacity limits without Premium/Fabric (restricts large-scale analytics)"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "ALWAYS partner — Power BI is never getting displaced in a Microsoft shop",
+      "Position SAS VA for analytical users, Power BI for report consumers",
+      "SAS VA produces insights that Power BI visualizes for broader distribution",
+      "Different user segments: Power BI for 90%, SAS VA for analytical 10%"
+    ],
+    "competeWhen": [
+      "Customer thinks Power BI alone covers their ANALYTICAL needs (not just reporting)",
+      "Microsoft positioning Power BI as replacement for enterprise analytics",
+      "Customer is evaluating enterprise analytics platform — Power BI vs. SAS VA head-to-head",
+      "Compliance/risk team needs analytical capabilities beyond dashboards"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "customer-win",
+      "title": "PH bank uses both: Power BI for reporting, SAS VA for analytics",
+      "detail": "Major Philippine bank deploys Power BI for executive dashboards and SAS Visual Analytics for fraud investigation, risk analysis, and regulatory reporting — proving coexistence.",
+      "source": "SAS Philippines"
+    },
+    {
+      "type": "analyst",
+      "title": "Gartner: Different categories, different leaders",
+      "detail": "Gartner positions SAS and Power BI in different quadrants — Power BI in BI/Analytics for the masses, SAS for augmented analytics and enterprise governance."
+    },
+    {
+      "type": "benchmark",
+      "title": "SAS VA: 10x faster analytical iteration",
+      "detail": "Analytical users complete forecasting, segmentation, and what-if analysis 10x faster in SAS VA vs. the Power BI + Excel + Python workaround path."
+    },
+    {
+      "type": "case-study",
+      "title": "Global insurer: Power BI + SAS VA coexistence",
+      "detail": "Top-10 global insurer standardized on Power BI for operational reporting AND SAS VA for actuarial analytics and risk modeling — proving the complementary positioning."
+    }
+  ],
+  "relatedRegulations": ["bsp-1112", "bsp-1213"],
+  "relatedSolutions": ["visual-analytics", "viya", "intelligent-decisioning"]
+}
