@@ -6,7 +6,7 @@
   "effectiveDate": "2025-06-25",
   "complianceDeadline": "2026-06-30",
   "summary": "Requires all BSP-supervised financial institutions to deploy real-time fraud management systems with behavioral monitoring, blacklist screening, and geolocation capabilities.",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "requirements": [
     "Real-time behavioral anomaly detection for all digital transactions",
     "Blacklist screening integrated into transaction flow",

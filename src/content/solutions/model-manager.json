@@ -1,7 +1,7 @@
 {
   "slug": "model-manager",
   "name": "SAS Model Manager",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "description": "Enterprise model lifecycle governance platform that manages models from development through production to retirement, providing regulatory audit trails, automated documentation, and continuous performance monitoring.",
   "elevatorPitch": "Complete model lifecycle governance — from development to production to retirement, with regulatory audit trails.",
   "capabilities": [

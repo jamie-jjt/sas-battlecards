@@ -21,19 +21,19 @@ const { currentPath } = Astro.props;
       <a href="/sas-battlecards/scoping/" class:list={["text-text-secondary hover:text-text-primary transition-colors", { "text-text-primary font-medium": currentPath.includes('/scoping') }]}>Scoping</a>
       <a href="/sas-battlecards/regulations/" class:list={["text-text-secondary hover:text-text-primary transition-colors", { "text-text-primary font-medium": currentPath.includes('/regulations') }]}>Regulations</a>
       <a href="/sas-battlecards/solutions/" class:list={["text-text-secondary hover:text-text-primary transition-colors", { "text-text-primary font-medium": currentPath.includes('/solutions') }]}>Solutions</a>
-      <div class="relative group">
-        <button class="text-text-secondary hover:text-text-primary transition-colors cursor-pointer flex items-center gap-1" type="button">
+      <div class="relative group" id="desktop-more-wrapper">
+        <button id="desktop-more-btn" class="text-text-secondary hover:text-text-primary transition-colors cursor-pointer flex items-center gap-1" type="button" aria-expanded="false" aria-haspopup="true">
           More
           <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <div class="absolute right-0 top-full mt-1 w-48 rounded-lg border border-border-default bg-bg-surface shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
-          <a href="/sas-battlecards/objections/" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated rounded-t-lg transition-colors">Objections</a>
-          <a href="/sas-battlecards/better-together/" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Better Together</a>
-          <a href="/sas-battlecards/sizing/" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Sizing Guide</a>
-          <a href="/sas-battlecards/compare/" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Compare</a>
-          <a href="/sas-battlecards/notes/" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Meeting Notes</a>
-          <a href="/sas-battlecards/tracker/" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Win/Loss Tracker</a>
-          <a href="/sas-battlecards/intel/" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated rounded-b-lg transition-colors">Intel Feed</a>
+        <div id="desktop-more-menu" role="menu" class="hidden absolute right-0 top-full mt-1 w-48 rounded-lg border border-border-default bg-bg-surface shadow-lg z-50">
+          <a href="/sas-battlecards/objections/" role="menuitem" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated rounded-t-lg transition-colors">Objections</a>
+          <a href="/sas-battlecards/better-together/" role="menuitem" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Better Together</a>
+          <a href="/sas-battlecards/sizing/" role="menuitem" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Sizing Guide</a>
+          <a href="/sas-battlecards/compare/" role="menuitem" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Compare</a>
+          <a href="/sas-battlecards/notes/" role="menuitem" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Meeting Notes</a>
+          <a href="/sas-battlecards/tracker/" role="menuitem" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors">Win/Loss Tracker</a>
+          <a href="/sas-battlecards/intel/" role="menuitem" class="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-elevated rounded-b-lg transition-colors">Intel Feed</a>
         </div>
       </div>
     </nav>
@@ -43,3 +43,45 @@ const { currentPath } = Astro.props;
     </div>
   </div>
 </header>
+
+<script>
+  const desktopBtn = document.getElementById('desktop-more-btn');
+  const desktopMenu = document.getElementById('desktop-more-menu');
+  const desktopWrapper = document.getElementById('desktop-more-wrapper');
+
+  if (desktopBtn && desktopMenu && desktopWrapper) {
+    function openDesktopMenu() {
+      desktopMenu.classList.remove('hidden');
+      desktopBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closeDesktopMenu() {
+      desktopMenu.classList.add('hidden');
+      desktopBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Click toggle
+    desktopBtn.addEventListener('click', () => {
+      const isOpen = !desktopMenu.classList.contains('hidden');
+      if (isOpen) { closeDesktopMenu(); } else { openDesktopMenu(); }
+    });
+
+    // Hover open/close (keep hover functionality)
+    desktopWrapper.addEventListener('mouseenter', openDesktopMenu);
+    desktopWrapper.addEventListener('mouseleave', closeDesktopMenu);
+
+    // Escape closes
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !desktopMenu.classList.contains('hidden')) {
+        closeDesktopMenu();
+        desktopBtn.focus();
+      }
+    });
+
+    // Outside click closes
+    document.addEventListener('click', (e) => {
+      if (!desktopWrapper.contains(e.target)) {
+        closeDesktopMenu();
+      }
+    });
+  }
+</script>

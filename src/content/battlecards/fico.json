@@ -4,7 +4,7 @@
   "category": "fraud-fincrime",
   "threatLevel": "high",
   "priority": "P1",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on analytics platform breadth, network analytics, and model governance",
   "overview": {
     "whatTheyDo": "FICO provides payment fraud scoring (Falcon), credit decisioning (Originations), and decision management (FICO Platform). Falcon is the world's most widely deployed payment fraud scoring system, processing billions of card transactions globally. FICO also owns the FICO Score brand used universally in credit decisioning.",

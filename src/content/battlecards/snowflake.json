@@ -4,7 +4,7 @@
   "category": "data-prep",
   "threatLevel": "medium",
   "priority": "P2",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on advanced analytics, industry solutions, and production ML governance beyond data warehousing",
   "overview": {
     "whatTheyDo": "Cloud data platform specializing in data warehousing, data sharing, and data engineering. Expanding into ML with Snowpark (Python/Java/Scala in Snowflake), Cortex AI (LLMs), and Snowflake ML (model development). Marketplace for data sharing.",

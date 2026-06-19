@@ -4,7 +4,7 @@
   "category": "fraud-fincrime",
   "threatLevel": "medium",
   "priority": "P3",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on platform breadth, ML maturity, and Philippine regulatory coverage",
   "overview": {
     "whatTheyDo": "Cloud-native AI platform for real-time fraud detection and financial crime prevention. Focuses on payments fraud, account takeover, and transaction monitoring with a modern ML-first architecture built for fintechs and digital banks.",

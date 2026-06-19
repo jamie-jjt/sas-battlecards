@@ -4,7 +4,7 @@
   "category": "ml-platform",
   "threatLevel": "medium",
   "priority": "P2",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on transparency, open standards, and self-service analytics for regulated industries",
   "overview": {
     "whatTheyDo": "Data integration and AI platform with Foundry (enterprise) and Gotham (government/defense). Known for ontology-based data modeling, operational workflows, and AI/ML deployment via AIP (Artificial Intelligence Platform).",

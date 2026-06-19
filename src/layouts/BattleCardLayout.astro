@@ -31,6 +31,17 @@ const sections = [
     lastUpdated={card.lastUpdated}
   />
 
+  <!-- Mobile section jump nav -->
+  <nav class="lg:hidden sticky top-14 z-20 bg-bg-surface/95 backdrop-blur-sm border-b border-border-default overflow-x-auto no-print" aria-label="Jump to section">
+    <div class="flex items-center gap-1 px-4 py-2 min-w-max">
+      {sections.map((s) => (
+        <a href={`#${s.id}`} class="px-3 py-1.5 text-xs rounded-full bg-bg-elevated text-text-secondary hover:text-text-primary hover:bg-bg-overlay transition-colors whitespace-nowrap">
+          {s.icon} {s.label}
+        </a>
+      ))}
+    </div>
+  </nav>
+
   <div class="max-w-7xl mx-auto px-4 md:px-6 py-6">
     <div class="flex gap-8">
       <!-- Side TOC (desktop only) -->

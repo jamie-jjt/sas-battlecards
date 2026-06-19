@@ -4,7 +4,7 @@
   "category": "ml-platform",
   "threatLevel": "high",
   "priority": "P1",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on governance, industry solutions, and production-grade decisioning",
   "overview": {
     "whatTheyDo": "Unified data and AI platform built on Apache Spark. Combines data engineering (Delta Lake, ETL pipelines) with ML experimentation (MLflow, Mosaic AI) in a lakehouse architecture.",

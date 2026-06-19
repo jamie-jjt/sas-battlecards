@@ -1,7 +1,7 @@
 {
   "slug": "fraud-management",
   "name": "SAS Fraud Management",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "description": "Enterprise fraud detection platform that combines real-time transaction scoring, adaptive machine learning, network analytics, and alert management to detect and prevent financial fraud across all channels.",
   "elevatorPitch": "Real-time fraud detection that learns and adapts — protecting billions of transactions daily with <10ms scoring.",
   "capabilities": [

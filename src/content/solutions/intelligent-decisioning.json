@@ -1,7 +1,7 @@
 {
   "slug": "intelligent-decisioning",
   "name": "SAS Intelligent Decisioning",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "description": "Real-time decisioning platform that combines business rules with machine learning models to automate complex decisions across fraud scoring, next-best-action, pricing, and customer engagement.",
   "elevatorPitch": "Combine business rules with ML models for real-time automated decisions — fraud scoring, next-best-action, pricing.",
   "capabilities": [

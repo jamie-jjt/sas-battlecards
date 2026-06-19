@@ -4,7 +4,7 @@
   "category": "open-source",
   "threatLevel": "high",
   "priority": "P1",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on governance, production readiness, enterprise support, and total cost of ownership",
   "overview": {
     "whatTheyDo": "Not a single company but the biggest competitive force in PH analytics. Python (scikit-learn, TensorFlow, PyTorch), R, Jupyter notebooks, MLflow, Airflow, and thousands of open-source libraries. 'Why pay for SAS when Python is free?' is the most common objection across all PH accounts.",

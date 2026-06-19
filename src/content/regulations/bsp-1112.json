@@ -6,7 +6,7 @@
   "effectiveDate": "2021-03-15",
   "complianceDeadline": null,
   "summary": "Requires BSFIs to establish model risk management frameworks including model inventory, validation, documentation, and lifecycle governance.",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "requirements": [
     "Maintain comprehensive model inventory with risk tiering",
     "Independent model validation (separate from development team)",

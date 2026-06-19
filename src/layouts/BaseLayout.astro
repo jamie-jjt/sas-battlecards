@@ -35,6 +35,7 @@ const currentPath = Astro.url.pathname;
   </head>
 
   <body class="bg-bg-base text-text-primary">
+    <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     <SkipLink />
     <Header currentPath={currentPath} />
 
@@ -46,6 +47,30 @@ const currentPath = Astro.url.pathname;
     <Footer />
     <MobileNav currentPath={currentPath} />
     <SearchModal />
+
+    <!-- Print prep: open all <details> -->
+    <script>
+      window.addEventListener('beforeprint', () => {
+        document.querySelectorAll('details:not([open])').forEach(d => {
+          d.setAttribute('open', '');
+          d.dataset.printOpened = 'true';
+        });
+      });
+      window.addEventListener('afterprint', () => {
+        document.querySelectorAll('details[data-print-opened]').forEach(d => {
+          d.removeAttribute('open');
+          d.removeAttribute('data-print-opened');
+        });
+      });
+    </script>
+
+    <!-- Screen reader announcer utility -->
+    <script>
+      window.announce = function(msg) {
+        const el = document.getElementById('sr-announcer');
+        if (el) { el.textContent = msg; setTimeout(() => el.textContent = '', 3000); }
+      };
+    </script>
 
     <!-- Service Worker Registration -->
     <script>

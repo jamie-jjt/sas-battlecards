@@ -4,7 +4,7 @@
   "category": "cloud-data",
   "threatLevel": "medium",
   "priority": "P2",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on regulated industry depth, production governance, and business-user tooling beyond developer AI",
   "overview": {
     "whatTheyDo": "Google Cloud Platform offers Vertex AI (ML platform), BigQuery (data warehouse), Looker (BI), and Gemini (GenAI). Strong in AI/ML research heritage from Google Brain and DeepMind.",

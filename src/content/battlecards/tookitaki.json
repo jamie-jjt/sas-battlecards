@@ -4,7 +4,7 @@
   "category": "fraud-fincrime",
   "threatLevel": "low",
   "priority": "P3",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on enterprise maturity, platform breadth, and proven Philippine deployments",
   "overview": {
     "whatTheyDo": "Singapore-based AML startup offering federated learning-based financial crime detection. Unique 'Anti-Financial Crime (AFC) Ecosystem' uses shared typology models across institutions without sharing raw data. Focuses on AML transaction monitoring and screening.",

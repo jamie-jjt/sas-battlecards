@@ -4,7 +4,7 @@
   "category": "ml-platform",
   "threatLevel": "medium",
   "priority": "P1",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on enterprise scale, regulatory depth, and production-grade governance",
   "overview": {
     "whatTheyDo": "Collaborative data science platform combining visual ML, code-based development, and MLOps in a single interface. Emphasizes 'Everyday AI' — democratizing data science across organizations with low-code/no-code capabilities alongside full Python/R support.",

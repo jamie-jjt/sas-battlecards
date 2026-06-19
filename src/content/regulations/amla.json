@@ -6,7 +6,7 @@
   "effectiveDate": "2001-09-29",
   "complianceDeadline": null,
   "summary": "Requires covered institutions to file STRs and CTRs, implement KYC, and maintain transaction monitoring systems. Philippines exited FATF grey list in early 2025.",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "requirements": [
     "Suspicious Transaction Report (STR) filing to AMLC",
     "Covered Transaction Report (CTR) filing for transactions ≥₱500,000",

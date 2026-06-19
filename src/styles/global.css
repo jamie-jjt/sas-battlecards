@@ -168,13 +168,15 @@ body {
   }
 
   /* Expand all collapsible sections */
-  details {
-    open: true;
-  }
   details > summary {
-    display: none;
+    display: none !important;
   }
-  details > *:not(summary) {
+  details > div,
+  details > section,
+  details > ul,
+  details > ol,
+  details > table,
+  details > p {
     display: block !important;
   }
 
@@ -199,4 +201,10 @@ body {
     font-size: 9pt;
     color: #666;
   }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }

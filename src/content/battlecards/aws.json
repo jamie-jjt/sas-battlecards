@@ -4,7 +4,7 @@
   "category": "cloud-data",
   "threatLevel": "medium",
   "priority": "P2",
-  "lastUpdated": "2025-06-15",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins on governed analytics, industry solutions, and business-user accessibility beyond developer tooling",
   "overview": {
     "whatTheyDo": "Amazon Web Services provides SageMaker (ML platform), Bedrock (GenAI), QuickSight (BI), and 200+ cloud services. ML offering is developer-focused with notebook-driven workflows, AutoML, and model hosting.",

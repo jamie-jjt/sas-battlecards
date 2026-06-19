@@ -132,6 +132,9 @@ const base = import.meta.env.BASE_URL;
     'nice-actimize': { name: 'NICE Actimize', tagline: 'SAS wins on analytics depth, false positive reduction, and platform openness.' },
     'powerbi': { name: 'Power BI', tagline: 'SAS wins on advanced analytics, forecasting, and governed model deployment.' },
     'opensource': { name: 'Python/R Open Source', tagline: 'SAS wins on production governance, enterprise support, and business user access.' },
+    'snowflake': { name: 'Snowflake', tagline: 'SAS wins on governed analytics and real-time decisioning beyond SQL.' },
+    'aws': { name: 'AWS (SageMaker)', tagline: 'SAS wins on model governance, business user access, and no cloud lock-in.' },
+    'google': { name: 'Google Cloud', tagline: 'SAS wins on enterprise readiness, regulatory depth, and on-prem options.' },
   };
 
   // Scoping questions (merged banking + universal, filtered at output time)
@@ -198,6 +201,32 @@ const base = import.meta.env.BASE_URL;
   };
 
   // ============================================================
+  // URL STATE SYNC
+  // ============================================================
+  function syncStateToURL() {
+    const params = new URLSearchParams();
+    if (state.industry) params.set('i', state.industry);
+    if (state.competitors.length) params.set('c', state.competitors.join(','));
+    if (state.useCase) params.set('u', state.useCase);
+    if (state.meetingType) params.set('m', state.meetingType);
+    if (state.maturity) params.set('l', state.maturity);
+    params.set('s', String(state.step));
+    history.replaceState(null, '', '?' + params.toString());
+  }
+
+  function hydrateFromURL() {
+    const params = new URLSearchParams(location.search);
+    if (params.has('s')) {
+      state.step = parseInt(params.get('s')) || 1;
+      state.industry = params.get('i') || '';
+      state.competitors = (params.get('c') || '').split(',').filter(Boolean);
+      state.useCase = params.get('u') || '';
+      state.meetingType = params.get('m') || '';
+      state.maturity = params.get('l') || '';
+    }
+  }
+
+  // ============================================================
   // DOM REFERENCES
   // ============================================================
   const content = document.getElementById('wizard-content');
@@ -210,6 +239,7 @@ const base = import.meta.env.BASE_URL;
   function renderStep() {
     updateIndicator();
     btnBack.classList.toggle('hidden', state.step === 1);
+    syncStateToURL();
 
     switch(state.step) {
       case 1: renderIndustry(); break;
@@ -218,6 +248,12 @@ const base = import.meta.env.BASE_URL;
       case 4: renderMeetingType(); break;
       case 5: renderMaturity(); break;
       case 6: renderPrepSheet(); break;
+    }
+
+    if (state.step <= 5) {
+      if (window.announce) window.announce('Step ' + state.step + ' of 5');
+    } else {
+      if (window.announce) window.announce('Prep sheet generated');
     }
   }
 
@@ -380,7 +416,7 @@ const base = import.meta.env.BASE_URL;
     const relevantCards = state.competitors
       .map(c => {
         // Map competitor wizard IDs to battle card slugs
-        const slugMap = { 'python-r': 'opensource', 'snowflake': null, 'aws': null, 'google': null, 'none': null };
+        const slugMap = { 'python-r': 'opensource', 'none': null };
         const slug = slugMap[c] !== undefined ? slugMap[c] : c;
         if (!slug || !battleCardData[slug]) return null;
         return { slug, ...battleCardData[slug] };
@@ -520,6 +556,7 @@ const base = import.meta.env.BASE_URL;
   // ============================================================
   // INIT
   // ============================================================
+  hydrateFromURL();
   renderStep();
 })();
 </script>

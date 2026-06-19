@@ -120,6 +120,8 @@ const cardData = battlecards.map((bc) => ({
 
   btnCompare.addEventListener('click', () => {
     generateComparison();
+    outputEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    outputEl.style.animation = 'fadeIn 300ms ease-out';
   });
 
   btnExport.addEventListener('click', () => {

@@ -68,6 +68,7 @@ const useCases = [
         <svg class="w-4 h-4 text-text-muted transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </summary>
       <div class="px-6 pb-6 pt-2 border-t border-border-muted space-y-4">
+        <div id="form-feedback" class="hidden rounded-lg border px-4 py-2 text-sm mb-4" role="alert"></div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div>
             <label for="deal-date" class="block text-xs font-medium text-text-muted mb-1">Date</label>
@@ -243,6 +244,16 @@ const useCases = [
     `).join('');
   }
 
+  function showFeedback(msg, type) {
+    const el = document.getElementById('form-feedback');
+    el.textContent = msg;
+    el.className = type === 'error'
+      ? 'rounded-lg border border-danger/30 bg-danger/10 px-4 py-2 text-sm text-danger mb-4'
+      : 'rounded-lg border border-success/30 bg-success/10 px-4 py-2 text-sm text-success mb-4';
+    el.classList.remove('hidden');
+    setTimeout(() => el.classList.add('hidden'), 4000);
+  }
+
   // Save deal
   document.getElementById('btn-save-deal')?.addEventListener('click', () => {
     const date = (document.getElementById('deal-date')).value;
@@ -250,7 +261,7 @@ const useCases = [
     const outcome = (document.getElementById('deal-outcome')).value;
 
     if (!date || !customer || !outcome) {
-      alert('Please fill in Date, Customer, and Outcome.');
+      showFeedback('Please fill in Date, Customer, and Outcome.', 'error');
       return;
     }
 
@@ -271,6 +282,7 @@ const useCases = [
     saveDeals(deals);
     updateStats();
     renderDeals();
+    showFeedback('Deal saved successfully!', 'success');
 
     // Reset form
     ['deal-date', 'deal-customer', 'deal-size', 'deal-notes'].forEach((id) => {
