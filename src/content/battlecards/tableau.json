@@ -1,0 +1,149 @@
+{
+  "slug": "tableau",
+  "name": "Tableau (Salesforce)",
+  "category": "bi-visualization",
+  "threatLevel": "medium",
+  "priority": "P2",
+  "lastUpdated": "2025-01-20",
+  "tagline": "SAS wins because we deliver analytics that ACT — not just beautiful visualizations that inform",
+  "overview": {
+    "whatTheyDo": "Visual analytics and business intelligence platform acquired by Salesforce in 2019. Best-in-class data visualization with drag-and-drop interface, VizQL engine, and Tableau Pulse (AI-driven insights). Expanding into Tableau+ (premium tier) and Einstein integration for predictive analytics.",
+    "sweetSpot": "Data-driven organizations wanting beautiful, interactive data exploration. Power users who outgrow Excel and want sophisticated visual analytics. Organizations already in Salesforce ecosystem (CRM + BI integration).",
+    "typicalBuyer": "Head of BI/Analytics, CDO, VP Marketing/Sales (Salesforce tie-in), Line-of-Business analysts",
+    "phPresence": "Moderate PH presence via Salesforce Philippines. Strong in telco (Globe, PLDT), some banks, and consumer brands. Partner ecosystem includes Accenture PH, local Salesforce resellers. Active user community (Tableau User Group Manila) but smaller than Power BI community.",
+    "recentMomentum": "Tableau+ (premium AI features), Tableau Pulse (proactive insights), deeper Salesforce Data Cloud integration, Einstein GPT for NL queries. Post-acquisition strategy focuses on Salesforce ecosystem integration rather than standalone BI market.",
+    "pricingModel": "Named user licensing: Creator ~$75/user/month, Explorer ~$42/user/month, Viewer ~$15/user/month. Tableau+ (premium) higher. Significantly more expensive than Power BI Pro (included in M365). Often sold as Salesforce bundle."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Analytics That Act — Not Just Visualize",
+      "explanation": "SAS connects insights to real-time decisions via Intelligent Decisioning. Tableau creates stunning visualizations but cannot trigger automated actions — it shows fraud patterns but cannot BLOCK fraudulent transactions. For BSP 1213 compliance, you need systems that act in real-time, not dashboards that inform after the fact.",
+      "proofPoint": "SAS processes fraud decisions in <10ms and triggers real-time blocking. Tableau can only show a dashboard of what already happened."
+    },
+    {
+      "headline": "Statistical & Predictive Depth (200+ Algorithms)",
+      "explanation": "SAS Visual Analytics embeds forecasting, segmentation, decision trees, correlation analysis, and what-if scenarios natively within dashboards. Tableau has basic trend lines and built-in forecasting (exponential smoothing only) but requires TabPy/R integration for anything beyond simple statistics. SAS keeps the entire analytical workflow in one governed platform.",
+      "proofPoint": "SAS VA provides 200+ statistical procedures in the same interface. Tableau users needing advanced analytics must export data or connect external Python/R processes — breaking governance."
+    },
+    {
+      "headline": "Governed Model Building for Citizen Data Scientists",
+      "explanation": "SAS Model Studio enables business analysts to build, validate, and deploy ML models within a governed environment with approval workflows. Tableau has ZERO model building capability — it's purely a consumption and exploration tool. For BSP 1112 compliance, banks need governed model lifecycle, not just visualizations of model outputs.",
+      "proofPoint": "60% of SAS Viya users are non-programmers contributing to production analytics. Tableau users who need to build models must leave the platform entirely."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Best-in-Class Data Visualization",
+      "whyItMatters": "Tableau's VizQL engine produces objectively more polished, publication-quality visualizations than SAS VA. For executive presentations and public-facing analytics, Tableau's visual design is unmatched. Data journalists and marketing teams love Tableau's aesthetics.",
+      "howToNeutralize": "Don't compete on visualization beauty — concede this. Position SAS VA for ANALYTICAL depth (forecasting, segmentation, modeling) not for making pretty charts. For dashboards that need to look beautiful for executive consumption, Tableau or Power BI are fine. For dashboards that need to ANALYZE, SAS VA is the right tool."
+    },
+    {
+      "area": "Data Exploration UX (Intuitive Discovery)",
+      "whyItMatters": "Tableau's drag-and-drop exploration is more intuitive for ad-hoc data discovery than SAS VA. Business users can 'play' with data naturally — pivoting, filtering, drilling in with minimal training. Tableau's flow state for data exploration is genuinely superior.",
+      "howToNeutralize": "Acknowledge Tableau excels at exploration. Position SAS VA for when exploration needs to transition to PRODUCTION analytics — governed forecasts, validated models, automated reports. Exploration is step 1; SAS VA covers steps 1 through 5 (explore → analyze → model → deploy → monitor)."
+    },
+    {
+      "area": "Salesforce Ecosystem Integration",
+      "whyItMatters": "For organizations deep in Salesforce (CRM, Marketing Cloud, Commerce Cloud), Tableau provides native integration — embedded analytics in CRM, customer 360 dashboards, and sales pipeline visualization without ETL. In PH, Globe and other telcos use Salesforce extensively.",
+      "howToNeutralize": "SAS Customer Intelligence 360 provides customer analytics that feeds INTO Salesforce via API integration. Position SAS as the analytics BRAIN behind Salesforce actions — deeper customer modeling, next-best-action, and churn prediction that Tableau visualizations cannot provide."
+    }
+  ],
+  "features": [
+    { "capability": "Interactive Data Visualization", "sas": "full", "competitor": "full", "notes": "Both strong; Tableau's VizQL produces slightly more polished visuals" },
+    { "capability": "Advanced Statistical Analysis (In-Tool)", "sas": "full", "competitor": "partial", "notes": "SAS VA native 200+ procedures; Tableau limited to trend lines + basic forecasting" },
+    { "capability": "Predictive Analytics (In-Dashboard)", "sas": "full", "competitor": "partial", "notes": "SAS VA native predictions; Tableau requires TabPy/R integration" },
+    { "capability": "Self-Service Model Building", "sas": "full", "competitor": "none", "notes": "SAS Model Studio for citizen DS; Tableau has zero model building" },
+    { "capability": "Real-Time Decisioning", "sas": "full", "competitor": "none", "notes": "SAS acts on insights; Tableau only displays data" },
+    { "capability": "Data Exploration UX", "sas": "partial", "competitor": "full", "notes": "Tableau's drag-and-drop exploration is best-in-class" },
+    { "capability": "Publication-Quality Visuals", "sas": "partial", "competitor": "full", "notes": "Tableau's design aesthetic is superior for executive presentations" },
+    { "capability": "Enterprise Data Governance", "sas": "full", "competitor": "partial", "notes": "SAS enterprise governance; Tableau improving with Data Management add-on" },
+    { "capability": "Scalability (Billions of Rows)", "sas": "full", "competitor": "partial", "notes": "SAS CAS handles billions natively; Tableau extracts have size limits, live connections depend on source" },
+    { "capability": "Natural Language Queries", "sas": "partial", "competitor": "full", "notes": "Tableau Ask Data + Pulse AI; SAS exploring NL interfaces" },
+    { "capability": "CRM Integration (Salesforce)", "sas": "partial", "competitor": "full", "notes": "Tableau native Salesforce integration; SAS via APIs" },
+    { "capability": "Regulatory Reporting (BSP Format)", "sas": "full", "competitor": "none", "notes": "SAS generates regulatory reports; Tableau is general-purpose only" }
+  ],
+  "landmines": [
+    {
+      "question": "When your analysts identify a suspicious pattern in Tableau, what happens next — can the system automatically trigger an investigation or block a transaction?",
+      "expectedAnswer": "No — they manually escalate or open another system to take action",
+      "whatToSayNext": "That manual handoff is the gap. SAS connects insight to ACTION — suspicious patterns trigger real-time decisions automatically. For BSP 1213 compliance, you need sub-10ms automated response, not a beautiful dashboard showing fraud after it happens."
+    },
+    {
+      "question": "How do your business analysts build and validate forecasting models — do they stay in Tableau or export to Excel/Python?",
+      "expectedAnswer": "They export data or use separate tools — Tableau's built-in forecasting is too basic",
+      "whatToSayNext": "That's the governance gap. Every export to Excel creates an ungoverned model. SAS VA keeps forecasting, segmentation, and modeling in ONE governed environment — no exports, no shadow analytics, full audit trail for BSP."
+    },
+    {
+      "question": "What's your total annual Tableau licensing cost across Creator, Explorer, and Viewer seats — and how does that compare to what Power BI provides in your existing M365 license?",
+      "expectedAnswer": "They realize Tableau costs significantly more than Power BI for similar dashboarding",
+      "whatToSayNext": "If you're paying premium for visualization, shouldn't you get premium ANALYTICS too? SAS VA gives you visualization PLUS statistical depth, model building, and decisioning — the complete analytical stack, not just a prettier dashboard."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Tableau is the gold standard for data visualization — our users love it",
+      "whyTheySayIt": "Tableau genuinely has the best visualization UX. Users who've adopted it are passionate advocates. Emotional attachment to the tool.",
+      "response": "Tableau IS excellent for visualization — we agree. But visualization is step 1 of analytics. When your team needs to forecast, build models, run what-if scenarios, or trigger automated decisions, they leave Tableau and cobble together Python scripts, Excel models, or separate ML tools. SAS VA covers the FULL analytical workflow: visualize + analyze + model + act. Keep Tableau for your visualization-first users. Add SAS VA for your analytics-first users who need to go beyond exploration into production analytics.",
+      "proofPoints": ["SAS VA users generate predictive insights without leaving the platform", "70% of Tableau shops also have ungoverned Excel/Python analytics — that's the gap SAS fills", "BSP expects governed analytical models, not just governed dashboards"],
+      "whatNotToSay": "Don't say 'SAS VA is better than Tableau at visualization' — it's not, and you'll lose credibility. Compete on analytical depth, not visual aesthetics."
+    },
+    {
+      "objection": "We already invested heavily in Tableau — we can't justify another analytics tool",
+      "whyTheySayIt": "Sunk cost + license fatigue. CFO won't approve another BI-category tool. Valid budget concern.",
+      "response": "SAS VA isn't replacing Tableau — it's filling the analytical gap Tableau can't cover. Your Tableau investment handles data exploration and reporting. But who handles: governed forecasting? Model building and validation? Real-time decisioning? Regulatory model documentation? If the answer is 'Excel, Python scripts, and manual processes' — that's the business case for SAS. The cost of ungoverned analytics (regulatory risk, bad decisions, manual rework) far exceeds the SAS investment.",
+      "proofPoints": ["SAS complements Tableau — different users, different use cases", "BSP 1112 requires governed model lifecycle that Tableau cannot provide", "ROI from automating manual Excel-based analytics typically covers SAS investment in 6-9 months"],
+      "whatNotToSay": "Don't position as a Tableau replacement. Position as complementary — addressing analytical capabilities Tableau doesn't have."
+    }
+  ],
+  "phContext": {
+    "localPresence": "Moderate presence via Salesforce Philippines office (BGC, Taguig). Sold through Salesforce enterprise agreements and local partners (Accenture PH, Exist Software). Tableau User Group Manila exists but smaller than Power BI community. Primarily strong in telco and consumer brands. Less penetration in banking vs. Power BI.",
+    "knownCustomers": ["Globe Telecom (Salesforce ecosystem)", "PLDT/Smart (analytics teams)", "Select consumer brands and retailers", "Some BPO companies for operational analytics", "Growing in progressive banks via Salesforce CRM tie-in"],
+    "localPricing": "Named user licensing: Creator ~$75/user/month, Explorer ~$42/user/month, Viewer ~$15/user/month. Significantly more expensive than Power BI (included in M365). Often bundled into Salesforce enterprise deals. No PH-specific discount but USD pricing with annual commitment.",
+    "regulatoryGaps": [
+      "No model governance or lifecycle management (BSP 1112 gap)",
+      "No real-time decisioning capability for BSP 1213 compliance",
+      "Cannot build or validate predictive models within the platform",
+      "No industry-specific compliance features (fraud detection, AML)",
+      "Limited to visualization — no automated action capabilities for AFASA compliance"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer has established Tableau user base passionate about the tool",
+      "Primary Tableau use is visualization/exploration — gap is production analytics",
+      "Salesforce ecosystem is deeply embedded — Tableau won't be displaced",
+      "Budget is additive — can position SAS for different user segment"
+    ],
+    "competeWhen": [
+      "Customer evaluating enterprise analytics platform (head-to-head)",
+      "Primary need is analytical (forecasting, modeling) not visualization",
+      "Customer realizes Tableau cost vs. Power BI for pure dashboarding",
+      "Regulated use case where governance and decisioning are primary requirements"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "Gartner: SAS leads in Augmented Analytics, Tableau in BI",
+      "detail": "Gartner positions SAS and Tableau in different segments — Tableau for visual analytics/BI, SAS for augmented analytics, advanced analytics, and ML platforms. Different strengths, complementary positioning."
+    },
+    {
+      "type": "benchmark",
+      "title": "SAS VA: Full analytical lifecycle vs. visualization only",
+      "detail": "SAS VA users complete explore-analyze-model-deploy workflows 5x faster than Tableau + Python + Excel workaround paths — with full governance maintained throughout."
+    },
+    {
+      "type": "customer-win",
+      "title": "ASEAN bank: Tableau for dashboards, SAS for regulated analytics",
+      "detail": "Major ASEAN bank uses Tableau for executive dashboards and SAS Visual Analytics for fraud investigation, risk modeling, and BSP regulatory reporting — coexistence proving complementary value.",
+      "source": "SAS ASEAN"
+    },
+    {
+      "type": "case-study",
+      "title": "Telco migrated analytical workloads from Tableau to SAS VA",
+      "detail": "Southeast Asian telco moved churn prediction and network analytics from Tableau+Python to SAS VA — reducing analytical cycle time from weeks to days with full governance."
+    }
+  ],
+  "relatedRegulations": ["bsp-1112", "bsp-1213"],
+  "relatedSolutions": ["visual-analytics", "intelligent-decisioning", "model-manager"]
+}

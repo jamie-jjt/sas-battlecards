@@ -1,0 +1,150 @@
+{
+  "slug": "informatica",
+  "name": "Informatica",
+  "category": "data-prep",
+  "threatLevel": "medium",
+  "priority": "P3",
+  "lastUpdated": "2025-01-20",
+  "tagline": "SAS wins because we go beyond data management to deliver analytics, decisioning, and industry solutions that turn governed data into business outcomes",
+  "overview": {
+    "whatTheyDo": "Enterprise data management platform — the market leader in data integration, data quality, master data management (MDM), data governance, and data cataloging. IDMC (Intelligent Data Management Cloud) is their cloud-native platform combining iPaaS, data quality, MDM, and AI-powered data management. Informatica is the 'plumbing' that gets data ready for analytics.",
+    "sweetSpot": "Large enterprises needing enterprise-grade ETL/ELT, data quality, MDM, and governance across complex hybrid environments (SAP, Oracle, mainframes + cloud). Organizations with complex data landscapes needing a single data management layer. Banks and insurers with data lineage/governance requirements.",
+    "typicalBuyer": "CDO, VP Data Management, Head of Data Governance, Data Architecture team, Chief Data Officer",
+    "phPresence": "Established PH presence through long-term partnerships. Used by major PH banks (BDO, BPI, Metrobank) for ETL and data warehousing. Strong in insurance (Sun Life PH, Manulife PH) for data integration. Partner ecosystem includes Accenture PH, IBM PH, and local SIs. Well-known in PH enterprise data teams.",
+    "recentMomentum": "Taken private by Permira (2024, ~$35B). IDMC cloud platform growth. CLAIRE AI engine for data management automation. Data marketplace and data sharing capabilities. Push into 'AI-ready data' positioning — data management for AI/ML workloads.",
+    "pricingModel": "Subscription-based: IDMC cloud credits (consumption), on-prem perpetual + maintenance (legacy), or hybrid. Enterprise licenses typically $300K-$2M+ annually depending on connectors and data volume. IPU (Informatica Processing Units) for cloud consumption."
+  },
+  "whereWeWin": [
+    {
+      "headline": "End-to-End: Data Management THROUGH to Analytics & Decisioning",
+      "explanation": "Informatica makes data ready. SAS uses that data to detect fraud, score risk, build models, and trigger real-time decisions. Informatica stops at data preparation — SAS takes over where Informatica ends. For BSP compliance, you need BOTH clean data AND analytical capabilities. SAS provides the complete chain: data quality + analytics + governance + action.",
+      "proofPoint": "SAS Viya includes data quality AND 200+ analytical algorithms AND real-time decisioning AND model governance — a complete platform from raw data to business outcome. Informatica delivers clean data but cannot analyze it."
+    },
+    {
+      "headline": "Production Analytics & Industry Solutions",
+      "explanation": "SAS delivers production-ready fraud detection, AML monitoring, risk scoring, and forecasting. Informatica has ZERO analytical capability — no ML models, no statistical analysis, no decisioning engine. For BSP 1213 compliance, clean data alone doesn't prevent fraud — you need real-time scoring and automated action.",
+      "proofPoint": "SAS Fraud Management scores transactions in <10ms. Informatica can clean and route that transaction data but cannot detect fraud patterns or trigger blocking actions."
+    },
+    {
+      "headline": "Data Quality WITHIN the Analytical Workflow",
+      "explanation": "SAS Data Management provides data quality, integration, and governance natively embedded in the analytical pipeline — not as a separate tool requiring handoff. Data profiling, cleansing, and enrichment happen inline as data flows into analytical models. This eliminates the data handoff gap between Informatica (data prep) and a separate analytics tool.",
+      "proofPoint": "SAS Data Quality integrated with SAS Model Manager means model data lineage is tracked end-to-end — from raw source through quality checks to model output. Informatica requires separate integration with any analytics tool."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Market-Leading ETL/ELT & Connector Breadth",
+      "whyItMatters": "Informatica has 300+ native connectors to enterprise systems (SAP, Oracle, mainframes, cloud databases, SaaS apps). Their PowerCenter (on-prem) and IDMC (cloud) are the de facto standard for complex ETL. Displacing Informatica ETL means rebuilding hundreds of data pipelines.",
+      "howToNeutralize": "Don't compete on ETL — concede this to Informatica. Position SAS as complementary: Informatica prepares the data, SAS analyzes it. SAS Data Management handles analytical data prep (profiling, quality for analytics) while Informatica handles enterprise-wide ETL. They serve different purposes in the data lifecycle."
+    },
+    {
+      "area": "Master Data Management (MDM)",
+      "whyItMatters": "Informatica MDM is the market leader — providing golden record management, entity resolution, and data stewardship for customer, product, and supplier master data. Critical for banks needing single customer view across multiple core banking systems. SAS doesn't have equivalent MDM capability.",
+      "howToNeutralize": "Acknowledge Informatica MDM leadership. Position SAS Customer Intelligence 360 as the consumer of MDM output — once you have a golden customer record (Informatica), SAS provides the analytical layer: segmentation, next-best-action, lifetime value prediction, and personalization."
+    },
+    {
+      "area": "Data Cataloging & Governance Breadth",
+      "whyItMatters": "Informatica's Enterprise Data Catalog and Axon governance platform provide comprehensive data asset management, business glossary, lineage visualization, and policy management across the entire enterprise. This matters for BSP data governance expectations and NPC compliance.",
+      "howToNeutralize": "SAS has data governance embedded in its analytical platform — but for enterprise-wide data cataloging across ALL systems (not just analytical), Informatica is broader. Position: 'Informatica governs your data ESTATE. SAS governs your analytical MODELS and decisions. Both are needed for BSP compliance — data governance AND model governance.'"
+    }
+  ],
+  "features": [
+    { "capability": "Data Integration / ETL", "sas": "partial", "competitor": "full", "notes": "Informatica market leader in ETL; SAS Data Integration capable but narrower connector library" },
+    { "capability": "Data Quality & Profiling", "sas": "full", "competitor": "full", "notes": "Both strong; SAS quality embedded in analytical pipeline, Informatica broader enterprise scope" },
+    { "capability": "Master Data Management", "sas": "none", "competitor": "full", "notes": "Informatica MDM market leader; SAS doesn't have equivalent MDM product" },
+    { "capability": "Data Governance / Cataloging", "sas": "partial", "competitor": "full", "notes": "Informatica enterprise-wide catalog; SAS governance focused on analytical assets" },
+    { "capability": "Advanced Analytics & ML", "sas": "full", "competitor": "none", "notes": "SAS 200+ algorithms, model building; Informatica has zero analytical capability" },
+    { "capability": "Predictive Modeling", "sas": "full", "competitor": "none", "notes": "Core SAS strength; Informatica cannot build or deploy models" },
+    { "capability": "Real-Time Decisioning", "sas": "full", "competitor": "none", "notes": "SAS Intelligent Decisioning <10ms; Informatica has no decisioning engine" },
+    { "capability": "Model Governance & Lifecycle", "sas": "full", "competitor": "none", "notes": "SAS Model Manager purpose-built; Informatica governs data, not models" },
+    { "capability": "Industry Solutions (Fraud/AML/Risk)", "sas": "full", "competitor": "none", "notes": "SAS has production solutions; Informatica is horizontal data platform" },
+    { "capability": "Data Visualization & Reporting", "sas": "full", "competitor": "none", "notes": "SAS Visual Analytics; Informatica has no visualization capability" },
+    { "capability": "Cloud Data Integration (iPaaS)", "sas": "partial", "competitor": "full", "notes": "Informatica IDMC strong iPaaS; SAS cloud integration improving" },
+    { "capability": "Regulatory Compliance (BSP/AFASA)", "sas": "full", "competitor": "partial", "notes": "SAS for analytical compliance; Informatica for data lineage compliance only" }
+  ],
+  "landmines": [
+    {
+      "question": "Once Informatica delivers clean, integrated data — what system analyzes that data for fraud patterns, risk scores, and regulatory compliance?",
+      "expectedAnswer": "They either don't have a clear answer or describe fragmented tools (Excel, Python, separate BI tool)",
+      "whatToSayNext": "That's the analytics gap. Informatica is excellent at getting data ready. SAS is what turns that ready data into business value — fraud detection in <10ms, governed ML models, real-time decisions. They're complementary, not competing."
+    },
+    {
+      "question": "Can Informatica detect a suspicious transaction pattern and automatically trigger a blocking action in real-time?",
+      "expectedAnswer": "No — Informatica processes and routes data but doesn't analyze patterns or trigger actions",
+      "whatToSayNext": "Exactly. Clean data doesn't prevent fraud — analytics does. BSP 1213 requires real-time behavioral monitoring and automated response. That's SAS's role on top of your Informatica data foundation."
+    },
+    {
+      "question": "How do you demonstrate to BSP that your analytical models are governed — with approval workflows, drift monitoring, and documentation?",
+      "expectedAnswer": "Informatica governs data lineage but not model governance — they may not have model lifecycle management",
+      "whatToSayNext": "Informatica governs your data. But BSP 1112 requires MODEL governance — approval chains, champion/challenger, performance monitoring, documentation. SAS Model Manager provides exactly this. Data governance + model governance = complete BSP compliance."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "We use Informatica for data management — their data quality handles what SAS Data Management does",
+      "whyTheySayIt": "Informatica already manages their data quality. They see SAS Data Management as redundant. Valid concern about tool overlap.",
+      "response": "For enterprise-wide ETL and MDM, Informatica is excellent — keep it. SAS Data Management focuses specifically on ANALYTICAL data preparation: profiling for model readiness, quality checks embedded in ML pipelines, and lineage tracking from raw data through model outputs. Think of it as: Informatica makes data enterprise-ready. SAS Data Management makes data analytics-ready. The overlap is minimal — they solve different problems in the data lifecycle.",
+      "proofPoints": ["Many SAS customers use Informatica + SAS together — Informatica for ETL, SAS for analytics", "SAS Data Quality integrates with SAS Model Manager for end-to-end model lineage", "Enterprise-wide data quality (Informatica) and analytical data quality (SAS) are different scopes"],
+      "whatNotToSay": "Don't position SAS Data Management as a replacement for Informatica — it's not for enterprise ETL at scale. Position as complementary for the analytical use case specifically."
+    },
+    {
+      "objection": "Informatica is expanding into AI/ML with CLAIRE — they'll cover analytics eventually",
+      "whyTheySayIt": "Informatica marketing pushes 'AI-ready data' and CLAIRE AI engine. Customer thinks Informatica will evolve into an analytics platform.",
+      "response": "CLAIRE is AI FOR data management — it automates data quality, matching, and mapping tasks within Informatica. It's NOT analytical AI that builds fraud detection models, scores risk, or triggers real-time decisions. It's like saying a dishwasher will eventually cook dinner because both are in the kitchen. Informatica makes data ready for AI. SAS provides the AI that uses that data. They're fundamentally different capabilities and will remain so.",
+      "proofPoints": ["CLAIRE automates Informatica's own data management tasks — not customer analytics", "Informatica's product roadmap shows no fraud, risk, or decisioning capabilities", "Gartner positions Informatica in Data Integration, not AI/ML platforms — completely different Magic Quadrant"],
+      "whatNotToSay": "Don't dismiss CLAIRE as useless — it IS valuable for automating data management. Just clarify it's AI FOR data management, not analytical AI FOR business decisions."
+    }
+  ],
+  "phContext": {
+    "localPresence": "Established presence in PH through Accenture, IBM, and local partners. Informatica has been in Philippine banks and insurers for 15+ years for ETL/data warehousing. Deep roots in the data management layer of major PH enterprises. No direct PH office but well-served by regional team (Singapore) and strong partner ecosystem.",
+    "knownCustomers": ["Major PH universal banks (BDO, BPI, Metrobank — ETL/DW)", "Insurance companies (Sun Life PH, Manulife PH — data integration)", "Telcos (Globe, PLDT — CDR/billing data processing)", "Government agencies using for data consolidation", "Large conglomerates (SM, Ayala — enterprise data integration)"],
+    "localPricing": "Enterprise licenses $300K-$2M+ annually. On-prem PowerCenter legacy pricing (perpetual + 20% maintenance). IDMC cloud consumption-based (IPU credits). Well-established pricing relationships with PH enterprise — many have 10+ year Informatica contracts. Perceived as expensive but entrenched.",
+    "regulatoryGaps": [
+      "No analytical capability for BSP 1213 fraud monitoring",
+      "No model governance for BSP 1112 compliance",
+      "Cannot perform real-time transaction scoring for AFASA compliance",
+      "No AML/CFT detection or suspicious activity reporting",
+      "Provides data lineage but not MODEL lineage",
+      "No decisioning engine — cannot trigger automated compliance actions"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "ALWAYS partner — Informatica and SAS serve different layers of the analytics stack",
+      "Customer has established Informatica ETL/MDM investment (most PH banks do)",
+      "Position: Informatica for data management, SAS for analytics and decisioning",
+      "SAS Data Management handles analytical data prep; Informatica handles enterprise ETL"
+    ],
+    "competeWhen": [
+      "Customer considering Informatica's data quality AS REPLACEMENT for SAS Data Management in analytical pipeline",
+      "Informatica positioning CLAIRE as sufficient for 'AI' needs",
+      "Greenfield data quality decision specifically for ML/analytical pipeline (not enterprise ETL)",
+      "Budget forces either/or decision on data quality tooling for analytical use cases"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "customer-win",
+      "title": "PH bank: Informatica ETL + SAS Analytics architecture",
+      "detail": "Major Philippine universal bank uses Informatica PowerCenter for ETL from core banking to data warehouse, then SAS for fraud detection, credit scoring, and regulatory reporting — proving the complementary architecture.",
+      "source": "SAS Philippines"
+    },
+    {
+      "type": "analyst",
+      "title": "Gartner: Different Magic Quadrants, complementary capabilities",
+      "detail": "Gartner positions Informatica as Leader in Data Integration and SAS as Leader in AI/ML platforms — completely different categories confirming they are complementary, not competitive."
+    },
+    {
+      "type": "benchmark",
+      "title": "Clean data alone doesn't prevent fraud",
+      "detail": "A BSP-regulated bank with perfect data quality (Informatica) but no analytical layer still cannot detect fraud patterns, score risk, or trigger automated actions — proving analytics is the missing piece on top of data management."
+    },
+    {
+      "type": "case-study",
+      "title": "Global insurer: Informatica + SAS for regulatory compliance",
+      "detail": "Top-5 global insurer uses Informatica for enterprise data integration and SAS for actuarial modeling, claims analytics, and IFRS 17 compliance — each platform handling its strength area."
+    }
+  ],
+  "relatedRegulations": ["bsp-1112", "bsp-1213", "dpa", "afasa"],
+  "relatedSolutions": ["fraud-management", "model-manager", "intelligent-decisioning", "risk-management"]
+}

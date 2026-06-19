@@ -1,0 +1,150 @@
+{
+  "slug": "cloudera",
+  "name": "Cloudera",
+  "category": "cloud-data",
+  "threatLevel": "medium",
+  "priority": "P3",
+  "lastUpdated": "2025-01-20",
+  "tagline": "SAS wins because we deliver production analytics and industry solutions — not just a data platform you still need to build everything on",
+  "overview": {
+    "whatTheyDo": "Hybrid data platform combining open-source technologies (Hadoop, Spark, Impala, Iceberg, Ozone) into a managed enterprise distribution. Cloudera Data Platform (CDP) offers data engineering, data warehousing, ML (Cloudera Machine Learning — CML), and streaming across hybrid/multi-cloud and on-premises environments. Positioned for data sovereignty and regulated industries needing on-prem control.",
+    "sweetSpot": "Large enterprises needing hybrid cloud/on-prem data platform with open-source foundation. Organizations with data sovereignty requirements that cannot go full public cloud. Government agencies and banks that need Hadoop-scale processing with enterprise support and security.",
+    "typicalBuyer": "CDO, VP Data Engineering, CTO (on-prem preference), Head of Data Platform, Government IT leadership",
+    "phPresence": "Moderate PH presence through regional partners. Historically strong in Philippine government (data sovereignty requirements) and large banks with on-prem mandates. Partner ecosystem includes local SIs (TeleDynamics, AMTI, Exist). Cloudera's hybrid/on-prem positioning resonates with PH banks under BSP data localization expectations.",
+    "recentMomentum": "Private equity ownership (CD&R + KKR took private in 2021). Focus on Iceberg lakehouse, CDP Public Cloud, Cloudera AI (Generative AI). Streaming platform expansion. Trying to reinvent from 'legacy Hadoop company' to modern hybrid data platform. Revenue stabilizing after years of decline.",
+    "pricingModel": "Subscription-based per node or per capacity unit. On-prem licensing is expensive for hardware + Cloudera fees. CDP Public Cloud consumption-based. Typically $200K-$1M+ annually for enterprise deployments. Not cheap — often compared unfavorably to native cloud services."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Production-Ready Industry Solutions (Not a Toolkit)",
+      "explanation": "SAS delivers production-ready solutions for fraud, AML, risk, and compliance with domain logic, pre-built models, and regulatory compliance built in. Cloudera provides a data platform where EVERYTHING must be built from scratch — detection rules, models, monitoring, reporting. For BSP 1213 deadline, building from scratch on Cloudera won't meet the June 2026 timeline.",
+      "proofPoint": "SAS Fraud Management deploys in 3-6 months with pre-built models. Building equivalent fraud capability on Cloudera takes 18-24 months and requires dedicated ML engineering team."
+    },
+    {
+      "headline": "Governed Model Lifecycle (BSP 1112 Ready)",
+      "explanation": "SAS Model Manager provides end-to-end model governance with approval workflows, champion/challenger, drift detection, and regulatory documentation generation. Cloudera Machine Learning (CML) has basic MLflow-based experiment tracking but lacks formal governance workflows, regulatory documentation, or BSP-grade audit trails.",
+      "proofPoint": "BSP examiners require documented model approval chains and lifecycle evidence. SAS auto-generates this. CML requires custom engineering to approximate this governance depth."
+    },
+    {
+      "headline": "Business User Empowerment (No Code Required)",
+      "explanation": "SAS Visual Analytics and Model Studio enable business analysts to explore data, build models, and generate insights without writing code. Cloudera is an engineering-first platform — CML requires Python/R/Scala, and there's no self-service analytical interface for business users. In PH where data science talent is scarce, enabling business users is critical.",
+      "proofPoint": "60% of SAS Viya users are non-programmers. 100% of Cloudera CML users must write code — limiting analytics to the engineering team only."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "On-Premises / Data Sovereignty",
+      "whyItMatters": "Cloudera's strongest positioning is on-prem data platforms with enterprise security (Ranger, Knox, encryption). For PH government agencies and banks with strict data localization requirements, Cloudera provides a full Hadoop/Spark ecosystem on-premises. BSP's implicit data localization expectations favor on-prem capability.",
+      "howToNeutralize": "SAS Viya also runs on-premises on Kubernetes (OpenShift, Rancher). Emphasize that SAS provides BOTH on-prem deployment AND production analytics — not just a data platform. Ask: 'Once data is on Cloudera, what analytics runs on top? Do you still need SAS for the analytical layer?'"
+    },
+    {
+      "area": "Hadoop/Spark Ecosystem (Big Data Processing)",
+      "whyItMatters": "Organizations with existing Cloudera/Hadoop investments have massive data processing pipelines built on Spark, Hive, Impala. Ripping out Cloudera means rebuilding ETL pipelines. Switching cost is enormous.",
+      "howToNeutralize": "Position SAS as complementary — SAS sits ON TOP of Cloudera for governed analytics and production decisioning. SAS Viya connects natively to Cloudera via Spark, HDFS, and Impala. Better Together: Cloudera for data engineering/storage, SAS for analytics and industry solutions."
+    },
+    {
+      "area": "Open-Source Foundation (No Lock-In Perception)",
+      "whyItMatters": "Cloudera positions as 'enterprise open-source' — Spark, Iceberg, Kafka are all portable. Customers feel less locked-in compared to proprietary platforms. Government procurement often favors open-source for perceived flexibility.",
+      "howToNeutralize": "SAS Viya runs on Kubernetes (truly portable), supports Python/R natively, and integrates with open-source tools. The 'lock-in' argument is theoretical — in practice, Cloudera migrations are painful due to security policies, access controls, and pipeline dependencies. And SAS provides value that open-source cannot: validated algorithms, governance, regulatory compliance, and vendor accountability."
+    }
+  ],
+  "features": [
+    { "capability": "On-Premises Deployment", "sas": "full", "competitor": "full", "notes": "Both deploy on-prem; Cloudera mature on bare-metal, SAS Viya on K8s" },
+    { "capability": "Big Data Processing (Spark)", "sas": "partial", "competitor": "full", "notes": "Cloudera's core strength; SAS has CAS for analytics-scale processing" },
+    { "capability": "Data Engineering / ETL", "sas": "partial", "competitor": "full", "notes": "Cloudera Spark/NiFi strong for ETL; SAS Data Integration capable but not primary differentiator" },
+    { "capability": "Advanced Analytics & ML", "sas": "full", "competitor": "partial", "notes": "SAS 200+ algorithms, visual model building; CML is basic Python/R notebooks with MLflow" },
+    { "capability": "Model Governance & Lineage", "sas": "full", "competitor": "partial", "notes": "SAS Model Manager purpose-built; CML has basic experiment tracking only" },
+    { "capability": "Business User Self-Service", "sas": "full", "competitor": "none", "notes": "SAS VA + Model Studio for no-code analytics; Cloudera is code-only" },
+    { "capability": "Real-Time Decisioning", "sas": "full", "competitor": "partial", "notes": "SAS Intelligent Decisioning <10ms; Cloudera Streaming SQL Kafka-based but no decisioning logic" },
+    { "capability": "Industry Solutions (Fraud/AML/Risk)", "sas": "full", "competitor": "none", "notes": "SAS has pre-built regulated solutions; Cloudera is horizontal platform only" },
+    { "capability": "Data Security & Encryption", "sas": "full", "competitor": "full", "notes": "Both enterprise-grade; Cloudera Ranger/Knox mature for Hadoop ecosystem" },
+    { "capability": "Streaming / Real-Time Ingestion", "sas": "partial", "competitor": "full", "notes": "Cloudera Streams (Kafka-based) purpose-built; SAS ESP capable but less focus" },
+    { "capability": "Hybrid Cloud / Multi-Cloud", "sas": "full", "competitor": "full", "notes": "Both support hybrid; Cloudera CDP designed for it, SAS Viya cloud-agnostic K8s" },
+    { "capability": "Regulatory Compliance (BSP/AFASA)", "sas": "full", "competitor": "none", "notes": "SAS purpose-built for regulated industries; Cloudera is infrastructure layer only" }
+  ],
+  "landmines": [
+    {
+      "question": "Once your data is in Cloudera, what analytics platform runs on top for fraud detection and regulatory compliance?",
+      "expectedAnswer": "They either don't have one or describe custom Python scripts — no production-grade solution",
+      "whatToSayNext": "That's the gap. Cloudera is excellent infrastructure, but you still need an analytics layer for BSP 1213 compliance. SAS sits on top of Cloudera — connecting natively to your data while providing production-ready fraud detection and governance."
+    },
+    {
+      "question": "How long would it take your team to build a BSP 1213-compliant fraud monitoring system from scratch on your Cloudera platform?",
+      "expectedAnswer": "18-24 months minimum — or they haven't started and deadline is June 2026",
+      "whatToSayNext": "SAS Fraud Management deploys in 3-6 months with pre-built models and BSP 1213 compliance built in. You keep Cloudera for data engineering. SAS provides the analytical layer that meets your regulatory deadline."
+    },
+    {
+      "question": "How do your business analysts and compliance officers participate in your analytics — or is everything dependent on your engineering team?",
+      "expectedAnswer": "Everything requires engineers — business users can't access Cloudera directly",
+      "whatToSayNext": "That bottleneck limits your analytical capacity. SAS enables business users to explore data, build models, and investigate fraud — without engineering dependency. Your Cloudera engineers focus on data pipelines, your analysts focus on analytics."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "We've already invested heavily in Cloudera — we can do analytics there too with CML",
+      "whyTheySayIt": "Sunk cost on Cloudera infrastructure. Cloudera sales telling them CML handles ML. Don't want another vendor.",
+      "response": "Cloudera is great for data processing and storage — keep it. But CML gives you Python notebooks with basic tracking, not production-grade analytical solutions. Ask your Cloudera team: how long to build BSP 1213-compliant fraud monitoring? Model governance with approval workflows? Real-time decisioning under 10ms? These take 18-24 months to build from scratch. SAS provides them production-ready, SITTING ON TOP of your Cloudera investment. It's additive, not replacement.",
+      "proofPoints": ["SAS connects natively to Cloudera (Spark, HDFS, Impala)", "Multiple banks globally run SAS analytics on Cloudera data lakes", "BSP 1213 June 2026 deadline makes build-from-scratch impractical"],
+      "whatNotToSay": "Don't dismiss Cloudera as legacy Hadoop — they've modernized significantly. Position SAS as the analytical layer that makes their Cloudera investment more valuable."
+    },
+    {
+      "objection": "Cloudera gives us open-source flexibility — SAS is proprietary lock-in",
+      "whyTheySayIt": "Government procurement bias toward open-source. Fear of vendor dependency. Cloudera positioning as 'enterprise open-source.'",
+      "response": "Three points: First, SAS Viya runs on open Kubernetes — truly portable across any cloud or on-prem. Second, SAS supports Python and R natively — your data scientists can use open-source languages within SAS governance. Third, 'open-source' doesn't mean 'free' or 'no lock-in' — Cloudera migrations are painful because of security policies, Ranger rules, and pipeline dependencies. The real question: do you want a vendor who's ACCOUNTABLE for regulatory compliance (SAS), or a platform where you're accountable for everything built on top?",
+      "proofPoints": ["SAS Viya on Kubernetes = portable", "SAS supports Python, R, and SAS languages", "Cloudera license cost often rivals proprietary platforms ($200K-$1M+/yr)"],
+      "whatNotToSay": "Don't attack open-source philosophy — many PH government buyers are ideologically committed. Instead, reframe: SAS uses open-source where appropriate AND adds governance, accountability, and regulatory compliance on top."
+    }
+  ],
+  "phContext": {
+    "localPresence": "No direct PH office — managed from Singapore/ASEAN hub. Partners include TeleDynamics, AMTI, and select local SIs. Historical strength in PH government agencies needing on-prem big data (DICT, PSA). Some large banks have Cloudera for data lake infrastructure. Presence declining as cloud adoption grows and native cloud services (AWS EMR, Azure HDInsight) offer cheaper alternatives.",
+    "knownCustomers": ["Select PH government agencies (data lake infrastructure)", "Large universal banks with on-prem Hadoop clusters", "Telco companies using for CDR processing", "Some BPO companies for large-scale data processing"],
+    "localPricing": "Subscription per node: expensive for on-prem ($200K-$1M+/yr for enterprise clusters). CDP Public Cloud consumption-based but still premium vs. native cloud services. Often seen as expensive relative to alternatives — especially when AWS EMR or Azure HDInsight can do similar data processing for less.",
+    "regulatoryGaps": [
+      "No production-ready fraud detection solution (BSP 1213 gap)",
+      "No AML/CFT transaction monitoring capability (AMLA gap)",
+      "CML lacks BSP 1112-grade model governance and audit trails",
+      "No real-time decisioning engine for AFASA compliance",
+      "Platform provides infrastructure only — all compliance capabilities must be custom-built",
+      "No regulatory reporting generation (STR, CTR, BSP formats)"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Customer has large existing Cloudera infrastructure investment (>$500K/yr)",
+      "Data engineering team is happy with Cloudera — gap is analytics/governance layer",
+      "On-prem requirement is firm and Cloudera is the data platform decision",
+      "Budget is additive — SAS as analytics layer on top of Cloudera data layer"
+    ],
+    "competeWhen": [
+      "Customer evaluating Cloudera CML as replacement for SAS analytics",
+      "Greenfield analytics platform decision (not committed to Cloudera yet)",
+      "Customer reconsidering Cloudera due to cost vs. cloud-native alternatives",
+      "Primary use case is regulated analytics (fraud, AML, risk) not data engineering"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "customer-win",
+      "title": "Global bank: SAS analytics on Cloudera data lake",
+      "detail": "Top-20 global bank runs SAS analytics layer on top of Cloudera data lake — SAS for fraud detection and model governance, Cloudera for data processing and storage. Complementary architecture.",
+      "source": "SAS corporate"
+    },
+    {
+      "type": "benchmark",
+      "title": "Time-to-production: SAS 3-6 months vs. custom-build 18-24 months",
+      "detail": "SAS Fraud Management deploys production-ready in 3-6 months. Building equivalent capability from scratch on Cloudera/CML typically takes 18-24 months and dedicated engineering team."
+    },
+    {
+      "type": "analyst",
+      "title": "Gartner: SAS Leader in AI/ML platforms, Cloudera not positioned",
+      "detail": "Gartner positions SAS as Leader in Data Science and Machine Learning Platforms. Cloudera positioned in data management/engineering — not competing in advanced analytics leadership."
+    },
+    {
+      "type": "case-study",
+      "title": "ASEAN government: SAS on Cloudera for national analytics",
+      "detail": "Southeast Asian government agency uses Cloudera for national data lake and SAS for production analytics — fraud detection, citizen analytics, and risk scoring running on SAS connected to Cloudera HDFS/Spark."
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "bsp-1112", "afasa", "amla", "dpa"],
+  "relatedSolutions": ["fraud-management", "anti-money-laundering", "model-manager", "intelligent-decisioning"]
+}
