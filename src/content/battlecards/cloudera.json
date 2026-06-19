@@ -4,7 +4,7 @@
   "category": "cloud-data",
   "threatLevel": "medium",
   "priority": "P3",
-  "lastUpdated": "2025-01-20",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins because we deliver production analytics and industry solutions — not just a data platform you still need to build everything on",
   "overview": {
     "whatTheyDo": "Hybrid data platform combining open-source technologies (Hadoop, Spark, Impala, Iceberg, Ozone) into a managed enterprise distribution. Cloudera Data Platform (CDP) offers data engineering, data warehousing, ML (Cloudera Machine Learning — CML), and streaming across hybrid/multi-cloud and on-premises environments. Positioned for data sovereignty and regulated industries needing on-prem control.",

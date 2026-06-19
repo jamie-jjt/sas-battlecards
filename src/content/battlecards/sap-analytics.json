@@ -4,7 +4,7 @@
   "category": "bi-visualization",
   "threatLevel": "medium",
   "priority": "P3",
-  "lastUpdated": "2025-01-20",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins because we deliver purpose-built analytical depth and production decisioning that SAP's bolt-on analytics cannot match",
   "overview": {
     "whatTheyDo": "SAP Analytics Cloud (SAC) is SAP's unified BI, planning, and predictive analytics platform in the cloud. Combines business intelligence (dashboards, stories), enterprise planning (financial planning, budgeting), and augmented analytics (Smart Predict, Smart Insights). Part of the broader SAP Business Technology Platform (BTP) which includes SAP HANA Cloud, SAP Datasphere, and SAP AI Core. SAP positions SAC as the analytics layer for SAP-centric enterprises.",

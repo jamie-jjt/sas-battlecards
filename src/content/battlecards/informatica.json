@@ -4,7 +4,7 @@
   "category": "data-prep",
   "threatLevel": "medium",
   "priority": "P3",
-  "lastUpdated": "2025-01-20",
+  "lastUpdated": "2026-06-19",
   "tagline": "SAS wins because we go beyond data management to deliver analytics, decisioning, and industry solutions that turn governed data into business outcomes",
   "overview": {
     "whatTheyDo": "Enterprise data management platform — the market leader in data integration, data quality, master data management (MDM), data governance, and data cataloging. IDMC (Intelligent Data Management Cloud) is their cloud-native platform combining iPaaS, data quality, MDM, and AI-powered data management. Informatica is the 'plumbing' that gets data ready for analytics.",
