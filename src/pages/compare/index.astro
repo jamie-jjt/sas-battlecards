@@ -1,0 +1,247 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+const battlecards = await getCollection('battlecards');
+const cardData = battlecards.map((bc) => ({
+  slug: bc.data.slug,
+  name: bc.data.name,
+  category: bc.data.category,
+  threatLevel: bc.data.threatLevel,
+  priority: bc.data.priority,
+  tagline: bc.data.tagline,
+  whereWeWin: bc.data.whereWeWin,
+  whereTheyWin: bc.data.whereTheyWin,
+  features: bc.data.features,
+}));
+---
+
+<BaseLayout title="Compare Competitors">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <Breadcrumb items={[{ label: 'Compare' }]} />
+
+    <!-- Header -->
+    <div class="space-y-2">
+      <h1 class="text-2xl font-bold text-text-primary">Comparison Mode</h1>
+      <p class="text-text-secondary max-w-2xl">
+        Select 2-3 competitors to generate a side-by-side comparison. Shows where SAS wins, where they win, and a feature-by-feature grid.
+      </p>
+    </div>
+
+    <!-- Competitor Selection -->
+    <div class="rounded-lg border border-border-default bg-bg-surface p-6 space-y-4">
+      <h2 class="text-sm font-semibold text-text-primary uppercase tracking-wider">Select Competitors (2-3)</h2>
+      <div id="competitor-selector" class="flex flex-wrap gap-2">
+        <!-- Chips rendered by JS -->
+      </div>
+      <div class="flex items-center gap-3">
+        <button
+          type="button"
+          id="btn-compare"
+          class="px-4 py-2 text-sm font-medium rounded-lg bg-sas-blue text-white hover:bg-sas-blue-hover transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          Generate Comparison
+        </button>
+        <button
+          type="button"
+          id="btn-export"
+          class="hidden px-4 py-2 text-sm font-medium rounded-lg border border-border-default text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors cursor-pointer"
+        >
+          📋 Copy as Text
+        </button>
+      </div>
+    </div>
+
+    <!-- Comparison Output -->
+    <div id="comparison-output" class="hidden space-y-8">
+      <!-- Where SAS Wins -->
+      <section id="sas-wins-section">
+        <h2 class="text-lg font-bold text-text-primary mb-4">✅ Where SAS Wins</h2>
+        <div id="sas-wins-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </section>
+
+      <!-- Where They Win -->
+      <section id="they-win-section">
+        <h2 class="text-lg font-bold text-text-primary mb-4">⚠️ Where They Win</h2>
+        <div id="they-win-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </section>
+
+      <!-- Feature Comparison Grid -->
+      <section>
+        <h2 class="text-lg font-bold text-text-primary mb-4">📊 Feature Comparison</h2>
+        <div class="overflow-x-auto">
+          <table id="feature-table" class="w-full text-sm border-collapse">
+            <thead id="feature-thead"></thead>
+            <tbody id="feature-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ cardData }}>
+  const data = cardData;
+  const selected = new Set();
+
+  const selectorEl = document.getElementById('competitor-selector');
+  const btnCompare = document.getElementById('btn-compare');
+  const btnExport = document.getElementById('btn-export');
+  const outputEl = document.getElementById('comparison-output');
+
+  // Render competitor chips
+  function renderChips() {
+    selectorEl.innerHTML = data.map((c) => {
+      const isSelected = selected.has(c.slug);
+      const activeClass = isSelected
+        ? 'bg-sas-blue border-sas-blue text-white'
+        : 'bg-bg-elevated border-border-default text-text-secondary hover:border-border-emphasis hover:text-text-primary';
+      return `<button type="button" class="chip-select px-3 py-1.5 text-sm rounded-full border cursor-pointer transition-all ${activeClass}" data-slug="${c.slug}">${c.name}</button>`;
+    }).join('');
+
+    btnCompare.disabled = selected.size < 2;
+  }
+
+  renderChips();
+
+  selectorEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.chip-select');
+    if (!btn) return;
+    const slug = btn.dataset.slug;
+    if (selected.has(slug)) {
+      selected.delete(slug);
+    } else if (selected.size < 3) {
+      selected.add(slug);
+    }
+    renderChips();
+  });
+
+  btnCompare.addEventListener('click', () => {
+    generateComparison();
+  });
+
+  btnExport.addEventListener('click', () => {
+    exportAsText();
+  });
+
+  function generateComparison() {
+    const cards = data.filter((c) => selected.has(c.slug));
+    if (cards.length < 2) return;
+
+    outputEl.classList.remove('hidden');
+    btnExport.classList.remove('hidden');
+
+    // Where SAS Wins
+    const sasWinsGrid = document.getElementById('sas-wins-grid');
+    sasWinsGrid.innerHTML = cards.map((card) => `
+      <div class="rounded-lg border border-success/30 bg-success/5 p-4">
+        <h3 class="font-semibold text-text-primary mb-2">vs ${card.name}</h3>
+        <ul class="space-y-2">
+          ${card.whereWeWin.map((w) => `
+            <li class="text-sm">
+              <p class="font-medium text-success">${w.headline}</p>
+              <p class="text-text-muted text-xs mt-0.5">${w.explanation.substring(0, 120)}...</p>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `).join('');
+
+    // Where They Win
+    const theyWinGrid = document.getElementById('they-win-grid');
+    theyWinGrid.innerHTML = cards.map((card) => `
+      <div class="rounded-lg border border-warning/30 bg-warning/5 p-4">
+        <h3 class="font-semibold text-text-primary mb-2">${card.name} Strengths</h3>
+        <ul class="space-y-2">
+          ${card.whereTheyWin.map((w) => `
+            <li class="text-sm">
+              <p class="font-medium text-warning">${w.area}</p>
+              <p class="text-text-muted text-xs mt-0.5">${w.howToNeutralize.substring(0, 120)}...</p>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `).join('');
+
+    // Feature table
+    const thead = document.getElementById('feature-thead');
+    const tbody = document.getElementById('feature-tbody');
+
+    thead.innerHTML = `<tr class="border-b border-border-default">
+      <th class="text-left py-3 px-3 text-text-muted font-medium">Capability</th>
+      <th class="text-left py-3 px-3 text-sas-blue font-semibold">SAS</th>
+      ${cards.map((c) => `<th class="text-left py-3 px-3 text-text-primary font-semibold">${c.name}</th>`).join('')}
+    </tr>`;
+
+    // Collect all unique capabilities
+    const allCaps = new Map();
+    cards.forEach((card) => {
+      card.features.forEach((f) => {
+        if (!allCaps.has(f.capability)) {
+          allCaps.set(f.capability, { sas: f.sas, competitors: {} });
+        }
+        allCaps.get(f.capability).competitors[card.slug] = f.competitor;
+      });
+    });
+
+    const supportIcon = (level) => {
+      if (level === 'full') return '<span class="text-success font-bold">●</span>';
+      if (level === 'partial') return '<span class="text-warning font-bold">◐</span>';
+      return '<span class="text-text-muted">○</span>';
+    };
+
+    tbody.innerHTML = Array.from(allCaps.entries()).map(([cap, info]) => `
+      <tr class="border-b border-border-muted">
+        <td class="py-2 px-3 text-text-secondary">${cap}</td>
+        <td class="py-2 px-3">${supportIcon(info.sas)}</td>
+        ${cards.map((c) => `<td class="py-2 px-3">${supportIcon(info.competitors[c.slug] || 'none')}</td>`).join('')}
+      </tr>
+    `).join('');
+  }
+
+  function exportAsText() {
+    const cards = data.filter((c) => selected.has(c.slug));
+    let text = `SAS COMPETITIVE COMPARISON\n`;
+    text += `Generated: ${new Date().toLocaleDateString()}\n`;
+    text += `Comparing: SAS vs ${cards.map((c) => c.name).join(' vs ')}\n`;
+    text += `${'='.repeat(60)}\n\n`;
+
+    text += `WHERE SAS WINS:\n${'-'.repeat(40)}\n`;
+    cards.forEach((card) => {
+      text += `\nvs ${card.name}:\n`;
+      card.whereWeWin.forEach((w) => {
+        text += `  • ${w.headline}: ${w.explanation.substring(0, 150)}\n`;
+      });
+    });
+
+    text += `\n\nWHERE THEY WIN:\n${'-'.repeat(40)}\n`;
+    cards.forEach((card) => {
+      text += `\n${card.name} Strengths:\n`;
+      card.whereTheyWin.forEach((w) => {
+        text += `  • ${w.area}: ${w.howToNeutralize.substring(0, 150)}\n`;
+      });
+    });
+
+    text += `\n\nFEATURE COMPARISON:\n${'-'.repeat(40)}\n`;
+    const allCaps = new Map();
+    cards.forEach((card) => {
+      card.features.forEach((f) => {
+        if (!allCaps.has(f.capability)) {
+          allCaps.set(f.capability, { sas: f.sas, competitors: {} });
+        }
+        allCaps.get(f.capability).competitors[card.slug] = f.competitor;
+      });
+    });
+    allCaps.forEach((info, cap) => {
+      const compValues = cards.map((c) => `${c.name}: ${info.competitors[c.slug] || 'none'}`).join(' | ');
+      text += `${cap}: SAS=${info.sas} | ${compValues}\n`;
+    });
+
+    navigator.clipboard.writeText(text).then(() => {
+      btnExport.textContent = '✓ Copied!';
+      setTimeout(() => { btnExport.textContent = '📋 Copy as Text'; }, 2000);
+    });
+  }
+</script>

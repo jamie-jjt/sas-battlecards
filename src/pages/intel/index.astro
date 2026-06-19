@@ -1,0 +1,156 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const sampleIntel = [
+  {
+    id: 'intel-001',
+    headline: 'Databricks launches new Mosaic AI Agent Framework for production LLM apps',
+    url: 'https://www.databricks.com/blog',
+    date: '2025-06-10',
+    competitor: 'Databricks',
+    category: 'product-launch',
+    soWhat: 'Strengthens their AI platform narrative. Position SAS Model Manager governance as the missing piece — who governs these agents in production?',
+  },
+  {
+    id: 'intel-002',
+    headline: 'NICE Actimize rebrands as SymphonyAI Sensa — unified financial crime platform',
+    url: 'https://www.symphonyai.com',
+    date: '2025-05-28',
+    competitor: 'SymphonyAI',
+    category: 'acquisition',
+    soWhat: 'Major rebrand creates customer uncertainty. Opportunity to approach NICE customers worried about platform migration. Position SAS as stable alternative.',
+  },
+  {
+    id: 'intel-003',
+    headline: 'Microsoft Fabric GA with integrated Copilot for data analytics',
+    url: 'https://azure.microsoft.com/en-us/blog/',
+    date: '2025-06-05',
+    competitor: 'Microsoft',
+    category: 'product-launch',
+    soWhat: 'Fabric makes Azure analytics more integrated but still lacks fraud/risk domain depth. SAS + Azure remains the enterprise play for regulated industries.',
+  },
+  {
+    id: 'intel-004',
+    headline: 'Feedzai closes $200M Series D, eyes APAC expansion',
+    url: 'https://www.feedzai.com',
+    date: '2025-05-15',
+    competitor: 'Feedzai',
+    category: 'other',
+    soWhat: 'More capital means more aggressive PH market entry. Expect discounted pilots at digital banks. Prepare TCO comparison showing SAS platform breadth advantage.',
+  },
+  {
+    id: 'intel-005',
+    headline: 'BSP issues guidance on AI/ML use in financial services supervision',
+    url: 'https://www.bsp.gov.ph',
+    date: '2025-06-12',
+    competitor: 'All',
+    category: 'other',
+    soWhat: 'BSP endorsing ML for fraud/risk creates urgency for SAS Viya. Banks need ML-capable platforms that also meet model governance requirements (BSP 1112).',
+  },
+];
+
+const categoryLabels: Record<string, string> = {
+  'product-launch': '🚀 Product Launch',
+  'pricing': '💰 Pricing',
+  'acquisition': '🤝 Acquisition',
+  'partnership': '🔗 Partnership',
+  'leadership': '👤 Leadership',
+  'other': '📰 Industry',
+};
+
+const competitors = [...new Set(sampleIntel.map((i) => i.competitor))];
+---
+
+<BaseLayout title="Competitive Intel">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <Breadcrumb items={[{ label: 'Competitive Intel' }]} />
+
+    <!-- Header -->
+    <div class="space-y-2">
+      <h1 class="text-2xl font-bold text-text-primary">Competitive Intelligence Feed</h1>
+      <p class="text-text-secondary max-w-2xl">
+        Latest competitive moves and market intelligence. Each item includes a "So What?" annotation explaining the impact on SAS positioning.
+      </p>
+    </div>
+
+    <!-- Info Banner -->
+    <div class="rounded-lg border border-info/30 bg-info/5 p-4 flex items-start gap-3">
+      <span class="text-info text-lg">ℹ️</span>
+      <div class="text-sm text-text-secondary">
+        <p class="font-medium text-text-primary mb-1">Auto-Refresh (Coming Soon)</p>
+        <p>Competitive intel will auto-refresh weekly via GitHub Actions, pulling from RSS feeds and curated sources. The items below are manually curated samples.</p>
+      </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="text-xs font-medium text-text-muted uppercase tracking-wider">Filter:</span>
+      <button type="button" class="intel-filter px-3 py-1 text-xs rounded-full border border-sas-blue bg-sas-blue text-white cursor-pointer" data-competitor="all">All</button>
+      {competitors.map((comp) => (
+        <button type="button" class="intel-filter px-3 py-1 text-xs rounded-full border border-border-default bg-bg-surface text-text-secondary hover:border-border-emphasis cursor-pointer" data-competitor={comp}>{comp}</button>
+      ))}
+    </div>
+
+    <!-- Intel Items -->
+    <div id="intel-list" class="space-y-4">
+      {sampleIntel.map((item) => (
+        <article class="intel-item rounded-lg border border-border-default bg-bg-surface p-5 hover:border-border-emphasis transition-colors" data-competitor={item.competitor}>
+          <div class="flex items-start justify-between gap-4">
+            <div class="space-y-2 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full border border-border-default bg-bg-elevated text-text-secondary">
+                  {categoryLabels[item.category] || item.category}
+                </span>
+                <span class="text-xs text-text-muted">{item.competitor}</span>
+                <span class="text-xs text-text-muted">·</span>
+                <time class="text-xs text-text-muted">{item.date}</time>
+              </div>
+              <h3 class="text-base font-semibold text-text-primary">
+                <a href={item.url} target="_blank" rel="noopener noreferrer" class="hover:text-sas-blue transition-colors">
+                  {item.headline}
+                  <svg class="inline-block w-3 h-3 ml-1 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </a>
+              </h3>
+              <div class="rounded-md bg-bg-elevated border border-border-muted p-3">
+                <p class="text-sm text-text-secondary">
+                  <span class="font-semibold text-warning">So What?</span> {item.soWhat}
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.intel-filter');
+  const items = document.querySelectorAll<HTMLElement>('.intel-item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const competitor = btn.dataset.competitor;
+
+      // Update active state
+      filterBtns.forEach((b) => {
+        b.classList.remove('border-sas-blue', 'bg-sas-blue', 'text-white');
+        b.classList.add('border-border-default', 'bg-bg-surface', 'text-text-secondary');
+      });
+      btn.classList.add('border-sas-blue', 'bg-sas-blue', 'text-white');
+      btn.classList.remove('border-border-default', 'bg-bg-surface', 'text-text-secondary');
+
+      // Filter items
+      items.forEach((item) => {
+        if (competitor === 'all' || item.dataset.competitor === competitor) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

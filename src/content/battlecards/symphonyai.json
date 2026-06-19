@@ -1,0 +1,121 @@
+{
+  "slug": "symphonyai",
+  "name": "SymphonyAI",
+  "category": "fraud-fincrime",
+  "threatLevel": "medium",
+  "priority": "P3",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on proven enterprise scale, regulatory depth, and integrated platform",
+  "overview": {
+    "whatTheyDo": "AI-native financial crime detection platform combining AML, fraud, and compliance capabilities. Acquired NICE Actimize's financial crime division (rebranded as Sensa). Focuses on AI-driven investigation automation and predictive analytics for financial crime.",
+    "sweetSpot": "Mid-to-large banks wanting AI-native AML/fraud with investigation automation. Active in APAC markets post-NICE acquisition. Positioned as next-gen alternative to legacy AML systems.",
+    "typicalBuyer": "AMLO, Head of Financial Crimes, Head of Compliance, CTO evaluating AI transformation",
+    "phPresence": "Growing APAC presence from Singapore hub. Acquired NICE Actimize customers inherit the relationship. Active marketing in ASEAN banking compliance conferences. Some inherited PH bank relationships from NICE portfolio.",
+    "recentMomentum": "Acquisition of NICE Actimize financial crime unit, Sensa AI platform launch, investigation automation AI (generative AI for compliance), aggressive APAC expansion, new leadership team focused on growth.",
+    "pricingModel": "Enterprise licensing based on entity volume and modules. Premium pricing for AI/automation features. Migration incentives for NICE Actimize customers to upgrade to Sensa platform."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Proven Enterprise Scale and Stability",
+      "explanation": "SAS has 50 years of enterprise deployment experience with proven scale at national levels. SymphonyAI is still integrating the NICE acquisition — platform migration uncertainty creates risk for customers. SAS is a known, stable platform.",
+      "proofPoint": "SAS processes fraud/AML for entire national banking systems. SymphonyAI is still consolidating acquired products into a unified platform — migration timelines uncertain."
+    },
+    {
+      "headline": "Integrated Platform (Fraud + Risk + Analytics)",
+      "explanation": "SAS provides fraud, AML, credit risk, operational risk, AND enterprise analytics in one platform. SymphonyAI focuses on financial crime only — customers still need separate risk and analytics tools. SAS eliminates platform silos.",
+      "proofPoint": "SAS platform eliminates 3-5 point solutions, reducing integration costs and providing unified data model across fraud, risk, and compliance."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "AI-Native Investigation Automation",
+      "whyItMatters": "SymphonyAI's Sensa platform uses generative AI to automate compliance investigation workflows — auto-generating SARs, summarizing cases, and recommending actions. This reduces analyst workload significantly.",
+      "howToNeutralize": "SAS is investing in Gen AI for compliance workflows too. Ask about production readiness: how many banks are actually using their Gen AI in production vs. demos? Also, BSP/AMLC may have concerns about AI-generated SARs without human review."
+    },
+    {
+      "area": "NICE Actimize Legacy Relationships",
+      "whyItMatters": "SymphonyAI inherited existing NICE Actimize customer relationships. Banks already on NICE may be encouraged to upgrade to Sensa rather than switch to a different vendor entirely.",
+      "howToNeutralize": "Platform migration from NICE to Sensa is itself a major project — comparable effort to evaluating SAS. If they're going to migrate anyway, they should evaluate all options. Position SAS as lower-risk migration with proven platform."
+    }
+  ],
+  "features": [
+    { "capability": "Anti-Money Laundering (AML)", "sas": "full", "competitor": "full", "notes": "Both strong; SymphonyAI inherited NICE AML capabilities" },
+    { "capability": "Fraud Detection", "sas": "full", "competitor": "full", "notes": "Both capable; SAS broader algorithm library" },
+    { "capability": "Investigation Automation (Gen AI)", "sas": "partial", "competitor": "full", "notes": "SymphonyAI ahead on Gen AI for compliance; SAS building" },
+    { "capability": "Machine Learning Models", "sas": "full", "competitor": "full", "notes": "Both ML-native with model training capabilities" },
+    { "capability": "Network/Graph Analytics", "sas": "full", "competitor": "partial", "notes": "SAS deeper; SymphonyAI building from NICE foundation" },
+    { "capability": "Credit Risk / IFRS9", "sas": "full", "competitor": "none", "notes": "Not in SymphonyAI scope — financial crime only" },
+    { "capability": "Enterprise Analytics Platform", "sas": "full", "competitor": "none", "notes": "SAS is full platform; SymphonyAI is point solution" },
+    { "capability": "Model Governance (BSP 1112)", "sas": "full", "competitor": "partial", "notes": "SAS Model Manager; SymphonyAI has basic model tracking" },
+    { "capability": "BSP Regulatory Reporting", "sas": "full", "competitor": "partial", "notes": "SAS proven; SymphonyAI inheriting NICE templates" },
+    { "capability": "Case Management", "sas": "full", "competitor": "full", "notes": "Both mature case management; SymphonyAI inherits NICE strength" }
+  ],
+  "landmines": [
+    {
+      "question": "What's the migration timeline and risk from NICE Actimize to the Sensa platform? How long until it's fully production-ready?",
+      "expectedAnswer": "Uncertainty about migration timelines and feature parity between old NICE and new Sensa",
+      "whatToSayNext": "If you're evaluating a platform migration anyway, why not evaluate all options? SAS offers a proven, integrated platform without the acquisition integration risk. Let us show you a lower-risk path."
+    },
+    {
+      "question": "Beyond AML and fraud, what are your requirements for credit risk, operational risk, and enterprise analytics?",
+      "expectedAnswer": "They need broader capabilities than just financial crime",
+      "whatToSayNext": "SAS is the only platform that covers fraud, AML, credit risk, operational risk, AND enterprise analytics. With SymphonyAI, you'd still need 2-3 additional platforms for those use cases."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "SymphonyAI has more advanced AI for compliance automation",
+      "whyTheySayIt": "Their Gen AI marketing for investigation automation is compelling. Compliance teams want workload reduction.",
+      "response": "AI investigation assistance is valuable, and SAS is investing in this space. But ask: is their Gen AI production-proven at regulated Philippine banks, or is it still in pilot? BSP and AMLC have specific requirements about human review of SARs. The most impactful AI for compliance isn't generating reports — it's reducing false positives so your team reviews fewer cases. SAS ML reduces alerts by 50-70%.",
+      "proofPoints": ["SAS ML reduces false positives 50-70% — the most impactful compliance automation", "BSP/AMLC require human review of suspicious activity — full automation has regulatory risk", "SAS Gen AI capabilities in active development for compliance workflows"],
+      "whatNotToSay": "Don't dismiss their AI capabilities — they're genuinely innovative. Focus on production readiness and regulatory acceptance."
+    },
+    {
+      "objection": "We're already on NICE so upgrading to SymphonyAI Sensa is easier",
+      "whyTheySayIt": "Perceived lower migration risk staying with same vendor lineage.",
+      "response": "Migrating from NICE to Sensa is actually a significant platform change — new architecture, new UI, new integrations. The effort is comparable to evaluating SAS. Since you're investing in migration either way, shouldn't you evaluate the best platform for the next decade? SAS offers broader capabilities without acquisition integration uncertainty.",
+      "proofPoints": ["NICE to Sensa migration is a full re-platform, not a simple upgrade", "Multiple banks have moved from NICE ecosystem to SAS successfully", "SAS platform is stable — no acquisition integration risk"]
+    }
+  ],
+  "phContext": {
+    "localPresence": "Growing APAC presence from Singapore. Inherited NICE Actimize relationships in PH. Active in ASEAN compliance conferences. Some PH banks on legacy NICE may be approached for Sensa upgrade.",
+    "knownCustomers": ["Inherited NICE Actimize PH relationships (BPI, Security Bank)", "Engaging PH banks on Sensa platform upgrade", "Active marketing at PH compliance events"],
+    "localPricing": "Enterprise licensing through Singapore. Premium pricing similar to NICE Actimize levels. Migration incentives for existing NICE customers. USD-denominated contracts.",
+    "regulatoryGaps": [
+      "Platform still integrating post-acquisition — stability concerns",
+      "Gen AI for compliance not yet proven with BSP/AMLC requirements",
+      "No credit risk or broader analytics capabilities",
+      "Migration from NICE to Sensa still in progress — feature gaps possible"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Never — direct competitor in AML/fraud space"
+    ],
+    "competeWhen": [
+      "Any AML or fraud detection opportunity",
+      "NICE Actimize customers evaluating upgrade to Sensa",
+      "Banks evaluating AI-native financial crime platforms"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "SAS recognized as Leader in AML and Fraud",
+      "detail": "SAS consistently named Leader in Chartis RiskTech100 and Forrester Wave for fraud and AML — broader market recognition than SymphonyAI's newly integrated platform."
+    },
+    {
+      "type": "customer-win",
+      "title": "Bank migrated from NICE to SAS",
+      "detail": "APAC bank moved from NICE Actimize to SAS for integrated fraud + AML + analytics — citing platform consolidation and better ML capabilities.",
+      "source": "SAS APAC"
+    },
+    {
+      "type": "benchmark",
+      "title": "Integration cost reduction",
+      "detail": "Banks on SAS unified platform report 40% lower integration costs vs. maintaining separate fraud, AML, and analytics vendors."
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "afasa", "amla"],
+  "relatedSolutions": ["fraud-management", "anti-money-laundering"]
+}

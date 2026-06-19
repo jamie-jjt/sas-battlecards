@@ -1,0 +1,218 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+const sizingProfiles = await getCollection('sizing');
+const sorted = sizingProfiles.sort((a, b) => {
+  const order = { small: 0, medium: 1, large: 2, enterprise: 3 };
+  return order[a.data.tier] - order[b.data.tier];
+});
+
+const tierColors: Record<string, string> = {
+  small: 'border-success/50 bg-success/5',
+  medium: 'border-info/50 bg-info/5',
+  large: 'border-warning/50 bg-warning/5',
+  enterprise: 'border-danger/50 bg-danger/5',
+};
+
+const tierIcons: Record<string, string> = {
+  small: '🧪',
+  medium: '🏢',
+  large: '🏭',
+  enterprise: '🌐',
+};
+---
+
+<BaseLayout title="Sizing Guide">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <Breadcrumb items={[{ label: 'Sizing Guide' }]} />
+
+    <!-- Header -->
+    <div class="space-y-2">
+      <h1 class="text-2xl font-bold text-text-primary">SAS Viya Sizing Guide</h1>
+      <p class="text-text-secondary max-w-2xl">
+        Reference sizing profiles for SAS Viya deployments on Kubernetes. These are estimates for initial scoping — contact SAS for formal sizing based on specific workload analysis.
+      </p>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="flex gap-1 border-b border-border-default" role="tablist">
+      <button
+        type="button"
+        role="tab"
+        id="tab-tier"
+        aria-selected="true"
+        aria-controls="panel-tier"
+        class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-sas-blue text-sas-blue cursor-pointer transition-colors"
+      >
+        By Tier
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="tab-compare"
+        aria-selected="false"
+        aria-controls="panel-compare"
+        class="tab-btn px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-text-secondary hover:text-text-primary cursor-pointer transition-colors"
+      >
+        Comparison Table
+      </button>
+    </div>
+
+    <!-- Tab Panel: By Tier -->
+    <div id="panel-tier" role="tabpanel" aria-labelledby="tab-tier">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {sorted.map((profile) => (
+          <div class={`rounded-lg border-2 p-6 space-y-4 ${tierColors[profile.data.tier]}`}>
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">{tierIcons[profile.data.tier]}</span>
+              <div>
+                <h3 class="text-lg font-bold text-text-primary">{profile.data.displayName}</h3>
+                <p class="text-sm text-text-secondary">{profile.data.userCount} · {profile.data.dataVolume}</p>
+              </div>
+            </div>
+
+            <!-- Use Cases -->
+            <div>
+              <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-2">Use Cases</h4>
+              <ul class="space-y-1">
+                {profile.data.useCases.map((uc: string) => (
+                  <li class="text-sm text-text-secondary flex items-start gap-2">
+                    <span class="text-success mt-0.5">•</span>{uc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Infrastructure -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-md bg-bg-surface border border-border-default p-3">
+                <p class="text-xs text-text-muted">K8s Workers</p>
+                <p class="text-sm font-semibold text-text-primary">{profile.data.kubernetesWorkers}</p>
+              </div>
+              <div class="rounded-md bg-bg-surface border border-border-default p-3">
+                <p class="text-xs text-text-muted">CPU / Node</p>
+                <p class="text-sm font-semibold text-text-primary">{profile.data.cpuPerNode}</p>
+              </div>
+              <div class="rounded-md bg-bg-surface border border-border-default p-3">
+                <p class="text-xs text-text-muted">RAM / Node</p>
+                <p class="text-sm font-semibold text-text-primary">{profile.data.ramPerNode}</p>
+              </div>
+              <div class="rounded-md bg-bg-surface border border-border-default p-3">
+                <p class="text-xs text-text-muted">Storage</p>
+                <p class="text-sm font-semibold text-text-primary">{profile.data.storage}</p>
+              </div>
+              <div class="rounded-md bg-bg-surface border border-border-default p-3">
+                <p class="text-xs text-text-muted">Network</p>
+                <p class="text-sm font-semibold text-text-primary">{profile.data.network}</p>
+              </div>
+              <div class="rounded-md bg-bg-surface border border-border-default p-3">
+                <p class="text-xs text-text-muted">Est. Cost</p>
+                <p class="text-sm font-semibold text-text-primary">{profile.data.estimatedMonthlyCost}</p>
+              </div>
+            </div>
+
+            <!-- HA/DR & Cloud -->
+            <div class="space-y-2 text-sm">
+              <div>
+                <span class="font-medium text-text-primary">HA/DR:</span>
+                <span class="text-text-secondary ml-1">{profile.data.hadrNotes}</span>
+              </div>
+              <div>
+                <span class="font-medium text-text-primary">Deployment:</span>
+                <span class="text-text-secondary ml-1">{profile.data.cloudVsOnprem}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Tab Panel: Comparison Table -->
+    <div id="panel-compare" role="tabpanel" aria-labelledby="tab-compare" class="hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-border-default">
+              <th class="text-left py-3 px-4 text-text-muted font-medium">Spec</th>
+              {sorted.map((p) => (
+                <th class="text-left py-3 px-4 text-text-primary font-semibold">{tierIcons[p.data.tier]} {p.data.tier.charAt(0).toUpperCase() + p.data.tier.slice(1)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">Users</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.userCount}</td>)}
+            </tr>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">Data Volume</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.dataVolume}</td>)}
+            </tr>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">K8s Workers</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.kubernetesWorkers}</td>)}
+            </tr>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">CPU / Node</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.cpuPerNode}</td>)}
+            </tr>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">RAM / Node</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.ramPerNode}</td>)}
+            </tr>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">Storage</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.storage}</td>)}
+            </tr>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">Network</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.network}</td>)}
+            </tr>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">Est. Cost</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.estimatedMonthlyCost}</td>)}
+            </tr>
+            <tr class="border-b border-border-muted">
+              <td class="py-2.5 px-4 text-text-muted">HA/DR</td>
+              {sorted.map((p) => <td class="py-2.5 px-4 text-text-secondary">{p.data.hadrNotes}</td>)}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="rounded-lg border border-warning/30 bg-warning/5 p-4">
+      <p class="text-sm text-text-secondary">
+        <span class="font-semibold text-warning">⚠️ Note:</span> These are reference estimates for initial scoping discussions. Actual sizing depends on specific workload characteristics, concurrency patterns, data complexity, and SLA requirements. Contact SAS for formal sizing based on detailed workload analysis.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const panels = document.querySelectorAll('[role="tabpanel"]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => {
+        t.setAttribute('aria-selected', 'false');
+        t.classList.remove('border-sas-blue', 'text-sas-blue');
+        t.classList.add('border-transparent', 'text-text-secondary');
+      });
+      panels.forEach((p) => p.classList.add('hidden'));
+
+      tab.setAttribute('aria-selected', 'true');
+      tab.classList.add('border-sas-blue', 'text-sas-blue');
+      tab.classList.remove('border-transparent', 'text-text-secondary');
+
+      const panelId = tab.getAttribute('aria-controls');
+      if (panelId) {
+        document.getElementById(panelId)?.classList.remove('hidden');
+      }
+    });
+  });
+</script>

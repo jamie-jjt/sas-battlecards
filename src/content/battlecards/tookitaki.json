@@ -1,0 +1,122 @@
+{
+  "slug": "tookitaki",
+  "name": "Tookitaki",
+  "category": "fraud-fincrime",
+  "threatLevel": "low",
+  "priority": "P3",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on enterprise maturity, platform breadth, and proven Philippine deployments",
+  "overview": {
+    "whatTheyDo": "Singapore-based AML startup offering federated learning-based financial crime detection. Unique 'Anti-Financial Crime (AFC) Ecosystem' uses shared typology models across institutions without sharing raw data. Focuses on AML transaction monitoring and screening.",
+    "sweetSpot": "Mid-size banks in Southeast Asia wanting AML with collaborative intelligence. Appeals to banks wanting 'modern AML' without the cost of NICE or SAS. Strong narrative around shared learning.",
+    "typicalBuyer": "Head of Compliance, AMLO, Innovation/Digital Transformation leads at mid-size banks",
+    "phPresence": "Small but growing. Singapore headquarters with ASEAN focus. Some exploratory conversations with Philippine banks and thrift banks. Limited brand recognition among PH compliance decision-makers.",
+    "recentMomentum": "Series B funding, AFC Ecosystem expansion, partnerships with ASEAN banks, regulatory sandbox participation in Singapore, expanding from AML into fraud detection.",
+    "pricingModel": "SaaS subscription based on entity count and transaction volume. Competitive pricing for mid-market — significantly below NICE/SAS list price. Community pricing model for AFC Ecosystem participants."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Enterprise Maturity and Proven Scale",
+      "explanation": "SAS has 50 years of deployment at the world's largest banks and national-scale implementations. Tookitaki is a startup with limited enterprise-scale production references. For BSP-regulated universal banks, proven stability matters more than innovative concepts.",
+      "proofPoint": "SAS deployed at 3,000+ financial institutions globally, processing national-scale transaction volumes. Tookitaki's largest deployments are mid-size banks with limited transaction volumes."
+    },
+    {
+      "headline": "Complete Platform (Not Just AML)",
+      "explanation": "SAS provides fraud, AML, credit risk, model governance, and analytics on one platform. Tookitaki is AML-focused with limited fraud capabilities and no risk or analytics platform. Philippine banks need BSP 1213 (fraud) AND AMLA (AML) — SAS covers both.",
+      "proofPoint": "BSP Circular 1213 requires fraud management systems by June 2026. Tookitaki addresses AML but not the fraud management requirement — leaving a critical gap."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Federated Learning / Shared Typology",
+      "whyItMatters": "Tookitaki's AFC Ecosystem allows banks to benefit from shared AML patterns without sharing raw data. This collaborative approach theoretically improves detection across the network. Innovative concept that resonates with forward-thinking compliance officers.",
+      "howToNeutralize": "Federated learning is innovative but unproven at scale. Ask: how many Philippine banks participate? What's the actual detection improvement? SAS's own ML algorithms deliver comparable improvements using your own data — no dependency on other banks' participation."
+    },
+    {
+      "area": "Lower Cost for Mid-Market",
+      "whyItMatters": "Tookitaki's pricing is significantly below SAS for smaller banks. A thrift bank or rural bank may find Tookitaki affordable where SAS pricing is prohibitive.",
+      "howToNeutralize": "For universal banks (SAS's target), the cost comparison is misleading — Tookitaki + separate fraud + separate analytics + governance tools = more expensive. Focus on universal banks where SAS's breadth delivers TCO advantage. Don't compete for small thrift banks."
+    }
+  ],
+  "features": [
+    { "capability": "Anti-Money Laundering (AML)", "sas": "full", "competitor": "full", "notes": "Both provide AML; SAS deeper at enterprise scale" },
+    { "capability": "Fraud Detection", "sas": "full", "competitor": "partial", "notes": "SAS full fraud suite; Tookitaki basic fraud, primary focus is AML" },
+    { "capability": "Federated/Shared Learning", "sas": "partial", "competitor": "full", "notes": "Tookitaki's unique AFC Ecosystem; SAS supports consortium architecturally" },
+    { "capability": "Machine Learning Models", "sas": "full", "competitor": "full", "notes": "Both ML-based; SAS broader algorithm library and model management" },
+    { "capability": "Network/Graph Analytics", "sas": "full", "competitor": "partial", "notes": "SAS full network analytics; Tookitaki limited" },
+    { "capability": "BSP Regulatory Reporting", "sas": "full", "competitor": "partial", "notes": "SAS proven BSP reporting; Tookitaki limited PH-specific templates" },
+    { "capability": "Credit Risk / IFRS9", "sas": "full", "competitor": "none", "notes": "Not in Tookitaki's scope" },
+    { "capability": "Enterprise Analytics Platform", "sas": "full", "competitor": "none", "notes": "SAS full platform; Tookitaki is AML point solution" },
+    { "capability": "Model Governance (BSP 1112)", "sas": "full", "competitor": "partial", "notes": "SAS Model Manager; Tookitaki has basic model documentation" },
+    { "capability": "Case Management", "sas": "full", "competitor": "full", "notes": "Both have case management for compliance workflows" }
+  ],
+  "landmines": [
+    {
+      "question": "How many Philippine banks are currently participating in the AFC Ecosystem, and what measurable detection improvement have they seen?",
+      "expectedAnswer": "Very few or no PH banks currently participate — ecosystem benefits are theoretical in this market",
+      "whatToSayNext": "Shared learning requires critical mass of participants. Without Philippine bank participation, the ecosystem benefit doesn't apply here. SAS's own ML delivers proven 50-70% false positive reduction using your own data."
+    },
+    {
+      "question": "BSP Circular 1213 requires a fraud management system by June 2026. How does this platform address that requirement beyond AML?",
+      "expectedAnswer": "Tookitaki is primarily AML — their fraud capabilities are limited",
+      "whatToSayNext": "You need both AML AND fraud management for BSP compliance. SAS covers both on one platform. With Tookitaki, you'd need a separate fraud system — doubling your implementation effort before the deadline."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Tookitaki's shared learning approach is more innovative than traditional AML",
+      "whyTheySayIt": "The AFC Ecosystem narrative is compelling — collaborative intelligence sounds better than isolated detection.",
+      "response": "Federated learning is an innovative concept, but what matters is production results. How many Philippine banks participate? What's the measured improvement? SAS's adaptive ML delivers proven 50-70% false positive reduction using your own data — no dependency on other banks joining. Innovation that doesn't have critical mass in your market is just a concept, not a capability.",
+      "proofPoints": ["SAS ML delivers 50-70% FP reduction without shared data", "AFC Ecosystem has limited ASEAN participation — minimal network effect in PH", "Proven enterprise ML at 3,000+ institutions vs. startup with limited references"],
+      "whatNotToSay": "Don't dismiss federated learning as a concept — it's genuinely interesting. Question the practical value in the Philippine market specifically."
+    },
+    {
+      "objection": "Tookitaki is more affordable for our size",
+      "whyTheySayIt": "Genuine price difference for smaller institutions. Startups price aggressively to win market share.",
+      "response": "If you only need AML, Tookitaki may indeed be cheaper upfront. But your BSP compliance requires fraud management (Circular 1213), model governance (1112), AND AML. Total cost of Tookitaki + separate fraud + separate governance exceeds SAS's all-in-one pricing for universal banks. Which banks find SAS cost-effective? Universal and commercial banks with multiple compliance requirements.",
+      "proofPoints": ["SAS all-in-one pricing is competitive for multi-requirement deployments", "Total cost of 3 point solutions exceeds SAS platform cost", "Startup pricing often increases after initial contract period"]
+    }
+  ],
+  "phContext": {
+    "localPresence": "Singapore headquarters with ASEAN focus. Small team covering Southeast Asia. Exploratory conversations with some Philippine banks. Limited brand recognition. No established local partner ecosystem for implementation.",
+    "knownCustomers": ["Exploratory discussions with PH thrift banks", "No confirmed universal bank deployments in Philippines", "Some ASEAN bank references in Malaysia and Singapore"],
+    "localPricing": "SaaS subscription in USD. Significantly below SAS/NICE for smaller deployments. Community pricing for AFC Ecosystem. Attractive for thrift/rural banks but less differentiating for universal banks.",
+    "regulatoryGaps": [
+      "Limited fraud management capabilities (primarily AML)",
+      "AFC Ecosystem has minimal Philippine bank participation",
+      "Limited BSP-specific regulatory reporting templates",
+      "Startup maturity — limited enterprise-scale references",
+      "No credit risk, model governance, or analytics platform"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Never — direct competitor in AML space"
+    ],
+    "competeWhen": [
+      "Any AML opportunity at Philippine banks",
+      "Banks evaluating modern AML alternatives",
+      "Conversations where federated learning narrative appears"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "SAS Leader in AML market analysis",
+      "detail": "SAS consistently ranked as Leader in Chartis and Forrester for AML solutions — established market position vs. Tookitaki's emerging player status."
+    },
+    {
+      "type": "benchmark",
+      "title": "Enterprise scale difference",
+      "detail": "SAS processes AML for national-scale banking systems (entire country's transactions). Tookitaki's largest deployments are individual mid-size banks."
+    },
+    {
+      "type": "customer-win",
+      "title": "Universal bank chose platform breadth",
+      "detail": "ASEAN universal bank evaluated Tookitaki and SAS — chose SAS because they needed fraud + AML + risk + analytics on one platform. Tookitaki couldn't cover the full requirement.",
+      "source": "SAS APAC"
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "afasa", "amla"],
+  "relatedSolutions": ["fraud-management", "anti-money-laundering"]
+}

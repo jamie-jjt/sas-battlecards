@@ -1,0 +1,204 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+const battlecards = await getCollection('battlecards');
+const competitors = battlecards.map((bc) => ({ slug: bc.data.slug, name: bc.data.name }));
+
+const industries = [
+  { value: 'banking', label: 'Banking & Financial Services' },
+  { value: 'insurance', label: 'Insurance' },
+  { value: 'telco', label: 'Telecommunications' },
+  { value: 'government', label: 'Government' },
+  { value: 'retail', label: 'Retail & CPG' },
+  { value: 'healthcare', label: 'Healthcare & Life Sciences' },
+  { value: 'manufacturing', label: 'Manufacturing' },
+  { value: 'energy', label: 'Energy & Utilities' },
+];
+
+const scopingQuestions = [
+  'What does your current analytics/fraud detection look like?',
+  'What regulatory deadlines are you working toward?',
+  'How many data scientists/analysts do you have?',
+  'What is your current technology stack for analytics?',
+  'What business problems are highest priority right now?',
+  'Have you evaluated competitors for this use case?',
+  'What is your deployment preference (cloud vs on-prem)?',
+  'What is your timeline for implementation?',
+  'Who are the key decision makers and influencers?',
+  'What does success look like for this project?',
+];
+---
+
+<BaseLayout title="Meeting Notes Template">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <Breadcrumb items={[{ label: 'Meeting Notes' }]} />
+
+    <!-- Header -->
+    <div class="space-y-2">
+      <h1 class="text-2xl font-bold text-text-primary">Meeting Notes Template</h1>
+      <p class="text-text-secondary max-w-2xl">
+        Generate a structured meeting notes template. Fill in the details, check relevant questions, then copy as Markdown for OneNote or Notion.
+      </p>
+    </div>
+
+    <!-- Meeting Info Form -->
+    <div class="rounded-lg border border-border-default bg-bg-surface p-6 space-y-4">
+      <h2 class="text-sm font-semibold text-text-primary uppercase tracking-wider">Meeting Details</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div>
+          <label for="note-date" class="block text-xs font-medium text-text-muted mb-1">Date</label>
+          <input type="date" id="note-date" class="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-text-primary focus:border-sas-blue focus:outline-none" />
+        </div>
+        <div>
+          <label for="note-customer" class="block text-xs font-medium text-text-muted mb-1">Customer Name</label>
+          <input type="text" id="note-customer" placeholder="e.g., BDO Unibank" class="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-text-primary placeholder-text-muted focus:border-sas-blue focus:outline-none" />
+        </div>
+        <div>
+          <label for="note-industry" class="block text-xs font-medium text-text-muted mb-1">Industry</label>
+          <select id="note-industry" class="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-text-primary focus:border-sas-blue focus:outline-none">
+            <option value="">Select...</option>
+            {industries.map((ind) => (
+              <option value={ind.value}>{ind.label}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label for="note-usecase" class="block text-xs font-medium text-text-muted mb-1">Use Case</label>
+          <input type="text" id="note-usecase" placeholder="e.g., Fraud Management" class="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-text-primary placeholder-text-muted focus:border-sas-blue focus:outline-none" />
+        </div>
+        <div>
+          <label for="note-competitor" class="block text-xs font-medium text-text-muted mb-1">Competitor Mentioned</label>
+          <select id="note-competitor" class="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-text-primary focus:border-sas-blue focus:outline-none">
+            <option value="">None / Unknown</option>
+            {competitors.map((c) => (
+              <option value={c.slug}>{c.name}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label for="note-attendees" class="block text-xs font-medium text-text-muted mb-1">Attendees</label>
+          <input type="text" id="note-attendees" placeholder="Names, comma separated" class="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-text-primary placeholder-text-muted focus:border-sas-blue focus:outline-none" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Questions Asked -->
+    <div class="rounded-lg border border-border-default bg-bg-surface p-6 space-y-4">
+      <h2 class="text-sm font-semibold text-text-primary uppercase tracking-wider">Questions Asked</h2>
+      <div class="space-y-2" id="questions-checklist">
+        {scopingQuestions.map((q, i) => (
+          <label class="flex items-start gap-3 cursor-pointer group">
+            <input type="checkbox" class="note-question mt-0.5 rounded border-border-default text-sas-blue focus:ring-sas-blue" data-question={q} />
+            <span class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{q}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+
+    <!-- Key Insights & Next Steps -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="rounded-lg border border-border-default bg-bg-surface p-6 space-y-3">
+        <h2 class="text-sm font-semibold text-text-primary uppercase tracking-wider">Key Insights</h2>
+        <textarea id="note-insights" rows="5" placeholder="What did you learn? Key pain points, budget signals, timeline indicators..." class="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-text-primary placeholder-text-muted focus:border-sas-blue focus:outline-none resize-y"></textarea>
+      </div>
+      <div class="rounded-lg border border-border-default bg-bg-surface p-6 space-y-3">
+        <h2 class="text-sm font-semibold text-text-primary uppercase tracking-wider">Next Steps</h2>
+        <textarea id="note-nextsteps" rows="5" placeholder="Action items, follow-up meetings, deliverables..." class="w-full rounded-md border border-border-default bg-bg-base px-3 py-2 text-sm text-text-primary placeholder-text-muted focus:border-sas-blue focus:outline-none resize-y"></textarea>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex flex-wrap gap-3">
+      <button type="button" id="btn-copy-md" class="px-4 py-2 text-sm font-medium rounded-lg bg-sas-blue text-white hover:bg-sas-blue-hover transition-colors cursor-pointer">
+        📋 Copy as Markdown
+      </button>
+      <button type="button" id="btn-print" class="px-4 py-2 text-sm font-medium rounded-lg border border-border-default text-text-secondary hover:text-text-primary hover:bg-bg-elevated transition-colors cursor-pointer">
+        🖨️ Print
+      </button>
+      <button type="button" id="btn-clear-notes" class="px-4 py-2 text-sm font-medium rounded-lg border border-danger/30 text-danger hover:bg-danger/10 transition-colors cursor-pointer">
+        Clear All
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function generateMarkdown() {
+    const date = (document.getElementById('note-date') as HTMLInputElement).value || new Date().toISOString().split('T')[0];
+    const customer = (document.getElementById('note-customer') as HTMLInputElement).value || 'TBD';
+    const industry = (document.getElementById('note-industry') as HTMLSelectElement).selectedOptions[0]?.text || 'N/A';
+    const useCase = (document.getElementById('note-usecase') as HTMLInputElement).value || 'N/A';
+    const competitor = (document.getElementById('note-competitor') as HTMLSelectElement).selectedOptions[0]?.text || 'None';
+    const attendees = (document.getElementById('note-attendees') as HTMLInputElement).value || 'TBD';
+    const insights = (document.getElementById('note-insights') as HTMLTextAreaElement).value || '';
+    const nextSteps = (document.getElementById('note-nextsteps') as HTMLTextAreaElement).value || '';
+
+    const checkedQuestions = Array.from(document.querySelectorAll<HTMLInputElement>('.note-question:checked'))
+      .map((cb) => cb.dataset.question);
+
+    let md = `# Meeting Notes: ${customer}\n\n`;
+    md += `| Field | Value |\n|-------|-------|\n`;
+    md += `| Date | ${date} |\n`;
+    md += `| Customer | ${customer} |\n`;
+    md += `| Industry | ${industry} |\n`;
+    md += `| Use Case | ${useCase} |\n`;
+    md += `| Competitor | ${competitor} |\n`;
+    md += `| Attendees | ${attendees} |\n\n`;
+
+    if (checkedQuestions.length > 0) {
+      md += `## Questions Asked\n\n`;
+      checkedQuestions.forEach((q) => { md += `- [x] ${q}\n`; });
+      md += '\n';
+    }
+
+    if (insights) {
+      md += `## Key Insights\n\n${insights}\n\n`;
+    }
+
+    if (nextSteps) {
+      md += `## Next Steps\n\n${nextSteps}\n\n`;
+    }
+
+    md += `## Follow-up Actions\n\n- [ ] \n- [ ] \n- [ ] \n\n`;
+    md += `---\n*Generated by SAS Battle Cards — ${new Date().toLocaleString()}*\n`;
+
+    return md;
+  }
+
+  document.getElementById('btn-copy-md')?.addEventListener('click', () => {
+    const md = generateMarkdown();
+    navigator.clipboard.writeText(md).then(() => {
+      const btn = document.getElementById('btn-copy-md');
+      if (btn) {
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => { btn.textContent = '📋 Copy as Markdown'; }, 2000);
+      }
+    });
+  });
+
+  document.getElementById('btn-print')?.addEventListener('click', () => {
+    window.print();
+  });
+
+  document.getElementById('btn-clear-notes')?.addEventListener('click', () => {
+    if (confirm('Clear all fields?')) {
+      (document.getElementById('note-date') as HTMLInputElement).value = '';
+      (document.getElementById('note-customer') as HTMLInputElement).value = '';
+      (document.getElementById('note-industry') as HTMLSelectElement).selectedIndex = 0;
+      (document.getElementById('note-usecase') as HTMLInputElement).value = '';
+      (document.getElementById('note-competitor') as HTMLSelectElement).selectedIndex = 0;
+      (document.getElementById('note-attendees') as HTMLInputElement).value = '';
+      (document.getElementById('note-insights') as HTMLTextAreaElement).value = '';
+      (document.getElementById('note-nextsteps') as HTMLTextAreaElement).value = '';
+      document.querySelectorAll<HTMLInputElement>('.note-question').forEach((cb) => { cb.checked = false; });
+    }
+  });
+
+  // Set today's date by default
+  const dateInput = document.getElementById('note-date') as HTMLInputElement;
+  if (dateInput && !dateInput.value) {
+    dateInput.value = new Date().toISOString().split('T')[0];
+  }
+</script>

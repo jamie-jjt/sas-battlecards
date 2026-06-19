@@ -1,0 +1,142 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumb from '@components/global/Breadcrumb.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const sections = [
+  {
+    title: 'Meeting Prep Wizard',
+    icon: '🧙',
+    href: `${base}/wizard/`,
+    description: 'Start here before any customer meeting. Input industry, competitor, and meeting type to get a customized prep sheet with relevant questions, talking points, and landmine questions.',
+  },
+  {
+    title: 'Battle Cards',
+    icon: '⚔️',
+    href: `${base}/battlecards/`,
+    description: 'Deep competitive intelligence for each competitor. Includes where SAS wins, where they win, feature comparisons, landmine questions, and objection handling.',
+  },
+  {
+    title: 'Scoping Questions',
+    icon: '🎯',
+    href: `${base}/scoping/`,
+    description: 'Industry-specific discovery questions designed to qualify opportunities and surface pain points. Each question includes intent and follow-up guidance.',
+  },
+  {
+    title: 'Regulations',
+    icon: '📋',
+    href: `${base}/regulations/`,
+    description: 'Philippine regulatory landscape with SAS capability mapping. Use in meetings to create urgency around compliance deadlines.',
+  },
+  {
+    title: 'Objections',
+    icon: '💬',
+    href: `${base}/objections/`,
+    description: 'Common objections with the AREC framework (Acknowledge, Reframe, Evidence, Close). Organized by theme for quick reference.',
+  },
+  {
+    title: 'Compare Mode',
+    icon: '⚖️',
+    href: `${base}/compare/`,
+    description: 'Select 2-3 competitors for a side-by-side comparison. Generates feature grids and talking points. Exportable as text.',
+  },
+  {
+    title: 'Sizing Guide',
+    icon: '📐',
+    href: `${base}/sizing/`,
+    description: 'Reference infrastructure sizing for SAS Viya deployments. Use for initial scoping estimates when customers ask about infrastructure.',
+  },
+  {
+    title: 'Meeting Notes',
+    icon: '📝',
+    href: `${base}/notes/`,
+    description: 'Structured meeting notes template. Fill in details and export as Markdown for OneNote or Notion.',
+  },
+  {
+    title: 'Win/Loss Tracker',
+    icon: '📊',
+    href: `${base}/tracker/`,
+    description: 'Track competitive outcomes over time. Stored locally in your browser. Export as CSV for reporting.',
+  },
+  {
+    title: 'Intel Feed',
+    icon: '🔔',
+    href: `${base}/intel/`,
+    description: 'Latest competitive moves and market intelligence with "So What?" annotations for SAS positioning.',
+  },
+];
+---
+
+<BaseLayout title="How to Use">
+  <div class="mx-auto max-w-7xl px-4 py-8 space-y-8">
+    <Breadcrumb items={[{ label: 'How to Use' }]} />
+
+    <div class="space-y-2">
+      <h1 class="text-2xl font-bold text-text-primary">How to Use SAS Battle Cards</h1>
+      <p class="text-text-secondary max-w-2xl">
+        A quick reference guide for Philippine SAS SEs. This tool helps you prepare for competitive meetings, handle objections, and track outcomes.
+      </p>
+    </div>
+
+    <!-- Quick Start -->
+    <div class="rounded-lg border-2 border-sas-blue/30 bg-sas-blue/5 p-6">
+      <h2 class="text-lg font-bold text-text-primary mb-3">⚡ Quick Start (60 seconds before a meeting)</h2>
+      <ol class="space-y-2 text-sm text-text-secondary list-decimal list-inside">
+        <li>Open the <a href={`${base}/wizard/`} class="text-text-link hover:underline font-medium">Meeting Prep Wizard</a></li>
+        <li>Select industry, competitor(s), meeting type, and maturity level</li>
+        <li>Review the generated prep sheet with questions and talking points</li>
+        <li>Optional: Generate <a href={`${base}/notes/`} class="text-text-link hover:underline font-medium">meeting notes</a> template for structured capture</li>
+        <li>After the meeting: log the outcome in the <a href={`${base}/tracker/`} class="text-text-link hover:underline font-medium">Win/Loss Tracker</a></li>
+      </ol>
+    </div>
+
+    <!-- All Sections -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {sections.map((section) => (
+        <a href={section.href} class="group rounded-lg border border-border-default bg-bg-surface p-5 hover:border-sas-blue/50 hover:bg-bg-elevated transition-all">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-2xl">{section.icon}</span>
+            <h3 class="font-semibold text-text-primary group-hover:text-sas-blue transition-colors">{section.title}</h3>
+          </div>
+          <p class="text-sm text-text-muted">{section.description}</p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Keyboard Shortcuts -->
+    <div class="rounded-lg border border-border-default bg-bg-surface p-6">
+      <h2 class="text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">Keyboard Shortcuts</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-text-secondary">Open Search</span>
+          <kbd class="px-2 py-0.5 rounded border border-border-default bg-bg-base text-xs font-mono text-text-muted">⌘K / Ctrl+K</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-text-secondary">Close Modal</span>
+          <kbd class="px-2 py-0.5 rounded border border-border-default bg-bg-base text-xs font-mono text-text-muted">Esc</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-text-secondary">Navigate Results</span>
+          <kbd class="px-2 py-0.5 rounded border border-border-default bg-bg-base text-xs font-mono text-text-muted">↑ / ↓</kbd>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-text-secondary">Select Result</span>
+          <kbd class="px-2 py-0.5 rounded border border-border-default bg-bg-base text-xs font-mono text-text-muted">Enter</kbd>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data & Privacy -->
+    <div class="rounded-lg border border-border-default bg-bg-surface p-6">
+      <h2 class="text-sm font-semibold text-text-primary uppercase tracking-wider mb-3">Data & Privacy</h2>
+      <ul class="space-y-2 text-sm text-text-secondary">
+        <li>• All competitive content is static — no server calls, no external APIs</li>
+        <li>• Win/Loss Tracker data is stored in your browser's localStorage only</li>
+        <li>• Meeting Notes are never saved — copy them before navigating away</li>
+        <li>• Works offline after first load (PWA-enabled)</li>
+        <li>• No customer data is collected or transmitted anywhere</li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,121 @@
+{
+  "slug": "feedzai",
+  "name": "Feedzai",
+  "category": "fraud-fincrime",
+  "threatLevel": "medium",
+  "priority": "P3",
+  "lastUpdated": "2025-06-15",
+  "tagline": "SAS wins on platform breadth, ML maturity, and Philippine regulatory coverage",
+  "overview": {
+    "whatTheyDo": "Cloud-native AI platform for real-time fraud detection and financial crime prevention. Focuses on payments fraud, account takeover, and transaction monitoring with a modern ML-first architecture built for fintechs and digital banks.",
+    "sweetSpot": "Digital-first banks, fintechs, and payment processors needing cloud-native fraud detection with fast time-to-value. Aggressive pricing for mid-market.",
+    "typicalBuyer": "Head of Fraud, VP Payments, CTO of fintech/digital banks",
+    "phPresence": "No direct Philippines presence. Some pilot discussions with Philippine digital banks and e-wallets. Managed from Singapore/APAC hub.",
+    "recentMomentum": "Series D funding, expansion into APAC, partnerships with payment processors, new account-level risk scoring product, aggressive pricing to win mid-market deals.",
+    "pricingModel": "SaaS consumption-based pricing on transaction volume. Lower entry point than traditional vendors. Aggressive discounting for competitive displacement."
+  },
+  "whereWeWin": [
+    {
+      "headline": "Full Platform Beyond Fraud",
+      "explanation": "SAS provides fraud, AML, risk management, model governance, and enterprise analytics on one platform. Feedzai is fraud-only — customers still need separate AML, risk, and analytics solutions. In Philippine banks where BSP requires both fraud AND AML, SAS covers both.",
+      "proofPoint": "SAS customers consolidate 3-5 point solutions into one platform, reducing total vendor cost by 40%+ and eliminating integration gaps."
+    },
+    {
+      "headline": "Regulatory Depth for Philippine Market",
+      "explanation": "SAS has pre-built compliance capabilities for BSP Circular 1213, AMLA, AFASA, and BSP 1112. Feedzai focuses on payments fraud but lacks deep AML/compliance workflow for Philippine-specific regulations. Philippine banks need both fraud detection AND regulatory reporting.",
+      "proofPoint": "SAS has 3,000+ financial institution deployments with proven BSP/AMLC compliance reporting — Feedzai has limited presence in regulated ASEAN banking."
+    }
+  ],
+  "whereTheyWin": [
+    {
+      "area": "Cloud-Native Speed to Deploy",
+      "whyItMatters": "Feedzai's pure SaaS model means faster deployment (weeks vs months). For fintechs and digital banks with limited IT, this speed advantage is real. No infrastructure provisioning needed.",
+      "howToNeutralize": "SAS Viya is also cloud-native on Kubernetes. Deployment timelines have compressed significantly. For regulated banks, 'fast deployment' without proper compliance validation is actually a risk, not a benefit."
+    },
+    {
+      "area": "Aggressive Pricing for Mid-Market",
+      "whyItMatters": "Feedzai undercuts traditional vendors significantly. Their transaction-based pricing can be 30-50% lower for smaller volumes. Digital banks and fintechs with limited budgets find this attractive.",
+      "howToNeutralize": "Compare total cost: Feedzai + separate AML + separate analytics + separate risk = more expensive than SAS all-in-one. Also ask about pricing at scale — Feedzai gets expensive as transaction volumes grow."
+    }
+  ],
+  "features": [
+    { "capability": "Real-Time Fraud Detection", "sas": "full", "competitor": "full", "notes": "Both strong; Feedzai optimized for payments/digital channels" },
+    { "capability": "Anti-Money Laundering (AML)", "sas": "full", "competitor": "partial", "notes": "SAS full AML suite; Feedzai has basic AML add-on, not primary strength" },
+    { "capability": "Machine Learning Models", "sas": "full", "competitor": "full", "notes": "Both ML-native; SAS offers broader algorithm library" },
+    { "capability": "Network/Graph Analytics", "sas": "full", "competitor": "partial", "notes": "SAS deeper network analytics; Feedzai focused on entity-level" },
+    { "capability": "BSP Regulatory Reporting", "sas": "full", "competitor": "none", "notes": "SAS pre-built for BSP; Feedzai requires custom development" },
+    { "capability": "Model Governance (BSP 1112)", "sas": "full", "competitor": "partial", "notes": "SAS Model Manager purpose-built; Feedzai has basic model tracking" },
+    { "capability": "Credit Risk / IFRS9", "sas": "full", "competitor": "none", "notes": "Not in Feedzai's scope" },
+    { "capability": "Case Management", "sas": "full", "competitor": "full", "notes": "Both adequate for fraud investigation workflows" },
+    { "capability": "Cloud-Native Deployment", "sas": "full", "competitor": "full", "notes": "Both Kubernetes-native; Feedzai SaaS-only, SAS offers on-prem option" },
+    { "capability": "Enterprise Analytics Platform", "sas": "full", "competitor": "none", "notes": "SAS full platform; Feedzai is fraud-specific only" }
+  ],
+  "landmines": [
+    {
+      "question": "Beyond fraud detection, what are your requirements for AML transaction monitoring, regulatory reporting, and model governance?",
+      "expectedAnswer": "They need AML and compliance too — Feedzai doesn't cover this comprehensively",
+      "whatToSayNext": "SAS provides fraud AND AML AND model governance on one platform. With Feedzai, you'll need separate AML and governance tools — adding cost and integration complexity."
+    },
+    {
+      "question": "How will you handle BSP Circular 1213 compliance reporting and STR/CTR generation from this system?",
+      "expectedAnswer": "Feedzai doesn't have pre-built Philippine regulatory reporting",
+      "whatToSayNext": "SAS has proven BSP/AMLC reporting capabilities deployed at Philippine banks. With Feedzai, you'd need to build this from scratch — risky given the June 2026 deadline."
+    }
+  ],
+  "objections": [
+    {
+      "objection": "Feedzai is more modern and cloud-native than SAS",
+      "whyTheySayIt": "Perception that SAS is legacy/on-prem. Feedzai's marketing emphasizes modern architecture.",
+      "response": "SAS Viya runs on Kubernetes in any cloud — same cloud-native architecture. The difference is SAS has 50 years of fraud/risk analytics maturity AND modern deployment. Being cloud-native is table stakes — what matters is detection accuracy, false positive rates, and regulatory compliance coverage.",
+      "proofPoints": ["SAS Viya on Kubernetes since 2020", "Cloud marketplace availability (AWS, Azure, GCP)", "50+ years of analytical algorithms vs Feedzai's 10 years"],
+      "whatNotToSay": "Don't dismiss their cloud architecture — it's genuinely good. Focus on what SAS adds beyond deployment model."
+    },
+    {
+      "objection": "Feedzai is cheaper for our volume",
+      "whyTheySayIt": "Feedzai's entry-level pricing is indeed lower for small transaction volumes.",
+      "response": "Let's compare total platform cost, not just fraud module cost. You also need AML, model governance, analytics, and regulatory reporting. With SAS, that's all included. With Feedzai, add NICE for AML, plus a governance tool, plus a BI tool. Total cost comparison typically favors SAS for regulated banks.",
+      "proofPoints": ["TCO analysis shows 25-40% savings with SAS all-in-one vs. Feedzai + AML + analytics stack", "Feedzai pricing increases significantly at higher volumes", "Integration costs between multiple vendors add 20-30% to total project cost"]
+    }
+  ],
+  "phContext": {
+    "localPresence": "No Philippines office. Managed from Singapore APAC hub. Some pilot discussions with Philippine digital banks and e-wallet providers. Limited brand recognition among PH compliance officers.",
+    "knownCustomers": ["Exploratory conversations with PH digital banks", "Pilot discussions with e-wallet providers", "No confirmed production deployments in Philippines"],
+    "localPricing": "SaaS consumption model in USD. Lower entry point than SAS for small volumes. Transaction-based pricing starts attractive but scales up quickly.",
+    "regulatoryGaps": [
+      "No pre-built BSP Circular 1213 compliance capabilities",
+      "Limited AMLA/AFASA regulatory reporting",
+      "No Philippine STR/CTR generation templates",
+      "Fraud-only — does not address BSP model governance requirements"
+    ]
+  },
+  "betterTogetherDecision": {
+    "partnerWhen": [
+      "Never — direct competitor in fraud space"
+    ],
+    "competeWhen": [
+      "Any fraud detection opportunity",
+      "Digital bank or fintech evaluating cloud-native fraud solutions",
+      "Customer comparing modern vs. traditional fraud platforms"
+    ]
+  },
+  "proofPoints": [
+    {
+      "type": "analyst",
+      "title": "SAS named Leader in Enterprise Fraud Management",
+      "detail": "SAS consistently recognized in Forrester and Chartis for enterprise fraud management — broader market validation than Feedzai's niche focus."
+    },
+    {
+      "type": "benchmark",
+      "title": "Platform consolidation savings",
+      "detail": "Banks consolidating fraud + AML + analytics on SAS report 30-40% TCO reduction vs. multi-vendor point solution stacks."
+    },
+    {
+      "type": "customer-win",
+      "title": "ASEAN bank chose SAS over Feedzai",
+      "detail": "Regional ASEAN bank evaluated both and chose SAS for combined fraud + AML + regulatory reporting capabilities — Feedzai couldn't cover AML requirements.",
+      "source": "SAS APAC"
+    }
+  ],
+  "relatedRegulations": ["bsp-1213", "afasa", "amla"],
+  "relatedSolutions": ["fraud-management", "anti-money-laundering"]
+}

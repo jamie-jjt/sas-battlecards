@@ -1,0 +1,16 @@
+{
+  "slug": "large",
+  "tier": "large",
+  "displayName": "Large (Enterprise)",
+  "useCases": ["Enterprise-wide analytics platform", "Multiple concurrent use cases", "10-100M transactions/day", "200+ concurrent users"],
+  "userCount": "200-500 users",
+  "dataVolume": "10-50 TB",
+  "kubernetesWorkers": "10-15 worker nodes",
+  "cpuPerNode": "32 vCPU",
+  "ramPerNode": "128 GB",
+  "storage": "10 TB SSD",
+  "network": "25 Gbps",
+  "estimatedMonthlyCost": "$20,000 - $40,000/month cloud",
+  "hadrNotes": "Multi-AZ required. Active-active CAS. RPO <1hr.",
+  "cloudVsOnprem": "Hybrid common. Compute in cloud, sensitive data on-prem with secure connectivity."
+}
