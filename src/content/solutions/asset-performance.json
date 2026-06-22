@@ -1,0 +1,26 @@
+{
+  "slug": "asset-performance",
+  "name": "SAS Asset Performance Analytics",
+  "lastUpdated": "2026-06-19",
+  "description": "IoT-driven predictive maintenance platform that combines sensor analytics, failure prediction, and reliability modeling to reduce unplanned downtime, extend asset life, and optimize maintenance schedules across industrial equipment fleets.",
+  "elevatorPitch": "Predict equipment failures before they happen — reduce unplanned downtime and extend asset life with IoT-driven predictive maintenance.",
+  "capabilities": [
+    "Failure prediction using multivariate sensor patterns",
+    "Remaining useful life (RUL) estimation",
+    "Condition monitoring with real-time alerting",
+    "Maintenance schedule optimization (cost vs. risk balancing)",
+    "Sensor analytics with automated feature engineering",
+    "Reliability modeling (Weibull, survival analysis)"
+  ],
+  "targetBuyer": "VP of Operations, Head of Maintenance, CTO, Plant Manager, Head of Reliability Engineering",
+  "industries": ["manufacturing", "energy"],
+  "phUseCases": [
+    "Aboitiz Power turbine monitoring",
+    "Factory predictive maintenance",
+    "Fleet management optimization"
+  ],
+  "deploymentOptions": ["Edge (lightweight container)", "SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["SCADA/PLC systems", "CMMS (SAP PM, Maximo)", "IoT platforms", "Historian databases (OSIsoft PI)", "SAS Event Stream Processing", "ERP systems"],
+  "competitorAlternatives": ["cloudera"],
+  "mcpProductKey": "asset-performance-analytics"
+}

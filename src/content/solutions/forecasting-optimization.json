@@ -1,0 +1,26 @@
+{
+  "slug": "forecasting-optimization",
+  "name": "SAS Forecasting & Optimization",
+  "lastUpdated": "2026-06-19",
+  "description": "Enterprise-scale automated forecasting engine that handles millions of time series with automatic model selection, hierarchical reconciliation, and mathematical optimization for resource allocation, demand planning, and supply chain efficiency.",
+  "elevatorPitch": "Enterprise-scale automated forecasting across millions of time series with mathematical optimization for resource allocation.",
+  "capabilities": [
+    "Hierarchical forecasting with automatic reconciliation",
+    "Automatic model selection across 20+ algorithms",
+    "Promotional lift modeling and cannibalization effects",
+    "Mathematical optimization (linear, integer, mixed-integer programming)",
+    "Demand sensing with short-horizon signal detection",
+    "What-if scenario planning and simulation"
+  ],
+  "targetBuyer": "VP of Supply Chain, Head of Planning, CFO, COO, Head of Data Science",
+  "industries": ["retail", "manufacturing", "energy", "telco"],
+  "phUseCases": [
+    "SM Retail demand forecasting",
+    "Meralco load forecasting",
+    "Manufacturing production planning"
+  ],
+  "deploymentOptions": ["SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["ERP systems (SAP, Oracle)", "WMS/TMS platforms", "SCADA/energy management systems", "BI dashboards", "SAS Visual Analytics"],
+  "competitorAlternatives": ["sap-analytics"],
+  "mcpProductKey": "visual-forecasting"
+}

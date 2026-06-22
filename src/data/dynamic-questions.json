@@ -1,0 +1,748 @@
+{
+  "version": "2.0.0",
+  "description": "Dynamic scoping questions resolved by [industry + useCase + meetingType + maturity + persona] combination",
+  "schema": {
+    "id": "string — unique identifier (industry-useCase-meetingType-maturity-persona-NNN)",
+    "question": "string — the actual question to ask",
+    "intent": "string — why this question matters and what it reveals",
+    "followUp": "string — natural follow-up if they engage",
+    "mapsTo": "string — SAS capability or product this opens the door for",
+    "viyaTier": "string — Standard | Advanced | Premium | Any",
+    "priority": "number — 1 (must ask) to 3 (if time permits)"
+  },
+  "combinations": [
+    {
+      "id": "combo-001",
+      "industry": "retail",
+      "useCase": "forecasting",
+      "meetingType": "discovery",
+      "maturity": "L1",
+      "persona": "business-unit-leader",
+      "context": "Retail/FMCG greenfield — BU leader cares about stockouts, revenue, and simplicity. No data science team. Probably using Excel or ERP built-in forecasting.",
+      "questions": [
+        {
+          "id": "retail-forecast-disc-L1-bu-001",
+          "question": "How are you forecasting demand today — is it Excel-based, gut feel from category managers, or something built into your ERP?",
+          "intent": "Establishes baseline. Most L1 PH retailers rely on Excel or SAP APO with manual overrides. This sizes the modernization gap.",
+          "followUp": "How often do those forecasts get it wrong — and what does a stockout cost you in a typical week?",
+          "mapsTo": "SAS Visual Forecasting",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "retail-forecast-disc-L1-bu-002",
+          "question": "How many SKU-location combinations are you trying to forecast — hundreds, thousands, or tens of thousands?",
+          "intent": "Scale question. Excel breaks at scale. If they have 5K+ SKU-locations, that's SAS territory. Also reveals if they think about granularity at all.",
+          "followUp": "Do you forecast at national level and push down, or build up from store level?",
+          "mapsTo": "SAS Visual Forecasting",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "retail-forecast-disc-L1-bu-003",
+          "question": "What's your biggest pain — stockouts losing you sales, or overstock tying up working capital and expiring on shelf?",
+          "intent": "Business language, not tech. BU leaders feel this in margin and lost revenue. Identifies which side of the problem hurts more — informs ROI story.",
+          "followUp": "Can you put a peso figure on either of those — even a rough monthly estimate?",
+          "mapsTo": "SAS Visual Forecasting",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "retail-forecast-disc-L1-bu-004",
+          "question": "When you run promotions or seasonal events like Christmas or back-to-school, how far in advance do you plan inventory — and how often do you get it wrong?",
+          "intent": "Promotional forecasting is where simple tools fail. SAS handles promotional lift, cannibalization, and halo effects. PH retail is extremely promo-heavy.",
+          "followUp": "Do you factor in competitor promotions or just your own calendar?",
+          "mapsTo": "SAS Visual Forecasting",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "retail-forecast-disc-L1-bu-005",
+          "question": "Who owns the forecast today — is it supply chain, merchandising, finance, or does each team have their own version of the truth?",
+          "intent": "Identifies organizational complexity. Multiple forecasts = conflict and waste. SAS provides one governed forecast with role-based overrides.",
+          "followUp": "When those forecasts disagree, who wins?",
+          "mapsTo": "SAS Visual Forecasting",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "retail-forecast-disc-L1-bu-006",
+          "question": "If I could show you a system where your team sees a forecast dashboard by store and category — no coding, just visual overrides — would that be useful, or do you need something more automated?",
+          "intent": "Tests appetite for technology. L1 BU leaders often fear complexity. Positions SAS Visual Forecasting as accessible, not intimidating. Also gauges if they want hands-off automation vs. human-in-the-loop.",
+          "followUp": "How tech-savvy is your planning team — are they comfortable with new tools?",
+          "mapsTo": "SAS Visual Forecasting",
+          "viyaTier": "Standard",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-002",
+      "industry": "retail",
+      "useCase": "customer-analytics",
+      "meetingType": "discovery",
+      "maturity": "L2",
+      "persona": "head-data-science",
+      "context": "Retail with emerging analytics team. Head of DS already has some tools (Python, maybe Alteryx or Power BI) but hitting scale/governance walls. Interested in deeper segmentation, CLV, and personalization.",
+      "questions": [
+        {
+          "id": "retail-custanalytics-disc-L2-ds-001",
+          "question": "What's your current segmentation approach — RFM in Python, rule-based tiers, or something more behavioral?",
+          "intent": "Speaks their language (RFM, behavioral). L2 DS teams usually have basic RFM. SAS enables multi-dimensional segmentation with visual exploration.",
+          "followUp": "How many segments do you actually operationalize — and are those segments stable or do you refresh them?",
+          "mapsTo": "SAS Visual Statistics + Visual Data Mining",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "retail-custanalytics-disc-L2-ds-002",
+          "question": "When you build a customer model — say churn or CLV — how does it get into production? Is it a manual handoff to engineering or do you have a deployment pipeline?",
+          "intent": "L2 teams usually have no MLOps. Models stay in notebooks. Opens Model Manager conversation without being pushy.",
+          "followUp": "How long does it take from 'model is ready' to 'it's scoring live customers'?",
+          "mapsTo": "SAS Model Manager",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "retail-custanalytics-disc-L2-ds-003",
+          "question": "Are you joining transactional data with digital behavior — web clicks, app usage, loyalty interactions — or are those still siloed?",
+          "intent": "Data integration is the #1 blocker for customer analytics at L2. If siloed, SAS Data Studio / Customer Intelligence provides the identity resolution layer.",
+          "followUp": "Do you have a unified customer ID across channels, or is matching still manual?",
+          "mapsTo": "SAS Customer Intelligence 360",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "retail-custanalytics-disc-L2-ds-004",
+          "question": "How does your marketing team consume your models — do they get a scored list and run with it, or is there a feedback loop where you see what worked?",
+          "intent": "Reveals the gap between model output and business action. SAS closes this with integrated decisioning + journey analytics. If no feedback loop, they're flying blind on model ROI.",
+          "followUp": "Do you track lift from model-driven campaigns vs. spray-and-pray?",
+          "mapsTo": "SAS Customer Intelligence 360",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "retail-custanalytics-disc-L2-ds-005",
+          "question": "What's the team composition — how many are building models vs. doing ad-hoc reporting requests from the business?",
+          "intent": "L2 teams are often drowned in reporting. SAS Visual Analytics can offload self-service reporting to business users, freeing the DS team to focus on modeling.",
+          "followUp": "If you could automate the reporting and free up your team, what would you build first?",
+          "mapsTo": "SAS Visual Analytics",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "retail-custanalytics-disc-L2-ds-006",
+          "question": "Are you doing any real-time personalization — next-best-offer at POS or in-app — or is it all batch campaigns?",
+          "intent": "Tests readiness for real-time. Most L2 are batch. If they aspire to real-time, that's Intelligent Decisioning (Premium). If batch is fine, Standard tier handles it.",
+          "followUp": "Is real-time a near-term goal or more of a 2-3 year aspiration?",
+          "mapsTo": "SAS Intelligent Decisioning",
+          "viyaTier": "Premium",
+          "priority": 3
+        }
+      ]
+    },
+    {
+      "id": "combo-003",
+      "industry": "manufacturing",
+      "useCase": "quality-analytics",
+      "meetingType": "technical-deepdive",
+      "maturity": "L3",
+      "persona": "cto-cdo",
+      "context": "Manufacturing CTO with established analytics. Already has MES/SCADA, probably some SPC tools. Wants to move from reactive quality (defect detection) to predictive quality (defect prevention). Technical conversation — can go deep on architecture.",
+      "questions": [
+        {
+          "id": "mfg-quality-tech-L3-cto-001",
+          "question": "What's your current data pipeline from the shop floor — are you pulling directly from SCADA/PLC via OPC-UA, or is there a historian (like OSIsoft PI) aggregating before it hits your analytics layer?",
+          "intent": "Architecture question. Determines integration complexity. SAS ESP can ingest from OPC-UA directly or from historians. This shapes the deployment pattern.",
+          "followUp": "What latency are you seeing from sensor event to analytics availability?",
+          "mapsTo": "SAS Event Stream Processing",
+          "viyaTier": "Premium",
+          "priority": 1
+        },
+        {
+          "id": "mfg-quality-tech-L3-cto-002",
+          "question": "Are you doing SPC today — and at what point does your current system tell you a process is drifting vs. already out of spec?",
+          "intent": "SPC is reactive. SAS adds predictive layer that detects drift patterns before control limits breach. If they're already doing SPC, the upsell is prediction, not monitoring.",
+          "followUp": "How much scrap or rework happens between when drift starts and when SPC catches it?",
+          "mapsTo": "SAS Production Quality Analytics",
+          "viyaTier": "Advanced",
+          "priority": 1
+        },
+        {
+          "id": "mfg-quality-tech-L3-cto-003",
+          "question": "How many process parameters are you correlating to quality outcomes — tens, hundreds, or thousands of sensor tags per production line?",
+          "intent": "Dimensionality question. If hundreds/thousands of tags, that's multivariate pattern recognition territory where SAS excels. Simple BI tools can't handle this dimensionality.",
+          "followUp": "Have you tried correlating environmental factors — humidity, temperature, vibration — with defect rates?",
+          "mapsTo": "SAS Visual Data Mining & ML",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "mfg-quality-tech-L3-cto-004",
+          "question": "Where would the analytics run — do you need edge inference at the production line for sub-second response, or is near-real-time (seconds to minutes) acceptable for quality decisions?",
+          "intent": "Determines if they need ESP at the edge or if CAS batch/micro-batch scoring suffices. Edge = Premium tier with ESP. Near-real-time = Standard/Advanced tier with scheduled scoring.",
+          "followUp": "Is your factory network air-gapped or connected to your cloud/DC?",
+          "mapsTo": "SAS Event Stream Processing",
+          "viyaTier": "Premium",
+          "priority": 2
+        },
+        {
+          "id": "mfg-quality-tech-L3-cto-005",
+          "question": "How are you handling model retraining as your process changes — new materials, recipe adjustments, line reconfigurations? Does your current approach adapt or do models go stale?",
+          "intent": "Manufacturing processes evolve. Model drift is a real issue. Opens Model Manager conversation for automated retraining triggers and champion/challenger.",
+          "followUp": "How often do you recalibrate your quality models today?",
+          "mapsTo": "SAS Model Manager",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "mfg-quality-tech-L3-cto-006",
+          "question": "What's your integration target for quality predictions — feeding back into MES to auto-adjust parameters, alerting operators on HMI, or both?",
+          "intent": "Closed-loop vs. open-loop. If they want closed-loop (auto-adjust), we need REST API scoring integrated with MES. SAS Intelligent Decisioning provides real-time API endpoints that MES can call.",
+          "followUp": "Who owns that integration — your OT team, IT, or a third-party integrator?",
+          "mapsTo": "SAS Intelligent Decisioning",
+          "viyaTier": "Premium",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-004",
+      "industry": "bpo",
+      "useCase": "workforce-optimization",
+      "meetingType": "discovery",
+      "maturity": "L1",
+      "persona": "cfo-coo",
+      "context": "BPO COO — cares about utilization, attrition, SLA adherence, and seat cost. No analytics team yet. Currently using WFM tools (NICE, Verint, Genesys) for scheduling but no predictive layer. PH BPOs are under margin pressure and losing talent to competitors.",
+      "questions": [
+        {
+          "id": "bpo-workforce-disc-L1-coo-001",
+          "question": "What's your current attrition rate — and can you predict which agents are likely to leave in the next 30-60 days, or does it still feel like surprise resignations?",
+          "intent": "PH BPO attrition is 30-50% annually. If they can't predict it, every resignation is an unplanned cost (recruitment, training, SLA risk). SAS predictive models can flag flight risk early.",
+          "followUp": "What does it cost you to replace one agent — recruiting, nesting, ramp-up time?",
+          "mapsTo": "SAS Visual Data Mining & ML (custom on Viya)",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "bpo-workforce-disc-L1-coo-002",
+          "question": "How are you forecasting call/ticket volume today — is it WFM tool projections, or historical averages that your ops managers adjust manually?",
+          "intent": "Volume forecasting accuracy directly impacts staffing cost and SLA. WFM tools do basic time-series but miss external drivers (weather, campaigns, client events). SAS adds ML forecasting layer.",
+          "followUp": "How accurate are those forecasts — what's your typical over/under-staffing percentage?",
+          "mapsTo": "SAS Visual Forecasting",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "bpo-workforce-disc-L1-coo-003",
+          "question": "Do you have visibility into which agents are likely to miss SLA on a given shift — or do you only find out after the fact in your daily ops report?",
+          "intent": "Shifts the conversation from reactive to predictive. SAS can score agent-shift combinations for SLA risk and trigger interventions (coaching, reassignment) proactively.",
+          "followUp": "What happens today when an SLA breach is trending — who intervenes and how fast?",
+          "mapsTo": "SAS Visual Analytics + custom scoring",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "bpo-workforce-disc-L1-coo-004",
+          "question": "What data do you actually have on your agents — HRIS, QA scores, attendance, CSAT, AHT? Is that in one place or scattered across systems?",
+          "intent": "Data integration reality check. BPOs often have rich data but it's in Genesys, NICE, SAP HR, Excel, separate QA tools. SAS Data Studio can unify for analytics. If scattered = big opportunity.",
+          "followUp": "If I asked you to pull an agent's full performance picture today, how many systems would you need to open?",
+          "mapsTo": "SAS Data Management",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "bpo-workforce-disc-L1-coo-005",
+          "question": "How much does a 1% improvement in utilization or a 5-point attrition reduction mean to your P&L — can you size that?",
+          "intent": "Forces them to think about the value. BPO margins are 10-15%. Even small improvements in utilization or attrition have outsized P&L impact. Builds the ROI case for SAS investment.",
+          "followUp": "Is there a specific client account or LOB where this would matter most as a starting point?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "bpo-workforce-disc-L1-coo-006",
+          "question": "Are your clients — the companies you serve — asking you for predictive analytics or AI capabilities as part of their contracts, or is this purely internal optimization?",
+          "intent": "Opens a second value stream. If clients are asking for AI, SAS becomes both an internal efficiency tool AND a revenue enabler (analytics-as-a-service offering). Many PH BPOs are pivoting to 'intelligent operations'.",
+          "followUp": "Could you charge a premium or differentiate in RFPs if you had predictive capabilities your competitors don't?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Standard",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-005",
+      "industry": "telco",
+      "useCase": "customer-analytics",
+      "meetingType": "competitive-bakeoff",
+      "maturity": "L3",
+      "persona": "cto-cdo",
+      "context": "Telco CDO in a competitive evaluation. Likely comparing SAS against Databricks, DataRobot, or internal Python team. Already has models in production. Cares about scale (CDR data), governance, and total cost. PH telco = Globe, Smart/PLDT, or DITO.",
+      "questions": [
+        {
+          "id": "telco-cust-comp-L3-cdo-001",
+          "question": "In your current evaluation, how are you weighting model governance and auditability vs. raw model performance — and who on your team is defining those weights?",
+          "intent": "Surfaces their evaluation criteria. If governance is weighted high, SAS wins. If it's pure accuracy, we need to position governance as a hidden cost others will fail on later. Also identifies the decision-maker.",
+          "followUp": "Is there a formal scoring rubric, or is it more qualitative?",
+          "mapsTo": "SAS Model Manager",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "telco-cust-comp-L3-cdo-002",
+          "question": "What's the full lifecycle you're evaluating — just model building, or does it include data prep, deployment, monitoring, retraining, and business user consumption?",
+          "intent": "Expands the evaluation scope. Competitors often win on 'build speed' but lose on end-to-end lifecycle. SAS covers the full spectrum. If they're only testing model building, gently expand the frame.",
+          "followUp": "Have you mapped the total time from raw CDR data to a scored subscriber?",
+          "mapsTo": "SAS Viya Platform (end-to-end)",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "telco-cust-comp-L3-cdo-003",
+          "question": "Your CDR/EDR volumes are massive — billions of records monthly. In your POC testing, did the competing platforms handle that at full scale, or were they tested on a sample?",
+          "intent": "Scale trap. Databricks/notebooks work great on samples. SAS CAS is purpose-built for in-memory analytics at telco scale. If competitors tested on 10% sample, that's a landmine.",
+          "followUp": "What's your actual daily CDR volume and how does that scale during peak events like New Year's?",
+          "mapsTo": "SAS Viya CAS (in-memory engine)",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "telco-cust-comp-L3-cdo-004",
+          "question": "When a churn model identifies a high-risk subscriber, what's the action path today — does it trigger an automated retention offer, or does it land in a report that someone reads next week?",
+          "intent": "Time-to-action differentiator. SAS Intelligent Decisioning can trigger real-time retention actions (NBO via API to campaign system). If competitors only deliver scores to a dashboard, SAS wins on operationalization.",
+          "followUp": "How fast does that action need to happen — same session, same day, same week?",
+          "mapsTo": "SAS Intelligent Decisioning",
+          "viyaTier": "Premium",
+          "priority": 2
+        },
+        {
+          "id": "telco-cust-comp-L3-cdo-005",
+          "question": "How are you handling the multi-language, multi-persona challenge — your data scientists want Python/R, your business analysts want drag-and-drop, your ops team wants dashboards. Can one platform serve all three?",
+          "intent": "Fragmentation trap. Databricks serves data engineers. Power BI serves business. Neither serves both well. SAS Viya provides SAS Studio (code), Model Studio (low-code), and VA (no-code) in one platform.",
+          "followUp": "How many different tools are your teams using today across those personas?",
+          "mapsTo": "SAS Viya Platform (multi-persona)",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "telco-cust-comp-L3-cdo-006",
+          "question": "Once this platform is selected, who owns it long-term — and what's your plan if half your data engineering team leaves? How dependent is the solution on tribal knowledge?",
+          "intent": "Talent risk question. Open-source/Databricks approaches are highly dependent on skilled engineers who are expensive and mobile in PH. SAS's low-code capabilities reduce key-person dependency.",
+          "followUp": "What's your current attrition rate in the data team?",
+          "mapsTo": "SAS Viya (low-code + governed)",
+          "viyaTier": "Standard",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-006",
+      "industry": "banking",
+      "useCase": "fraud-detection",
+      "meetingType": "discovery",
+      "maturity": "L1",
+      "persona": "ciso-cro",
+      "context": "PH bank CISO/CRO facing BSP Circular 1213 FMS mandate (June 2026 deadline). Greenfield — currently rules-only or manual. Under pressure from regulator AND from increasing digital fraud (GCash/InstaPay ecosystem). Likely a mid-tier universal bank or large rural bank.",
+      "questions": [
+        {
+          "id": "bank-fraud-disc-L1-ciso-001",
+          "question": "With the June 2026 FMS deadline from BSP 1213, where are you in the vendor selection process — RFI stage, shortlisting, or haven't started formal evaluation yet?",
+          "intent": "Urgency qualifier. June 2026 is 12 months away. If they haven't started, they're behind and need an accelerated approach. SAS has implementation partners (like VST ECS) who can fast-track.",
+          "followUp": "Has BSP done a preliminary assessment of your current fraud capabilities, or are you self-assessing?",
+          "mapsTo": "SAS Fraud Management",
+          "viyaTier": "Premium",
+          "priority": 1
+        },
+        {
+          "id": "bank-fraud-disc-L1-ciso-002",
+          "question": "What channels are giving you the most fraud pain right now — InstaPay/PESONet transfers, card-not-present, account takeover, or application fraud?",
+          "intent": "Specific to PH digital payments ecosystem. InstaPay real-time transfers are the biggest fraud vector in PH banking right now. Maps detection requirements to specific SAS Fraud Management modules.",
+          "followUp": "What's your current fraud loss rate — basis points on transaction volume?",
+          "mapsTo": "SAS Fraud Management",
+          "viyaTier": "Premium",
+          "priority": 1
+        },
+        {
+          "id": "bank-fraud-disc-L1-ciso-003",
+          "question": "BSP 1214 introduced shared responsibility between sending and receiving institutions — how does that change your fraud investment calculus? Are you now liable for fraud you'd previously have ignored?",
+          "intent": "PH-specific regulatory nuance. Circular 1214 means receiving banks can't just say 'not my problem.' This expands the scope of who needs FMS and increases urgency. Shows deep regulatory knowledge.",
+          "followUp": "Have you discussed shared liability scenarios with your legal team?",
+          "mapsTo": "SAS Fraud Management",
+          "viyaTier": "Premium",
+          "priority": 1
+        },
+        {
+          "id": "bank-fraud-disc-L1-ciso-004",
+          "question": "How many fraud analysts do you have today — and what's their daily alert volume? Are they drowning in false positives or do they have bandwidth for investigation?",
+          "intent": "Operational capacity. L1 banks often have 2-5 fraud analysts handling manually flagged cases. SAS ML dramatically reduces false positives (typically 50-70% reduction), making small teams viable.",
+          "followUp": "If a system could cut your false alerts in half, would your team be able to do deeper investigation on the real ones?",
+          "mapsTo": "SAS Fraud Management",
+          "viyaTier": "Premium",
+          "priority": 2
+        },
+        {
+          "id": "bank-fraud-disc-L1-ciso-005",
+          "question": "With BSP's 30-day account freeze provision under Circular 1215, your detection speed directly impacts customer experience — are you able to detect and confirm fraud fast enough to avoid freezing legitimate customers?",
+          "intent": "PH-specific. Circular 1215 allows 30-day freeze on suspected fraud accounts. False positives here = frozen legitimate accounts = angry customers = complaints to BSP. Real-time scoring accuracy becomes a customer experience issue, not just a loss issue.",
+          "followUp": "Have you had customer complaints from false freezes already?",
+          "mapsTo": "SAS Fraud Management + Intelligent Decisioning",
+          "viyaTier": "Premium",
+          "priority": 2
+        },
+        {
+          "id": "bank-fraud-disc-L1-ciso-006",
+          "question": "Beyond the FMS itself — does BSP expect you to demonstrate model explainability and governance for your fraud models, or is it purely about detection capability at this stage?",
+          "intent": "Connects to BSP Circular 1112 (Model Risk Management). Even if their immediate need is FMS, BSP will eventually ask 'how does your model make decisions?' SAS provides built-in explainability. Plants a seed for Model Manager upsell.",
+          "followUp": "Has BSP Circular 1112 on model governance come up in your discussions with the regulator?",
+          "mapsTo": "SAS Model Manager + Fraud Management",
+          "viyaTier": "Premium",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-007",
+      "industry": "marketing",
+      "useCase": "personalization",
+      "meetingType": "executive-presentation",
+      "maturity": "L2",
+      "persona": "business-unit-leader",
+      "context": "Marketing/CX BU leader at exec level. Cares about conversion rates, customer engagement, revenue per customer — NOT technology. Has basic segmentation (maybe Salesforce Marketing Cloud or HubSpot) but wants to move to true 1:1 personalization. Keep it business-outcome focused.",
+      "questions": [
+        {
+          "id": "mktg-personal-exec-L2-bu-001",
+          "question": "What's the revenue gap between your best-performing personalized campaigns and your average ones — is that 2x, 5x, or do you not have visibility into that lift yet?",
+          "intent": "Opens with a revenue framing. If they know the gap, it quantifies the opportunity. If they don't, that's the first problem SAS solves (measurement). Either answer advances the conversation.",
+          "followUp": "If you could apply your best campaign's performance to your entire customer base, what would that mean in revenue terms?",
+          "mapsTo": "SAS Customer Intelligence 360",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "mktg-personal-exec-L2-bu-002",
+          "question": "When a customer interacts with you across web, app, email, and in-store — do you see one customer journey, or does each channel have its own version of who that customer is?",
+          "intent": "Identity resolution is the foundation of personalization. Most L2 have fragmented views. SAS CI360 provides unified customer identity and journey visibility. This is the prerequisite for real personalization.",
+          "followUp": "How many customer records do you think are duplicates or fragments across your systems?",
+          "mapsTo": "SAS Customer Intelligence 360",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "mktg-personal-exec-L2-bu-003",
+          "question": "How are you deciding what to show each customer right now — is it manual rules ('bought X, show Y'), basic collaborative filtering, or is someone on your team building ML models for it?",
+          "intent": "Maturity diagnostic. Manual rules = immediate SAS value. Basic CF = SAS adds sophistication. ML models = SAS adds governance and operationalization. Each answer has a different positioning angle.",
+          "followUp": "How often do those rules or models get updated — and who owns that process?",
+          "mapsTo": "SAS Intelligent Decisioning",
+          "viyaTier": "Premium",
+          "priority": 1
+        },
+        {
+          "id": "mktg-personal-exec-L2-bu-004",
+          "question": "What does your customer opt-out and consent management look like — with NPC enforcement tightening, are you confident every personalized touchpoint respects customer preferences?",
+          "intent": "PH Data Privacy Act angle without being heavy-handed. NPC is enforcing consent rules more actively. SAS CI360 has built-in consent management. Differentiator vs. tools that personalize without privacy governance.",
+          "followUp": "Have you had any NPC inquiries or customer complaints about unsolicited personalized communications?",
+          "mapsTo": "SAS Customer Intelligence 360",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "mktg-personal-exec-L2-bu-005",
+          "question": "If a high-value customer shows churn signals today — browsing competitors, declining engagement — how fast can your team respond with a relevant retention offer? Hours, days, or not at all?",
+          "intent": "Speed-to-action. Real-time personalization means catching churn signals and responding in-session. SAS CI360 + Intelligent Decisioning enables this. Most L2 orgs respond in days if at all — that's too late.",
+          "followUp": "What's a retained high-value customer worth to you annually?",
+          "mapsTo": "SAS Customer Intelligence 360 + Intelligent Decisioning",
+          "viyaTier": "Premium",
+          "priority": 2
+        },
+        {
+          "id": "mktg-personal-exec-L2-bu-006",
+          "question": "How are you measuring personalization success today — is it click-through rates, conversion, revenue per session, or customer lifetime value? And do you trust those numbers?",
+          "intent": "Measurement maturity. If they only measure clicks, they're optimizing the wrong thing. SAS enables CLV-based optimization and multi-touch attribution. 'Do you trust those numbers' opens data quality conversation.",
+          "followUp": "Would you change your personalization strategy if you could measure by lifetime value instead of campaign conversion?",
+          "mapsTo": "SAS Visual Analytics + Customer Intelligence 360",
+          "viyaTier": "Standard",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-008",
+      "industry": "manufacturing",
+      "useCase": "supply-chain",
+      "meetingType": "poc-planning",
+      "maturity": "L3",
+      "persona": "cto-cdo",
+      "context": "Manufacturing CTO ready for POC. Already convinced of the value — now needs to scope it tight. Has ERP (SAP/Oracle), probably some demand planning tool. Wants to prove SAS can improve forecast accuracy or optimize inventory/logistics. POC = 4-6 weeks, measurable outcome.",
+      "questions": [
+        {
+          "id": "mfg-supply-poc-L3-cto-001",
+          "question": "For the POC, which specific pain point should we target — demand forecast accuracy for a product family, inventory optimization for a warehouse, or logistics route optimization? What would have the clearest measurable impact?",
+          "intent": "POC scoping. Forces them to choose ONE problem. Trying to boil the ocean kills POCs. Gets alignment on success criteria early.",
+          "followUp": "What's the current baseline metric we'd be measuring against?",
+          "mapsTo": "SAS Forecasting & Optimization",
+          "viyaTier": "Advanced",
+          "priority": 1
+        },
+        {
+          "id": "mfg-supply-poc-L3-cto-002",
+          "question": "What data can you make available in the first two weeks — and is it clean enough to use, or should we budget time for data preparation within the POC timeline?",
+          "intent": "Data is the #1 POC killer. Better to know upfront if data access takes 3 weeks of their 6-week window. Sets realistic expectations and avoids 'POC failed because we couldn't get data' outcomes.",
+          "followUp": "Can you provide 2+ years of history for the product lines we'd target? Are there known data gaps?",
+          "mapsTo": "SAS Data Management",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "mfg-supply-poc-L3-cto-003",
+          "question": "What does success look like at the end of 6 weeks — a percentage improvement in forecast MAPE, a peso figure in inventory cost reduction, or a demonstrated integration with your ERP?",
+          "intent": "Locks in success criteria BEFORE starting. Prevents goal-post moving. If they want integration demo + accuracy improvement + cost analysis, that's too much for 6 weeks — need to prioritize.",
+          "followUp": "Who signs off on whether the POC passed — you, your supply chain VP, or someone else?",
+          "mapsTo": "SAS Visual Forecasting + Optimization",
+          "viyaTier": "Advanced",
+          "priority": 1
+        },
+        {
+          "id": "mfg-supply-poc-L3-cto-004",
+          "question": "What external factors should the model account for — lead times from your PH/APAC suppliers, typhoon season disruptions, port congestion, raw material price volatility?",
+          "intent": "Shows SAS can incorporate external signals that their ERP's built-in forecasting ignores. Typhoon season and port congestion are real PH/APAC supply chain factors. Differentiates from simple time-series.",
+          "followUp": "Do you have historical data on these disruptions that we could use as features?",
+          "mapsTo": "SAS Visual Forecasting (external regressors)",
+          "viyaTier": "Advanced",
+          "priority": 2
+        },
+        {
+          "id": "mfg-supply-poc-L3-cto-005",
+          "question": "Where would the POC run — your cloud environment, a SAS-hosted sandbox, or on-prem? And what's the fastest path to getting compute provisioned?",
+          "intent": "Removes infrastructure blockers. SAS can provide a hosted trial environment for POC if their procurement/IT process for cloud VMs takes weeks. Speed matters in POCs.",
+          "followUp": "Do you need any security/compliance approvals before data leaves your network?",
+          "mapsTo": "SAS Viya (deployment)",
+          "viyaTier": "Any",
+          "priority": 2
+        },
+        {
+          "id": "mfg-supply-poc-L3-cto-006",
+          "question": "What's the path from successful POC to production — do you have budget allocated pending POC results, or does this need to go through a new procurement cycle?",
+          "intent": "Avoids 'POC purgatory.' If there's no production path funded, even a brilliant POC dies. Qualifies whether this is a real opportunity or just tire-kicking. Also identifies procurement timeline.",
+          "followUp": "What's your typical procurement cycle length for a platform investment of this size?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Any",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-009",
+      "industry": "government",
+      "useCase": "fraud-detection",
+      "meetingType": "discovery",
+      "maturity": "L1",
+      "persona": "unknown",
+      "context": "Government fraud prevention — could be BIR (tax), PhilHealth (benefits), DSWD (social welfare), Customs, or SSS. Unknown persona means we don't know if we're talking to IT, policy, or operations. Keep questions safe for any audience. Probe to identify who we're actually meeting.",
+      "questions": [
+        {
+          "id": "govt-fraud-disc-L1-unk-001",
+          "question": "Can you help me understand the scope — which specific type of fraud or leakage is the priority? Tax evasion, benefits fraud, procurement irregularities, or something else?",
+          "intent": "Clarifying question. Government 'fraud' is broad. Need to narrow to a specific use case before we can position SAS. Also reveals whether they've defined the problem clearly yet.",
+          "followUp": "Is this driven by a specific audit finding or COA observation, or a proactive initiative?",
+          "mapsTo": "SAS Viya Platform (custom analytics)",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "govt-fraud-disc-L1-unk-002",
+          "question": "What's the current detection method — manual review of claims/filings, tip-based investigation, or do you have any automated screening in place today?",
+          "intent": "Baseline maturity. Most PH government agencies are manual/tip-based. Any automation is likely simple rules. This sizes the gap and sets expectations for what SAS brings.",
+          "followUp": "How many cases or claims does your team review monthly, and what percentage turn out to be legitimate?",
+          "mapsTo": "SAS Visual Data Mining & ML",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "govt-fraud-disc-L1-unk-003",
+          "question": "Who would be the primary users of this system — investigators, analysts, policy officers, or IT? And where does the analytics team sit in your org structure — if one exists?",
+          "intent": "Persona discovery. Since we don't know who we're meeting, this identifies the user base AND whether there's an analytics function at all. Government agencies often have IT but not data science.",
+          "followUp": "Would the users need to build their own analyses, or primarily consume pre-built dashboards and alerts?",
+          "mapsTo": "SAS Visual Analytics",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "govt-fraud-disc-L1-unk-004",
+          "question": "What data sources could feed a fraud detection system — transaction records, beneficiary databases, third-party verification (PhilSys, LTO, SEC filings)? How accessible is that data today?",
+          "intent": "Data availability in PH government is the biggest constraint. Inter-agency data sharing is complex (DPA, memorandum of agreement requirements). Identifies what's feasible now vs. what requires institutional agreements.",
+          "followUp": "Are there existing data-sharing MOAs with other agencies, or would those need to be established?",
+          "mapsTo": "SAS Data Management",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "govt-fraud-disc-L1-unk-005",
+          "question": "Is this initiative funded under a specific program — perhaps a World Bank or ADB grant, a DBM-allocated modernization budget, or part of a DICT digitalization project?",
+          "intent": "Government procurement reality check. Funding source determines procurement rules (GPRA, donor requirements), timeline, and whether this is a multiyear program or a one-time project. Shapes how we propose.",
+          "followUp": "What's the procurement vehicle — public bidding, alternative mode, or consulting engagement?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Any",
+          "priority": 2
+        },
+        {
+          "id": "govt-fraud-disc-L1-unk-006",
+          "question": "Are there any data residency or sovereignty requirements — does the system need to run within government data centers (like DICT's national cloud), or is commercial cloud acceptable?",
+          "intent": "Deployment constraint. PH government agencies often require on-prem or DICT-hosted infrastructure. SAS Viya runs on-premises on Kubernetes, which is a differentiator vs. SaaS-only competitors.",
+          "followUp": "What infrastructure do you have available — physical servers, VMs, any container/Kubernetes capability?",
+          "mapsTo": "SAS Viya (on-premises deployment)",
+          "viyaTier": "Any",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-010",
+      "industry": "energy",
+      "useCase": "forecasting",
+      "meetingType": "technical-deepdive",
+      "maturity": "L2",
+      "persona": "head-data-science",
+      "context": "Energy/utilities DS lead — technical conversation about load forecasting, renewable intermittency, or demand prediction. Has a small team (2-5 data scientists), probably using Python with some SCADA/ADMS integration. PH context = Meralco, Aboitiz Power, First Gen, or distribution utilities facing WESM and ERC requirements.",
+      "questions": [
+        {
+          "id": "energy-forecast-tech-L2-ds-001",
+          "question": "What's your forecasting horizon requirement — are you optimizing for day-ahead WESM bidding, intra-day dispatch, week-ahead maintenance scheduling, or long-term capacity planning?",
+          "intent": "Different horizons need different models. Day-ahead = high-frequency time-series with weather features. Long-term = trend + economic drivers. SAS handles all horizons with hierarchical forecasting. PH-specific: WESM bidding is critical for gencos.",
+          "followUp": "Are you participating in WESM directly, or selling through bilateral contracts?",
+          "mapsTo": "SAS Visual Forecasting + PROC HPF",
+          "viyaTier": "Advanced",
+          "priority": 1
+        },
+        {
+          "id": "energy-forecast-tech-L2-ds-002",
+          "question": "What features are you incorporating beyond historical load — weather (PAGASA feeds), economic activity, industrial schedules, solar irradiance? And how are you engineering those features today?",
+          "intent": "Feature engineering depth. L2 teams often use basic weather but miss industrial calendars, holiday effects, or solar/wind intermittency. SAS allows custom feature pipelines in Data Studio + automated feature engineering in Model Studio.",
+          "followUp": "How do you handle the feature lag — weather forecast accuracy degrades beyond 72 hours, so how does that affect your model?",
+          "mapsTo": "SAS Data Studio + Model Studio",
+          "viyaTier": "Standard",
+          "priority": 1
+        },
+        {
+          "id": "energy-forecast-tech-L2-ds-003",
+          "question": "What's your current MAPE on day-ahead load forecast — and where does the error concentrate? Is it peak hours, weather events, or grid topology changes that throw you off?",
+          "intent": "Quantifies the problem. Industry benchmark is 2-4% MAPE for day-ahead. If they're at 6-8%, there's significant value. Understanding error patterns helps design the right model architecture.",
+          "followUp": "What's the financial impact of a 1% MAPE improvement — in terms of WESM spot price exposure or reserve procurement cost?",
+          "mapsTo": "SAS Visual Forecasting",
+          "viyaTier": "Advanced",
+          "priority": 1
+        },
+        {
+          "id": "energy-forecast-tech-L2-ds-004",
+          "question": "How are you handling hierarchical forecasting — do you forecast at substation level and aggregate up, or forecast at system level and allocate down? And how do you reconcile those?",
+          "intent": "Hierarchical reconciliation is a hard problem. SAS has built-in reconciliation methods (top-down, bottom-up, middle-out, optimal combination). Python tools handle this poorly. Major differentiator.",
+          "followUp": "How many nodes in your hierarchy — substations, feeders, distribution zones?",
+          "mapsTo": "SAS Visual Forecasting (hierarchical)",
+          "viyaTier": "Advanced",
+          "priority": 2
+        },
+        {
+          "id": "energy-forecast-tech-L2-ds-005",
+          "question": "What's your model retraining cadence — and is it automated or manual? When typhoon season changes weather patterns or a new industrial zone comes online, how quickly does your model adapt?",
+          "intent": "Model freshness. Energy demand patterns shift with climate, industrial development, and grid changes (new solar farms). SAS Model Manager automates retraining triggers based on accuracy degradation.",
+          "followUp": "Do you have automated drift detection, or does someone manually check forecast accuracy weekly?",
+          "mapsTo": "SAS Model Manager",
+          "viyaTier": "Standard",
+          "priority": 2
+        },
+        {
+          "id": "energy-forecast-tech-L2-ds-006",
+          "question": "Are you working in Python today — scikit-learn, Prophet, NeuralProphet? What made you consider a platform vs. continuing to build in notebooks?",
+          "intent": "Competitive positioning. If they're in Python, we don't displace it — SAS integrates with Python. Position Viya as the governance/deployment/scale layer around their existing Python code. SAS Studio runs Python natively.",
+          "followUp": "What's your biggest friction — model accuracy, deployment to production, or collaboration across your team?",
+          "mapsTo": "SAS Viya (Python integration)",
+          "viyaTier": "Standard",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": "combo-fallback",
+      "industry": "unknown",
+      "useCase": "unknown",
+      "meetingType": "unknown",
+      "maturity": "unknown",
+      "persona": "unknown",
+      "context": "Universal fallback — user selected 'I don't know' for most fields. These questions are designed to DISCOVER context rather than probe a known situation. Safe for any audience, any industry, any maturity.",
+      "questions": [
+        {
+          "id": "fallback-001",
+          "question": "Help me understand what triggered this conversation — is there a specific business problem, a strategic initiative, or something else that brought analytics to the table?",
+          "intent": "Open-ended discovery. Works for any industry, any persona. Identifies the buying trigger without assuming anything about their context.",
+          "followUp": "Is there a timeline or event driving urgency?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Any",
+          "priority": 1
+        },
+        {
+          "id": "fallback-002",
+          "question": "Who are the key stakeholders for this initiative — is it driven by a business unit, IT, finance, or executive leadership? And who ultimately signs off on technology investments?",
+          "intent": "Maps the buying committee and identifies who we're actually selling to. Also reveals whether this is top-down (executive mandate) or bottom-up (team requesting tools) — different motions.",
+          "followUp": "Would it be helpful to have separate conversations with the technical and business teams?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Any",
+          "priority": 1
+        },
+        {
+          "id": "fallback-003",
+          "question": "What does your current data and analytics capability look like today — do you have a dedicated team, or is this something being explored for the first time?",
+          "intent": "Maturity diagnostic when maturity is unknown. The answer will quickly place them in L1-L4 and help tailor the rest of the conversation. Also reveals if there's an existing vendor relationship.",
+          "followUp": "What tools or platforms are they using today, if any?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Any",
+          "priority": 1
+        },
+        {
+          "id": "fallback-004",
+          "question": "If this initiative succeeds — what does that look like a year from now? Is it reduced cost, increased revenue, regulatory compliance, better decisions, or something else entirely?",
+          "intent": "Outcome-oriented. Forces them to articulate value without assuming their use case. The answer tells us how to position SAS — as a cost-reduction tool, revenue driver, compliance platform, or decision engine.",
+          "followUp": "How would you measure whether it succeeded — is there a specific KPI?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Any",
+          "priority": 1
+        },
+        {
+          "id": "fallback-005",
+          "question": "What's your typical decision-making process for technology investments — is there a formal RFP, a pilot/POC requirement, or can decisions be made faster than that?",
+          "intent": "Qualifies the deal. Determines if this is a 3-month or 18-month sales cycle. Government (GPRA) and large enterprises (formal procurement) move slowly. Mid-market can be faster. Helps us plan our engagement.",
+          "followUp": "Is budget already allocated, or does this need to be budgeted in the next cycle?",
+          "mapsTo": "SAS Viya Platform",
+          "viyaTier": "Any",
+          "priority": 2
+        }
+      ]
+    }
+  ],
+  "resolutionLogic": {
+    "description": "How the wizard resolves which question set to display based on user selections",
+    "algorithm": "exactMatch → partialMatch → fallback",
+    "steps": [
+      "1. Attempt exact match on all 5 dimensions (industry + useCase + meetingType + maturity + persona)",
+      "2. If no exact match, relax persona first (use 'unknown' persona variant if available)",
+      "3. If still no match, relax maturity (find closest level ± 1)",
+      "4. If still no match, relax meetingType (default to 'discovery' variant)",
+      "5. If no combination resolves, serve the 'combo-fallback' universal set",
+      "6. Always append 1-2 relevant questions from the industry-specific static file as 'bonus questions'"
+    ],
+    "priorityWeights": {
+      "industry": 5,
+      "useCase": 4,
+      "meetingType": 3,
+      "maturity": 2,
+      "persona": 1
+    },
+    "notes": "Industry + UseCase are the strongest determinants. A retail+forecasting question is useless in a banking+fraud meeting regardless of other dimensions."
+  },
+  "dimensionValues": {
+    "industry": ["banking", "insurance", "telco", "government", "retail", "manufacturing", "bpo", "healthcare", "energy", "marketing", "unknown"],
+    "useCase": ["fraud-detection", "aml", "risk-modeling", "customer-analytics", "forecasting", "platform-modernization", "genai-llm", "quality-analytics", "workforce-optimization", "supply-chain", "personalization", "general-ml", "unknown"],
+    "meetingType": ["discovery", "competitive-bakeoff", "expansion", "technical-deepdive", "executive-presentation", "poc-planning", "unknown"],
+    "maturity": ["L1", "L2", "L3", "L4", "unknown"],
+    "persona": ["cto-cdo", "cfo-coo", "ciso-cro", "head-data-science", "business-unit-leader", "unknown"]
+  }
+}

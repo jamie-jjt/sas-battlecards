@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
+const dynamicQuestionsJSON = JSON.stringify((await import('../data/dynamic-questions.json')).default.combinations);
 ---
 
 <BaseLayout title="Meeting Prep Wizard">
@@ -33,6 +34,11 @@ const base = import.meta.env.BASE_URL;
           <span class="flex h-7 w-7 items-center justify-center rounded-full border-2 border-border-default text-xs font-bold">5</span>
           <span class="hidden sm:block">Maturity</span>
         </li>
+        <li class="flex-1 h-0.5 bg-border-default" aria-hidden="true"></li>
+        <li data-step="6" class="flex flex-col items-center gap-1 text-text-muted">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full border-2 border-border-default text-xs font-bold">6</span>
+          <span class="hidden sm:block">Persona</span>
+        </li>
       </ol>
     </nav>
 
@@ -52,7 +58,7 @@ const base = import.meta.env.BASE_URL;
   </div>
 </BaseLayout>
 
-<script define:vars={{ base }}>
+<script define:vars={{ base, dynamicQuestionsJSON }}>
 (function() {
   // ============================================================
   // STATE
@@ -63,8 +69,14 @@ const base = import.meta.env.BASE_URL;
     competitors: [],
     useCase: '',
     meetingType: '',
-    maturity: ''
+    maturity: '',
+    persona: ''
   };
+
+  // ============================================================
+  // DYNAMIC QUESTIONS DATA
+  // ============================================================
+  const dynamicCombinations = JSON.parse(dynamicQuestionsJSON);
 
   // ============================================================
   // DATA
@@ -123,6 +135,15 @@ const base = import.meta.env.BASE_URL;
     { id: 'L4', label: 'L4 Advanced', desc: 'Full MLOps, multiple platforms, mature governance' },
   ];
 
+  const personas = [
+    { id: 'cto-cdo', label: 'CTO / CDO', emoji: '💻' },
+    { id: 'cfo-coo', label: 'CFO / COO', emoji: '📋' },
+    { id: 'ciso-cro', label: 'CISO / CRO', emoji: '🔒' },
+    { id: 'head-data-science', label: 'Head of Data Science', emoji: '🧬' },
+    { id: 'business-unit-leader', label: 'Business Unit Leader', emoji: '👔' },
+    { id: 'unknown', label: "I don't know", emoji: '❓' },
+  ];
+
   // Battle card slug to tagline mapping
   const battleCardData = {
     'databricks': { name: 'Databricks', tagline: 'SAS wins on governance, explainability, and regulated-industry depth.' },
@@ -136,25 +157,6 @@ const base = import.meta.env.BASE_URL;
     'aws': { name: 'AWS (SageMaker)', tagline: 'SAS wins on model governance, business user access, and no cloud lock-in.' },
     'google': { name: 'Google Cloud', tagline: 'SAS wins on enterprise readiness, regulatory depth, and on-prem options.' },
   };
-
-  // Scoping questions (merged banking + universal, filtered at output time)
-  const scopingQuestions = [
-    { q: "What does your current fraud detection look like — rules-based or machine learning?", tags: ["fraud","banking"], maturity: ["L1","L2"] },
-    { q: "Where are you in your BSP Circular 1213 compliance journey?", tags: ["regulation","banking"], maturity: ["L1","L2","L3"] },
-    { q: "How many data sources feed your current transaction monitoring?", tags: ["data-integration","banking"], maturity: ["L2","L3"] },
-    { q: "Do you have a formal model inventory — how many models are in production?", tags: ["model-governance"], maturity: ["L2","L3","L4"] },
-    { q: "What's your current false positive rate on fraud alerts?", tags: ["fraud","banking"], maturity: ["L2","L3"] },
-    { q: "Can your business users adjust detection rules without IT involvement?", tags: ["business-user"], maturity: ["L1","L2","L3"] },
-    { q: "What does your analytics stack look like today?", tags: ["discovery"], maturity: ["L1","L2","L3","L4"] },
-    { q: "What's the biggest bottleneck in getting a model from development to production?", tags: ["mlops"], maturity: ["L2","L3","L4"] },
-    { q: "Are you running on-premises, cloud, or hybrid?", tags: ["infrastructure"], maturity: ["L1","L2","L3","L4"] },
-    { q: "How do you govern your models — performance monitoring, bias detection?", tags: ["governance"], maturity: ["L2","L3","L4"] },
-    { q: "What's driving this analytics investment right now?", tags: ["discovery"], maturity: ["L1","L2","L3","L4"] },
-    { q: "If you had to explain to your board how a model decision was made, could you?", tags: ["explainability"], maturity: ["L2","L3","L4"] },
-    { q: "What does success look like for this project?", tags: ["kpi"], maturity: ["L1","L2","L3","L4"] },
-    { q: "Are you using network analytics to detect organized fraud rings?", tags: ["fraud","advanced"], maturity: ["L3","L4"] },
-    { q: "Are you evaluating GenAI or LLMs for any compliance use cases?", tags: ["genai"], maturity: ["L3","L4"] },
-  ];
 
   // Meeting tips by type
   const meetingTips = {
@@ -201,6 +203,72 @@ const base = import.meta.env.BASE_URL;
   };
 
   // ============================================================
+  // DYNAMIC QUESTION RESOLUTION
+  // ============================================================
+  function resolveQuestions(currentState) {
+    const { industry, useCase, meetingType, maturity, persona } = currentState;
+
+    // 1. Try exact match on all 5 dimensions
+    let match = dynamicCombinations.find(c =>
+      c.industry === industry &&
+      c.useCase === useCase &&
+      c.meetingType === meetingType &&
+      c.maturity === maturity &&
+      c.persona === persona
+    );
+    if (match) return { combo: match, matchType: 'exact' };
+
+    // 2. Relax persona → 'unknown'
+    match = dynamicCombinations.find(c =>
+      c.industry === industry &&
+      c.useCase === useCase &&
+      c.meetingType === meetingType &&
+      c.maturity === maturity &&
+      c.persona === 'unknown'
+    );
+    if (match) return { combo: match, matchType: 'relaxed-persona' };
+
+    // 3. Relax maturity (±1 level)
+    const maturityOrder = ['L1', 'L2', 'L3', 'L4'];
+    const matIdx = maturityOrder.indexOf(maturity);
+    const nearbyMaturities = [];
+    if (matIdx > 0) nearbyMaturities.push(maturityOrder[matIdx - 1]);
+    if (matIdx < maturityOrder.length - 1) nearbyMaturities.push(maturityOrder[matIdx + 1]);
+
+    for (const nearMat of nearbyMaturities) {
+      match = dynamicCombinations.find(c =>
+        c.industry === industry &&
+        c.useCase === useCase &&
+        c.meetingType === meetingType &&
+        c.maturity === nearMat &&
+        (c.persona === persona || c.persona === 'unknown')
+      );
+      if (match) return { combo: match, matchType: 'relaxed-maturity' };
+    }
+
+    // 4. Relax meetingType — try 'discovery' as default
+    match = dynamicCombinations.find(c =>
+      c.industry === industry &&
+      c.useCase === useCase &&
+      c.meetingType === 'discovery' &&
+      (c.persona === persona || c.persona === 'unknown')
+    );
+    if (match) return { combo: match, matchType: 'relaxed-meeting' };
+
+    // 5. Try matching just industry + useCase (strongest determinants)
+    match = dynamicCombinations.find(c =>
+      c.industry === industry &&
+      c.useCase === useCase &&
+      c.id !== 'combo-fallback'
+    );
+    if (match) return { combo: match, matchType: 'partial-industry-usecase' };
+
+    // 6. Fallback
+    const fallback = dynamicCombinations.find(c => c.id === 'combo-fallback');
+    return { combo: fallback, matchType: 'fallback' };
+  }
+
+  // ============================================================
   // URL STATE SYNC
   // ============================================================
   function syncStateToURL() {
@@ -210,6 +278,7 @@ const base = import.meta.env.BASE_URL;
     if (state.useCase) params.set('u', state.useCase);
     if (state.meetingType) params.set('m', state.meetingType);
     if (state.maturity) params.set('l', state.maturity);
+    if (state.persona) params.set('p', state.persona);
     params.set('s', String(state.step));
     history.replaceState(null, '', '?' + params.toString());
   }
@@ -223,6 +292,7 @@ const base = import.meta.env.BASE_URL;
       state.useCase = params.get('u') || '';
       state.meetingType = params.get('m') || '';
       state.maturity = params.get('l') || '';
+      state.persona = params.get('p') || '';
     }
   }
 
@@ -247,11 +317,12 @@ const base = import.meta.env.BASE_URL;
       case 3: renderUseCase(); break;
       case 4: renderMeetingType(); break;
       case 5: renderMaturity(); break;
-      case 6: renderPrepSheet(); break;
+      case 6: renderPersona(); break;
+      case 7: renderPrepSheet(); break;
     }
 
-    if (state.step <= 5) {
-      if (window.announce) window.announce('Step ' + state.step + ' of 5');
+    if (state.step <= 6) {
+      if (window.announce) window.announce('Step ' + state.step + ' of 6');
     } else {
       if (window.announce) window.announce('Prep sheet generated');
     }
@@ -278,7 +349,7 @@ const base = import.meta.env.BASE_URL;
     });
 
     // Hide indicator on prep sheet
-    stepIndicator.parentElement.classList.toggle('hidden', state.step === 6);
+    stepIndicator.parentElement.classList.toggle('hidden', state.step === 7);
   }
 
   function makeGrid(items, onSelect, selected, multiSelect = false) {
@@ -406,16 +477,33 @@ const base = import.meta.env.BASE_URL;
     });
   }
 
+  function renderPersona() {
+    content.innerHTML = `
+      <h2 class="text-xl font-bold text-text-primary mb-2">Who Are You Meeting?</h2>
+      <p class="text-sm text-text-secondary mb-6">What's the persona of your primary contact?</p>
+      ${makeGrid(personas, null, state.persona)}
+    `;
+    content.querySelectorAll('.wizard-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.persona = btn.dataset.id;
+        state.step = 7;
+        renderStep();
+      });
+    });
+  }
+
   function renderPrepSheet() {
     btnBack.classList.add('hidden');
 
-    // Filter scoping questions
-    const filteredQs = scopingQuestions.filter(q => q.maturity.includes(state.maturity)).slice(0, 6);
+    // Resolve dynamic questions
+    const resolved = resolveQuestions(state);
+    const matchedQuestions = resolved.combo ? resolved.combo.questions : [];
+    const matchContext = resolved.combo ? resolved.combo.context : '';
+    const matchType = resolved.matchType;
 
     // Get relevant battle cards
     const relevantCards = state.competitors
       .map(c => {
-        // Map competitor wizard IDs to battle card slugs
         const slugMap = { 'python-r': 'opensource', 'none': null };
         const slug = slugMap[c] !== undefined ? slugMap[c] : c;
         if (!slug || !battleCardData[slug]) return null;
@@ -430,6 +518,38 @@ const base = import.meta.env.BASE_URL;
     const positioning = relevantCards.length > 0
       ? relevantCards[0].tagline
       : 'SAS delivers trusted analytics with enterprise governance, regulatory depth, and production scalability that open-source and cloud-native tools cannot match.';
+
+    // Viya tier badge colors
+    function tierBadge(tier) {
+      const colors = {
+        'Standard': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300',
+        'Advanced': 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300',
+        'Premium': 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300',
+        'Any': 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+      };
+      const cls = colors[tier] || colors['Any'];
+      return `<span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${cls}">${tier}</span>`;
+    }
+
+    // Priority indicator
+    function priorityLabel(p) {
+      if (p === 1) return '<span class="text-[10px] font-bold text-red-500 uppercase">Must Ask</span>';
+      if (p === 2) return '<span class="text-[10px] font-bold text-amber-500 uppercase">Should Ask</span>';
+      return '<span class="text-[10px] font-bold text-gray-400 uppercase">If Time</span>';
+    }
+
+    // Match type label
+    function matchLabel(type) {
+      const labels = {
+        'exact': '✅ Exact match found',
+        'relaxed-persona': '🔄 Matched (relaxed persona)',
+        'relaxed-maturity': '🔄 Matched (nearby maturity)',
+        'relaxed-meeting': '🔄 Matched (default meeting type)',
+        'partial-industry-usecase': '⚠️ Partial match (industry + use case)',
+        'fallback': '❓ Using universal discovery questions',
+      };
+      return labels[type] || type;
+    }
 
     content.innerHTML = `
       <div class="space-y-6" id="prep-sheet">
@@ -468,7 +588,11 @@ const base = import.meta.env.BASE_URL;
               <span class="text-text-muted block text-xs">Maturity</span>
               <span class="font-medium text-text-primary">${state.maturity}</span>
             </div>
-            <div class="col-span-2">
+            <div>
+              <span class="text-text-muted block text-xs">Persona</span>
+              <span class="font-medium text-text-primary">${personas.find(p => p.id === state.persona)?.label || state.persona}</span>
+            </div>
+            <div>
               <span class="text-text-muted block text-xs">Competitors</span>
               <span class="font-medium text-text-primary">${state.competitors.map(c => competitors.find(x => x.id === c)?.label).join(', ')}</span>
             </div>
@@ -496,14 +620,28 @@ const base = import.meta.env.BASE_URL;
         </div>
         ` : ''}
 
-        <!-- Scoping Questions -->
+        <!-- Dynamic Scoping Questions -->
         <div class="rounded-lg border border-border-default bg-bg-surface p-4">
-          <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-3">Scoping Questions</h3>
-          <ol class="space-y-3 list-decimal list-inside">
-            ${filteredQs.map(q => `
-              <li class="text-sm text-text-primary leading-relaxed">${q.q}</li>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-semibold text-text-secondary uppercase tracking-wide">Scoping Questions</h3>
+            <span class="text-[11px] text-text-muted">${matchLabel(matchType)}</span>
+          </div>
+          ${matchContext ? `<p class="text-xs text-text-muted italic mb-4 border-l-2 border-sas-blue/30 pl-3">${matchContext}</p>` : ''}
+          <div class="space-y-4">
+            ${matchedQuestions.map((q, idx) => `
+              <div class="rounded-md border border-border-default p-3 space-y-2">
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-sm font-medium text-text-primary leading-snug"><span class="text-text-muted mr-1">${idx + 1}.</span> ${q.question}</span>
+                </div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  ${tierBadge(q.viyaTier)}
+                  ${priorityLabel(q.priority)}
+                  <span class="text-[10px] text-text-muted">→ ${q.mapsTo}</span>
+                </div>
+                <p class="text-xs text-text-muted leading-relaxed"><strong>Intent:</strong> ${q.intent}</p>
+              </div>
             `).join('')}
-          </ol>
+          </div>
         </div>
 
         <!-- Meeting Tips -->
@@ -530,6 +668,7 @@ const base = import.meta.env.BASE_URL;
       state.useCase = '';
       state.meetingType = '';
       state.maturity = '';
+      state.persona = '';
       renderStep();
     });
     document.getElementById('btn-copy').addEventListener('click', () => {

@@ -1,0 +1,26 @@
+{
+  "slug": "customer-intelligence",
+  "name": "SAS Customer Intelligence 360",
+  "lastUpdated": "2026-06-19",
+  "description": "Unified customer data platform with journey orchestration, real-time personalization, and marketing optimization — enabling brands to deliver the right message to the right customer at the right moment across every channel.",
+  "elevatorPitch": "Unified customer journey analytics with real-time personalization, next-best-action, and marketing optimization.",
+  "capabilities": [
+    "Journey orchestration across web, mobile, email, and in-store",
+    "Identity resolution and unified customer profiles",
+    "Real-time personalization and next-best-action decisioning",
+    "Campaign optimization with automated A/B testing",
+    "Multi-touch attribution and marketing mix modeling",
+    "Consent management and privacy compliance (NPC/GDPR)"
+  ],
+  "targetBuyer": "CMO, VP of Marketing, Head of CX, Head of Digital, Business Unit Leader",
+  "industries": ["retail", "telco", "banking", "insurance"],
+  "phUseCases": [
+    "Globe subscriber personalization",
+    "SM Retail loyalty optimization",
+    "Banking next-best-action"
+  ],
+  "deploymentOptions": ["SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "Hybrid (cloud + on-prem data)"],
+  "integrationPoints": ["CRM systems (Salesforce, HubSpot)", "E-commerce platforms", "Mobile SDKs", "Email/SMS gateways", "Loyalty platforms", "SAS Visual Analytics"],
+  "competitorAlternatives": ["tableau", "powerbi"],
+  "mcpProductKey": "customer-intelligence-360"
+}

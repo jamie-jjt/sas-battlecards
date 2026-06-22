@@ -1,0 +1,26 @@
+{
+  "slug": "event-stream-processing",
+  "name": "SAS Event Stream Processing",
+  "lastUpdated": "2026-06-19",
+  "description": "Real-time streaming analytics engine that ingests, filters, and analyzes high-velocity data from IoT sensors, transactions, and operational systems — enabling sub-second pattern detection, alerting, and automated responses at the edge or in the cloud.",
+  "elevatorPitch": "Real-time streaming analytics for IoT, fraud detection, and operational intelligence — processing millions of events per second.",
+  "capabilities": [
+    "Real-time pattern detection and complex event processing",
+    "Windowed aggregations (tumbling, sliding, session windows)",
+    "Geofencing and spatial analytics on streaming data",
+    "Anomaly detection on high-velocity event streams",
+    "IoT device integration via MQTT, OPC-UA, and Kafka",
+    "Edge deployment for low-latency local processing"
+  ],
+  "targetBuyer": "CTO, CDO, VP of Engineering, Head of IoT/OT, Head of Fraud Operations",
+  "industries": ["manufacturing", "telco", "energy", "banking"],
+  "phUseCases": [
+    "Meralco smart meter analytics",
+    "GCash real-time fraud scoring",
+    "Factory IoT anomaly detection"
+  ],
+  "deploymentOptions": ["Edge (lightweight container)", "SAS Cloud (managed)", "Customer cloud (AWS/Azure/GCP)", "On-premises (K8s)"],
+  "integrationPoints": ["MQTT brokers", "Apache Kafka", "OPC-UA/SCADA historians", "REST APIs", "SAS Viya CAS", "Cloud IoT hubs (AWS IoT, Azure IoT Hub)"],
+  "competitorAlternatives": ["cloudera"],
+  "mcpProductKey": "event-stream-processing"
+}
