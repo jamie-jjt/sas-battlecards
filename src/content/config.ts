@@ -188,8 +188,9 @@ const sizing = defineCollection({
   type: 'data',
   schema: z.object({
     slug: z.string(),
-    tier: z.enum(['small', 'medium', 'large', 'enterprise']),
+    tier: z.enum(['starter', 'professional', 'enterprise']),
     displayName: z.string(),
+    description: z.string().optional(),
     useCases: z.array(z.string()),
     userCount: z.string(),
     dataVolume: z.string(),
@@ -201,6 +202,8 @@ const sizing = defineCollection({
     estimatedMonthlyCost: z.string(),
     hadrNotes: z.string(),
     cloudVsOnprem: z.string(),
+    viyaTier: z.string().optional(),
+    typicalCustomers: z.string().optional(),
   }),
 });
 

@@ -1,142 +1,98 @@
 {
   "id": "viya-sizing-questionnaire",
-  "title": "SAS Viya Infrastructure Sizing Questionnaire",
-  "description": "Ask these questions to determine the right Viya infrastructure tier for a customer's production deployment. Score each answer, sum the weighted scores, and map to the recommended tier.",
+  "title": "SAS Viya Sizing Discovery Questions",
+  "description": "Ask these questions to understand the customer's infrastructure requirements. The answers help determine whether they need a Small, Medium, or Large Viya workload profile. For exact specifications, refer to the official SAS sizing guides for their target cloud platform.",
+  "note": "Only SAS Viya has official sizing guides. Industry solutions (Fraud, AML, Risk, etc.) run ON Viya and their sizing is determined by the Viya tier + workload size.",
   "scoringGuide": {
-    "method": "weighted-sum",
-    "totalWeight": 30,
-    "minPossibleScore": 30,
-    "maxPossibleScore": 120,
-    "tierThresholds": {
-      "starter": { "min": 30, "max": 44, "label": "Starter" },
-      "professional": { "min": 45, "max": 74, "label": "Professional" },
-      "enterprise": { "min": 75, "max": 104, "label": "Enterprise" },
-      "national-scale": { "min": 105, "max": 120, "label": "National Scale" }
-    },
-    "outputTemplate": "Based on your answers, we recommend the **{tier}** profile."
+    "method": "highest-answer-determines",
+    "tiers": ["starter", "professional", "enterprise"],
+    "logic": "The HIGHEST tier selected across all questions determines the minimum recommendation. If most answers are Small but one critical dimension (e.g., transaction volume or availability) requires Large, recommend Large.",
+    "outputTemplate": "Based on your requirements, you likely need a **{size}** workload profile on **SAS Viya {tier}**. Contact SAS or VST ECS for the detailed sizing guide specific to your cloud platform."
   },
   "questions": [
     {
-      "id": "q1_data_volume",
-      "question": "What is the total size of the datasets your analytics platform will process regularly?",
-      "weight": 5,
-      "context": "Include raw data, staging, and processed outputs. Consider both current state and data already planned for onboarding.",
+      "id": "q1_total_data",
+      "question": "What is the total size of data that will be loaded onto the Viya environment?",
+      "context": "This is all data across all Viya offerings — assume uncompressed, UTF-8 encoded. Include data loaded onto disk (not just what's in memory).",
       "answers": [
-        { "tier": "starter", "score": 1, "label": "Under 1 TB", "description": "Single data source or small departmental dataset" },
-        { "tier": "professional", "score": 2, "label": "1 - 10 TB", "description": "Multiple data sources across a department or function" },
-        { "tier": "enterprise", "score": 3, "label": "10 - 50 TB", "description": "Cross-functional data from multiple systems enterprise-wide" },
-        { "tier": "national-scale", "score": 4, "label": "50+ TB", "description": "Massive data volumes — transaction logs, CDRs, national registries" }
+        { "size": "small", "label": "Up to 250 GB", "description": "Single data source or small department dataset" },
+        { "size": "medium", "label": "250 GB - 1 TB", "description": "Multiple data sources, larger datasets, multi-department" },
+        { "size": "large", "label": "1 TB+", "description": "Enterprise-wide data, many sources, multi-TB volumes" }
       ]
     },
     {
-      "id": "q2_concurrent_users",
-      "question": "How many users will actively access the platform concurrently during peak hours?",
-      "weight": 4,
-      "context": "Count data scientists, analysts, business users viewing dashboards, and automated service accounts. Focus on peak concurrent, not total named users.",
+      "id": "q2_memory_data",
+      "question": "How much data needs to be loaded INTO memory (CAS) at any given time?",
+      "context": "CAS loads data into memory for fast processing. This is the largest dataset you'll analyze interactively — not total disk storage.",
       "answers": [
-        { "tier": "starter", "score": 1, "label": "Under 50", "description": "Small analytics team or single business unit" },
-        { "tier": "professional", "score": 2, "label": "50 - 200", "description": "Department-level with multiple analyst teams and business consumers" },
-        { "tier": "enterprise", "score": 3, "label": "200 - 500", "description": "Multiple departments accessing shared platform" },
-        { "tier": "national-scale", "score": 4, "label": "500+", "description": "Organization-wide plus external consumers or multi-tenant" }
+        { "size": "small", "label": "Up to 75 GB in memory", "description": "Moderate analytical datasets, simple models" },
+        { "size": "medium", "label": "75 GB - 500 GB in memory", "description": "Larger datasets, complex models, multiple concurrent loads" },
+        { "size": "large", "label": "500 GB+ in memory", "description": "Very large datasets, enterprise analytics, many concurrent CAS sessions" }
       ]
     },
     {
-      "id": "q3_transaction_volume",
-      "question": "If you need real-time or near-real-time scoring, what is your daily transaction volume?",
-      "weight": 5,
-      "context": "This applies to fraud scoring, credit decisioning, real-time offers, IoT events, or any use case requiring per-event scoring. If batch-only, select the first option.",
+      "id": "q3_concurrent_sessions",
+      "question": "How many users will be working on the platform concurrently during peak hours?",
+      "context": "Count active analytical sessions — designers exploring data, programmers running code, viewers on dashboards. Not total named users.",
       "answers": [
-        { "tier": "starter", "score": 1, "label": "Batch only or <1M/day", "description": "No real-time requirement, or very low-volume scoring" },
-        { "tier": "professional", "score": 2, "label": "1 - 10M transactions/day", "description": "Standard production scoring for a single channel or product" },
-        { "tier": "enterprise", "score": 3, "label": "10 - 100M transactions/day", "description": "Multi-channel scoring across multiple products or use cases" },
-        { "tier": "national-scale", "score": 4, "label": "100M+ transactions/day", "description": "National payment switch, telco CDR volume, or massive IoT" }
+        { "size": "small", "label": "Up to 10 concurrent sessions", "description": "Small team, focused usage" },
+        { "size": "medium", "label": "10-25 concurrent sessions", "description": "Departmental team, mix of designers and viewers" },
+        { "size": "large", "label": "25+ concurrent sessions", "description": "Enterprise-wide, many parallel users and batch jobs" }
       ]
     },
     {
-      "id": "q4_models_in_production",
-      "question": "How many analytical models do you expect to have deployed in production within the first 12 months?",
-      "weight": 3,
-      "context": "Include ML models, scoring rules, decision flows, and automated forecasting models. Count each unique model version actively scoring.",
+      "id": "q4_largest_dataset",
+      "question": "What is the size of your LARGEST single dataset that users will interact with?",
+      "context": "The single biggest table or dataset that will be loaded into CAS for analysis. This is the critical sizing driver for CAS memory nodes.",
       "answers": [
-        { "tier": "starter", "score": 1, "label": "1 - 5 models", "description": "One primary use case with a few model variants" },
-        { "tier": "professional", "score": 2, "label": "5 - 20 models", "description": "Multiple related models across a department (e.g., fraud + credit)" },
-        { "tier": "enterprise", "score": 3, "label": "20 - 100 models", "description": "Diverse model portfolio across business units with champion/challenger" },
-        { "tier": "national-scale", "score": 4, "label": "100+ models", "description": "Large-scale model factory with automated retraining and deployment" }
+        { "size": "small", "label": "Up to 5 GB", "description": "Manageable datasets, departmental scope" },
+        { "size": "medium", "label": "5 - 50 GB", "description": "Substantial tables requiring significant memory" },
+        { "size": "large", "label": "50 GB+", "description": "Very large tables — transaction histories, CDRs, full customer databases" }
       ]
     },
     {
-      "id": "q5_workload_types",
-      "question": "What types of processing workloads will the platform handle?",
-      "weight": 4,
-      "context": "This determines compute architecture requirements — batch needs scheduled capacity, real-time needs always-on low-latency, streaming needs event processing infrastructure.",
+      "id": "q5_workload_type",
+      "question": "What types of analytical workloads will run on the platform?",
+      "context": "Batch = scheduled overnight jobs. Interactive = users exploring data in real-time. Real-time scoring = API-based sub-second decisioning. Each requires different infrastructure.",
       "answers": [
-        { "tier": "starter", "score": 1, "label": "Batch only", "description": "Scheduled jobs, overnight processing, periodic model retraining" },
-        { "tier": "professional", "score": 2, "label": "Batch + near-real-time", "description": "Scheduled batch plus synchronous API scoring (response <1 second)" },
-        { "tier": "enterprise", "score": 3, "label": "Batch + real-time + some streaming", "description": "Mixed workloads including sub-second scoring and event-driven triggers" },
-        { "tier": "national-scale", "score": 4, "label": "Full spectrum: batch + real-time + streaming + complex event processing", "description": "Continuous streaming analytics, ESP, real-time decisioning at scale" }
+        { "size": "small", "label": "Batch processing + light interactive", "description": "Scheduled jobs with some dashboard viewing" },
+        { "size": "medium", "label": "Batch + interactive + near-real-time scoring", "description": "Mixed workloads with API scoring under 1 second" },
+        { "size": "large", "label": "All: batch + interactive + real-time + streaming", "description": "Full spectrum including sub-100ms decisioning and event stream processing" }
       ]
     },
     {
-      "id": "q6_availability_requirements",
-      "question": "What is the maximum acceptable unplanned downtime per month for this platform?",
-      "weight": 4,
-      "context": "This drives HA/DR architecture decisions — clustering, multi-AZ, active-active, geo-replication. Higher availability = more infrastructure cost.",
+      "id": "q6_viya_offerings",
+      "question": "Which SAS Viya offerings will be deployed?",
+      "context": "More offerings running simultaneously require more infrastructure. Each offering (VA, VDMML, Model Manager, Intelligent Decisioning) adds resource requirements.",
       "answers": [
-        { "tier": "starter", "score": 1, "label": "Up to 4 hours/month (99.5% uptime)", "description": "Acceptable for non-critical analytics with planned maintenance windows" },
-        { "tier": "professional", "score": 2, "label": "Under 1 hour/month (99.9% uptime)", "description": "Important production system with failover capability" },
-        { "tier": "enterprise", "score": 3, "label": "Under 15 minutes/month (99.97% uptime)", "description": "Business-critical — revenue or compliance impact on outage" },
-        { "tier": "national-scale", "score": 4, "label": "Near-zero tolerance (99.99%+ uptime)", "description": "Mission-critical — national infrastructure, payment processing, regulatory" }
+        { "size": "small", "label": "1-2 offerings (e.g., VA + Model Studio)", "description": "Focused deployment with limited scope" },
+        { "size": "medium", "label": "3-5 offerings (e.g., VA + VDMML + Stats + Model Manager)", "description": "Department using multiple capabilities" },
+        { "size": "large", "label": "Full platform (all offerings including ID and ESP)", "description": "Enterprise deployment with all Viya capabilities active" }
       ]
     },
     {
-      "id": "q7_use_cases_and_bus",
-      "question": "How many distinct analytics use cases or business units will the platform serve?",
-      "weight": 3,
-      "context": "This impacts multi-tenancy, resource isolation, governance complexity, and the breadth of Viya capabilities needed.",
+      "id": "q7_availability",
+      "question": "What are the availability requirements?",
+      "context": "Higher availability = more infrastructure (multi-AZ, failover nodes). Production-critical systems need higher resilience than development environments.",
       "answers": [
-        { "tier": "starter", "score": 1, "label": "1 use case, 1 team", "description": "Single focused project — e.g., one fraud model or one forecasting initiative" },
-        { "tier": "professional", "score": 2, "label": "2-4 use cases, 1-2 business units", "description": "A department with several analytics projects sharing infrastructure" },
-        { "tier": "enterprise", "score": 3, "label": "5-10 use cases, 3-5 business units", "description": "Cross-organizational platform shared by risk, marketing, operations, etc." },
-        { "tier": "national-scale", "score": 4, "label": "10+ use cases, 5+ BUs or external tenants", "description": "Enterprise-wide or multi-entity platform with tenant isolation" }
+        { "size": "small", "label": "Business hours availability acceptable", "description": "Planned maintenance windows during off-hours are fine" },
+        { "size": "medium", "label": "High availability with failover", "description": "Multi-AZ deployment, auto-recovery from node failures" },
+        { "size": "large", "label": "Mission-critical — near-zero downtime", "description": "Active-active CAS, full HA/DR, continuous operation required" }
       ]
     },
     {
-      "id": "q8_growth_projection",
-      "question": "What is your expected growth in data volume and user count over the next 12 months?",
-      "weight": 2,
-      "context": "Size for where you'll be in a year, not just today. Under-sizing leads to costly re-architecture. Cloud deployments can flex more easily than on-prem.",
+      "id": "q8_cloud_platform",
+      "question": "Which cloud platform (or on-premises) will you deploy on?",
+      "context": "SAS provides specific sizing guides for each platform with recommended instance types and configurations.",
       "answers": [
-        { "tier": "starter", "score": 1, "label": "Stable — minimal growth expected", "description": "Focused deployment with well-defined, bounded scope" },
-        { "tier": "professional", "score": 2, "label": "Moderate — 25-50% growth in data/users", "description": "Adding new data sources or onboarding adjacent teams" },
-        { "tier": "enterprise", "score": 3, "label": "Significant — 2-3x growth in data/users", "description": "Expanding to new BUs, new geographies, or adding real-time workloads" },
-        { "tier": "national-scale", "score": 4, "label": "Rapid — 3x+ growth, new channels, or regulatory mandates driving expansion", "description": "National rollout, new digital channels, or compliance deadlines forcing scale-up" }
+        { "size": "any", "label": "AWS (Amazon EKS)", "description": "Official sizing guide available for EKS" },
+        { "size": "any", "label": "Microsoft Azure (AKS)", "description": "Official sizing guide available for AKS" },
+        { "size": "any", "label": "Google Cloud (GKE)", "description": "Official sizing guide available for GKE" },
+        { "size": "any", "label": "Red Hat OpenShift", "description": "Official sizing guide available for OpenShift" },
+        { "size": "any", "label": "On-premises / Other Kubernetes", "description": "Contact SAS for custom sizing" }
       ]
     }
   ],
-  "scoringLogic": {
-    "calculation": "For each question, multiply the selected answer's score by the question's weight. Sum all weighted scores.",
-    "formula": "totalScore = Σ(answer.score × question.weight)",
-    "maxPossibleScore": 120,
-    "minPossibleScore": 30,
-    "example": {
-      "scenario": "A mid-size bank deploying fraud + credit scoring",
-      "answers": {
-        "q1_data_volume": { "selected": 2, "weight": 5, "subtotal": 10 },
-        "q2_concurrent_users": { "selected": 2, "weight": 4, "subtotal": 8 },
-        "q3_transaction_volume": { "selected": 2, "weight": 5, "subtotal": 10 },
-        "q4_models_in_production": { "selected": 2, "weight": 3, "subtotal": 6 },
-        "q5_workload_types": { "selected": 2, "weight": 4, "subtotal": 8 },
-        "q6_availability_requirements": { "selected": 2, "weight": 4, "subtotal": 8 },
-        "q7_use_cases_and_bus": { "selected": 2, "weight": 3, "subtotal": 6 },
-        "q8_growth_projection": { "selected": 2, "weight": 2, "subtotal": 4 }
-      },
-      "totalScore": 60,
-      "recommendation": "Based on your answers, we recommend the **Professional** profile."
-    },
-    "notes": [
-      "If any single answer scores at 'National Scale' level for transaction volume (q3) or availability (q6), consider bumping the overall recommendation up one tier regardless of total score.",
-      "Growth projection (q8) is weighted lowest because cloud deployments can scale — but flag it as a risk factor for on-prem customers.",
-      "When the total falls on a tier boundary, recommend the higher tier if the customer has regulatory compliance drivers."
-    ]
-  }
+  "nextSteps": "Once you've determined the workload size (Small/Medium/Large) and Viya tier (Standard/Advanced/Enterprise), contact SAS or VST ECS Philippines for the detailed hardware sizing guide specific to your cloud platform. The official guides include exact instance types, node counts, storage configurations, and networking requirements.",
+  "contact": "VST ECS Philippines — SAS Partner | Contact your SAS account team for official sizing documentation"
 }

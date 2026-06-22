@@ -1,24 +1,25 @@
 {
   "slug": "starter",
   "tier": "starter",
-  "displayName": "Starter",
-  "description": "Single use case in production for a small, focused team. Ideal for organizations beginning their analytics journey with one well-defined business problem.",
+  "displayName": "Small Workload",
+  "description": "Entry-level production deployment for a focused analytics team with limited concurrent users and moderate data volumes. Suitable for a single Viya offering (e.g., Visual Analytics or Visual Statistics) with batch processing and light interactive use.",
   "useCases": [
-    "Single production analytics use case (e.g., churn prediction, credit scoring)",
-    "Small-team self-service analytics and reporting",
-    "Department-level fraud detection (<1M txn/day)",
-    "Initial model deployment with governance"
+    "Small-team self-service analytics and reporting (SAS Visual Analytics)",
+    "Initial model development and deployment (Model Studio + Model Manager)",
+    "Single-offering deployment with batch processing windows",
+    "Department-level fraud scoring with low transaction volumes",
+    "Exploratory analytics with datasets under 250 GB on disk"
   ],
-  "userCount": "10-50 users",
-  "dataVolume": "100GB - 1TB",
-  "kubernetesWorkers": "3 worker nodes",
-  "cpuPerNode": "8 vCPU",
-  "ramPerNode": "32 GB",
-  "storage": "500 GB SSD",
-  "network": "1 Gbps",
-  "estimatedMonthlyCost": "$3,000 - $5,000 cloud / On-prem: server hardware only",
-  "hadrNotes": "Single-site deployment with scheduled backups to object storage. Acceptable maintenance windows for planned upgrades.",
-  "cloudVsOnprem": "Cloud recommended for faster provisioning and lower upfront cost. On-prem if data sovereignty requirements prevent cloud access.",
-  "viyaTier": "Standard (Tier 1)",
-  "typicalCustomers": "Mid-size banks starting analytics, single-department deployments, regional companies"
+  "userCount": "5-10 concurrent sessions",
+  "dataVolume": "Up to 250 GB on disk / up to 75 GB lifted into memory",
+  "kubernetesWorkers": "Managed Kubernetes (EKS/AKS/GKE/OpenShift) with auto-scaling",
+  "cpuPerNode": "Varies by cloud provider — refer to official SAS sizing guide for exact instance types",
+  "ramPerNode": "Sized for CAS in-memory processing of target dataset",
+  "storage": "SSD/NVMe recommended for SASWORK and CAS DISK CACHE. NFS for shared home directories.",
+  "network": "Accelerated networking required for CAS and Compute nodes. All instances in same placement group.",
+  "estimatedMonthlyCost": "Contact SAS/VST ECS for cloud cost estimate based on your provider and region",
+  "hadrNotes": "Single availability zone acceptable. Baseline (min_nodes) for steady-state, auto-scale to max_nodes for peak workloads.",
+  "cloudVsOnprem": "Available on AWS (EKS), Azure (AKS), Google Cloud (GKE), and Red Hat OpenShift. Cloud recommended for auto-scaling flexibility.",
+  "viyaTier": "SAS Viya (Standard) — includes Visual Analytics, Visual Statistics, Visual Data Mining & ML, Model Studio, Model Manager",
+  "typicalCustomers": "Small analytics teams, single-department deployments, organizations starting their Viya journey"
 }

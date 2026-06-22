@@ -263,8 +263,9 @@ export interface Objection {
 
 export interface SizingProfile {
   slug: string;
-  tier: 'small' | 'medium' | 'large' | 'enterprise';
+  tier: 'starter' | 'professional' | 'enterprise';
   displayName: string;
+  description?: string;
   useCases: string[];
   userCount: string;
   dataVolume: string;
@@ -276,6 +277,8 @@ export interface SizingProfile {
   estimatedMonthlyCost: string;
   hadrNotes: string;
   cloudVsOnprem: string;
+  viyaTier?: string;
+  typicalCustomers?: string;
 }
 
 // ============================================================
