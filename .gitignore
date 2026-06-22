@@ -3,3 +3,6 @@ dist/
 .astro/
 .DS_Store
 *.log
+
+# Internal only — do not push to public repo
+src/content/sizing/
