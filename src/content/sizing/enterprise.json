@@ -1,0 +1,25 @@
+{
+  "slug": "enterprise",
+  "tier": "enterprise",
+  "displayName": "Enterprise",
+  "description": "Organization-wide analytics platform serving multiple business units with shared infrastructure. Supports diverse workloads from batch analytics to real-time decisioning.",
+  "useCases": [
+    "Enterprise-wide analytics platform across multiple BUs",
+    "Multiple concurrent production use cases (fraud, risk, marketing, operations)",
+    "Real-time transaction scoring (10-100M transactions/day)",
+    "Large-scale forecasting (demand, financial, workforce)",
+    "Cross-functional data science with governed model deployment"
+  ],
+  "userCount": "200-500 users",
+  "dataVolume": "10-50 TB",
+  "kubernetesWorkers": "10-15 worker nodes",
+  "cpuPerNode": "32 vCPU",
+  "ramPerNode": "128 GB",
+  "storage": "10 TB SSD",
+  "network": "25 Gbps",
+  "estimatedMonthlyCost": "$20,000 - $40,000/month cloud",
+  "hadrNotes": "Multi-AZ required. Active-active CAS for compute resilience. RPO <1hr, RTO <30min.",
+  "cloudVsOnprem": "Hybrid common — compute burst in cloud, sensitive data on-prem with secure connectivity. Multi-environment (dev/test/prod) standard.",
+  "viyaTier": "Advanced or Premium (Tier 2-3)",
+  "typicalCustomers": "Top-5 universal banks, large telcos, conglomerates, government agencies with national mandates"
+}

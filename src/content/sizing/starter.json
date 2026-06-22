@@ -1,0 +1,24 @@
+{
+  "slug": "starter",
+  "tier": "starter",
+  "displayName": "Starter",
+  "description": "Single use case in production for a small, focused team. Ideal for organizations beginning their analytics journey with one well-defined business problem.",
+  "useCases": [
+    "Single production analytics use case (e.g., churn prediction, credit scoring)",
+    "Small-team self-service analytics and reporting",
+    "Department-level fraud detection (<1M txn/day)",
+    "Initial model deployment with governance"
+  ],
+  "userCount": "10-50 users",
+  "dataVolume": "100GB - 1TB",
+  "kubernetesWorkers": "3 worker nodes",
+  "cpuPerNode": "8 vCPU",
+  "ramPerNode": "32 GB",
+  "storage": "500 GB SSD",
+  "network": "1 Gbps",
+  "estimatedMonthlyCost": "$3,000 - $5,000 cloud / On-prem: server hardware only",
+  "hadrNotes": "Single-site deployment with scheduled backups to object storage. Acceptable maintenance windows for planned upgrades.",
+  "cloudVsOnprem": "Cloud recommended for faster provisioning and lower upfront cost. On-prem if data sovereignty requirements prevent cloud access.",
+  "viyaTier": "Standard (Tier 1)",
+  "typicalCustomers": "Mid-size banks starting analytics, single-department deployments, regional companies"
+}

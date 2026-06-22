@@ -1,0 +1,25 @@
+{
+  "slug": "national-scale",
+  "tier": "national-scale",
+  "displayName": "National Scale",
+  "description": "National programs and mission-critical platforms operating at massive volume with zero-tolerance for downtime. Multi-tenant, multi-region, real-time at scale.",
+  "useCases": [
+    "National fraud detection program (100M+ transactions/day)",
+    "Multi-tenant analytics platform serving multiple entities",
+    "Real-time decisioning at scale with sub-100ms SLA",
+    "Streaming analytics with event processing (IoT, payments, telco CDR)",
+    "Regulatory programs requiring continuous availability (AML, national health)"
+  ],
+  "userCount": "500+ users",
+  "dataVolume": "50+ TB",
+  "kubernetesWorkers": "20+ worker nodes + dedicated CAS cluster",
+  "cpuPerNode": "64 vCPU",
+  "ramPerNode": "256 GB",
+  "storage": "50+ TB SSD + object storage tier",
+  "network": "100 Gbps",
+  "estimatedMonthlyCost": "$50,000 - $100,000+/month cloud",
+  "hadrNotes": "Multi-region deployment mandatory. Active-active with geo-replication. RPO=0 (synchronous replication), RTO <15min.",
+  "cloudVsOnprem": "Multi-cloud or hybrid mandatory. Geographic distribution for disaster recovery, data sovereignty, and latency optimization.",
+  "viyaTier": "Premium (Tier 3)",
+  "typicalCustomers": "Central banks, national payment switches, telco groups (Globe/Smart), government national programs (BIR, PhilHealth), GCash/Maya"
+}
