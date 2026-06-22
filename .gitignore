@@ -3,3 +3,6 @@ dist/
 .astro/
 .DS_Store
 *.log
+
+# Proprietary SAS sizing documentation — do not push
+Sizing Guides/
